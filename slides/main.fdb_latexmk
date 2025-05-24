@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex main"] 1747911163 "main.aux" "main.bbl" "main" 1747911219
+["bibtex main"] 1747911163 "main.aux" "main.bbl" "main" 1747913117
   "/usr/local/texlive/2022/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
   "literature.bib" 1747903040 552 862f9fc17bb602c400d57338459464d0 ""
-  "main.aux" 1747911219 1954 be8bebe688d410d9c36075fb6d6237fd "pdflatex"
+  "main.aux" 1747913117 1954 be8bebe688d410d9c36075fb6d6237fd "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1747911218 "/Users/lona/Documents/repos/probML_seminar/slides/main.tex" "main.pdf" "main" 1747911219
-  "/Users/lona/Documents/repos/probML_seminar/slides/main.tex" 1747911217 3177 9621694ccafafcb766c69318f46713fc ""
+["pdflatex"] 1747913116 "/Users/lona/Documents/repos/probML_seminar/slides/main.tex" "main.pdf" "main" 1747913117
+  "/Users/lona/Documents/repos/probML_seminar/slides/main.tex" 1747913115 3170 c813ea78aeeb1252ac13b3317da431f0 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/sourcesanspro/a_emkxm5.enc" 1587936753 3021 665788e9679767ade2a71155215d25e0 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/tfm/adobe/sourcesanspro/SourceSansPro-Bold-tlf-t1--base.tfm" 1587936753 1648 77a748afe0a406be1ac3f29e1cd365cb ""
@@ -238,12 +238,12 @@
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
   "lmu-background.pdf" 1747903040 66051 db0b87484d5e254e6f8288c8895b57e1 ""
   "lmu_logo.png" 1747903040 63248 66fd65dbd91c42a8fc02109f0ffbf0f6 ""
-  "main.aux" 1747911219 1954 be8bebe688d410d9c36075fb6d6237fd "pdflatex"
+  "main.aux" 1747913117 1954 be8bebe688d410d9c36075fb6d6237fd "pdflatex"
   "main.bbl" 1747911164 337 f028b7173485e4b892ac5065a9bdfa8e "bibtex main"
-  "main.nav" 1747911219 717 24de830853ef5609b1290d15d25cf63f "pdflatex"
-  "main.out" 1747911219 81 1319f7d2eea540ee896ba9baf0c5c787 "pdflatex"
-  "main.tex" 1747911217 3177 9621694ccafafcb766c69318f46713fc ""
-  "main.toc" 1747911219 73 851aa3ee77160727fa815fd5ae241da2 "pdflatex"
+  "main.nav" 1747913117 717 24de830853ef5609b1290d15d25cf63f "pdflatex"
+  "main.out" 1747913117 81 1319f7d2eea540ee896ba9baf0c5c787 "pdflatex"
+  "main.tex" 1747913115 3170 c813ea78aeeb1252ac13b3317da431f0 ""
+  "main.toc" 1747913117 73 851aa3ee77160727fa815fd5ae241da2 "pdflatex"
   "showcase_figure.png" 1747903040 15360 dbb8a4fb139caf651921fdd7f1aa3c4c ""
   (generated)
   "main.aux"
