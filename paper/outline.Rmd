@@ -1,0 +1,41 @@
+---
+title: "Outline"
+subtitle: "Bayesian (Generalised) Linear Models"
+output: pdf_document
+---
+
+1. Introduction
+
+2. Methods
+
+- bayesian linear regression 
+  - intuitive approach to bayesian linear models: regularization
+    - why regularization? 
+    - bayesian linear regression with a gaussian prior is equal to ridge regularization
+    - bayesian linear regression with laplace prior is equal to lasso regularization
+    
+  - inference in bayesian LMs
+    - posterior predictive distribution in closed form
+    
+  - bayesian linear regression with other priors -> further use cases of bayesian linear models
+  
+  - choice of priors, conjugate priors?
+    - uninformative priors for $\beta$ and $\sigma^2$ or just for $\sigma^2$
+    - suitable informative priors for linear bayesian models
+      - variable selection: spike and slab vs. laplace priors (vs. bayesian ridge)
+      - 
+  
+  - estimation: Laplace Approximation and MCMC
+  
+- bayesian generalised linear regression
+  - logistic regression
+  - probit
+  - general?
+- hierarchical GLMs
+  - GLMMs
+
+3. Simulation Study
+
+
+4. Conclusion + Outlook
+
