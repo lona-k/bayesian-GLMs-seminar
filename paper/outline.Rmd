@@ -1,6 +1,5 @@
 ---
-title: "Bayesian (Generalized) Linear Models"
-subtitle: "Outline"
+title: "Outline: Bayesian (Generalized) Linear Models"
 author: "Lona Koers"
 output: pdf_document
 ---
@@ -9,10 +8,9 @@ output: pdf_document
 
 1. Introduction
 
-    - Motivation of bayesian GLMs: uncertainty quantification, regularization, incorporation of domain knowledge, small data sets
+    - Motivation of bayesian GLMs
     - Current research and related work
     - Structure of the paper
-
 
 2. Bayesian Linear Regression
 
@@ -26,19 +24,15 @@ output: pdf_document
           - Motivation of regularization
           - Ridge regularization $\iff$ Gaussian prior
           - Focus: Lasso regularization $\iff$ Laplace prior (and other methodes for real variable selection)
-      - Other prior distributions and use-cases (i.e. heavy-tailed priors) (?)
+      - Other prior distributions and use-cases (i.e. heavy-tailed priors)
     
     2.3 Bayesian inference with closed form priors
       - Posterior and marginal (parameter) distribution
       - Posterior predictive distribution
-  
-    2.5 Model evaluation (?)
 
+3. Bayesian Generalized Linear Regression
 
-3. Bayesian Generalised Linear Regression
-
-    3.1 Extending linear regression *(alternative: last subchapter after logistic regression)*
-      - Bayesian GLMs for any exponential family distribution
+    3.1 Extending linear regression: Bayesian GLMs
 
     3.2 (Binary) Logistic regression
       - Model definition
@@ -47,26 +41,19 @@ output: pdf_document
     3.3. Inference methods
       - Laplace approximation
       - MCMC and Hamilton Monte Carlo
-    
-    3.4 Predictive posterior
       - Predictive posterior estimation
-      - Model checking (?)
-
 
 4. Simulation Study
 
-    4.1. Linear Regression (= Regression): prior choice for bayesian linear regression with (Lasso) regularization
+    4.1. Linear Regression (= Regression): prior choice for (Lasso) regularization
 
-    4.2. Logistic Regression (= Classification)
-      <!-- - synthetic data (easy 2-dim binary classification where we can draw a line through? maybe effect on the decision boundary with unbalanced classes is interesting?) -->
+    4.2. Logistic Regression (= Classification) 
+      <!-- - *(maybe on real data?)* synthetic data (easy 2-dim binary classification where we can draw a line through? maybe effect on the decision boundary with unbalanced classes is interesting?) -->
       <!-- - fit model -->
       <!-- - visualize prior, posterior, predictive posterior, posterior decision boundary -->
 
-5. Discussion
+6. Conclusion and Outlook
 
     - When would the use of Bayesian regression be preferred over regular regression?
-    - Alternatives for more complex problems: Hierarchical GLMs and GLMMs
-    - Are there Bayesian GAMs?
-
-6. Conclusion and Outlook
+    - Alternatives for more complex problems: Hierarchical GLMs and GLMMs, Bayesian GAMs
 
