@@ -1,6 +1,61 @@
-\subsection{Notation}
-k
+\subsection*{Notation}
+
+We denote prior parameters with $\breve{}$ and posterior parameters with $\post{}$. Vectors are written in bold-face like so $\bx$ and matrices are bold capital letters $\bX$.
+
+\begin{itemize}
+    \item[$\btheta$] regression weights
+    \item[] 
+\end{itemize}
 
 
-\subsection{Distributions}
-k
+
+\subsection*{Distributions}
+
+When deriving equations, we assume the following probability density functions and parameter placements:
+
+\begin{itemize}
+    \item[$\Ncal(\mu, \ssd)$] Gaussian distribution with mean $\mu$ and variance $\ssd$
+    \item[] Gamma distribution
+    \item[$IG(a, b)$] Inverse Gamma distribution with scale parameter $a$ and location parameter $b$
+    \item[]  (multivariate) Student t-distribution
+    \item[] 
+\end{itemize}
+
+\subsection*{Proofs and Derivations}
+
+\subsubsection*{Posterior of the Normal-Inverse-Gamma prior}
+For the model described in \eqref{eq:NIGprior}, the posterior distribution is calculated according to \citet{fahrmeir_regression_2021} as
+\begin{equation*}
+    \begin{aligned}
+        p(\btheta, \ssd \mid \by) &\overset{\eqref{eq:bayes}}{\propto} \Lcal(\btheta, \ssd \mid \by) p(\btheta, \ssd) \\
+        &= \Lcal(\btheta, \ssd \mid \by) p(\btheta \mid \ssd) p(\ssd) \\
+        &= \frac{1}{(\ssd)^{n/2}} \exp\bigl( - \frac{1}{2\ssd} (\by - \bX \btheta)^\top(\by - \bX \btheta) \bigr)\\
+        &= \frac{1}{(\ssd)^{p/2}} \exp\bigl( - \frac{1}{2\ssd} (\btheta - \mupri)^\top \Sdipri (\btheta - \mupri) \bigr)\\
+        &= \frac{1}{(\ssd)^{\apri + 1}} \exp\bigl( - \frac{\bpri}{\ssd} \bigr),
+    \end{aligned}
+\end{equation*}
+
+which is NIG-distributed
+
+\begin{equation*}
+    \btheta, \ssd \mid \by \sim \text{NIG}(\mupo, \Sdpo, \apo, \bpo)
+\end{equation*}
+
+with parameters
+
+\begin{equation*}
+    \begin{aligned}
+        \mupo &= \Sdpo (\Sdipri \mupri + \bX^\top \by) \\
+        \Sdpo &= (\bX^\top \bX + \Sdipri)^{-1} \\
+        \apo &= \apri + \frac{n}{2}\\
+        \bpo &= \bpri + \frac{1}{2} ( \by^\top \by + \mupri^\top \Sdipri \mupo - \mupo^\top \Sdipo \mupo).
+    \end{aligned}
+\end{equation*}
+
+For the conditional posteriors it holds that
+\begin{equation*}
+    \begin{aligned}
+        \btheta \mid \ssd, \by &\sim \Ncal(\mupo, \ssd \Sdpo) \\
+        \btheta \mid \by &\sim \Tcal(2 \apo, \mupo, \bpo / \apo \Sdpo).
+    \end{aligned}
+\end{equation*}
