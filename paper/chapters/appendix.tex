@@ -3,6 +3,8 @@
 We denote prior parameters with $\breve{}$ and posterior parameters with $\post{}$. Vectors are written in bold-face like so $\bx$ and matrices are bold capital letters $\bX$.
 
 \begin{itemize}
+    \item[n] observations
+    \item[p] covariates
     \item[$\btheta$] regression weights
     \item[] 
 \end{itemize}
@@ -27,7 +29,7 @@ When deriving equations, we assume the following probability density functions a
 For the model described in \eqref{eq:NIGprior}, the posterior distribution is calculated according to \citet{fahrmeir_regression_2021} as
 \begin{equation*}
     \begin{aligned}
-        p(\btheta, \ssd \mid \by) &\overset{\eqref{eq:bayes}}{\propto} \Lcal(\btheta, \ssd \mid \by) p(\btheta, \ssd) \\
+        p(\btheta, \ssd \mid \by) \overset{\text{Bayes' rule}}{\propto}& \Lcal(\btheta, \ssd \mid \by) p(\btheta, \ssd) \\
         &= \Lcal(\btheta, \ssd \mid \by) p(\btheta \mid \ssd) p(\ssd) \\
         &= \frac{1}{(\ssd)^{n/2}} \exp\bigl( - \frac{1}{2\ssd} (\by - \bX \btheta)^\top(\by - \bX \btheta) \bigr)\\
         &= \frac{1}{(\ssd)^{p/2}} \exp\bigl( - \frac{1}{2\ssd} (\btheta - \mupri)^\top \Sdipri (\btheta - \mupri) \bigr)\\
@@ -59,3 +61,30 @@ For the conditional posteriors it holds that
         \btheta \mid \by &\sim \Tcal(2 \apo, \mupo, \bpo / \apo \Sdpo).
     \end{aligned}
 \end{equation*}
+
+\subsubsection*{Posterior predictive distribution of the Normal-Inverse-Gamma prior}
+
+In the case of \eqref{eq:NIGprior}, the posterior predictive distribution is calculated as 
+
+\begin{equation*}
+    \begin{aligned}
+        p(\ty \mid \by) 
+        &= \int \int p(\ty, \btheta, \ssd) d \btheta d \ssd \\
+        &= \int \int p(\ty \mid \btheta, \ssd) p(\btheta, \ssd) d \btheta d \ssd \\
+        &= \int \int \Ncal(\ty \mid \bX \btheta, \ssd \bI) \text{NIG}(\btheta, \ssd \mid \mupo, \Sdpo, \apo, \bpo).
+    \end{aligned}
+\end{equation*}
+
+According to \citet{kevin_p_murphy_probabilistic_2023} result is
+
+\begin{equation*}
+    \ty \mid \btheta, \ssd, \by \sim \Tcal(2 \apo, \tX \btheta, \frac{\bpo}{\apo} (\bI + \tX \Sdpo \tX^\top))
+\end{equation*}
+
+with posterior predictive mean
+
+\begin{equation*}
+    \Ex_{\btheta} ( \Ex_{\ty} (\ty \mid \btheta, \ssd, \by) \mid \ssd, \by ) = \Ex (\tX \btheta \mid \ssd , \by) = \tX \btheta
+\end{equation*}
+
+as stated by \citet{gelman_bayesian_2013}. The posterior predictive variance $\frac{\bpo}{\apo} \bI + \frac{\bpo}{\apo} \tX \Sdpo \tX^\top$ consists of measurement noise in the prior from $\frac{\bpo}{\apo}$ and uncertainty in the parameter $\btheta$ from $\frac{\bpo}{\apo} \tX \Sdpo \tX^\top$. 
