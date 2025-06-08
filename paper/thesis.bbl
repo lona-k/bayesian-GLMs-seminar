@@ -31,9 +31,25 @@ Held, L. \harvardand\ Sabanés~Bové, D.  \harvardyearleft
 \newblock {\em Likelihood and Bayesian Inference: With Applications in Biology
   and Medicine}, Statistics for Biology and Health, Springer.
 
-\harvarditem{{Kevin P. Murphy}}{n.d.}{kevin_p_murphy_probabilistic_2023}
-{Kevin P. Murphy}  \harvardyearleft n.d.\harvardyearright .
-\newblock {\em Probabilistic Machine Learning: Advanced Topics}, {MIT} Press.
+\harvarditem{Hoerl \harvardand\ Kennard}{n.d.a}{hoerl_ridge_1970}
+Hoerl, A.~E. \harvardand\ Kennard, R.~W.  \harvardyearleft
+  n.d.a\harvardyearright .
+\newblock Ridge regression: Applications to nonorthogonal problems,  {\bf
+  12}(1):~69--82.
+\newblock Publisher: [Taylor \& Francis, Ltd., American Statistical
+  Association, American Society for Quality].
+
+\harvarditem{Hoerl \harvardand\ Kennard}{n.d.b}{hoerl_ridge_1970-1}
+Hoerl, A.~E. \harvardand\ Kennard, R.~W.  \harvardyearleft
+  n.d.b\harvardyearright .
+\newblock Ridge regression: Biased estimation for nonorthogonal problems,  {\bf
+  12}(1):~55--67.
+\newblock Publisher: [Taylor \& Francis, Ltd., American Statistical
+  Association, American Society for Quality].
+
+\harvarditem{{MacKay}}{n.d.}{mackay_bayesian_1992}
+{MacKay}, D. J.~C.  \harvardyearleft n.d.\harvardyearright .
+\newblock Bayesian interpolation,  {\bf 4}(3):~415--447.
 
 \harvarditem{Mitchell \harvardand\ Beauchamp}{n.d.}{mitchell_bayesian_1988}
 Mitchell, T. \harvardand\ Beauchamp, J.  \harvardyearleft n.d.\harvardyearright
@@ -43,11 +59,21 @@ Mitchell, T. \harvardand\ Beauchamp, J.  \harvardyearleft n.d.\harvardyearright
 \newblock Num Pages: 10 Place: Alexandria Publisher: Amer Statistical Assoc Web
   of Science {ID}: {WOS}:A1988R852000013.
 
+\harvarditem{Murphy}{2007}{murphy_conjugate_nodate}
+Murphy, K.~P.  \harvardyearleft 2007\harvardyearright .
+\newblock Conjugate bayesian analysis of the gaussian distribution.
+
 \harvarditem{Park \harvardand\ Casella}{n.d.}{park_bayesian_2008}
 Park, T. \harvardand\ Casella, G.  \harvardyearleft n.d.\harvardyearright .
 \newblock The bayesian lasso,  {\bf 103}(482):~681--686.
 \newblock Num Pages: 6 Place: Alexandria Publisher: Amer Statistical Assoc Web
   of Science {ID}: {WOS}:000257897500025.
+
+\harvarditem{Tibshirani}{n.d.}{tibshirani_regression_1996}
+Tibshirani, R.  \harvardyearleft n.d.\harvardyearright .
+\newblock Regression shrinkage and selection via the lasso,  {\bf
+  58}(1):~267--288.
+\newblock Publisher: [Royal Statistical Society, Oxford University Press].
 
 \harvarditem{{ZELLNER}}{n.d.}{zellner_assessing_1986}
 {ZELLNER}, A.  \harvardyearleft n.d.\harvardyearright .

@@ -75,7 +75,7 @@ In the case of \eqref{eq:NIGprior}, the posterior predictive distribution is cal
     \end{aligned}
 \end{equation*}
 
-According to \citet{kevin_p_murphy_probabilistic_2023} result is
+According to e.g. \citet{murphy_conjugate_nodate}, the result is
 
 \begin{equation*}
     \ty \mid \btheta, \ssd, \by \sim \Tcal(2 \apo, \tX \btheta, \frac{\bpo}{\apo} (\bI + \tX \Sdpo \tX^\top))
@@ -84,7 +84,7 @@ According to \citet{kevin_p_murphy_probabilistic_2023} result is
 with posterior predictive mean
 
 \begin{equation*}
-    \Ex_{\btheta} ( \Ex_{\ty} (\ty \mid \btheta, \ssd, \by) \mid \ssd, \by ) = \Ex (\tX \btheta \mid \ssd , \by) = \tX \btheta
+    \Ex_{\btheta} ( \Ex_{\ty} (\ty \mid \btheta, \ssd, \by) \mid \ssd, \by ) = \Ex (\tX \btheta \mid \ssd , \by) = \tX \btheta,
 \end{equation*}
 
 as stated by \citet{gelman_bayesian_2013}. The posterior predictive variance $\frac{\bpo}{\apo} \bI + \frac{\bpo}{\apo} \tX \Sdpo \tX^\top$ consists of measurement noise in the prior from $\frac{\bpo}{\apo}$ and uncertainty in the parameter $\btheta$ from $\frac{\bpo}{\apo} \tX \Sdpo \tX^\top$. 
