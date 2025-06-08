@@ -1,0 +1,58 @@
+\begin{thebibliography}{xx}
+
+\harvarditem{Bishop}{2006}{Bishop2006}
+Bishop, C.~M.  \harvardyearleft 2006\harvardyearright .
+\newblock {\em Pattern Recognition and Machine Learning}, Springer.
+
+\harvarditem[Carvalho et~al.]{Carvalho, Polson \harvardand\
+  Scott}{n.d.}{carvalho_horseshoe_2010}
+Carvalho, C.~M., Polson, N.~G. \harvardand\ Scott, J.~G.  \harvardyearleft
+  n.d.\harvardyearright .
+\newblock The horseshoe estimator for sparse signals,  {\bf 97}(2):~465--480.
+\newblock Num Pages: 16 Place: Oxford Publisher: Oxford Univ Press Web of
+  Science {ID}: {WOS}:000280559700015.
+
+\harvarditem[Fahrmeir et~al.]{Fahrmeir, Kneib, Lang \harvardand\
+  Marx}{n.d.}{fahrmeir_regression_2021}
+Fahrmeir, L., Kneib, T., Lang, S. \harvardand\ Marx, B.~D.  \harvardyearleft
+  n.d.\harvardyearright .
+\newblock {\em Regression: Models, Methods and Applications}, Springer Berlin
+  Heidelberg.
+
+\harvarditem[Gelman et~al.]{Gelman, Carlin, Stern, Dunson, Vehtari \harvardand\
+  Rubin}{n.d.}{gelman_bayesian_2013}
+Gelman, A., Carlin, J.~B., Stern, H.~S., Dunson, D.~B., Vehtari, A.
+  \harvardand\ Rubin, D.~B.  \harvardyearleft n.d.\harvardyearright .
+\newblock {\em Bayesian Data Analysis}, 3 edn, Chapman and Hall/{CRC}.
+
+\harvarditem{Held \harvardand\ Sabanés~Bové}{n.d.}{held_likelihood_2020}
+Held, L. \harvardand\ Sabanés~Bové, D.  \harvardyearleft
+  n.d.\harvardyearright .
+\newblock {\em Likelihood and Bayesian Inference: With Applications in Biology
+  and Medicine}, Statistics for Biology and Health, Springer.
+
+\harvarditem{{Kevin P. Murphy}}{n.d.}{kevin_p_murphy_probabilistic_2023}
+{Kevin P. Murphy}  \harvardyearleft n.d.\harvardyearright .
+\newblock {\em Probabilistic Machine Learning: Advanced Topics}, {MIT} Press.
+
+\harvarditem{Mitchell \harvardand\ Beauchamp}{n.d.}{mitchell_bayesian_1988}
+Mitchell, T. \harvardand\ Beauchamp, J.  \harvardyearleft n.d.\harvardyearright
+  .
+\newblock Bayesian variable selection in linear-regression,  {\bf
+  83}(404):~1023--1032.
+\newblock Num Pages: 10 Place: Alexandria Publisher: Amer Statistical Assoc Web
+  of Science {ID}: {WOS}:A1988R852000013.
+
+\harvarditem{Park \harvardand\ Casella}{n.d.}{park_bayesian_2008}
+Park, T. \harvardand\ Casella, G.  \harvardyearleft n.d.\harvardyearright .
+\newblock The bayesian lasso,  {\bf 103}(482):~681--686.
+\newblock Num Pages: 6 Place: Alexandria Publisher: Amer Statistical Assoc Web
+  of Science {ID}: {WOS}:000257897500025.
+
+\harvarditem{{ZELLNER}}{n.d.}{zellner_assessing_1986}
+{ZELLNER}, A.  \harvardyearleft n.d.\harvardyearright .
+\newblock On assessing prior distributions and bayesian regression analysis
+  with g-prior distributions.
+\newblock Publisher: Elsevier Science.
+
+\end{thebibliography}

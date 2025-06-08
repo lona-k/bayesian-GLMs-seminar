@@ -1,4 +1,5 @@
-The (frequentist) Linear Regression Model is probably the most widely used model in statistics and machine learning. Both the frequentist and the Bayesian Linear Models are described in many introductory texts on statistical modelling, such as \citep{fahrmeir_regression_2021} or \citep{gelman_bayesian_2013}.
+The (frequentist) Linear Regression Model is probably the most widely used model in statistics and machine learning.
+Both the frequentist and the Bayesian Linear Models are described in many introductory texts on statistical modelling, such as \citep{fahrmeir_regression_2021} or \citep{gelman_bayesian_2013}.
 
 
 \subsection{Model definition}
@@ -11,7 +12,7 @@ The frequentist linear regression model then assumes
 \end{equation}
 
 where the weight parameter $\btheta$ and the variance $\ssd$ are estimated to obtain the fitted model.
-A condition on $\bX$ is always implicit. \\
+A condition on $\bX$ is always implicit.\\
 
 To view Linear Regression from a Bayesian perspective, we simply reinterpret the parameters as random variables.
 Conditioning on $\btheta$ and $\ssd$, the likelihood takes the same form as in \eqref{eq:LM}:
@@ -25,7 +26,7 @@ Note that to predict multiple outputs, an extension to Multivariate Linear Regre
 \subsection{Prior choice}
 \subsubsection*{Normal (Inverse Gamma) Prior}
 
-To complete the Bayesian linear model specification, we place conjugate priors on both $\btheta$ and $\ssd$. 
+To complete the Bayesian linear model specification, we place conjugate priors on both $\btheta$ and $\ssd$.
 
 \begin{equation} \label{eq:NIGprior}
     \begin{aligned}
@@ -43,16 +44,18 @@ Since the Inverse-Gamma distribution of $\ssd$ is conjugate to the Gaussian cond
 \end{equation*}
 
 follows a Normal Inverse Gamma (NIG).
-We can then use Bayes' rule once again to derive the unconditional prior distribution of $\btheta$ as a multivariate Student t-distribution. 
+We can then use Bayes' rule once again to derive the unconditional prior distribution of $\btheta$ as a multivariate Student t-distribution.
 
 \begin{equation*}
     \btheta \sim \Tcal(2 \apri, \mupri, \frac{\apri}{\bpri} \Sdpri)
 \end{equation*}
 
 \subsubsection*{Uninformative Prior}
-The idea of an uninformative (or flat) prior is to maximize the influence of the data on the posterior in the absence of prior knowledge. Especially when little to no prior information is available, we can flatten the NIG prior by setting
+The idea of an uninformative (or flat) prior is to maximize the influence of the data on the posterior in the absence of prior knowledge.
+Especially when little to no prior information is available, we can flatten the NIG prior by setting
+
 \begin{equation*}
-    \mupri = \bnull, \quad \Sdipri = \bnull \text{ i.e. } \Sdpri \to \infty 
+    \mupri = \bnull, \quad \Sdipri = \bnull \text{  i.e. } \Sdpri \to \infty 
 \end{equation*}
 and choosing $\apri = - \frac{p}{2}$ and $\bpri = 0$, where $p$ is the number of features in the model.
 
@@ -69,7 +72,7 @@ The prior distributional assumptions would then be:
 
 \footnotetext{Informally stated for demonstational purposes.}
 
-Note that we generally have to be careful with completely flat priors; it is necessary to check if the resulting posterior is proper (which is the case here). \\
+Note that we generally have to be careful with completely flat priors; it is necessary to check if the resulting posterior is proper (which is the case here).\\
 
 Another good solution for use-cases with little prior knowledge that still require a proper posterior is Zellner's g-prior \citep{zellner_assessing_1986}.
 
@@ -95,7 +98,10 @@ Concretely:
     \end{aligned}
 \end{equation}
 
-\footnotetext{Usually, it does not make sense to regularize the intercept. To be completely accurate, we would need to separate the intercept from $\btheta$, i.e. split $\btheta$ into $(\theta_0, \btheta'^\top)$ and consequently set $\bX'$ as the design matrix without a column for the intercept. We would then specify the model as $\by \mid \btheta, \ssd \sim \Ncal(\theta_0 \bI + \bX' \btheta', \ssd \bI)$. We chose to simplify this and stick to the previously established definitions because we aim for an understandable explanation of the basic concept of Bayesian regularization.}
+\footnotetext{Usually, it does not make sense to regularize the intercept.
+To be completely accurate, we would need to separate the intercept from $\btheta$, i.e. split $\btheta$ into $(\theta_0, \btheta'^\top)$ and consequently set $\bX'$ as the design matrix without a column for the intercept.
+We would then specify the model as $\by \mid \btheta, \ssd \sim \Ncal(\theta_0 \bI + \bX' \btheta', \ssd \bI)$.
+We chose to simplify this and stick to the previously established definitions because we aim for an understandable explanation of the basic concept of Bayesian regularization.}
 
 although there are many options for regularization priors, we are going to focus on regularization priors that align directly with familiar frequentist penalties.\\
 
@@ -106,9 +112,11 @@ although there are many options for regularization priors, we are going to focus
 \end{equation*}
 
 with $\taus$ controlling the degree of regularization akin to the role of $\lambda$.
-In constrast to $\lambda$, $\taus$ does not need to be set in advance or optimized as a hyperparameter. We can simply embed it in a hierarchical model by specifying a prior for $\taus$, e.g. $\taus \sim \IG(\apri_\tau, \bpri_\tau)$, and estimate it alongside $\btheta$ and $\ssd$.\\
+In constrast to $\lambda$, $\taus$ does not need to be set in advance or optimized as a hyperparameter.
+We can simply embed it in a hierarchical model by specifying a prior for $\taus$, e.g. $\taus \sim \IG(\apri_\tau, \bpri_\tau)$, and estimate it alongside $\btheta$ and $\ssd$.\\
 
-\textbf{Lasso regularization} uses $\text{pen}(\btheta) = \|\btheta\|_1$ to perform variable selection by setting elements $\theta_j$ of $\btheta$ to $0$ during estimation. This means that Lasso regularization promotes a \textit{sparse} solution.
+\textbf{Lasso regularization} uses $\text{pen}(\btheta) = \|\btheta\|_1$ to perform variable selection by setting elements $\theta_j$ of $\btheta$ to $0$ during estimation.
+This means that Lasso regularization promotes a \textit{sparse} solution.
 The Bayesian Lasso specifies a Laplace prior on $\btheta$ via the scale-mixture representation \citet{park_bayesian_2008}
 
 \begin{equation}
@@ -131,14 +139,17 @@ In a frequentist linear model, we use least-squares (LS) estimation to obtain th
     \hbtheta_{LS} = (\bX^\top \bX)^{-1} \bX^\top \by
 \end{equation*}
 
-for $\btheta$. Under Gaussian errors, this satisfies
+for $\btheta$.
+Under Gaussian errors, this satisfies
+
 \begin{equation}\label{LSE}
     \hbtheta_{LS} \sim \Ncal(\btheta, \ssd (\bX^\top \bX)^{-1}).
 \end{equation}
 
 To quantify the uncertainty in the estimation, we can compute confidence intervals for $\btheta$, but these reflect only the variability in the estimator, not uncertainty about the true parameter itself.\\
 
-In contrast, the Bayesian approach yields a full posterior distribution on $\btheta$ by updating the prior distribution with observed data using Bayes' rule. With the NIG prior introduced in \eqref{eq:NIGprior}, conjugacy implies for the joint posterior $p(\btheta, \ssd \mid \by)$ that
+In contrast, the Bayesian approach yields a full posterior distribution on $\btheta$ by updating the prior distribution with observed data using Bayes' rule.
+With the NIG prior introduced in \eqref{eq:NIGprior}, conjugacy implies for the joint posterior $p(\btheta, \ssd \mid \by)$ that
 
 \begin{equation*}
     \btheta, \ssd \mid \by \sim \text{NIG}(\mupo, \Sdpo, \apo, \bpo)
@@ -181,7 +192,8 @@ The Bayesian answer to this is the \textit{posterior predictive distribution}
 which is an average of conditional probabilities over the posterior distribution of $\btheta$.\footnotemark
 
 \footnotetext{
-    A note on intuition: In essence, the posterior predictive distribution is the marginal distribution of $\ty$, only for new response values $\ty$, i.e. $p(\by) = \int p(\by, \btheta) d\btheta = \int p(\by \mid \btheta) p(\btheta) d\btheta$. We recognize it from Bayes' rule as the normalization constant.
+    A note on intuition: In essence, the posterior predictive distribution is the marginal distribution of $\ty$, only for new response values $\ty$, i.e. $p(\by) = \int p(\by, \btheta) d\btheta = \int p(\by \mid \btheta) p(\btheta) d\btheta$.
+    We recognize it from Bayes' rule as the normalization constant.
 }
 
 For the NIG prior in \eqref{eq:NIGprior}, one can show\footnote{see Appendix \ref{app}} that
