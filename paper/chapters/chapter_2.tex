@@ -78,7 +78,7 @@ Another good solution for use-cases with little prior knowledge that still requi
 
 \subsubsection*{Regularization Priors}
 
-Regularization (or penalization) regulates the trade off between model fit and complexity, or equivalently bias vs. variance.
+Regularization (or penalization) regulates the trade off between model complexity and out-of-sample performance, or equivalently bias vs. variance. 
 In frequentist statistics, we minimize the Penalized Least Squares criterion (PLS) 
 
 \begin{equation*}
@@ -181,7 +181,7 @@ We will go more into depth on approximate inference for Bayesian regression mode
 
 \subsubsection*{Posterior predictive distribution}
 In many applications, we care more about predictions $\ty$ for new, unseen inputs $\tX$ (or test data $(\ty, \tX)$), independent of the training data $\bD$, than about $\btheta$ itself.
-The Bayesian answer to this is the \textit{posterior predictive distribution}
+The Bayesian answer to this is the \textit{posterior predictive distribution} \Citep[see e.g]{barbieri_posterior_2015}
 
 \begin{equation*}
     p(\ty \mid \by) = \int p(\ty, \btheta \mid \by) d \btheta 

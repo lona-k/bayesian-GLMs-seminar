@@ -1,26 +1,65 @@
 \subsection{Bayesian Generalized Regression}\label{sec:logit-glm}
 
-
+very short model statement
 
 \subsection{Bayesian Logistic Regression} \label{sec:logit-logit}
 
 \subsubsection*{Model definition}
 
+motivate logistic regression as very important for medcine and so on, probably the most-used GLM (source??)
+just define the model
+
+
 \subsubsection*{Prior choice}
 
-
+- NIG scale mixture + flat prior
+- student t prior (Gelman 2008)
+- more regularization (analogue to sec 2??)
+    - explain that it's basically the same
 - note similarities with naive bayesian classification!
 
 \textbf{Regularization priors}
 
 
-\subsection{Bayesian inference with numerical approximation and simulation} \label{sec:logit-inf}
+\subsection{Approximate Bayesian inference} \label{sec:logit-inf}
 
 - For e.g these conjugate priors, inference can be done in closed form as explained in section, 
 - but for most priors in GLMs this is not possible
 - we will introduce 2 algorithms for numerical inference
 
-\subsubsection*{MCMC and HM}
+\subsubsection*{Sampling from the posterior with MCMC and HM}
+
+motivate MCMC methods
+
+state metropolis hastings (with IWLS proposal (Fahrmeir, Gamerman, Link))
+explain importance of proposal density (and simple idea for it in the case of logistic regression)
+
+modification with metropolis **gibbs** sampler (to reduce)
+
+note auxilariy variable augmentation (Alber 1993, Holmes) because it's cool and we mentioned scale mixture models
 
 
-\subsubsection*{Laplace Approximation}
+\subsubsection*{Full Bayes with Laplace Approximation}
+
+- Idea of LA (i.e. approximate posterior with Gaussian)
+- Reference to Herleitung of LA?
+- state formulas for mean and variance
+- show in logit case with simple prior
+
+Note INLA for hierarchical models (Rue 2008)
+
+
+
+\subsubsection*{Posterior predictive distribution}
+
+state formula (or reference sec 2)
+explain in general what we do for classes
+
+- MCMC: very simple approximation
+- LA:
+    - show integral
+    - state approximation with MC integration
+    - note probit approximation (Spiegelhalter 1990)
+
+basically plug-in into the same formula, because we explain it with Monte-Carlo integration
+

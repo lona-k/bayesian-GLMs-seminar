@@ -1,5 +1,12 @@
 \begin{thebibliography}{xx}
 
+\harvarditem{Barbieri}{2015}{barbieri_posterior_2015}
+Barbieri, M.~M.  \harvardyearleft 2015\harvardyearright .
+\newblock Posterior {Predictive} {Distribution}, {\em Wiley {StatsRef}:
+  {Statistics} {Reference} {Online}}, John Wiley \& Sons, Ltd, pp.~1--6.
+\newblock \_eprint:
+  https://onlinelibrary.wiley.com/doi/pdf/10.1002/9781118445112.stat07839.
+
 \harvarditem{Bishop}{2006}{Bishop2006}
 Bishop, C.~M.  \harvardyearleft 2006\harvardyearright .
 \newblock {\em Pattern Recognition and Machine Learning}, Springer.
