@@ -78,6 +78,7 @@ Another good solution for use-cases with little prior knowledge that still requi
 
 \subsubsection*{Regularization Priors} \label{sec:lm-regularization}
 
+% Bayesian penalization techniques perform similarly or sometimes even better, and they offer additional advantages such as readily available uncertainty estimates, automatic estimation of the penalty parameter, and more flexibility in terms of penalties that can be considered.
 Regularization (or penalization) regulates the trade off between model complexity and out-of-sample performance, or equivalently bias vs. variance. 
 In frequentist statistics, we minimize the Penalized Least Squares criterion (PLS) 
 
@@ -105,7 +106,7 @@ We chose to simplify this and stick to the previously established definitions be
 
 although there are many options for regularization priors, we are going to focus on regularization priors that align directly with familiar frequentist penalties.\\
 
-\textbf{Ridge regularization} \citep{hoerl_ridge_1970,hoerl_ridge_1970-1} uses $\text{pen}(\btheta) = \|\btheta\|_2^2$ and the Bayesian analogue \Citep[e.g.]{mackay_bayesian_1992} specifies
+\textbf{Ridge regularization} \citep{hoerl_ridge_1970,hoerl_ridge_1970-1} uses $\text{pen}(\btheta) = \|\btheta\|_2^2$ and the Bayesian analogue \Citep[e.g.]{hhsiang_bayesian_1975,mackay_bayesian_1992,maccul} specifies
 
 \begin{equation*}
     \btheta \sim \Ncal(\bnull, \taus \bI),

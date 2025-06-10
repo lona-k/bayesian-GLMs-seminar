@@ -1,5 +1,13 @@
 \begin{thebibliography}{xx}
 
+\harvarditem{Albert \harvardand\ Chib}{1993}{albert_bayesian_1993}
+Albert, J.~H. \harvardand\ Chib, S.  \harvardyearleft 1993\harvardyearright .
+\newblock Bayesian {Analysis} of {Binary} and {Polychotomous} {Response}
+  {Data}, {\em Journal of the American Statistical Association} {\bf
+  88}(422):~669--679.
+\newblock Publisher: [American Statistical Association, Taylor \& Francis,
+  Ltd.].
+
 \harvarditem{Barbieri}{2015}{barbieri_posterior_2015}
 Barbieri, M.~M.  \harvardyearleft 2015\harvardyearright .
 \newblock Posterior {Predictive} {Distribution}, {\em Wiley {StatsRef}:
@@ -19,6 +27,14 @@ Carvalho, C.~M., Polson, N.~G. \harvardand\ Scott, J.~G.  \harvardyearleft
 \newblock The horseshoe estimator for sparse signals, {\em BIOMETRIKA} {\bf
   97}(2):~465--480.
 
+\harvarditem{Dellaportas \harvardand\ Smith}{1993}{dellaportas_bayesian_1993}
+Dellaportas, P. \harvardand\ Smith, A. F.~M.  \harvardyearleft
+  1993\harvardyearright .
+\newblock Bayesian {Inference} for {Generalized} {Linear} and {Proportional}
+  {Hazards} {Models} via {Gibbs} {Sampling}, {\em Journal of the Royal
+  Statistical Society. Series C (Applied Statistics)} {\bf 42}(3):~443--459.
+\newblock Publisher: [Royal Statistical Society, Oxford University Press].
+
 \harvarditem[Fahrmeir et~al.]{Fahrmeir, Kneib \harvardand\
   Konrath}{2010}{fahrmeir_bayesian_2010}
 Fahrmeir, L., Kneib, T. \harvardand\ Konrath, S.  \harvardyearleft
@@ -33,6 +49,18 @@ Fahrmeir, L., Kneib, T., Lang, S. \harvardand\ Marx, B.~D.  \harvardyearleft
   2021\harvardyearright .
 \newblock {\em Regression: {Models}, {Methods} and {Applications}}, Springer
   Berlin Heidelberg, Berlin, Heidelberg.
+
+\harvarditem{Frühwirth-Schnatter \harvardand\
+  Frühwirth}{2007}{fruhwirth-schnatter_auxiliary_2007}
+Frühwirth-Schnatter, S. \harvardand\ Frühwirth, R.  \harvardyearleft
+  2007\harvardyearright .
+\newblock Auxiliary mixture sampling with applications to logistic models, {\em
+  Computational Statistics \& Data Analysis} {\bf 51}(7):~3509--3528.
+
+\harvarditem{Gamerman}{1998}{gamerman_markov_1998}
+Gamerman, D.  \harvardyearleft 1998\harvardyearright .
+\newblock Markov chain {Monte} {Carlo} for dynamic generalised linear models,
+  {\em Biometrika} {\bf 85}(1):~215--227.
 
 \harvarditem[Gelman et~al.]{Gelman, Carlin, Stern, Dunson, Vehtari \harvardand\
   Rubin}{2013}{gelman_bayesian_2013}
@@ -80,6 +108,17 @@ Hoerl, A.~E. \harvardand\ Kennard, R.~W.  \harvardyearleft
 \newblock Publisher: [Taylor \& Francis, Ltd., American Statistical
   Association, American Society for Quality].
 
+\harvarditem{Holmes}{n.d.}{holmes_efficient_nodate}
+Holmes, K.-H.  \harvardyearleft n.d.\harvardyearright .
+\newblock Efficient simulation of {Bayesian} logistic regression models.
+
+\harvarditem{Lenk \harvardand\ DeSarbo}{2000}{lenk_bayesian_2000}
+Lenk, P.~J. \harvardand\ DeSarbo, W.~S.  \harvardyearleft 2000\harvardyearright
+  .
+\newblock Bayesian {Inference} for {Finite} {Mixtures} of {Generalized}
+  {Linear} {Models} with {Random} {Effects}, {\em Psychometrika} {\bf
+  65}(1):~93--119.
+
 \harvarditem{MacKay}{1992}{mackay_bayesian_1992}
 MacKay, D. J.~C.  \harvardyearleft 1992\harvardyearright .
 \newblock Bayesian {Interpolation}, {\em Neural Computation} {\bf
@@ -123,6 +162,21 @@ Polson, N.~G., ~, James~G., S.,  \harvardand\ Windle, J.  \harvardyearleft
   Statistical Association} {\bf 108}(504):~1339--1349.
 \newblock Publisher: ASA Website \_eprint:
   https://doi.org/10.1080/01621459.2013.829001.
+
+\harvarditem[Rue et~al.]{Rue, Martino \harvardand\
+  Chopin}{2009}{rue_approximate_2009}
+Rue, H., Martino, S. \harvardand\ Chopin, N.  \harvardyearleft
+  2009\harvardyearright .
+\newblock Approximate {Bayesian} {Inference} for {Latent} {Gaussian} models by
+  using {Integrated} {Nested} {Laplace} {Approximations}, {\em Journal of the
+  Royal Statistical Society Series B: Statistical Methodology} {\bf
+  71}(2):~319--392.
+
+\harvarditem{Scott}{2011}{scott_data_2011}
+Scott, S.~L.  \harvardyearleft 2011\harvardyearright .
+\newblock Data augmentation, frequentist estimation, and the {Bayesian}
+  analysis of multinomial logit models, {\em Statistical Papers} {\bf
+  52}(1):~87--109.
 
 \harvarditem{Tibshirani}{1996}{tibshirani_regression_1996}
 Tibshirani, R.  \harvardyearleft 1996\harvardyearright .

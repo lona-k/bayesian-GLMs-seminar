@@ -44,7 +44,6 @@ Heavier-tailed prior distributions have been proposed to mitigate this issue in 
 Prominent choices are the Student t-distribution, which was introduced by \citet{gelman_weakly_2008} as a prior for low-information settings that results in higher model stability, or the Cauchy distribution \Citep{ghosh_use_2017,gelman_weakly_2008}. \\
 
 In general, \textbf{regularization} can be achieved with the same prior distributions as introduced for Bayesian linear regression in Section \ref{sec:lm-regularization} \Citep[see e.g.][]{van_erp_shrinkage_2019,fahrmeir_bayesian_2010,ohara_review_2009}.
-Unlike for the linear model, Bayesian inference with closed-form posteriors is not possible and we need to use approximate methods.
 Note that the Student t-distribution also has a regularizing effect \citep{gelman_weakly_2008}.
 
 % Issue: separation (perfect predictability)
@@ -56,45 +55,149 @@ Note that the Student t-distribution also has a regularizing effect \citep{gelma
 
 \subsection{Approximate Bayesian inference} \label{sec:logit-inf}
 
-- For e.g these conjugate priors, inference can be done in closed form as explained in section, 
-- but for most priors in GLMs this is not possible
-- we will introduce 2 algorithms for numerical inference
+Unlike for the linear model, Bayesian inference with closed-form posteriors is in most cases not possible for the logistic model.
+In order to sample from the parameter and predictive posterior distributions, we need to use approximate Bayesian methods.
 
-\subsubsection*{Sampling from the posterior with MCMC and HM}
+% - we will introduce 2 algorithms for numerical inference
 
-motivate MCMC methods
+\subsubsection*{Sampling from the posterior with MCMC methods}
 
-state metropolis hastings (with IWLS proposal (Fahrmeir, Gamerman, Link))
-explain importance of proposal density (and simple idea for it in the case of logistic regression)
+Although Markov Chain Monte Carlo (MCMC) methods make no (explicit) assumption about the form of the posterior distribution, they perform best if the parameter posterior is known up to a constant (which in most cases is the normalization constant).\\
 
-modification with metropolis **gibbs** sampler (to reduce)
+In the simplest form of MCMC, the Metropolis-Hastings algorithm can be used to generate $K$ samples from the posterior parameter disribution as follows:
 
-note auxilariy variable augmentation (Alber 1993, Holmes) because it's cool and we mentioned scale mixture models
+\begin{enumerate}
+    \item Initialize $\btheta^{(0)}$ and set $\btheta^{(k)} = \btheta^{(0)}$
+    \item For $k = 1, \dots, K$
+    \begin{enumerate}
+        \item Draw $\btheta^{(*)}$ from the \textit{proposal distribution} $q(\btheta^{(*)} \mid \btheta^{(k)})$
+        \item calculate the \textit{accceptance probably} 
+            \begin{equation*}
+                \alpha = \min \Bigl(
+                    1, \frac{
+                        p(\btheta^{(*)} \mid \by)\; p(\btheta^{(*)}) \; q(\btheta^{(k)} \mid \btheta^{(*)})}{
+                            p(\btheta^{(k)} \mid \by)\; p(\btheta^{(k)}) \; q(\btheta^{(*)} \mid \btheta^{(k)})
+                        }
+                    \Bigr)
+            \end{equation*}
+        \item Draw $u \sim \text{Uni}[0, 1]$
+        \item Make a decision
+            \begin{equation*}
+                \begin{cases}
+                    u \le \alpha & \text{ accept } \;\Rightarrow \; \btheta^{(k+1)} = \btheta^{(*)}\\
+                    u > \alpha & \text{ discard } \Rightarrow \;\btheta^{(k+1)} = \btheta^{(k)}\\
+                \end{cases}
+            \end{equation*}
+    \end{enumerate}
+\end{enumerate}
 
+Note that by construction, the samples are (sometimes heavily) correlated and that the number of repetitions necessary until convergence depends on $\btheta^{(0)}$.\\
 
-Specialized algorithms for regularization in the Baysian generalized model have been proposed by \citet{polson_bayesian_2013}
+As we can see, the acceptance probability strongly depends on the quality of the proposal distribution.
+If it is a close approximation of the posterior, i.e. $p(\btheta \mid \by)p(\btheta) \approx q(\btheta \mid \btheta^{(k)})$, it follows that $\alpha \approx 1$ and the proposal is accepted in most cases.
+Otherwise, the Metropolis-Hastings rejections correct for approximation errors as needed \citep{scott_data_2011}.
+
+A common choice for the proposal distribution is to draw from a Gaussian distribution using iteratively weighted least squares (IWLS) \Citep[see e.g.][]{gamerman_markov_1998,lenk_bayesian_2000,scott_data_2011}:
+
+\begin{equation*}
+    q(\btheta^{(*)} \mid \btheta^{(k)}) \sim \Ncal(\btheta^{(k)} \mid -H^{-1}),
+\end{equation*}
+
+where $-H^{-1}$ is the Hessian of $\log p(\btheta^{(k)} \mid \by)\; p(\btheta^{(k)})$.\footnotemark \;
+\citet{scott_data_2011} also argues that t-distributed proposal densities are generally preferred for their heavier tails and thus increased randomness of the algorithm.\\
+
+\footnotetext{
+    Note that the symmetry of the Gaussian distribution simplifies the Metropolis-Hastings algorithm to the Metropolis algorithm, where the acceptance probability can be calculated with
+    \begin{equation*}
+        \alpha = \min \Bigl(
+            1, \frac{
+                p(\btheta^{(*)} \mid \by)\; p(\btheta^{(*)})}{
+                    p(\btheta^{(k)} \mid \by)\; p(\btheta^{(k)}) 
+                }
+            \Bigr)
+    \end{equation*}
+}
+
+Several other MCMC algorithms, such as Hamiltonian Monte Carlo, Gibbs sampling, or combined Metropolis-Gibbs sampling, have also been proposed \Citep[see e.g.][]{dellaportas_bayesian_1993}. 
+\citet{polson_bayesian_2013} introduced a specialized algorithm for inference in regularized Bayesian generalized models.
+
+Another interesting solution to inference in Bayesian GLMs without conjugate priors is to use data augmentation \citep{albert_bayesian_1993} with auxiliary variables.
+This was refined by \citet{holmes_efficient_nodate} for Bayesian logistic regression.
+They use a Gaussian scale mixture and additional auxiliary variables to reformulate the Logistic model, which results in being able to make use of the Gaussian-Gaussian conjugate for inference.
+While \citet{holmes_efficient_nodate,fruhwirth-schnatter_auxiliary_2007} use Gibbs sampling to estimate the posterior distribution of hyperparameters of the scale mixture model, we can also use data augmentation with the MH algorithm \citep{scott_data_2011}.
+
+% motivate MCMC methods
+% state metropolis hastings (with IWLS proposal (Fahrmeir, Gamerman, Link))
+% explain importance of proposal density (and simple idea for it in the case of logistic regression)
+% modification with metropolis **gibbs** sampler (to reduce)
+% note auxilariy variable augmentation (Alber 1993, Holmes) because it's cool and we mentioned scale mixture models
 
 \subsubsection*{Full Bayes with Laplace Approximation}
 
-- Idea of LA (i.e. approximate posterior with Gaussian)
-- Reference to Herleitung of LA?
-- state formulas for mean and variance
-- show in logit case with simple prior
+In contrast to MCMC methods, Laplace Approximation (LA) approximates the full posterior distribution. The general idea of LA is represent posterior with a Gaussian using Taylor expansion, i.e.
 
-Note INLA for hierarchical models (Rue 2008)
+\begin{equation}
+    \btheta \mid \by \sim \Ncal(\mupo, \Sdpo).
+\end{equation}
 
+To estimate the mean $\mupo$ and variance $\Sdpo$ of this distribution, we find the maximum posterior estimate $\hbbeta_{MAP}$ by maximizing the (real) posterior with standard optimization methods. We then set
+\begin{equation*}
+    \mupo = \hbtheta_{MAP}, \quad \Sdpo = H^{-1}(\hbtheta_{MAP}).
+\end{equation*}
 
+In the case of the Bayesian logistic model with a simple parameter prior $\btheta \sim \Ncal(\bnull, \ssd \bI)$, this results in
+
+\begin{equation*}
+    \begin{aligned}
+        \hbtheta_{MAP} &= \arg \max_{\btheta} p(\btheta \mid \by)
+            \overset{\text{Bayes' rule}}{=} \arg \max_{\btheta} \int p(\by \mid \btheta) p(\btheta) \; d\btheta  \\
+            &= \arg \max_{\btheta} \sumin \log \Bigl(\frac{\exp(y_i \bx_i\btheta)}{1 + \exp(y_i \bx_i\btheta)}\Bigr) - \frac{1}{2 \ssd} \btheta^\top \btheta \\
+        H(\btheta) &= - \nabla^2_{\btheta}  \log p (\btheta \mid \by) = \frac{1}{\ssd} \bI + \sumin 
+            \frac{\exp(y_i \bx_i\btheta)}{1 + \exp(y_i \bx_i\btheta)}
+            \Bigl( 1 - \frac{\exp(y_i \bx_i\btheta)}{1 + \exp(y_i \bx_i\btheta)}\Bigr)
+            \bx_i \bx_i^\top.
+    \end{aligned}
+\end{equation*}
+
+As we can see by the assumed prior, simple LA is not applicable for hierarchical models. \citet{rue_approximate_2009} proposed an altered algorithm based on INLA, for LA in latent Gaussian models. Although MCMC could also be used in this setting, \citet{rue_approximate_2009} showed their approach to be faster and more generally applicable.
+
+% - Idea of LA (i.e. approximate posterior with Gaussian)
+% - Reference to Herleitung of LA?
+% - state formulas for mean and variance
+% - show in logit case with simple prior
+% - Note INLA for hierarchical models (Rue 2008)
 
 \subsubsection*{Posterior predictive distribution}
 
-state formula (or reference sec 2)
-explain in general what we do for classes
+In a binary classification setting such as Logistic regression, we obtain the posterior predictive distribution by calculating the distribution for the positive class\footnote{
+    Encoded here with $y_i \in \{0 \text{ (negative)}, 1 \text{ (positive)}\}$
+} $p(\ty = 1 \mid \btheta, \by)$ and inferring the negative class by computing $p(\ty = 0 \mid \btheta, \by) = 1 - p(\ty = 1 \mid \btheta, \by)$.\\
 
-- MCMC: very simple approximation
-- LA:
-    - show integral
-    - state approximation with MC integration
-    - note probit approximation (Spiegelhalter 1990)
+As MCMC results in samples from the posterior, we can simply use the samples $\btheta_k$ to approximate the posterior predictive distribution with
 
-basically plug-in into the same formula, because we explain it with Monte-Carlo integration
+\begin{equation}\label{eq:ppd-sample}
+    p(\ty = 1 \mid \btheta, \by) \approx \frac{1}{K} \sum_{k=1}^{K} \frac{\exp({\tX \btheta})}{1 + \exp({\tX \btheta})}.
+\end{equation}
+
+In the case of Laplace Approximation, we can use the approximation of the posterior parameter distribution (QUOTE EQUATION) to calculate the posterior predictive distribution as
+
+\begin{equation*}
+    \begin{aligned}
+        p(\ty = 1 \mid \btheta, \by) &= \int p(\ty = 1 \mid \btheta) \; p(\btheta \mid \by) \; d \btheta \\
+        &= \int \frac{\exp(\tX \btheta)}{1 + \exp(\tX \btheta)} \; \Ncal_{\btheta}(\hbbeta_{MAP}, H^{-1} (\hbbeta_{MAP})) \; d \btheta.
+    \end{aligned}
+\end{equation*}
+
+A simpler way for approximating the PPD with LA would be to draw samples $\btheta_s$ with $s = 1, \dots, S$ from the approximated posterior and use \eqref{eq:ppd-sample} analogue to MCMC PPD approximation. 
+
+% state formula (or reference sec 2)
+% explain in general what we do for classes
+
+% - MCMC: very simple approximation
+% - LA:
+%     - show integral
+%     - state approximation with MC integration
+%     - note probit approximation (Spiegelhalter 1990)
+
+% basically plug-in into the same formula, because we explain it with Monte-Carlo integration
 

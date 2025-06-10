@@ -3,44 +3,47 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: thesis.aux
 The style file: dcu.bst
 Database file #1: bibliography.bib
-You've used 22 entries,
+Warning--I didn't find a database entry for "hhsiang_bayesian_1975"
+Warning--I didn't find a database entry for "maccul"
+You've used 30 entries,
             2921 wiz_defined-function locations,
-            778 strings with 8809 characters,
-and the built_in function-call counts, 89396 in all, are:
-= -- 14525
-> -- 1250
+            832 strings with 10350 characters,
+and the built_in function-call counts, 116850 in all, are:
+= -- 18977
+> -- 1580
 < -- 0
-+ -- 6877
-- -- 378
-* -- 7696
-:= -- 18051
-add.period$ -- 54
-call.type$ -- 22
-change.case$ -- 305
-chr.to.int$ -- 21
-cite$ -- 22
-duplicate$ -- 312
-empty$ -- 698
-format.name$ -- 459
-if$ -- 16043
++ -- 8915
+- -- 476
+* -- 10025
+:= -- 23661
+add.period$ -- 72
+call.type$ -- 30
+change.case$ -- 417
+chr.to.int$ -- 29
+cite$ -- 30
+duplicate$ -- 423
+empty$ -- 960
+format.name$ -- 590
+if$ -- 20960
 int.to.chr$ -- 6
 int.to.str$ -- 0
-missing$ -- 25
-newline$ -- 101
-num.names$ -- 229
-pop$ -- 60
+missing$ -- 33
+newline$ -- 135
+num.names$ -- 310
+pop$ -- 79
 preamble$ -- 1
-purify$ -- 330
+purify$ -- 450
 quote$ -- 0
-skip$ -- 282
+skip$ -- 385
 stack$ -- 0
-substring$ -- 20397
-swap$ -- 38
-text.length$ -- 308
+substring$ -- 26605
+swap$ -- 52
+text.length$ -- 420
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 80
+type$ -- 112
 warning$ -- 0
-while$ -- 493
+while$ -- 675
 width$ -- 0
-write$ -- 333
+write$ -- 442
+(There were 2 warnings)
