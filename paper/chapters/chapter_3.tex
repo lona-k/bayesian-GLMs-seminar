@@ -11,7 +11,7 @@ Priors for the parameter $\btheta$ can be set in the same way as for the Bayesia
 
 \subsection{Bayesian Logistic Regression Model} \label{sec:logit-logit}
 
-We are going to illustrate Bayesian GLMs with the example of Logistic regression models, which have a wide variety of applications in statistics, from text classification to medicine and genetic modelling.
+We are going to illustrate Bayesian GLMs with the example of Logistic regression models, which have a wide variety of applications in statistics, from text classification to medicine and genetic modelling. (SOURCE)
 
 \subsubsection*{Model definition}
 
@@ -43,7 +43,7 @@ To sample from the posterior and PPD, we need to use approximate Bayesian infere
 \subsubsection*{Sampling from the posterior with MCMC methods}
 
 Markov Chain Monte Carlo (MCMC) generates samples from the posterior $p(\btheta\mid \by)$ without making any (explicit) assumptions about the form of the posterior, although MCMC performs best if the parameter posterior is known up to a constant.
-The Metropolis–Hastings algorithm for $K$ samples\footnotemark proceeds as follows:
+The Metropolis–Hastings algorithm \citep{hastings_monte_1970} for $K$ samples\footnotemark proceeds as follows:
 \footnotetext{Note that by construction, the samples are (sometimes heavily) correlated and that the number of repetitions necessary until convergence depends on $\btheta^{(0)}$.}
 \begin{enumerate}
     \item Initialize $\btheta^{(1)}$
@@ -90,10 +90,10 @@ Beyond Metropolis–Hastings, several advanced samplers are popular:
 
 \subsubsection*{Full Bayes with Laplace Approximation}
 
-In contrast to MCMC methods, Laplace Approximation (LA) approximates the full posterior distribution by assuming a Gaussian distribution:
-\begin{equation}
+In contrast to MCMC methods, Laplace Approximation (LA) approximates the full posterior distribution by assuming a Gaussian distribution \citep{tierney_accurate_1986}:
+\begin{equation*}
     p(\btheta \mid \by) \approx \Ncal(\hbtheta_{MAP}, H^{-1}(\hbtheta_{MAP})),
-\end{equation}
+\end{equation*}
 
 where $\hbtheta_{MAP}$ is the maximum posterior estimate, obtained by maximizing the (real) posterior with standard optimization methods.\\
 
@@ -122,9 +122,9 @@ As MCMC results in samples from the posterior, we can use the samples $\btheta_k
     p(\ty = 1 \mid \btheta, \by) \approx \frac{1}{K} \sum_{k=1}^{K} \sigma(\tX \btheta_k).
 \end{equation}
 
-Under Laplace Approximation, we may
+Under Laplace Approximation, we may either
 \begin{itemize}
-    \item draw samples $\btheta_s \sim \Ncal(\hbtheta_{MAP}, H^{-1}(\hbtheta_{MAP}))$ with $s = 1, \dots, S$ and compute \eqref{eq:ppd-sample}.
+    \item draw samples $\btheta_s \sim \Ncal(\hbtheta_{MAP}, H^{-1}(\hbtheta_{MAP}))$ with $s = 1, \dots, S$ and compute \eqref{eq:ppd-sample} or
     \item use the LA-approximated PPD and compute
     \begin{equation*}
         p(\ty = 1 \mid \btheta, \by) = \int \sigma(\tX \btheta) \; \Ncal_{\btheta}(\hbbeta_{MAP}, H^{-1} (\hbbeta_{MAP})) \; d \btheta.

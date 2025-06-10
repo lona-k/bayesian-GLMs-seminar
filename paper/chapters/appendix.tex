@@ -1,27 +1,9 @@
 \subsection*{Notation}
 
-We denote prior parameters with $\breve{}$ and posterior parameters with $\post{}$. Vectors are written in bold-face like so $\bx$ and matrices are bold capital letters $\bX$.
+We denote prior parameters with $\breve{}$ and posterior parameters with $\post{}$. Vectors are written in bold-face like so $\bx$ and matrices are bold capital letters $\bX$. In general, we assume $n$ observations and $p-1$ covariates (which means that the intercept $\theta_0$ is always included in $\btheta$ and that $\bX = \begin{pmatrix}
+    \bm{1} & \bx_1 & \cdots & \bx_{p-1}
+\end{pmatrix}$)
 
-\begin{itemize}
-    \item[n] observations
-    \item[p] covariates
-    \item[$\btheta$] regression weights
-    \item[] 
-\end{itemize}
-
-
-
-\subsection*{Distributions}
-
-When deriving equations, we assume the following probability density functions and parameter placements:
-
-\begin{itemize}
-    \item[$\Ncal(\mu, \ssd)$] Gaussian distribution with mean $\mu$ and variance $\ssd$
-    \item[] Gamma distribution
-    \item[$IG(a, b)$] Inverse Gamma distribution with scale parameter $a$ and location parameter $b$
-    \item[]  (multivariate) Student t-distribution
-    \item[] 
-\end{itemize}
 
 \subsection*{Proofs and Derivations}
 

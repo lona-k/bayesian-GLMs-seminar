@@ -20,6 +20,13 @@ Bishop, C.~M.  \harvardyearleft 2019\harvardyearright .
 \newblock {\em Pattern recognition and machine learning}, Information {Science}
   and {Statistics}, Springer Science+Business Media, LLC, New York, NY.
 
+\harvarditem{Box}{1980}{box_sampling_1980}
+Box, G. E.~P.  \harvardyearleft 1980\harvardyearright .
+\newblock Sampling and {Bayes}' {Inference} in {Scientific} {Modelling} and
+  {Robustness}, {\em Journal of the Royal Statistical Society. Series A
+  (General)} {\bf 143}(4):~383--430.
+\newblock Publisher: [Royal Statistical Society, Oxford University Press].
+
 \harvarditem[Carvalho et~al.]{Carvalho, Polson \harvardand\
   Scott}{2010}{carvalho_horseshoe_2010}
 Carvalho, C.~M., Polson, N.~G. \harvardand\ Scott, J.~G.  \harvardyearleft
@@ -84,6 +91,12 @@ Ghosh, J., Li, Y. \harvardand\ Mitra, R.  \harvardyearleft
 \newblock On the {Use} of {Cauchy} {Prior} {Distributions} for {Bayesian}
   {Logistic} {Regression}.
 \newblock arXiv:1507.07170 [stat].
+
+\harvarditem{Hastings}{1970}{hastings_monte_1970}
+Hastings, W.~K.  \harvardyearleft 1970\harvardyearright .
+\newblock Monte {Carlo} {Sampling} {Methods} {Using} {Markov} {Chains} and
+  {Their} {Applications}, {\em Biometrika} {\bf 57}(1):~97--109.
+\newblock Publisher: [Oxford University Press, Biometrika Trust].
 
 \harvarditem{Held \harvardand\ Sabanés~Bové}{2020}{held_likelihood_2020}
 Held, L. \harvardand\ Sabanés~Bové, D.  \harvardyearleft
@@ -187,6 +200,14 @@ Tibshirani, R.  \harvardyearleft 1996\harvardyearright .
   of the Royal Statistical Society. Series B (Methodological)} {\bf
   58}(1):~267--288.
 \newblock Publisher: [Royal Statistical Society, Oxford University Press].
+
+\harvarditem[Tierney et~al.]{Tierney,  \harvardand\
+  Kadane}{1986}{tierney_accurate_1986}
+Tierney, L.,  \harvardand\ Kadane, J.~B.  \harvardyearleft
+  1986\harvardyearright .
+\newblock Accurate {Approximations} for {Posterior} {Moments} and {Marginal}
+  {Densities}, {\em Journal of the American Statistical Association} {\bf
+  81}(393):~82--86.
 
 \harvarditem[van Erp et~al.]{van Erp, Oberski \harvardand\
   Mulder}{2019}{van_erp_shrinkage_2019}

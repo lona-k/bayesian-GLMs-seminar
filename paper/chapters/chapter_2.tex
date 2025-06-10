@@ -82,13 +82,13 @@ where $\lambda > 0$ controls the balance of the tradeoff and therefore the stren
 
 In the Bayesian view, we introduce a regularization prior on $\btheta$.
 Concretely:
-\begin{equation}
+\begin{equation*}
     \begin{aligned}
         \by \mid \btheta, \ssd &\sim \Ncal(\bX \btheta, \ssd \bI),\footnotemark \\
         \btheta &\sim \text{regularization prior}\\
         \ssd &\sim \IG(\apri, \bpri),
     \end{aligned}
-\end{equation}
+\end{equation*}
 
 \footnotetext{Usually, it does not make sense to regularize the intercept.
 To be completely accurate, we would need to separate the intercept from $\btheta$, i.e. split $\btheta$ into $(\theta_0, \btheta'^\top)$ and consequently set $\bX'$ as the design matrix without a column for the intercept.
@@ -97,7 +97,7 @@ We chose to simplify this and stick to the previously established definitions be
 
 although there are many options for regularization priors, we are going to focus on regularization priors that align directly with familiar frequentist penalties.\\
 
-\textbf{Ridge regularization} \citep{hoerl_ridge_1970,hoerl_ridge_1970-1} uses $\text{pen}(\btheta) = \|\btheta\|_2^2$ and the Bayesian analogue \Citep[e.g.]{hsiang_bayesian_1975,mackay_bayesian_1992} specifies
+\textbf{Ridge regularization} \citep{hoerl_ridge_1970,hoerl_ridge_1970-1} uses $\text{pen}(\btheta) = \|\btheta\|_2^2$ and the Bayesian analogue \Citep[e.g.][]{hsiang_bayesian_1975,mackay_bayesian_1992} specifies
 \begin{equation*}
     \btheta \sim \Ncal(\bnull, \taus \bI),
 \end{equation*}
@@ -109,12 +109,12 @@ We can simply embed it in a hierarchical model by specifying a prior for $\taus$
 \textbf{Lasso regularization} \citep{tibshirani_regression_1996} uses $\text{pen}(\btheta) = \|\btheta\|_1$ to perform variable selection by setting elements $\theta_j$ of $\btheta$ to $0$ during estimation.
 This means that Lasso regularization promotes a \textit{sparse} solution.
 The Bayesian Lasso specifies a Laplace prior on $\btheta$ via the scale-mixture representation \citep{park_bayesian_2008}
-\begin{equation}
+\begin{equation*}
     \begin{aligned}
         \btheta \mid \btaus &\sim \Ncal(\bnull, \btaus \bI) \\
         \taus_j &\overset{\text{i.i.d.}}{\sim} \text{Exp}(0.5 \lambda^2), \quad j = 1, \dots, p,
     \end{aligned}
-\end{equation}
+\end{equation*}
 
 where the regularization parameter $\lambda^2$ is often given a (hyper-) prior, e.g. $\lambda^2 \sim \text{G}(\apri_\lambda, \bpri_\lambda)$.\\
 
@@ -150,7 +150,7 @@ with posterior mean and variance \footnotemark
 
 \footnotetext{For the full calculation see Appendix \ref{sec:app}}
 
-Integrating out $\ssd$ yields $\btheta \mid \by \sim \Tcal(2 \apo, \mupo, \bpo / \apo \Sdpo)$ and Bayesian credibility intervals can be derived directly from this distribution \citep{held_likelihood_2020}.\\
+Integrating out $\ssd$ yields $\btheta \mid \by \sim \Tcal(2 \apo, \mupo, \bpo / \apo \Sdpo)$ and Bayesian credibility intervals can be derived directly from this distribution \citep[see e.g.][]{held_likelihood_2020}.\\
 
 Since we defined the non-information prior \eqref{eq:flat-prior} as a special case of the NIG-distributed prior, we can use \eqref{eq:NIGpost} to directly calculate the posterior mean and variance as
 \begin{equation*}
@@ -167,7 +167,7 @@ We will go more into depth on approximate inference for Bayesian regression mode
 
 \subsubsection*{Posterior predictive distribution}
 In many applications, we care more about predictions $\ty$ for new, unseen inputs $\tX$ (or test data $(\ty, \tX)$), independent of the training data $\bD$, than about $\btheta$ itself.
-The Bayesian answer to this is the \textit{posterior predictive distribution} (PPD) \Citep[see e.g]{barbieri_posterior_2015}
+The Bayesian answer to this is the \textit{posterior predictive distribution} (PPD) \Citep[see e.g]{box_sampling_1980,barbieri_posterior_2015}
 \begin{equation*}
     p(\ty \mid \by) = \int p(\ty, \btheta \mid \by) d \btheta 
     = \int p(\ty \mid \btheta, \by) p(\btheta) d \btheta
