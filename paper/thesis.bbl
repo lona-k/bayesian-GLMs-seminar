@@ -112,6 +112,13 @@ Hoerl, A.~E. \harvardand\ Kennard, R.~W.  \harvardyearleft
 Holmes, K.-H.  \harvardyearleft n.d.\harvardyearright .
 \newblock Efficient simulation of {Bayesian} logistic regression models.
 
+\harvarditem{Hsiang}{1975}{hsiang_bayesian_1975}
+Hsiang, T.~C.  \harvardyearleft 1975\harvardyearright .
+\newblock A {Bayesian} {View} on {Ridge} {Regression}, {\em Journal of the
+  Royal Statistical Society. Series D (The Statistician)} {\bf
+  24}(4):~267--268.
+\newblock Publisher: [Royal Statistical Society, Wiley].
+
 \harvarditem{Lenk \harvardand\ DeSarbo}{2000}{lenk_bayesian_2000}
 Lenk, P.~J. \harvardand\ DeSarbo, W.~S.  \harvardyearleft 2000\harvardyearright
   .
@@ -134,6 +141,12 @@ Mitchell, T. \harvardand\ Beauchamp, J.  \harvardyearleft 1988\harvardyearright
 Murphy, K.~P.  \harvardyearleft n.d.\harvardyearright .
 \newblock Conjugate {Bayesian} analysis of the {Gaussian} distribution.
 
+\harvarditem{Neal}{1993}{neal_probabilistic_1993}
+Neal, R.~M.  \harvardyearleft 1993\harvardyearright .
+\newblock Probabilistic inference using {Markov} chain {Monte} {Carlo} methods,
+  {\em Department of Computer Science, University of Toronto Toronto, Ontario,
+  Canada} .
+
 \harvarditem{Nelder \harvardand\ Wedderburn}{1972}{nelder_generalized_1972}
 Nelder, J.~A. \harvardand\ Wedderburn, R. W.~M.  \harvardyearleft
   1972\harvardyearright .
@@ -152,16 +165,6 @@ O'Hara, R.~B. \harvardand\ Sillanpää, M.~J.  \harvardyearleft
 Park, T. \harvardand\ Casella, G.  \harvardyearleft 2008\harvardyearright .
 \newblock The {Bayesian} {Lasso}, {\em JOURNAL OF THE AMERICAN STATISTICAL
   ASSOCIATION} {\bf 103}(482):~681--686.
-
-\harvarditem[Polson et~al.]{Polson, ~,  \harvardand\
-  Windle}{2013}{polson_bayesian_2013}
-Polson, N.~G., ~, James~G., S.,  \harvardand\ Windle, J.  \harvardyearleft
-  2013\harvardyearright .
-\newblock Bayesian {Inference} for {Logistic} {Models} {Using}
-  {Pólya}–{Gamma} {Latent} {Variables}, {\em Journal of the American
-  Statistical Association} {\bf 108}(504):~1339--1349.
-\newblock Publisher: ASA Website \_eprint:
-  https://doi.org/10.1080/01621459.2013.829001.
 
 \harvarditem[Rue et~al.]{Rue, Martino \harvardand\
   Chopin}{2009}{rue_approximate_2009}

@@ -7,9 +7,9 @@
 \contentsline {subsection}{\numberline {3.1}Bayesian Generalized Linear Regression Model}{6}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Bayesian Logistic Regression Model}{6}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Approximate Bayesian inference}{7}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Simulation Study}{10}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Regularization and variable selection}{10}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Performance of approximate inference algorithms in Bayesian regression}{10}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Conclusion}{11}{section.5}%
+\contentsline {section}{\numberline {4}Simulation Study}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Regularization and variable selection}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Performance of approximate inference algorithms in Bayesian regression}{9}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Conclusion}{10}{section.5}%
 \contentsline {section}{\numberline {A}Appendix}{V}{appendix.A}%
 \contentsline {section}{\numberline {B}Electronic appendix}{VII}{appendix.B}%
