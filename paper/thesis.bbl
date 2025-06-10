@@ -7,85 +7,149 @@ Barbieri, M.~M.  \harvardyearleft 2015\harvardyearright .
 \newblock \_eprint:
   https://onlinelibrary.wiley.com/doi/pdf/10.1002/9781118445112.stat07839.
 
-\harvarditem{Bishop}{2006}{Bishop2006}
-Bishop, C.~M.  \harvardyearleft 2006\harvardyearright .
-\newblock {\em Pattern Recognition and Machine Learning}, Springer.
+\harvarditem{Bishop}{2019}{bishop_pattern_2019}
+Bishop, C.~M.  \harvardyearleft 2019\harvardyearright .
+\newblock {\em Pattern recognition and machine learning}, Information {Science}
+  and {Statistics}, Springer Science+Business Media, LLC, New York, NY.
 
 \harvarditem[Carvalho et~al.]{Carvalho, Polson \harvardand\
-  Scott}{n.d.}{carvalho_horseshoe_2010}
+  Scott}{2010}{carvalho_horseshoe_2010}
 Carvalho, C.~M., Polson, N.~G. \harvardand\ Scott, J.~G.  \harvardyearleft
-  n.d.\harvardyearright .
-\newblock The horseshoe estimator for sparse signals,  {\bf 97}(2):~465--480.
-\newblock Num Pages: 16 Place: Oxford Publisher: Oxford Univ Press Web of
-  Science {ID}: {WOS}:000280559700015.
+  2010\harvardyearright .
+\newblock The horseshoe estimator for sparse signals, {\em BIOMETRIKA} {\bf
+  97}(2):~465--480.
+
+\harvarditem[Fahrmeir et~al.]{Fahrmeir, Kneib \harvardand\
+  Konrath}{2010}{fahrmeir_bayesian_2010}
+Fahrmeir, L., Kneib, T. \harvardand\ Konrath, S.  \harvardyearleft
+  2010\harvardyearright .
+\newblock Bayesian regularisation in structured additive regression:
+  a unifying perspective on shrinkage, smoothing and predictor selection, {\em
+  Statistics and Computing} {\bf 20}(2):~203--219.
 
 \harvarditem[Fahrmeir et~al.]{Fahrmeir, Kneib, Lang \harvardand\
-  Marx}{n.d.}{fahrmeir_regression_2021}
+  Marx}{2021}{fahrmeir_regression_2021}
 Fahrmeir, L., Kneib, T., Lang, S. \harvardand\ Marx, B.~D.  \harvardyearleft
-  n.d.\harvardyearright .
-\newblock {\em Regression: Models, Methods and Applications}, Springer Berlin
-  Heidelberg.
+  2021\harvardyearright .
+\newblock {\em Regression: {Models}, {Methods} and {Applications}}, Springer
+  Berlin Heidelberg, Berlin, Heidelberg.
 
 \harvarditem[Gelman et~al.]{Gelman, Carlin, Stern, Dunson, Vehtari \harvardand\
-  Rubin}{n.d.}{gelman_bayesian_2013}
+  Rubin}{2013}{gelman_bayesian_2013}
 Gelman, A., Carlin, J.~B., Stern, H.~S., Dunson, D.~B., Vehtari, A.
-  \harvardand\ Rubin, D.~B.  \harvardyearleft n.d.\harvardyearright .
-\newblock {\em Bayesian Data Analysis}, 3 edn, Chapman and Hall/{CRC}.
+  \harvardand\ Rubin, D.~B.  \harvardyearleft 2013\harvardyearright .
+\newblock {\em Bayesian {Data} {Analysis}}, 3 edn, Chapman and Hall/CRC, New
+  York.
 
-\harvarditem{Held \harvardand\ Sabanés~Bové}{n.d.}{held_likelihood_2020}
+\harvarditem[Gelman et~al.]{Gelman, Jakulin, Pittau \harvardand\
+  Su}{2008}{gelman_weakly_2008}
+Gelman, A., Jakulin, A., Pittau, M.~G. \harvardand\ Su, Y.-S.  \harvardyearleft
+  2008\harvardyearright .
+\newblock A weakly informative default prior distribution for logistic and
+  other regression models, {\em The Annals of Applied Statistics} {\bf
+  2}(4):~1360--1383.
+\newblock Publisher: Institute of Mathematical Statistics.
+
+\harvarditem[Ghosh et~al.]{Ghosh, Li \harvardand\ Mitra}{2017}{ghosh_use_2017}
+Ghosh, J., Li, Y. \harvardand\ Mitra, R.  \harvardyearleft
+  2017\harvardyearright .
+\newblock On the {Use} of {Cauchy} {Prior} {Distributions} for {Bayesian}
+  {Logistic} {Regression}.
+\newblock arXiv:1507.07170 [stat].
+
+\harvarditem{Held \harvardand\ Sabanés~Bové}{2020}{held_likelihood_2020}
 Held, L. \harvardand\ Sabanés~Bové, D.  \harvardyearleft
-  n.d.\harvardyearright .
-\newblock {\em Likelihood and Bayesian Inference: With Applications in Biology
-  and Medicine}, Statistics for Biology and Health, Springer.
+  2020\harvardyearright .
+\newblock {\em Likelihood and {Bayesian} {Inference}: {With} {Applications} in
+  {Biology} and {Medicine}}, Statistics for {Biology} and {Health}, Springer,
+  Berlin, Heidelberg.
 
-\harvarditem{Hoerl \harvardand\ Kennard}{n.d.a}{hoerl_ridge_1970}
+\harvarditem{Hoerl \harvardand\ Kennard}{1970a}{hoerl_ridge_1970}
 Hoerl, A.~E. \harvardand\ Kennard, R.~W.  \harvardyearleft
-  n.d.a\harvardyearright .
-\newblock Ridge regression: Applications to nonorthogonal problems,  {\bf
-  12}(1):~69--82.
+  1970a\harvardyearright .
+\newblock Ridge {Regression}: {Applications} to {Nonorthogonal} {Problems},
+  {\em Technometrics} {\bf 12}(1):~69--82.
 \newblock Publisher: [Taylor \& Francis, Ltd., American Statistical
   Association, American Society for Quality].
 
-\harvarditem{Hoerl \harvardand\ Kennard}{n.d.b}{hoerl_ridge_1970-1}
+\harvarditem{Hoerl \harvardand\ Kennard}{1970b}{hoerl_ridge_1970-1}
 Hoerl, A.~E. \harvardand\ Kennard, R.~W.  \harvardyearleft
-  n.d.b\harvardyearright .
-\newblock Ridge regression: Biased estimation for nonorthogonal problems,  {\bf
-  12}(1):~55--67.
+  1970b\harvardyearright .
+\newblock Ridge {Regression}: {Biased} {Estimation} for {Nonorthogonal}
+  {Problems}, {\em Technometrics} {\bf 12}(1):~55--67.
 \newblock Publisher: [Taylor \& Francis, Ltd., American Statistical
   Association, American Society for Quality].
 
-\harvarditem{{MacKay}}{n.d.}{mackay_bayesian_1992}
-{MacKay}, D. J.~C.  \harvardyearleft n.d.\harvardyearright .
-\newblock Bayesian interpolation,  {\bf 4}(3):~415--447.
+\harvarditem{MacKay}{1992}{mackay_bayesian_1992}
+MacKay, D. J.~C.  \harvardyearleft 1992\harvardyearright .
+\newblock Bayesian {Interpolation}, {\em Neural Computation} {\bf
+  4}(3):~415--447.
 
-\harvarditem{Mitchell \harvardand\ Beauchamp}{n.d.}{mitchell_bayesian_1988}
-Mitchell, T. \harvardand\ Beauchamp, J.  \harvardyearleft n.d.\harvardyearright
+\harvarditem{Mitchell \harvardand\ Beauchamp}{1988}{mitchell_bayesian_1988}
+Mitchell, T. \harvardand\ Beauchamp, J.  \harvardyearleft 1988\harvardyearright
   .
-\newblock Bayesian variable selection in linear-regression,  {\bf
-  83}(404):~1023--1032.
-\newblock Num Pages: 10 Place: Alexandria Publisher: Amer Statistical Assoc Web
-  of Science {ID}: {WOS}:A1988R852000013.
+\newblock Bayesian {Variable} {Selection} in {Linear}-{Regression}, {\em
+  JOURNAL OF THE AMERICAN STATISTICAL ASSOCIATION} {\bf 83}(404):~1023--1032.
 
-\harvarditem{Murphy}{2007}{murphy_conjugate_nodate}
-Murphy, K.~P.  \harvardyearleft 2007\harvardyearright .
-\newblock Conjugate bayesian analysis of the gaussian distribution.
+\harvarditem{Murphy}{n.d.}{murphy_conjugate_nodate}
+Murphy, K.~P.  \harvardyearleft n.d.\harvardyearright .
+\newblock Conjugate {Bayesian} analysis of the {Gaussian} distribution.
 
-\harvarditem{Park \harvardand\ Casella}{n.d.}{park_bayesian_2008}
-Park, T. \harvardand\ Casella, G.  \harvardyearleft n.d.\harvardyearright .
-\newblock The bayesian lasso,  {\bf 103}(482):~681--686.
-\newblock Num Pages: 6 Place: Alexandria Publisher: Amer Statistical Assoc Web
-  of Science {ID}: {WOS}:000257897500025.
+\harvarditem{Nelder \harvardand\ Wedderburn}{1972}{nelder_generalized_1972}
+Nelder, J.~A. \harvardand\ Wedderburn, R. W.~M.  \harvardyearleft
+  1972\harvardyearright .
+\newblock Generalized {Linear} {Models}, {\em Journal of the Royal Statistical
+  Society. Series A (General)} {\bf 135}(3):~370--384.
+\newblock Publisher: [Royal Statistical Society, Oxford University Press].
 
-\harvarditem{Tibshirani}{n.d.}{tibshirani_regression_1996}
-Tibshirani, R.  \harvardyearleft n.d.\harvardyearright .
-\newblock Regression shrinkage and selection via the lasso,  {\bf
+\harvarditem{O'Hara \harvardand\ Sillanpää}{2009}{ohara_review_2009}
+O'Hara, R.~B. \harvardand\ Sillanpää, M.~J.  \harvardyearleft
+  2009\harvardyearright .
+\newblock A review of {Bayesian} variable selection methods: what, how and
+  which, {\em Bayesian Analysis} {\bf 4}(1):~85--117.
+\newblock Publisher: International Society for Bayesian Analysis.
+
+\harvarditem{Park \harvardand\ Casella}{2008}{park_bayesian_2008}
+Park, T. \harvardand\ Casella, G.  \harvardyearleft 2008\harvardyearright .
+\newblock The {Bayesian} {Lasso}, {\em JOURNAL OF THE AMERICAN STATISTICAL
+  ASSOCIATION} {\bf 103}(482):~681--686.
+
+\harvarditem[Polson et~al.]{Polson, ~,  \harvardand\
+  Windle}{2013}{polson_bayesian_2013}
+Polson, N.~G., ~, James~G., S.,  \harvardand\ Windle, J.  \harvardyearleft
+  2013\harvardyearright .
+\newblock Bayesian {Inference} for {Logistic} {Models} {Using}
+  {Pólya}–{Gamma} {Latent} {Variables}, {\em Journal of the American
+  Statistical Association} {\bf 108}(504):~1339--1349.
+\newblock Publisher: ASA Website \_eprint:
+  https://doi.org/10.1080/01621459.2013.829001.
+
+\harvarditem{Tibshirani}{1996}{tibshirani_regression_1996}
+Tibshirani, R.  \harvardyearleft 1996\harvardyearright .
+\newblock Regression {Shrinkage} and {Selection} via the {Lasso}, {\em Journal
+  of the Royal Statistical Society. Series B (Methodological)} {\bf
   58}(1):~267--288.
 \newblock Publisher: [Royal Statistical Society, Oxford University Press].
 
-\harvarditem{{ZELLNER}}{n.d.}{zellner_assessing_1986}
-{ZELLNER}, A.  \harvardyearleft n.d.\harvardyearright .
-\newblock On assessing prior distributions and bayesian regression analysis
-  with g-prior distributions.
+\harvarditem[van Erp et~al.]{van Erp, Oberski \harvardand\
+  Mulder}{2019}{van_erp_shrinkage_2019}
+van Erp, S., Oberski, D.~L. \harvardand\ Mulder, J.  \harvardyearleft
+  2019\harvardyearright .
+\newblock Shrinkage priors for {Bayesian} penalized regression, {\em Journal of
+  Mathematical Psychology} {\bf 89}:~31--50.
+
+\harvarditem[West et~al.]{West, ~,  \harvardand\
+  Migon}{1985}{west_dynamic_1985}
+West, M., ~, P.~Jeff, H.,  \harvardand\ Migon, H.~S.  \harvardyearleft
+  1985\harvardyearright .
+\newblock Dynamic {Generalized} {Linear} {Models} and {Bayesian} {Forecasting},
+  {\em Journal of the American Statistical Association} {\bf 80}(389):~73--83.
+
+\harvarditem{Zellner}{1986}{zellner_assessing_1986}
+Zellner, A.  \harvardyearleft 1986\harvardyearright .
+\newblock On assessing prior distributions and {Bayesian} regression analysis
+  with g-prior distributions, {\em Bayesian Inference and Decision techniques}
+  .
 \newblock Publisher: Elsevier Science.
 
 \end{thebibliography}

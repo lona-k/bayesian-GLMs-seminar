@@ -1,25 +1,58 @@
-\subsection{Bayesian Generalized Regression}\label{sec:logit-glm}
+\subsection{Bayesian Generalized Linear Regression Model}\label{sec:logit-glm}
 
-very short model statement
+Just as linear regression models are easily generalized to a multitude of distributional assumptions \citep{nelder_generalized_1972}, the same can be done with Bayesian linear models. 
+Bayesian generalized linear models (GLM) \Citep[see e.g.][]{west_dynamic_1985} generally assume
 
-\subsection{Bayesian Logistic Regression} \label{sec:logit-logit}
+\begin{equation*}
+        \by \mid \btheta \sim F(g^{-1}(\bX \btheta)),
+\end{equation*}
+
+where $F$ is any distribution from the exponential family and $g^{-1}$ is the (inverse??) Link function.
+Priors for the parameter $\btheta$ can be set in the same way as for the Bayesian linear model, but note that in practice modelling might be complicated, because the choice of prior also depends on the Link function \citep{west_dynamic_1985}.
+
+% Idea: explain that we just make a different distributional assumption for $\by$ for Bayesian GLMs
+
+\subsection{Bayesian Logistic Regression Model} \label{sec:logit-logit}
+
+We will illustrate how to work with Bayesian GLMs at the example of Logistic regression models, which have a wide variety of applications in statistics, from text classification to genetic modelling.
 
 \subsubsection*{Model definition}
 
-motivate logistic regression as very important for medcine and so on, probably the most-used GLM (source??)
-just define the model
+The Bayesian Logistic model is defined as
 
+\begin{equation}\label{eq:logit}
+    \begin{aligned}
+        \by_i \mid \btheta &\sim \text{Bin}(1, g^{-1}(\bx_i \btheta)), \quad i = 1, \dots, n \\
+        g^{-1}(\bx_i \btheta) &= \frac{\exp(\bx_i \btheta)}{1 + \exp(\bx_i \btheta)}.
+    \end{aligned}
+\end{equation}
+
+What makes this Binomial model logistic is the link function. We recognize it from machine learning settings as the logistic or sigmoid functions. Other link function, such as the probit functions, can also be used.
+
+% motivate logistic regression as very important for medcine and so on, probably the most-used GLM (source??)
+% just define the model
 
 \subsubsection*{Prior choice}
 
-- NIG scale mixture + flat prior
-- student t prior (Gelman 2008)
-- more regularization (analogue to sec 2??)
-    - explain that it's basically the same
-- note similarities with naive bayesian classification!
+As introduced for the Bayesian linear model \eqref{eq:NIGprior}, we can use a Gaussian prior for $\btheta$, but the solution to this is not analytically available as it is for the linear model.
+An uninformative prior can be set analogue to \eqref{eq:flat-prior}.
+It is an improper posterior and results in a proper posterior, although without any known distribution type.
+This makes the use of approximate Bayesian inference methods necessary in both cases (see Section \ref{sec:logit-inf}).\\
 
-\textbf{Regularization priors}
+A common issue in logistic regression is separation (i.e. perfect classification), which leads instable models.
+Heavier-tailed prior distributions have been proposed to mitigate this issue in Bayesian logistic regression.
+Prominent choices are the Student t-distribution, which was introduced by \citet{gelman_weakly_2008} as a prior for low-information settings that results in higher model stability, or the Cauchy distribution \Citep{ghosh_use_2017,gelman_weakly_2008}. \\
 
+In general, \textbf{regularization} can be achieved with the same prior distributions as introduced for Bayesian linear regression in Section \ref{sec:lm-regularization} \Citep[see e.g.][]{van_erp_shrinkage_2019,fahrmeir_bayesian_2010,ohara_review_2009}.
+Unlike for the linear model, Bayesian inference with closed-form posteriors is not possible and we need to use approximate methods.
+Note that the Student t-distribution also has a regularizing effect \citep{gelman_weakly_2008}.
+
+% Issue: separation (perfect predictability)
+% - NIG scale mixture + flat prior
+% - student t prior (Gelman 2008)
+% - more regularization (analogue to sec 2??)
+%     - explain that it's basically the same
+% - note similarities with naive bayesian classification!
 
 \subsection{Approximate Bayesian inference} \label{sec:logit-inf}
 
@@ -38,6 +71,8 @@ modification with metropolis **gibbs** sampler (to reduce)
 
 note auxilariy variable augmentation (Alber 1993, Holmes) because it's cool and we mentioned scale mixture models
 
+
+Specialized algorithms for regularization in the Baysian generalized model have been proposed by \citet{polson_bayesian_2013}
 
 \subsubsection*{Full Bayes with Laplace Approximation}
 

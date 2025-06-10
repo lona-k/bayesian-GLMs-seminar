@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.19)  9 JUN 2025 19:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.19)  10 JUN 2025 13:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -664,11 +664,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 106--107
 
  []
 
-
-Overfull \hbox (1.81876pt too wide) in paragraph at lines 108--109
-[]\T1/cmr/bx/n/12 Ridge reg-u-lar-iza-tion \T1/cmr/m/n/12 ([][]Ho-erl and Ken-nard[][], [][]n.d.a[][],[][]n[][]) uses $[]\OT1/cmr/m/n/12 (\OML/cmm/b/it/12 ^^R\OT1/cmr/m/n/12 ) = \OMS/cmsy/m/n/12 k\OML/cmm/b/it/12 ^^R\OMS/cmsy/m/n/12 k[]$ \T1/cmr/m/n/12 and the Bayesian
- []
-
 [3]
 Underfull \hbox (badness 10000) in paragraph at lines 114--117
 
@@ -699,7 +694,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 205--207
 
  []
 
-) [5] (./chapters/chapter_3.tex) [6] (./chapters/chapter_4.tex) [7] (./chapters/conclusion.tex) [8] (./chapters/appendix.tex [5]) [6]
+) [5] (./chapters/chapter_3.tex
+Underfull \hbox (badness 10000) in paragraph at lines 37--41
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--45
+
+ []
+
+[6]) [7] (./chapters/chapter_4.tex) [8] (./chapters/conclusion.tex) [9] (./chapters/appendix.tex [5]) [6]
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 162.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
@@ -713,23 +718,23 @@ Underfull \hbox (badness 2221) in paragraph at lines 4--9
 \T1/cmr/m/it/12 Statis-tics Ref-er-ence On-line\T1/cmr/m/n/12 , John Wi-ley & Sons, Ltd, pp. 1--6.  _eprint: 
  []
 
-) [8] [9] (./thesis.aux)
+[8]) [9] [10] (./thesis.aux)
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 56B1319E32DBE412323AD98D070BDA98;2727.
+(rerunfilecheck)             Checksum: FD8A1A4505439878AF7CA6C30D918978;2831.
  ) 
 Here is how much of TeX's memory you used:
- 12450 strings out of 478268
- 191313 string characters out of 5846347
- 485465 words of memory out of 5000000
- 30333 multiletter control sequences out of 15000+600000
+ 12488 strings out of 478268
+ 192253 string characters out of 5846347
+ 486002 words of memory out of 5000000
+ 30360 multiletter control sequences out of 15000+600000
  497733 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,12n,63p,524b,340s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 60i,12n,63p,524b,474s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on thesis.pdf (16 pages, 745352 bytes).
+Output written on thesis.pdf (18 pages, 758140 bytes).
 PDF statistics:
- 432 PDF objects out of 1000 (max. 8388607)
- 348 compressed objects within 4 object streams
- 77 named destinations out of 1000 (max. 500000)
+ 481 PDF objects out of 1000 (max. 8388607)
+ 395 compressed objects within 4 object streams
+ 88 named destinations out of 1000 (max. 500000)
  126 words of extra memory for PDF output out of 10000 (max. 10000000)
 

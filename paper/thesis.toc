@@ -4,12 +4,12 @@
 \contentsline {subsection}{\numberline {2.2}Prior choice}{2}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Bayesian inference with closed form priors}{4}{subsection.2.3}%
 \contentsline {section}{\numberline {3}Logistic Bayesian Model}{6}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Bayesian Generalized Regression}{6}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Bayesian Logistic Regression}{6}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Approximate Bayesian inference}{6}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Simulation Study}{7}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Regularization and variable selection}{7}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Performance of approximate inference algorithms in Bayesian regression}{7}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Conclusion}{8}{section.5}%
+\contentsline {subsection}{\numberline {3.1}Bayesian Generalized Linear Regression Model}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Bayesian Logistic Regression Model}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Approximate Bayesian inference}{7}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Simulation Study}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Regularization and variable selection}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Performance of approximate inference algorithms in Bayesian regression}{8}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Conclusion}{9}{section.5}%
 \contentsline {section}{\numberline {A}Appendix}{V}{appendix.A}%
 \contentsline {section}{\numberline {B}Electronic appendix}{VII}{appendix.B}%
