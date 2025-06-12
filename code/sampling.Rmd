@@ -1,0 +1,28 @@
+---
+title: "Simulation Study: Comparison of approximate Bayesian inference methods"
+author: "Lona Koers"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Experiment setup
+
+```{r}
+set.seed(2025)
+library(numDeriv)
+library(mvtnorm)
+
+```
+
+# Metropolis-Hastings
+
+
+# Laplace Approximation
+
+
+# Evaluation
+
+

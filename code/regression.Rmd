@@ -1,0 +1,9 @@
+---
+title: "Simulation Study: Regularization with Bayesian regression"
+author: "Lona Koers"
+---
+
+```{r setup}
+set.seed(2025)
+```
+
