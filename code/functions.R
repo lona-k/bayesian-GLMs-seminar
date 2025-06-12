@@ -149,7 +149,7 @@ mcmc_sim2 <- function(dat, mcmc_iters = 10000, burnin = 1000,
   )
 
   mcmc_fit <- MCMCglmm(
-    form,
+    as.formula(form),
     data = dat,
     family = family,
     prior = prior,
@@ -160,8 +160,10 @@ mcmc_sim2 <- function(dat, mcmc_iters = 10000, burnin = 1000,
 
   mh_time <- (proc.time() - t0)["elapsed"]
 
-  mh_mean <- summary(mcmc_fit)$statistics[, 1]
-  mh_sd <- summary(mcmc_fit)$statistics[, 2]
+  mh_mean <- summary(mcmc_fit)$solutions$post.mean
+  mh_sd <- summary(mcmc_fit)$solutions
+
+  ess <- summary(mcmc_fit)$solutions$eff.samp
 
   list(time = mh_time, mu_post = mh_mean, sigma_post = mh_sd)
 }
