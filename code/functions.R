@@ -4,10 +4,12 @@ library(ggplot2)
 library(dplyr)
 library(arm)  # bayesglm() for LA
 library(MCMCpack)  # MCMC for Bayesian GLMs
+library(MCMCglmm)
 library(checkmate)
 library(numDeriv)
 library(mvtnorm)
 library(purrr)
+library(INLA)  # installed with install.packages("INLA",repos=c(getOption("repos"),INLA="https://inla.r-inla-download.org/R/stable"), dep=TRUE) on MAC
 
 # Regression and Regularization ####
 
@@ -83,35 +85,6 @@ data_sim <- function(
   dat
 }
 
-# function for glm with Laplace Approximation via bayesglm()
-# input: data dat, prior for model (always gaussian), model family
-# output: list with
-  # - time elapsed
-  # - MAP estimate for coefficients (MAP of posterior mean)
-  # - MAP estimate for covariance (MAP of posterior variance)
-
-la_sim <- function(dat,
-                   prior = c(mean = 0, scale = 100), family = "gaussian") {
-  assert_choice(family, c("gaussian", "binomial"))
-  assert_numeric(prior, length = 2)
-
-  t0  <- proc.time()
-  form <- sprintf("y ~ %s", paste0(colnames(dat)[-ncol(dat)], collapse = " + "))
-  fit_la <- bayesglm(
-    as.formula(form),
-    family = family,
-    data   = dat,
-    prior.mean  = prior["mean"],
-    prior.scale = prior["scale"],
-    prior.df    = Inf # effectively Gaussian
-  )
-  la_time <- (proc.time() - t0)["elapsed"]
-
-  theta_map <- coef(fit_la)
-  sigma_map <- vcov(fit_la)
-
-  list(time = la_time, mu_post = theta_map, sigma_post = sigma_map)
-}
 
 mcmc_sim <- function(dat, mcmc_iters = 10000, burnin = 1000,
                      prior = c(mean = 0, var = 100), family = "gaussian") {
@@ -119,24 +92,28 @@ mcmc_sim <- function(dat, mcmc_iters = 10000, burnin = 1000,
   t0 <- proc.time()
   form <- sprintf("y ~ %s", paste0(colnames(dat)[-ncol(dat)], collapse = " + "))
 
-  mcmc_fit <- switch(family,
-     binomial = MCMClogit(as.formula(form),
-       data = dat,
-       b0 = rep(prior["mean"], ncol(dat)), B0 = diag(1/prior["var"], ncol(dat)),
-       mcmc = mcmc_iters,
-       # beta.start default: MLE estimate of beta
-       burnin = burnin),
+  mcmc_fit <- switch(
+    family,
+    binomial = MCMClogit(
+      as.formula(form),
+      data = dat,
+      b0 = rep(prior["mean"], ncol(dat)), B0 = diag(1/prior["var"], ncol(dat)),
+      mcmc = mcmc_iters,
+      # beta.start default: MLE estimate of beta
+      burnin = burnin),
 
-     # actually uses gibbs sampling because of the non-informative IG prior
-     gaussian = MCMCregress(as.formula(form),
-       data = dat,
-       # prior.density default: multivariate normal prior
-       b0 = rep(prior["mean"], ncol(dat)), B0 = diag(1/prior["var"], ncol(dat)),
-       c0 = 0.001, d0 = 0.001,
-       mcmc = mcmc_iters,
-       # beta.start default: MLE estimate of beta
-       burnin = burnin,
-       marginal.likelihood = "Laplace")
+    # actually uses gibbs sampling because of the non-informative IG prior
+    gaussian = MCMCregress(
+      as.formula(form),
+      data = dat,
+      # prior.density default: multivariate normal prior
+      b0 = rep(prior["mean"], ncol(dat)), B0 = diag(1/prior["var"], ncol(dat)),
+      c0 = 0.001, d0 = 0.001,  # flat IG prior
+      sigma.mu = sqrt(sigma2), sigma.var = 0.001,  # fix variance at sigma2
+      mcmc = mcmc_iters,
+      # beta.start default: MLE estimate of beta
+      burnin = burnin,
+      marginal.likelihood = "Laplace")
   )
 
   mh_time <- (proc.time() - t0)["elapsed"]
@@ -151,6 +128,93 @@ mcmc_sim <- function(dat, mcmc_iters = 10000, burnin = 1000,
   # see https://stackoverflow.com/questions/46473147/is-there-a-way-to-save-the-acceptance-rate-of-the-mcmc-algorithm-used-by-mcmclog
 
   list(time = mh_time, mu_post = mh_mean, sigma_post = mh_sd)
+}
+
+
+mcmc_sim2 <- function(dat, mcmc_iters = 10000, burnin = 1000,
+                     prior = c(mean = 0, var = 100),
+                     sigma2 = 100,
+                     family = "gaussian") {
+
+  form <- sprintf("y ~ %s", paste0(colnames(dat)[-ncol(dat)], collapse = " + "))
+  dim <- ncol(dat)
+
+  t0 <- proc.time()
+
+  prior <- list(
+    B = list(mu = rep(prior["mean"], dim),  # beta ~ N(beta_mean, beta_var I)
+             V  = diag(prior["var"], dim)),
+    R = list(V  = sigma2,  # residual variance fixed at sigma2
+             nu = 0)   # zero df -> point‐mass at V
+  )
+
+  mcmc_fit <- MCMCglmm(
+    form,
+    data = dat,
+    family = family,
+    prior = prior,
+    nitt  = mcmc_iters,
+    burnin = burnin,
+    verbose = FALSE
+  )
+
+  mh_time <- (proc.time() - t0)["elapsed"]
+
+  mh_mean <- summary(mcmc_fit)$statistics[, 1]
+  mh_sd <- summary(mcmc_fit)$statistics[, 2]
+
+  list(time = mh_time, mu_post = mh_mean, sigma_post = mh_sd)
+}
+
+
+# function for glm with Laplace Approximation via bayesglm()
+# input: data dat, prior parameters for model (always Gaussian prior), model family, fixed variance
+# output: list with
+  # - time elapsed
+  # - posterior mean, sd, and mode (for each coefficient)
+la_sim <- function(dat,
+                   prior = c(mean = 0, var = 100),
+                   sigma2 = 100,  # FIXED variance of y | theta ~ N(theta, sigma2)
+                   family = "gaussian") {
+
+  assert_choice(family, c("gaussian", "binomial"))
+  assert_numeric(sigma2, length = 1)
+  assert_numeric(prior, length = 2)
+
+  form <- as.formula(paste("y ~", paste(colnames(dat)[-ncol(dat)], collapse = " + ")))
+  prior_prec <- 1 / (prior["var"])
+  fixed_tau <- 1 / sigma2  # tau = 1/sigma^2
+
+  t0 <- proc.time()
+
+  la_fit <- inla(
+    formula = form,
+    family  = family,
+    data    = dat,
+
+    control.family = list( # FIX noise precision at 'fixed_tau', i.e. remove it from inference
+      hyper = list(
+        prec = list(initial = log(fixed_tau), fixed   = TRUE)
+      )
+    ),
+    control.fixed = list(
+      mean = prior["mean"],
+      prec = prior_prec
+    ),
+    control.inla = list(
+      int.strategy = "eb",  # only use the posterior-mode of theta (no grid or CCD)
+      strategy     = "laplace"  # full Laplace for the conditional field (not the default “simplified”)
+    )
+  )
+
+  la_time <- (proc.time() - t0)["elapsed"]
+
+  # mean, sd, and mode for the distribution of theta
+  la_mean <- summary(la_fit)$fixed[, "mean"]
+  la_sd <- summary(la_fit)$fixed[, "sd"]
+  la_mode <- summary(la_fit)$fixed[, "mode"]
+
+  list(time = la_time, mu_post = la_mean, sigma_post = la_sd, mode_post = la_mode)
 }
 
 
