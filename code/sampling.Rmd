@@ -6,18 +6,49 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+source("functions.R")
 ```
 
 # Experiment setup
 
+Set seed and generate 500 data sets for regression and classification
+
 ```{r}
 set.seed(2025)
-library(numDeriv)
-library(mvtnorm)
 
+data_regr <- lapply(seq_along(500), data_sim,
+                    n = 1000, beta_true = c(-0.5, 2, 1), family = "gaussian") 
+data_class <- lapply(seq_along(500), data_sim,
+                    n = 1000, beta_true = c(-0.5, 2, 1), family = "binomial")
 ```
 
 # Metropolis-Hastings
+
+Simulate MCMC algorithm 500 times (once for each data set) with
+
+- `n = 10000` samples drawn
+- `burn_in = 1000` (rule of thumb: burn-in should be 10% of samples)
+- `thin = 10`
+
+```{r}
+# regression
+mcmc_regr <- map_dfr(data_regr, function(dat) {
+  mcmc_sim()
+  
+  
+  list()
+})
+
+# classification
+mcmc_class <- map_dfr(data_class, function(dat) {
+  mcmc_sim()
+  
+  
+  list()
+})
+```
+
+
 
 
 # Laplace Approximation
@@ -25,4 +56,23 @@ library(mvtnorm)
 
 # Evaluation
 
+result df should be
+
+
+regression:
+
+true coefficient
+      time | "loss", i.e. difference to true coefficient | precision
+mcmc
+la
+
+
+
+classification
+
+
+# Test data + PPD
+
+- simulate some test data 
+- calculate predictions from the PPD with the fomula from my paper (use the same mote carlo integration for both)
 

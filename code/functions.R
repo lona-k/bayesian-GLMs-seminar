@@ -5,13 +5,46 @@ library(dplyr)
 library(arm)  # bayesglm() for LA
 library(MCMCpack)  # MCMC for Bayesian GLMs
 library(checkmate)
+library(numDeriv)
+library(mvtnorm)
+library(purrr)
 
 # Regression and Regularization ####
-data_regr <- function() {
 
-}
-data_class <- function() {
+## (interesting) data generation ####
 
+data_regularization <- function(
+    n = 1000,
+    beta_true = c(0.5, 2), # can be any dimension
+    family = "gaussian") {
+
+  assert_count(n)
+  assert_numeric(beta_true)
+  assert_choice(family, c("gaussian", "binomial"))
+
+  dim <- length(beta_true) - 1
+
+  # INTERESTING x generation!!
+  x <- rmvnorm(n, mean = rep(0, dim), sigma = diag(dim))  # x_i sim N(0, 1)
+
+
+  eta   <- beta_true[[1]] + x %*% beta_true[2:length(beta_true)]  # linear predictor
+
+  # mean with link function
+  mu   <- switch(family,
+                 binomial = plogis(eta),
+                 gaussian = eta
+  )
+
+  # simulate y from x
+  y   <- switch(family,
+                binomial = rbinom(n, size = 1, prob = mu),
+                gaussian = rnorm(n, mean = mu, sd = 1)
+  )
+
+  dat <- data.frame(x = x, y = y)
+  colnames(dat) <- c(paste0("x_", seq_len(ncol(x))), "y") # proper colnames
+  dat
 }
 
 
@@ -94,12 +127,12 @@ mcmc_sim <- function(dat, mcmc_iters = 10000, burnin = 1000,
        # beta.start default: MLE estimate of beta
        burnin = burnin),
 
-     # actually uses gibbs sampling because of the NIG prior
+     # actually uses gibbs sampling because of the non-informative IG prior
      gaussian = MCMCregress(as.formula(form),
        data = dat,
        # prior.density default: multivariate normal prior
        b0 = rep(prior["mean"], ncol(dat)), B0 = diag(1/prior["var"], ncol(dat)),
-       sigma.var = 1e6, # flat variance prior -> effectively only Gaussian prior
+       c0 = 0.001, d0 = 0.001,
        mcmc = mcmc_iters,
        # beta.start default: MLE estimate of beta
        burnin = burnin,
