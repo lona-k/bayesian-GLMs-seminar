@@ -1,6 +1,7 @@
 # Packages ####
 
 library(ggplot2)
+library(tidyverse)
 library(patchwork)
 
 library(dplyr)
@@ -20,41 +21,37 @@ library(INLA)  # Laplace Approximation. Installed with install.packages("INLA",r
 
 # function to simulate data for the regularization experiment
 # generates a data set with *standardized* covariates
-#
+# input: size of data n, covariate correlation matrix, true coefficient theta_true,
+#       GLM family, error variance (if > 1 -> noisy data)
+# returns: data frame with simulated data
 data_regularization <- function(
-    n = 1000,
-    # theta_true = c(0.5, 2), # can be any dimension
-    family = "gaussian") {
+    n = 100,  # data size
+    Sigma,  # correlation between covariates
+    theta_true,  # true parameter vector
+    family = "gaussian",
+    sigma2 = 10  # "error" variance, i.e. y ~ N(X * theta, sigma * I)
+) {
 
+  assert_choice(family, c("gaussian", "binomial"))
   assert_count(n)
   assert_numeric(theta_true)
-  assert_choice(family, c("gaussian", "binomial"))
 
-  dim <- length(theta_true) - 1
+  p <- length(theta_true) - 1
+  assert_true(all(dim(Sigma) == c(p, p)))
 
-  # INTERESTING x generation process!!
-  x <- rmvnorm(n, mean = rep(0, dim), sigma = diag(dim))  # x_i sim N(0, 1)
+  # draw X
+  X <- rmvnorm(n, mean = rep(0, p), sigma = Sigma) # X ~ N(0, Sigma)
+  eta <- theta_true[1] + X %*% theta_true[2:length(theta_true)]
 
+  # simulate y from X
+  y <- switch(family,
+              gaussian = mvrnorm(n = 1, mu = eta, Sigma = sigma2 * diag(n)),
+              binomial = rbinom(n, size=1, prob = plogis(eta)))
 
-  eta <- theta_true[[1]] + x %*% theta_true[2:length(theta_true)]  # linear predictor
-
-  # mean with link function
-  mu   <- switch(family,
-                 binomial = plogis(eta),
-                 gaussian = eta
-  )
-
-  # simulate y from x
-  y   <- switch(family,
-                binomial = rbinom(n, size = 1, prob = mu),
-                gaussian = rnorm(n, mean = mu, sd = 1)
-  )
-
-  dat <- data.frame(x = x, y = y)
-  colnames(dat) <- c(paste0("x_", seq_len(ncol(x))), "y") # proper colnames
+  dat <- data.frame(x = X, y = y)
+  colnames(dat) <- c(paste0("x_", seq_len(p)), "y")
   dat
 }
-
 
 
 

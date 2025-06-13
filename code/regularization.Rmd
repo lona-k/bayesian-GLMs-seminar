@@ -9,7 +9,70 @@ set.seed(2025)
 
 # 1. Data generation
 
+For scenario A
 
+```{r}
+thetaA <- c(2, 1.5, 0, 0, 0)
+SigmaA <- diag(length(thetaA) - 1)
+sigma2A <- 1
+nA <- 100
+
+data_regr_A <- lapply(seq_len(100), function(i) {
+  data_regularization(
+    n = nA,
+    Sigma = SigmaA,
+    theta_true = thetaA,
+    family = "gaussian",
+    sigma2 = 1
+  )
+})
+  
+data_class_A <- lapply(seq_len(100), function(i) {
+  data_regularization(
+    n = nA,
+    Sigma = SigmaA,
+    theta_true = thetaA,
+    family = "binomial",
+    sigma2 = 1
+  )
+})
+```
+
+
+```{r}
+thetaB <- c(2, 1.5, rep(0, 45))
+SigmaB <- diag(length(thetaB) - 1)
+nB <- 50
+
+# correlation between theta2, theta3, theta4 is 0.8
+idx <- 2:4
+block <- SigmaB[idx, idx]
+block[!diag(length(idx))] <- 0.8
+SigmaB[idx, idx] <- block
+
+sigma2B <- 1
+
+
+data_regr_B <- lapply(seq_len(100), function(i) {
+  data_regularization(
+    n = nB,
+    Sigma = SigmaB,
+    theta_true = thetaB,
+    family = "gaussian",
+    sigma2 = 1
+  )
+})
+
+data_class_B <- lapply(seq_len(100), function(i) {
+  data_regularization(
+    n = nB,
+    Sigma = SigmaB,
+    theta_true = thetaB,
+    family = "binomial",
+    sigma2 = 1
+  )
+})
+```
 
 
 
