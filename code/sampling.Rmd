@@ -11,40 +11,66 @@ source("functions.R")
 
 # Experiment setup
 
-Set seed and generate 500 data sets for regression and classification
+Set seed and generate 1000 data sets for regression and classification
 
 ```{r}
 set.seed(2025)
 
-data_regr <- lapply(seq_along(500), data_sim,
-                    n = 1000, beta_true = c(-0.5, 2, 1), family = "gaussian") 
-data_class <- lapply(seq_along(500), data_sim,
-                    n = 1000, beta_true = c(-0.5, 2, 1), family = "binomial")
+theta <- c(-0.5, 2, 1)
+
+data_regr <- lapply(seq_len(1000), function(i) {
+  data_sim(n = 1000, theta_true = theta, family = "gaussian")
+})
+data_class <- lapply(seq_len(1000), function(i) {
+  data_sim(n = 1000, theta_true = theta, family = "binomial")
+})
+
+prior <- c(mean = 0, var = 100)  # prior for theta
 ```
 
 # Metropolis-Hastings
 
-Simulate MCMC algorithm 500 times (once for each data set) with
+Simulate MCMC algorithm 1000 times (once for each data set) with
 
 - `n = 10000` samples drawn
-- `burn_in = 1000` (rule of thumb: burn-in should be 10% of samples)
+- `burn_in = 1000` (rule of thumb: burn-in should be 10\% of samples)
 - `thin = 10`
 
 ```{r}
 # regression
 mcmc_regr <- map_dfr(data_regr, function(dat) {
-  mcmc_sim()
+  res <- mcmc_sim(dat,
+           mcmc_iters = 5000,
+           burnin = 500,
+           sigma2 = 100,
+           prior = prior,
+           family = "gaussian")
   
-  
-  list()
+  list(time = res$time,
+       theta0 = res$mu_post[[1]],
+       theta1 = res$mu_post[[2]],
+       theta2 = res$mu_post[[3]],
+       sd_theta0 = res$sigma_post[[1]],
+       sd_theta1 = res$sigma_post[[2]],
+       sd_theta2 = res$sigma_post[[3]])
 })
 
 # classification
 mcmc_class <- map_dfr(data_class, function(dat) {
-  mcmc_sim()
+  res <- mcmc_sim(dat,
+           mcmc_iters = 5000,
+           burnin = 500,
+           sigma2 = 100,  # not used for Binomial family
+           prior = prior,
+           family = "binomial")
   
-  
-  list()
+  list(time = res$time,
+       theta0 = res$mu_post[[1]],
+       theta1 = res$mu_post[[2]],
+       theta2 = res$mu_post[[3]],
+       sd_theta0 = res$sigma_post[[1]],
+       sd_theta1 = res$sigma_post[[2]],
+       sd_theta2 = res$sigma_post[[3]])
 })
 ```
 
@@ -53,26 +79,207 @@ mcmc_class <- map_dfr(data_class, function(dat) {
 
 # Laplace Approximation
 
+```{r}
+# regression
+la_regr <- map_dfr(data_regr, function(dat) {
+  res <- la_sim(dat,
+           prior = prior,
+           sigma2 = 100
+           family = "gaussian")
+  
+  list(time = res$time,
+       theta0 = res$mu_post[[1]],
+       theta1 = res$mu_post[[2]],
+       theta2 = res$mu_post[[3]],
+       sd_theta0 = res$sigma_post[[1]],
+       sd_theta1 = res$sigma_post[[2]],
+       sd_theta2 = res$sigma_post[[3]])
+})
+
+# classification
+la_class <- map_dfr(data_class, function(dat) {
+  res <- la_sim(dat,
+           prior = prior,
+           sigma2 = 100,  # not used for Binomial family
+           family = "binomial")
+  
+  list(time = res$time,
+       theta0 = res$mu_post[[1]],
+       theta1 = res$mu_post[[2]],
+       theta2 = res$mu_post[[3]],
+       sd_theta0 = res$sigma_post[[1]],
+       sd_theta1 = res$sigma_post[[2]],
+       sd_theta2 = res$sigma_post[[3]])
+})
+```
+
 
 # Evaluation
 
-result df should be
+## result table
+
+```{r}
+# table with all results
+res_table <- bind_rows(
+  mcmc_regr %>% mutate(method = "MCMC", family = "Gaussian"),
+  mcmc_class %>% mutate(method = "MCMC", family = "Binomial"),
+  la_regr   %>% mutate(method = "LA", family = "Gaussian"),
+  la_class  %>% mutate(method = "LA", family = "Binomial")
+)
+
+res_table <- res_table %>%
+  mutate(
+    # L2‐norm of the error in the 3‐vector of estimates
+    loss = sqrt(
+      (theta0 - theta[[1]])^2 +
+      (theta1 - theta[[2]])^2 +
+      (theta2 - theta[[2]])^2
+    ),
+    # posterior precision = 1/variance = 1/(sd^2) for each coef
+    prec0 = 1/(sd_theta0^2),
+    prec1 = 1/(sd_theta1^2),
+    prec2 = 1/(sd_theta2^2)
+  )
+
+# summary with means
+summary_table <- res_table %>%
+  group_by(method, family) %>%
+  summarise(
+    across(
+      .cols = where(is.numeric),
+      .fns = mean
+    ),
+    .groups = "drop"
+  )
+```
 
 
-regression:
+## result plots
 
-true coefficient
-      time | "loss", i.e. difference to true coefficient | precision
-mcmc
-la
+Data prep: 
+
+```{r}
+true_df <- data.frame(
+  theta = factor(c("theta0","theta1","theta2"),
+                     levels = c("theta0","theta1","theta2")),
+  true = c(-0.5, 2, 1)
+)
+
+coef_df <- res_table %>%
+  pivot_longer(
+    cols      = starts_with("theta"),
+    names_to  = "theta"
+  ) %>%
+  mutate(theta = factor(theta,
+                            levels = c("theta0","theta1","theta2"))) %>%
+  left_join(true_df, by = "theta")
 
 
+prec_df <- res_table %>%
+  transmute(method, family,
+            prec_theta0 = 1/(sd_theta0^2),
+            prec_theta1 = 1/(sd_theta1^2),
+            prec_theta2 = 1/(sd_theta2^2)
+  ) %>%
+  pivot_longer(
+    cols      = starts_with("prec_"),
+    names_to  = "parameter",
+    values_to = "precision"
+  ) %>%
+  mutate(parameter = recode(parameter,
+    prec_theta0 = "theta0",
+    prec_theta1 = "theta1",
+    prec_theta2 = "theta2"
+  )) %>%
+  mutate(parameter = factor(parameter,
+                            levels = c("theta0","theta1","theta2")))
 
-classification
+# split data
+combined_gauss <- res_table %>%   filter(family=="Gaussian")
+coef_gauss     <- coef_df  %>%   filter(family=="Gaussian")
+prec_gauss     <- prec_df  %>%   filter(family=="Gaussian")
+
+combined_binom <- res_table %>%   filter(family=="Binomial")
+coef_binom     <- coef_df  %>%   filter(family=="Binomial")
+prec_binom     <- prec_df  %>%   filter(family=="Binomial")
+
+```
+
+Plot(s):
+
+```{r}
+# regression plots
+pp_time_g <- ggplot(combined_gauss, aes(x = method, y = time, fill = method)) +
+  geom_boxplot(outlier.size = 0.2) +
+  scale_fill_brewer(type="qual", palette="Set1") +
+  labs(title = "Regression", subtitle="Elapsed time", y="Time (s)", x=NULL, fill="Method") +
+  theme_minimal()
+
+pp_theta_g <- ggplot(coef_gauss, aes(x = method, y = value, fill = method)) +
+  geom_boxplot(outlier.size = 0.2) +
+  geom_hline(data = true_df,
+             aes(yintercept = true, linetype="True parameter"),
+             colour = "black") +
+  scale_linetype_manual(name=NULL, values="dashed") +
+  scale_fill_brewer(type="qual", palette="Set1") +
+  labs(subtitle="Coefficient estimates", y="mean estimate", x=NULL, fill="Method") +
+  facet_wrap(~ theta, scales="free_y") +
+  theme_minimal()
+
+pp_prec_g <- ggplot(prec_gauss, aes(x = method, y = precision, fill = method)) +
+  geom_boxplot(outlier.size = 0.2) +
+  scale_fill_brewer(type="qual", palette="Set1") +
+  labs(subtitle="Posterior precision", y="mean precision", x=NULL, fill="Method") +
+  facet_wrap(~ parameter, scales="free_y") +
+  theme_minimal()
+
+p_gauss <- (pp_time_g + pp_theta_g + pp_prec_g) +
+  plot_layout(ncol=3, widths=c(1,2,2), guides="collect") +
+  plot_annotation(title = "Regression") &
+  theme(legend.position="bottom")
 
 
-# Test data + PPD
+# classif plots
+pp_time_b <- ggplot(combined_binom, aes(x = method, y = time, fill = method)) +
+  geom_boxplot(outlier.size = 0.2) +
+  scale_fill_brewer(type="qual", palette="Set1") +
+  labs(title = "Classification", subtitle="Elapsed time", y="Time (s)", x=NULL, fill="Method") +
+  theme_minimal()
 
-- simulate some test data 
-- calculate predictions from the PPD with the fomula from my paper (use the same mote carlo integration for both)
+pp_theta_b <- ggplot(coef_binom, aes(x = method, y = value, fill = method)) +
+  geom_boxplot(outlier.size = 0.2) +
+  geom_hline(data=true_df,
+             aes(yintercept=true, linetype="True parameter"),
+             colour="black") +
+  scale_linetype_manual(name=NULL, values="dashed") +
+  scale_fill_brewer(type="qual", palette="Set1") +
+  labs(subtitle="Coefficient estimates", y="mean estimate", x=NULL, fill="Method") +
+  facet_wrap(~ theta, scales="free_y") +
+  theme_minimal()
+
+pp_prec_b <- ggplot(prec_binom, aes(x = method, y = precision, fill = method)) +
+  geom_boxplot(outlier.size = 0.2) +
+  scale_fill_brewer(type="qual", palette="Set1") +
+  labs(subtitle="Posterior precision", y="mean precision", x=NULL, fill="Method") +
+  facet_wrap(~ parameter, scales="free_y") +
+  theme_minimal()
+
+# classif plot
+p_binom <- (pp_time_b + pp_theta_b + pp_prec_b) +
+  plot_layout(ncol=3, widths=c(1,2,2), guides="collect") +
+  plot_annotation(title = "Classification") &
+  theme(legend.position = "bottom")
+
+
+# combined plot
+final_plot <- (p_gauss / p_binom) +
+  plot_layout(guides="collect") &
+  theme(legend.position="bottom")
+```
+
+
+<!-- # Test data + PPD -->
+
+<!-- - simulate some test data  -->
+<!-- - calculate predictions from the PPD with the fomula from my paper (use the same mote carlo integration for both) -->
 

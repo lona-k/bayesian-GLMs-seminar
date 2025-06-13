@@ -17,20 +17,20 @@ library(INLA)  # installed with install.packages("INLA",repos=c(getOption("repos
 
 data_regularization <- function(
     n = 1000,
-    beta_true = c(0.5, 2), # can be any dimension
+    theta_true = c(0.5, 2), # can be any dimension
     family = "gaussian") {
 
   assert_count(n)
-  assert_numeric(beta_true)
+  assert_numeric(theta_true)
   assert_choice(family, c("gaussian", "binomial"))
 
-  dim <- length(beta_true) - 1
+  dim <- length(theta_true) - 1
 
   # INTERESTING x generation!!
   x <- rmvnorm(n, mean = rep(0, dim), sigma = diag(dim))  # x_i sim N(0, 1)
 
 
-  eta   <- beta_true[[1]] + x %*% beta_true[2:length(beta_true)]  # linear predictor
+  eta   <- theta_true[[1]] + x %*% theta_true[2:length(theta_true)]  # linear predictor
 
   # mean with link function
   mu   <- switch(family,
@@ -53,20 +53,20 @@ data_regularization <- function(
 # Approximate inference ####
 
 # function to simulate data for the approximate inference experiment
-# input: size of data n, true coefficient beta_true, GLM family
+# input: size of data n, true coefficient theta_true, GLM family
 # returns: data frame with simulated data
 data_sim <- function(
     n = 1000,
-    beta_true = c(0.5, 2), # can be any dimension
+    theta_true = c(0.5, 2), # can be any dimension
     family = "gaussian") {
 
   assert_count(n)
-  assert_numeric(beta_true)
+  assert_numeric(theta_true)
   assert_choice(family, c("gaussian", "binomial"))
 
-  dim <- length(beta_true) - 1
+  dim <- length(theta_true) - 1
   x <- rmvnorm(n, mean = rep(0, dim), sigma = diag(dim))  # x_i sim N(0, 1)
-  eta   <- beta_true[[1]] + x %*% beta_true[2:length(beta_true)]  # linear predictor
+  eta   <- theta_true[[1]] + x %*% theta_true[2:length(theta_true)]  # linear predictor
 
   # mean with link function
   mu   <- switch(family,
@@ -85,9 +85,14 @@ data_sim <- function(
   dat
 }
 
-
-mcmc_sim <- function(dat, mcmc_iters = 10000, burnin = 1000,
-                     prior = c(mean = 0, var = 100), family = "gaussian") {
+mcmc_sim_null <- function(dat, mcmc_iters = 10000, burnin = 1000,
+                     prior = c(mean = 0, var = 100), sigma2 = 100,
+                     family = "gaussian") {
+  assert_choice(family, c("gaussian", "binomial"))
+  assert_number(sigma2)
+  assert_numeric(prior, len = 2)
+  assert_number(mcmc_iters)
+  assert_number(burnin)
 
   t0 <- proc.time()
   form <- sprintf("y ~ %s", paste0(colnames(dat)[-ncol(dat)], collapse = " + "))
@@ -99,19 +104,18 @@ mcmc_sim <- function(dat, mcmc_iters = 10000, burnin = 1000,
       data = dat,
       b0 = rep(prior["mean"], ncol(dat)), B0 = diag(1/prior["var"], ncol(dat)),
       mcmc = mcmc_iters,
-      # beta.start default: MLE estimate of beta
+      # beta.start default: MLE estimate of theta
       burnin = burnin),
 
-    # actually uses gibbs sampling because of the non-informative IG prior
+    # actually uses Gibbs sampling because of the non-informative IG prior
     gaussian = MCMCregress(
       as.formula(form),
       data = dat,
       # prior.density default: multivariate normal prior
       b0 = rep(prior["mean"], ncol(dat)), B0 = diag(1/prior["var"], ncol(dat)),
-      c0 = 0.001, d0 = 0.001,  # flat IG prior
       sigma.mu = sqrt(sigma2), sigma.var = 0.001,  # fix variance at sigma2
       mcmc = mcmc_iters,
-      # beta.start default: MLE estimate of beta
+      # beta.start default: MLE estimate of theta
       burnin = burnin,
       marginal.likelihood = "Laplace")
   )
@@ -131,7 +135,14 @@ mcmc_sim <- function(dat, mcmc_iters = 10000, burnin = 1000,
 }
 
 
-mcmc_sim2 <- function(dat, mcmc_iters = 10000, burnin = 1000,
+# function for glm with MCMC via MCMCglmm
+# input: data dat, prior parameters for model (always Gaussian prior), model family, fixed variance
+#        mcmc iterations, burin length
+# output: list with
+# - time elapsed
+# - posterior mean and sd (for each coefficient)
+# alternative mcmc function with MCMCglmm
+mcmc_sim <- function(dat, mcmc_iters = 5000, burnin = 500,
                      prior = c(mean = 0, var = 100),
                      sigma2 = 100,
                      family = "gaussian") {
@@ -141,8 +152,8 @@ mcmc_sim2 <- function(dat, mcmc_iters = 10000, burnin = 1000,
 
   t0 <- proc.time()
 
-  prior <- list(
-    B = list(mu = rep(prior["mean"], dim),  # beta ~ N(beta_mean, beta_var I)
+  prior_lst <- list(
+    B = list(mu = rep(prior["mean"], dim),  # theta ~ N(theta_mean, theta_var I)
              V  = diag(prior["var"], dim)),
     R = list(V  = sigma2,  # residual variance fixed at sigma2
              nu = 0)   # zero df -> point‐mass at V
@@ -152,7 +163,7 @@ mcmc_sim2 <- function(dat, mcmc_iters = 10000, burnin = 1000,
     as.formula(form),
     data = dat,
     family = family,
-    prior = prior,
+    prior = prior_lst,
     nitt  = mcmc_iters,
     burnin = burnin,
     verbose = FALSE
@@ -160,10 +171,10 @@ mcmc_sim2 <- function(dat, mcmc_iters = 10000, burnin = 1000,
 
   mh_time <- (proc.time() - t0)["elapsed"]
 
-  mh_mean <- summary(mcmc_fit)$solutions$post.mean
-  mh_sd <- summary(mcmc_fit)$solutions
+  mh_mean <- summary(mcmc_fit)$solutions[, 1]
+  mh_sd <- apply(mcmc_fit$Sol, 2, sd)
 
-  ess <- summary(mcmc_fit)$solutions$eff.samp
+  # ess <- summary(mcmc_fit)$solutions[, 4]
 
   list(time = mh_time, mu_post = mh_mean, sigma_post = mh_sd)
 }
@@ -180,12 +191,18 @@ la_sim <- function(dat,
                    family = "gaussian") {
 
   assert_choice(family, c("gaussian", "binomial"))
-  assert_numeric(sigma2, length = 1)
-  assert_numeric(prior, length = 2)
+  assert_number(sigma2)
+  assert_numeric(prior, len = 2)
 
   form <- as.formula(paste("y ~", paste(colnames(dat)[-ncol(dat)], collapse = " + ")))
   prior_prec <- 1 / (prior["var"])
   fixed_tau <- 1 / sigma2  # tau = 1/sigma^2
+
+  # FIX noise precision at 'fixed_tau', i.e. remove it from inference for Gaussian LM
+  cfam <- if (family == "gaussian") {
+    list(control.family = list(hyper = list
+                               (prec = list(initial = log(1/sigma2), fixed = TRUE))))
+  } else list()
 
   t0 <- proc.time()
 
@@ -193,12 +210,7 @@ la_sim <- function(dat,
     formula = form,
     family  = family,
     data    = dat,
-
-    control.family = list( # FIX noise precision at 'fixed_tau', i.e. remove it from inference
-      hyper = list(
-        prec = list(initial = log(fixed_tau), fixed   = TRUE)
-      )
-    ),
+    control.family = cfam,
     control.fixed = list(
       mean = prior["mean"],
       prec = prior_prec
