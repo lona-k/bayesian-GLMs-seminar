@@ -8,6 +8,9 @@ library(dplyr)
 library(purrr)
 library(checkmate)
 
+library(bayesreg)  # easy Baysian Regr/Classif
+library(brms)  # more complicated stuff. Necessary for custom prior
+
 library(numDeriv)
 library(mvtnorm)
 library(MCMCpack)  # MCMC for Bayesian GLMs
@@ -17,8 +20,7 @@ library(INLA)  # Laplace Approximation. Installed with install.packages("INLA",r
 
 # Regression and Regularization ####
 
-## (interesting) data generation ####
-
+## data generation ####
 # function to simulate data for the regularization experiment
 # generates a data set with *standardized* covariates
 # input: size of data n, covariate correlation matrix, true coefficient theta_true,
@@ -41,7 +43,7 @@ data_regularization <- function(
 
   # draw X
   X <- rmvnorm(n, mean = rep(0, p), sigma = Sigma) # X ~ N(0, Sigma)
-  eta <- theta_true[1] + X %*% theta_true[2:length(theta_true)]
+  eta <- theta_true[1] + X %*% theta_true[-1]
 
   # simulate y from X
   y <- switch(family,
@@ -53,7 +55,48 @@ data_regularization <- function(
   dat
 }
 
+## fitting models ####
+# function to fit models:
+# flat prior, lasso, ridge
+fit_models <- function(dat, family = "gaussian",
+                       sample = 2000, burnin = 500, thin = 5) {
 
+  assert_choice(family, c("gaussian", "binomial"))
+  assert_count(samples)
+  assert_count(burnin)
+  assert_count(thin)
+
+
+  model_fam_flat <- if (family == "gaussian") gaussian() else bernoulli(link = "logit")
+  model_fam <- ifelse(family == "gaussian", "normal", "logistic")
+  form <- as.formula(paste("y ~", paste(names(dat)[-ncol(dat)], collapse = "+")))
+
+  if (family == "binomial") dat$y <- as.factor(dat$y, levels = c(0, 1))
+
+  # priors
+  priors_flat <- if (family == "gaussian") {
+    c(prior(normal(0, 1e6), class = b)
+      + prior(inv_gamma(0.001, 0.001), class = sigma))  # uninformative
+  } else {
+    prior(normal(0, 1e6), class = b)  # uninformative
+  }
+
+  # fit models
+  flat <- brm(y ~ ., data = dat, family = model_fam_flat,
+              prior = priors_flat, sample_prior = "yes",
+              chains = 1,
+              iter = sample,
+              warmup = burnin,
+              thin = thin)
+
+  ridge <- bayesreg(form, data = dat, model = model_fam, prior = "ridge",
+                    n.samples = sample, burnin = burnin, thin = thin)
+
+  lasso <- bayesreg(form, data = dat, model = model_fam, prior = "lasso",
+                    n.samples = sample, burnin = burnin, thin = thin)
+
+  list(flat = flat, ridge = ridge, lasso = lasso)
+}
 
 
 # Approximate inference ####
@@ -161,7 +204,7 @@ mcmc_sim <- function(dat, mcmc_iters = 5000, burnin = 500,
 
   form <- sprintf("y ~ %s", paste0(colnames(dat)[-ncol(dat)], collapse = " + "))
   dim <- ncol(dat)
-  family <- if (family == "binomial") "categorical" else family
+  family <- ifelse(family == "binomial", "binomial", "gaussian")
 
   prior_lst <- list(
     B = list(mu = rep(prior["mean"], dim),  # theta ~ N(theta_mean, theta_var I)
@@ -221,8 +264,8 @@ la_sim <- function(dat,
 
   la_fit <- inla(
     formula = form,
-    family  = family,
-    data    = dat,
+    family = family,
+    data = dat,
     control.family = cfam,
     control.fixed = list(
       mean = prior["mean"],
