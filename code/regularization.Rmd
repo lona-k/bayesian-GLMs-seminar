@@ -15,7 +15,7 @@ For scenario A
 thetaA <- c(2, 1.5, 0, 0, 0)
 SigmaA <- diag(length(thetaA) - 1)
 sigma2A <- 1
-nA <- 100
+nA <- 150
 
 data_regr_A <- lapply(seq_len(100), function(i) {
   data_regularization(
@@ -40,9 +40,9 @@ data_class_A <- lapply(seq_len(100), function(i) {
 
 
 ```{r}
-thetaB <- c(2, 1.5, rep(0, 45))
+thetaB <- c(2, 1.5, rep(0, 48))
 SigmaB <- diag(length(thetaB) - 1)
-nB <- 50
+nB <- 150
 
 # correlation between theta2, theta3, theta4 is 0.8
 idx <- 2:4
@@ -74,25 +74,119 @@ data_class_B <- lapply(seq_len(100), function(i) {
 })
 ```
 
+Train test split:
+
+```{r}
+nA_train = 100
+nB_train = 50  # for p = n setting
+
+splits_regr_A <- lapply(data_regr_A, function(df) {
+  n   <- nrow(df)
+  idx <- sample(seq_len(n), size = nA_train)
+  list(
+    train = df[idx, , drop = FALSE],
+    test  = df[-idx, , drop = FALSE]
+  )
+})
+
+splits_regr_B <- lapply(data_regr_B, function(df) {
+  n   <- nrow(df)
+  idx <- sample(seq_len(n), size = nB_train)
+  list(
+    train = df[idx, , drop = FALSE],
+    test  = df[-idx, , drop = FALSE]
+  )
+})
+
+splits_class_A <- lapply(data_class_A, function(df) {
+  n   <- nrow(df)
+  idx <- sample(seq_len(n), size = nA_train)
+  list(
+    train = df[idx, , drop = FALSE],
+    test  = df[-idx, , drop = FALSE]
+  )
+})
+
+splits_class_B <- lapply(data_class_B, function(df) {
+  n   <- nrow(df)
+  idx <- sample(seq_len(n), size = nB_train)
+  list(
+    train = df[idx, , drop = FALSE],
+    test  = df[-idx, , drop = FALSE]
+  )
+})
+
+train_regr_A <- lapply(splits_regr_A, `[[`, "train")
+train_regr_B <- lapply(splits_regr_B, `[[`, "train")
+train_class_A <- lapply(splits_class_A, `[[`, "train")
+train_class_B <- lapply(splits_class_B, `[[`, "train")
+
+test_regr_A <- lapply(splits_regr_A, `[[`, "test")
+test_regr_B <- lapply(splits_regr_B, `[[`, "test")
+test_class_A <- lapply(splits_class_A, `[[`, "test")
+test_class_B <- lapply(splits_class_B, `[[`, "test")
+```
 
 
 # 2. Model fitting
 
-## Plot all priors together
+## Models
 
-(non-informative, marginal of NIG conjugate, ridge, lasso)
+```{r}
+# regression
+fits_regr_A <- lapply(test_regr_A, function(dat) {
+  fit_models(dat, family = "gaussian")
+})
 
-## Non-informative prior
+fits_regr_B <- lapply(test_regr_B, function(dat) {
+  fit_models(dat, family = "gaussian")
+})
+
+# classification
+fits_class_A <- lapply(test_class_A, function(dat) {
+  fit_models(dat, family = "gaussian")
+})
+
+fits_class_B <- lapply(test_class_B, function(dat) {
+  fit_models(dat, family = "gaussian")
+})
+```
 
 
-## (NIG conjugate)
+## get coefficients
 
+```{r}
 
-## Ridge regularization
+big_df <- imap_dfr(fits_regr_A, # over the 100 replicates
+  ~ imap_dfr(.x, function(fit, model) { # over the three models
+      if (model == "flat") {
+        fx <- summary(fit)$fixed # extract the fixed-effects matrix
+        as_tibble(fx, rownames = "parameter") %>%  # turn it into a tibble
+          transmute(
+            model     = model,  # "flat","ridge","lasso"
+            parameter = rownames(fx),  # "(Intercept)","x_1",...
+            theta     = Estimate,  # posterior mean
+            sd        = Est.Error,  # posterior sd
+            ci_low    = `l-95% CI`,  # lower 95% CI
+            ci_upp    = `u-95% CI` # upper 95% CI
+          )
+        
+      } else {
+        fx <- summary(fit)
+        tibble(
+          model = model,  # "flat","ridge","lasso"
+          parameter = rownames(fx$mu.coef),
+          theta = fx$mu.coef[, 1],
+          sd = fx$se.coef[, 1],
+          ci_low = fx$CI.coef[, 1],
+          ci_upp = fx$CI.coef[, 1]
+        )
+      }
+  }),
+  .id = "replicate"
+)
 
-
-## Lasso regularization
-
+```
 
 
 # 3. Prediction + Evaluation
@@ -100,3 +194,4 @@ data_class_B <- lapply(seq_len(100), function(i) {
 
 
 # 4. Results
+
