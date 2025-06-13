@@ -1,15 +1,18 @@
 # Packages ####
 
 library(ggplot2)
+library(patchwork)
+
 library(dplyr)
-library(arm)  # bayesglm() for LA
-library(MCMCpack)  # MCMC for Bayesian GLMs
-library(MCMCglmm)
+library(purrr)
 library(checkmate)
+
 library(numDeriv)
 library(mvtnorm)
-library(purrr)
+library(MCMCpack)  # MCMC for Bayesian GLMs
+library(MCMCglmm)  # more MCMC
 library(INLA)  # installed with install.packages("INLA",repos=c(getOption("repos"),INLA="https://inla.r-inla-download.org/R/stable"), dep=TRUE) on MAC
+
 
 # Regression and Regularization ####
 
@@ -230,6 +233,7 @@ la_sim <- function(dat,
 
   list(time = la_time, mu_post = la_mean, sigma_post = la_sd, mode_post = la_mode)
 }
+
 
 
 # Plots ####
