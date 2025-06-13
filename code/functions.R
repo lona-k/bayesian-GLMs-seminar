@@ -11,16 +11,19 @@ library(numDeriv)
 library(mvtnorm)
 library(MCMCpack)  # MCMC for Bayesian GLMs
 library(MCMCglmm)  # more MCMC
-library(INLA)  # installed with install.packages("INLA",repos=c(getOption("repos"),INLA="https://inla.r-inla-download.org/R/stable"), dep=TRUE) on MAC
+library(INLA)  # Laplace Approximation. Installed with install.packages("INLA",repos=c(getOption("repos"),INLA="https://inla.r-inla-download.org/R/stable"), dep=TRUE) on MAC
 
 
 # Regression and Regularization ####
 
 ## (interesting) data generation ####
 
+# function to simulate data for the regularization experiment
+# generates a data set with *standardized* covariates
+#
 data_regularization <- function(
     n = 1000,
-    theta_true = c(0.5, 2), # can be any dimension
+    # theta_true = c(0.5, 2), # can be any dimension
     family = "gaussian") {
 
   assert_count(n)
@@ -29,11 +32,11 @@ data_regularization <- function(
 
   dim <- length(theta_true) - 1
 
-  # INTERESTING x generation!!
+  # INTERESTING x generation process!!
   x <- rmvnorm(n, mean = rep(0, dim), sigma = diag(dim))  # x_i sim N(0, 1)
 
 
-  eta   <- theta_true[[1]] + x %*% theta_true[2:length(theta_true)]  # linear predictor
+  eta <- theta_true[[1]] + x %*% theta_true[2:length(theta_true)]  # linear predictor
 
   # mean with link function
   mu   <- switch(family,
@@ -51,6 +54,9 @@ data_regularization <- function(
   colnames(dat) <- c(paste0("x_", seq_len(ncol(x))), "y") # proper colnames
   dat
 }
+
+
+
 
 
 # Approximate inference ####
@@ -150,10 +156,15 @@ mcmc_sim <- function(dat, mcmc_iters = 5000, burnin = 500,
                      sigma2 = 100,
                      family = "gaussian") {
 
+  assert_choice(family, c("gaussian", "binomial"))
+  assert_number(sigma2)
+  assert_numeric(prior, len = 2)
+  assert_number(mcmc_iters)
+  assert_number(burnin)
+
   form <- sprintf("y ~ %s", paste0(colnames(dat)[-ncol(dat)], collapse = " + "))
   dim <- ncol(dat)
-
-  t0 <- proc.time()
+  family <- if (family == "binomial") "categorical" else family
 
   prior_lst <- list(
     B = list(mu = rep(prior["mean"], dim),  # theta ~ N(theta_mean, theta_var I)
@@ -161,6 +172,8 @@ mcmc_sim <- function(dat, mcmc_iters = 5000, burnin = 500,
     R = list(V  = sigma2,  # residual variance fixed at sigma2
              nu = 0)   # zero df -> point‐mass at V
   )
+
+  t0 <- proc.time()
 
   mcmc_fit <- MCMCglmm(
     as.formula(form),

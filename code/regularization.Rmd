@@ -1,0 +1,39 @@
+---
+title: "Simulation Study: Regularization with Bayesian regression"
+author: "Lona Koers"
+---
+
+```{r setup}
+set.seed(2025)
+```
+
+# 1. Data generation
+
+
+
+
+
+# 2. Model fitting
+
+## Plot all priors together
+
+(non-informative, marginal of NIG conjugate, ridge, lasso)
+
+## Non-informative prior
+
+
+## (NIG conjugate)
+
+
+## Ridge regularization
+
+
+## Lasso regularization
+
+
+
+# 3. Prediction + Evaluation
+
+
+
+# 4. Results
