@@ -56,8 +56,9 @@ data_regularization <- function(
 }
 
 ## fitting models ####
-# function to fit models:
-# flat prior, lasso, ridge
+# function to fit models wit flat prior, lasso, ridge
+# input: data, family, sample, burnin and thinning size
+# output: list(flat, ridge, lasso)
 fit_models <- function(dat, family = "gaussian",
                        sample = 2000, burnin = 500, thin = 5) {
 
@@ -285,7 +286,3 @@ la_sim <- function(dat,
 
   list(time = la_time, mu_post = la_mean, sigma_post = la_sd, mode_post = la_mode)
 }
-
-
-
-# Plots ####

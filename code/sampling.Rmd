@@ -157,7 +157,7 @@ Data prep:
 
 ```{r}
 true_df <- data.frame(
-  theta = factor(c("theta0","theta1","theta2"),
+  theta = factor(c("0","1","2"),
                      levels = c("0","1","2")),
   true = c(-0.5, 2, 1)
 )
@@ -167,8 +167,11 @@ coef_df <- res_table %>%
     cols      = starts_with("theta"),
     names_to  = "theta"
   ) %>%
-  mutate(theta = factor(theta,
-                            levels = c("0","1","2"))) %>%
+  mutate(theta = recode(theta,
+                      theta0 = "0",
+                      theta1 = "1",
+                      theta2 = "2"),
+       theta = factor(theta, levels = c("0", "1", "2"))) %>%
   left_join(true_df, by = "theta")
 
 
@@ -179,12 +182,11 @@ sd_df <- res_table %>%
     values_to = "sd"
   ) %>%
   mutate(parameter = recode(parameter,
-    sd_theta0 = "theta0",
-    sd_theta1 = "theta1",
-    sd_theta2 = "theta2"
+    sd_theta0 = "0",
+    sd_theta1 = "1",
+    sd_theta2 = "2"
   )) %>%
-  mutate(parameter = factor(parameter,
-                            levels = c("0","1","2")))
+  mutate(parameter = factor(parameter, levels = c("0", "1", "2")))
 
 # split data
 combined_gauss <- res_table %>%   filter(family=="Gaussian")
@@ -204,7 +206,7 @@ Plot(s):
 pp_time_g <- ggplot(combined_gauss, aes(x = method, y = time, fill = method)) +
   geom_boxplot(outlier.size = 0.2) +
   scale_fill_brewer(type="qual", palette="Set1") +
-  labs(title = "Regression", subtitle="Elapsed time", y="Time (s)", x=NULL, fill="Method") +
+  labs(subtitle="Elapsed time", y="time (s)", x=NULL, fill="Method") +
   theme_minimal()
 
 pp_theta_g <- ggplot(coef_gauss, aes(x = method, y = value, fill = method)) +
@@ -214,7 +216,7 @@ pp_theta_g <- ggplot(coef_gauss, aes(x = method, y = value, fill = method)) +
              colour = "black") +
   scale_linetype_manual(name=NULL, values="dashed") +
   scale_fill_brewer(type="qual", palette="Set1") +
-  labs(subtitle="Coefficient estimates", y="mean estimate", x=NULL, fill="Method") +
+  labs(subtitle="Parameter estimates", y="mean estimate", x=NULL, fill="Method") +
   facet_wrap(~ theta, scales="free_y") +
   theme_minimal()
 
@@ -230,7 +232,7 @@ pp_sd_g <- ggplot(sd_gauss, aes(x = method, y = sd, fill = method)) +
 pp_time_b <- ggplot(combined_binom, aes(x = method, y = time, fill = method)) +
   geom_boxplot(outlier.size = 0.2) +
   scale_fill_brewer(type="qual", palette="Set1") +
-  labs(title = "Classification", subtitle="Elapsed time", y="Time (s)", x=NULL, fill="Method") +
+  labs(subtitle="Elapsed time", y="time (s)", x=NULL, fill="Method") +
   theme_minimal()
 
 pp_theta_b <- ggplot(coef_binom, aes(x = method, y = value, fill = method)) +
@@ -240,7 +242,7 @@ pp_theta_b <- ggplot(coef_binom, aes(x = method, y = value, fill = method)) +
              colour="black") +
   scale_linetype_manual(name=NULL, values="dashed") +
   scale_fill_brewer(type="qual", palette="Set1") +
-  labs(subtitle="Coefficient estimates", y="mean estimate", x=NULL, fill="Method") +
+  labs(subtitle="Parameter estimates", y="mean estimate", x=NULL, fill="Method") +
   facet_wrap(~ theta, scales = "free_y") +
   theme_minimal()
 
@@ -264,8 +266,8 @@ pp_binom <- (pp_time_b + pp_theta_b + pp_sd_b) +
   plot_layout(ncol=3, widths=c(1,2,2), guides="collect") &
   theme(legend.position = "bottom")
 
-ggsave("approx_regr.png", pp_gauss)
-ggsave("approx_class.png", pp_binom)
+ggsave("../figures/approx_regr.png", pp_gauss, width = 15, height = 4)
+ggsave("../figures/approx_class.png", pp_binom, width = 15, height = 4)
 ```
 
 
@@ -287,13 +289,6 @@ final_plot <- (p_gauss / p_binom) +
   plot_layout(guides="collect") &
   theme(legend.position="bottom")
 
-ggsave("approx_all.png", final_plot)
-
+ggsave("../figures/approx_all.png", final_plot, width = 15, height = 8)
 ```
-
-
-<!-- # Test data + PPD -->
-
-<!-- - simulate some test data  -->
-<!-- - calculate predictions from the PPD with the fomula from my paper (use the same mote carlo integration for both) -->
 
