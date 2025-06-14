@@ -62,7 +62,7 @@ fit_models <- function(dat, family = "gaussian",
                        sample = 2000, burnin = 500, thin = 5) {
 
   assert_choice(family, c("gaussian", "binomial"))
-  assert_count(samples)
+  assert_count(sample)
   assert_count(burnin)
   assert_count(thin)
 
@@ -71,7 +71,7 @@ fit_models <- function(dat, family = "gaussian",
   model_fam <- ifelse(family == "gaussian", "normal", "logistic")
   form <- as.formula(paste("y ~", paste(names(dat)[-ncol(dat)], collapse = "+")))
 
-  if (family == "binomial") dat$y <- as.factor(dat$y, levels = c(0, 1))
+  if (family == "binomial") dat$y <- factor(dat$y)
 
   # priors
   priors_flat <- if (family == "gaussian") {
@@ -204,7 +204,7 @@ mcmc_sim <- function(dat, mcmc_iters = 5000, burnin = 500,
 
   form <- sprintf("y ~ %s", paste0(colnames(dat)[-ncol(dat)], collapse = " + "))
   dim <- ncol(dat)
-  family <- ifelse(family == "binomial", "binomial", "gaussian")
+  family <- ifelse(family == "binomial", "categorical", "gaussian")
 
   prior_lst <- list(
     B = list(mu = rep(prior["mean"], dim),  # theta ~ N(theta_mean, theta_var I)
@@ -256,8 +256,7 @@ la_sim <- function(dat,
 
   # FIX noise precision at 'fixed_tau', i.e. remove it from inference for Gaussian LM
   cfam <- if (family == "gaussian") {
-    list(control.family = list(hyper = list
-                               (prec = list(initial = log(1/sigma2), fixed = TRUE))))
+    list(hyper = list(prec = list(initial = log(1/sigma2), fixed = TRUE)))
   } else list()
 
   t0 <- proc.time()

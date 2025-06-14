@@ -25,7 +25,7 @@ data_class <- lapply(seq_len(1000), function(i) {
   data_sim(n = 100, theta_true = theta, family = "binomial")
 })
 
-prior <- c(mean = 0, var = 100)  # prior for theta
+prior <- c(mean = 0, var = 10)  # prior for theta
 sigma2 <- 10
 ```
 
@@ -158,7 +158,7 @@ Data prep:
 ```{r}
 true_df <- data.frame(
   theta = factor(c("theta0","theta1","theta2"),
-                     levels = c("theta0","theta1","theta2")),
+                     levels = c("0","1","2")),
   true = c(-0.5, 2, 1)
 )
 
@@ -168,7 +168,7 @@ coef_df <- res_table %>%
     names_to  = "theta"
   ) %>%
   mutate(theta = factor(theta,
-                            levels = c("theta0","theta1","theta2"))) %>%
+                            levels = c("0","1","2"))) %>%
   left_join(true_df, by = "theta")
 
 
@@ -184,7 +184,7 @@ sd_df <- res_table %>%
     sd_theta2 = "theta2"
   )) %>%
   mutate(parameter = factor(parameter,
-                            levels = c("theta0","theta1","theta2")))
+                            levels = c("0","1","2")))
 
 # split data
 combined_gauss <- res_table %>%   filter(family=="Gaussian")
@@ -225,11 +225,6 @@ pp_sd_g <- ggplot(sd_gauss, aes(x = method, y = sd, fill = method)) +
   facet_wrap(~ parameter) +
   theme_minimal()
 
-p_gauss <- (pp_time_g + pp_theta_g + pp_sd_g) +
-  plot_layout(ncol=3, widths=c(1,2,2), guides="collect") +
-  plot_annotation(title = "Regression") &
-  theme(legend.position="bottom")
-
 
 # classif plots
 pp_time_b <- ggplot(combined_binom, aes(x = method, y = time, fill = method)) +
@@ -256,17 +251,44 @@ pp_sd_b <- ggplot(sd_binom, aes(x = method, y = sd, fill = method)) +
   facet_wrap(~ parameter) +
   theme_minimal()
 
-# classif plot
+```
+
+Plot for paper
+
+```{r}
+pp_gauss <- (pp_time_g + pp_theta_g + pp_sd_g) +
+  plot_layout(ncol=3, widths=c(1,2,2), guides="collect") &
+  theme(legend.position="bottom")
+
+pp_binom <- (pp_time_b + pp_theta_b + pp_sd_b) +
+  plot_layout(ncol=3, widths=c(1,2,2), guides="collect") &
+  theme(legend.position = "bottom")
+
+ggsave("approx_regr.png", pp_gauss)
+ggsave("approx_class.png", pp_binom)
+```
+
+
+Plot for presentation
+
+```{r}
+p_gauss <- (pp_time_g + pp_theta_g + pp_sd_g) +
+  plot_layout(ncol=3, widths=c(1,2,2), guides="collect") +
+  plot_annotation(title = "Regression") &
+  theme(legend.position="bottom")
+
 p_binom <- (pp_time_b + pp_theta_b + pp_sd_b) +
   plot_layout(ncol=3, widths=c(1,2,2), guides="collect") +
   plot_annotation(title = "Classification") &
   theme(legend.position = "bottom")
 
-
 # combined plot
 final_plot <- (p_gauss / p_binom) +
   plot_layout(guides="collect") &
   theme(legend.position="bottom")
+
+ggsave("approx_all.png", final_plot)
+
 ```
 
 
