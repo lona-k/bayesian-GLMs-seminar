@@ -3,13 +3,16 @@ title: "Simulation Study: Regularization with Bayesian regression"
 author: "Lona Koers"
 ---
 
-```{r setup}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("functions.R")
+```
+
+```{r}
 set.seed(2025)
 ```
 
 # 1. Data generation
-
-For scenario A
 
 ```{r}
 thetaA <- c(2, 1.5, 0, 0, 0)
@@ -17,25 +20,21 @@ SigmaA <- diag(length(thetaA) - 1)
 sigma2A <- 1
 nA <- 150
 
-data_regr_A <- lapply(seq_len(100), function(i) {
-  data_regularization(
+data_regr_A <- data_regularization(
     n = nA,
     Sigma = SigmaA,
     theta_true = thetaA,
     family = "gaussian",
     sigma2 = 1
   )
-})
   
-data_class_A <- lapply(seq_len(100), function(i) {
-  data_regularization(
+data_class_A <- data_regularization(
     n = nA,
     Sigma = SigmaA,
     theta_true = thetaA,
     family = "binomial",
     sigma2 = 1
   )
-})
 ```
 
 
@@ -53,25 +52,21 @@ SigmaB[idx, idx] <- block
 sigma2B <- 1
 
 
-data_regr_B <- lapply(seq_len(100), function(i) {
-  data_regularization(
+data_regr_B <- data_regularization(
     n = nB,
     Sigma = SigmaB,
     theta_true = thetaB,
     family = "gaussian",
     sigma2 = 1
   )
-})
 
-data_class_B <- lapply(seq_len(100), function(i) {
-  data_regularization(
+data_class_B <- data_regularization(
     n = nB,
     Sigma = SigmaB,
     theta_true = thetaB,
     family = "binomial",
     sigma2 = 1
   )
-})
 ```
 
 Train test split:
@@ -80,51 +75,20 @@ Train test split:
 nA_train = 100
 nB_train = 50  # for p = n setting
 
-splits_regr_A <- lapply(data_regr_A, function(df) {
-  n   <- nrow(df)
-  idx <- sample(seq_len(n), size = nA_train)
-  list(
-    train = df[idx, , drop = FALSE],
-    test  = df[-idx, , drop = FALSE]
-  )
-})
+idx_RA <- sample(seq_len(nA), size = nA_train)
+idx_RB <- sample(seq_len(nB), size = nA_train)
+idx_CA <- sample(seq_len(nA), size = nA_train)
+idx_CB <- sample(seq_len(nB), size = nB_train)
 
-splits_regr_B <- lapply(data_regr_B, function(df) {
-  n   <- nrow(df)
-  idx <- sample(seq_len(n), size = nB_train)
-  list(
-    train = df[idx, , drop = FALSE],
-    test  = df[-idx, , drop = FALSE]
-  )
-})
+train_regr_A <- data_regr_A[idx_RA, ]
+train_regr_B <- data_regr_B[idx_RB, ]
+train_class_A <- data_class_A[idx_CA, ]
+train_class_B <- data_class_B[idx_CB, ]
 
-splits_class_A <- lapply(data_class_A, function(df) {
-  n   <- nrow(df)
-  idx <- sample(seq_len(n), size = nA_train)
-  list(
-    train = df[idx, , drop = FALSE],
-    test  = df[-idx, , drop = FALSE]
-  )
-})
-
-splits_class_B <- lapply(data_class_B, function(df) {
-  n   <- nrow(df)
-  idx <- sample(seq_len(n), size = nB_train)
-  list(
-    train = df[idx, , drop = FALSE],
-    test  = df[-idx, , drop = FALSE]
-  )
-})
-
-train_regr_A <- lapply(splits_regr_A, `[[`, "train")
-train_regr_B <- lapply(splits_regr_B, `[[`, "train")
-train_class_A <- lapply(splits_class_A, `[[`, "train")
-train_class_B <- lapply(splits_class_B, `[[`, "train")
-
-test_regr_A <- lapply(splits_regr_A, `[[`, "test")
-test_regr_B <- lapply(splits_regr_B, `[[`, "test")
-test_class_A <- lapply(splits_class_A, `[[`, "test")
-test_class_B <- lapply(splits_class_B, `[[`, "test")
+test_regr_A <- data_regr_A[-idx_RA, ]
+test_regr_B <- data_regr_B[-idx_RB, ]
+test_class_A <- data_class_A[-idx_CA, ]
+test_class_B <- data_class_B[-idx_CB, ]
 ```
 
 
@@ -134,31 +98,38 @@ test_class_B <- lapply(splits_class_B, `[[`, "test")
 
 ```{r}
 # regression
-fits_regr_A <- lapply(test_regr_A, function(dat) {
-  fit_models(dat, family = "gaussian")
-})
-
-fits_regr_B <- lapply(test_regr_B, function(dat) {
-  fit_models(dat, family = "gaussian")
-})
+fits_regr_A <- fit_models(train_regr_A, family = "gaussian",
+                          sample = 5000, burnin = 1000, thin = 10)
+fits_regr_B <- fit_models(train_regr_B, family = "gaussian",
+                          sample = 5000, burnin = 1000, thin = 10)
 
 # classification
-fits_class_A <- lapply(test_class_A, function(dat) {
-  fit_models(dat, family = "gaussian")
-})
-
-fits_class_B <- lapply(test_class_B, function(dat) {
-  fit_models(dat, family = "gaussian")
-})
+fits_class_A <- fit_models(train_class_A, family = "binomial",
+                           sample = 5000, burnin = 1000, thin = 10)
+fits_class_B <- fit_models(train_class_B, family = "binomial",
+                           sample = 5000, burnin = 1000, thin = 10)
 ```
 
 
 ## get coefficients
 
 ```{r}
+fits <- list(regr_A = fits_regr_A,
+             regr_B = fits_regr_B,
+             class_A = fits_class_A,
+             class_B = fits_class_B)
 
-big_df <- imap_dfr(fits_regr_A, # over the 100 replicates
+models_df <- imap_dfr(fits, # over the 100 replicates
   ~ imap_dfr(.x, function(fit, model) { # over the three models
+
+  }),
+  .id = "replicate"
+)
+
+
+models_df <- imap_dfr(fits, function(model_list, scenario) {
+  # model_list is list(flat=brm, ridge=brm, lasso=brm)
+  map_dfr(model_list, function(fit, model) {
       if (model == "flat") {
         fx <- summary(fit)$fixed # extract the fixed-effects matrix
         as_tibble(fx, rownames = "parameter") %>%  # turn it into a tibble
@@ -182,16 +153,48 @@ big_df <- imap_dfr(fits_regr_A, # over the 100 replicates
           ci_upp = fx$CI.coef[, 1]
         )
       }
-  }),
-  .id = "replicate"
-)
+  }, .id = "model")
+}, .id = "scenario")
 
+models_df <- models_df %>%
+  separate(scenario, into = c("type","group"), sep = "_")
 ```
 
 
 # 3. Prediction + Evaluation
 
+Prediction
+
+```{r}
+
+```
+
+Evaluation: (for each scenario, for regr and class)
+
+```{r}
+# Hits (i.e 0 coefficients): number (percentage) of correctly identified influential variables
+
+# number of non-influential variables declared as influential
+
+
+# MLPD (mean log posterior predicitve density)
+```
+
 
 
 # 4. Results
+
+Plot 1: Coefficients
+
+- 2 plots, for regression and classification
+- for each 2 data scenarios (facet)
+- plot coefficients (flat, ridge, lasso, true) + CI in different colors (on x-axis, value on y-axis)
+- draw dotted line on 0 (if 0 in CI, we choose the coefficient as 0)
+
+Plot / Table
+
+- 1, 2: percentage in brackets
+- 4 rows, divider between regression and classification
+- columns are evaluation statistics
+
 
