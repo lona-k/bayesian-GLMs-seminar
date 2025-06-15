@@ -8,8 +8,9 @@ library(dplyr)
 library(purrr)
 library(checkmate)
 
-library(bayesreg)  # easy Baysian Regr/Classif
-library(brms)  # more complicated stuff. Necessary for custom prior
+library(bayesreg)  # easy Baysian Regr/Classif with regularization
+library(brms)  # more complicated, ecessary for custom prior
+library(loo)  # evaluation for brms
 
 library(numDeriv)
 library(mvtnorm)
@@ -97,6 +98,34 @@ fit_models <- function(dat, family = "gaussian",
                     n.samples = sample, burnin = burnin, thin = thin)
 
   list(flat = flat, ridge = ridge, lasso = lasso)
+}
+
+
+# function for mean (i.e. expected) log pointwise predictive density (MLPPD) (Gelman et. al 2014)
+# input: model (class bayesreg or brmsfit), test data with the same columns as the model training data, model family and model type
+# output: numeric(1) MLPPD value
+mlppd <- function(fit, dtest, family, model) {
+
+  assert_choice(family, c("gaussian", "binomial"))
+  assert_choice(model, c("flat", "lasso", "ridge"))
+
+  if (model == "flat") {
+    # pointwise log-lik matrix [p x n]
+    ll <- log_lik(fit, newdata = dtest)
+    mlppd <- mean(ll, na.rm = TRUE)
+
+  } else {
+    # predictive density / probability values, posterior‐averaged
+    pr <- predict(fit, newdata = dtest,
+                  type = "prob",
+                  bayes.avg = TRUE,
+                  sum.stat = "mean"
+    )[, 1]
+
+    mlppd <- mean(log(pr), na.rm = TRUE)
+  }
+
+  mlppd
 }
 
 
