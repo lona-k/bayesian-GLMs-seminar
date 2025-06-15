@@ -39,7 +39,7 @@ data_class_A <- data_regularization(
 
 
 ```{r}
-thetaB <- c(2, 1.5, rep(0, 48))
+thetaB <- c(2, 1.5, rep(0, 28))
 SigmaB <- diag(length(thetaB) - 1)
 nB <- 150
 
@@ -73,7 +73,7 @@ Train test split:
 
 ```{r}
 nA_train = 100
-nB_train = 50  # for p = n setting
+nB_train = 30  # for p = n setting
 
 idx_RA <- sample(seq_len(nA), size = nA_train)
 idx_RB <- sample(seq_len(nB), size = nA_train)
@@ -99,19 +99,19 @@ test_class_B <- data_class_B[-idx_CB, ]
 ```{r}
 # regression
 fits_regr_A <- fit_models(train_regr_A, family = "gaussian",
-                          sample = 5000, burnin = 1000, thin = 10)
+                          sample = 20000, burnin = 1000, thin = 10)
 fits_regr_B <- fit_models(train_regr_B, family = "gaussian",
-                          sample = 5000, burnin = 1000, thin = 10)
+                          sample = 20000, burnin = 1000, thin = 10)
 
 # classification
 fits_class_A <- fit_models(train_class_A, family = "binomial",
-                           sample = 5000, burnin = 1000, thin = 10)
+                           sample = 20000, burnin = 1000, thin = 10)
 fits_class_B <- fit_models(train_class_B, family = "binomial",
-                           sample = 5000, burnin = 1000, thin = 10)
+                           sample = 20000, burnin = 1000, thin = 10)
 ```
 
 
-## get coefficients
+## Get coefficients
 
 ```{r}
 fits <- list(regr_A = fits_regr_A,
@@ -140,7 +140,7 @@ models_df <- imap_dfr(fits, function(model_list, scenario) {
         theta = fx$mu.coef[, 1],
         sd = fx$se.coef[, 1],
         ci_low = fx$CI.coef[, 1],
-        ci_upp = fx$CI.coef[, 1]
+        ci_upp = fx$CI.coef[, 2]
       )
     }
   }, .id = "model")
@@ -148,7 +148,7 @@ models_df <- imap_dfr(fits, function(model_list, scenario) {
 
 
 models_df <- models_df %>%
-  separate(scenario, into = c("type","group"), sep = "_")
+  separate(scenario, into = c("type","scenario"), sep = "_")
 
 models_df <- models_df %>%
   mutate(parameter = case_when(
@@ -160,61 +160,174 @@ models_df <- models_df %>%
 
 # 3. Prediction + Evaluation
 
-Prediction
-
-```{r}
-# > head(predict(mod, newdata = test_class_A))
-#      Estimate  Est.Error Q2.5 Q97.5
-# [1,]   0.9325 0.25120013    0     1
-# [2,]   0.3525 0.47834693    0     1
-# [3,]   0.9700 0.17080086    0     1
-# [4,]   0.9900 0.09962335    1     1
-# [5,]   0.3875 0.48778950    0     1
-# [6,]   0.8275 0.37828759    0     1
-# > head(predict(fits_class_A$ridge, newdata = test_class_A))
-#          [,1]
-# 2  2.66391969
-# 4  0.09084899
-# 6  3.09099527
-# 8  4.87468182
-# 11 0.12960716
-# 12 1.79132630
-# > head(predict(fits_class_A$lasso, newdata = test_class_A))
-#         [,1]
-# 2  2.4583415
-# 4  0.4548547
-# 6  2.9238899
-# 8  4.9175404
-# 11 0.1584352
-# 12 1.5937710
-```
-
 Evaluation: (for each scenario, for regr and class)
 
 ```{r}
-# Hits (i.e 0 coefficients): number (percentage) of correctly identified influential variables
+# add influence column
+models_df <- models_df %>%
+  mutate(
+    influential = !((ci_low <= 0) & (ci_upp >= 0)),  # is parameter declared influential
+    actual_influential = parameter %in% c(0, 1)  # is parameter actually influential (only the case for parameter 0 and 1)
+  )
 
-# number of non-influential variables declared as influential
+# hits and false positives
+summary_df <- models_df %>%
+  group_by(type, scenario, model) %>%
+  summarise(
+    # how many true non-zero parameters there are (always 2 here)
+    n_true = 2,
+    hits = sum(actual_influential & influential), # = true positives
+    n_zero = sum(!actual_influential), # how many true zeros
+    false_positives = sum(!actual_influential & influential), # = zero declared influential
+    .groups = "drop"
+  )
 
+tests <- list(
+  regr_A   = test_regr_A,
+  regr_B   = test_regr_B,
+  class_A  = test_class_A,
+  class_B  = test_class_B
+)
 
-# MLPD (mean log posterior predicitve density)
+mlppd_df <- imap_dfr(fits, function(model_list, scen) {
+  parts  <- str_split(scen, "_", simplify = TRUE)
+  type   <- parts[1]
+  scenario  <- parts[2]
+  family <- if (type=="regr") "gaussian" else "binomial"
+  dtest  <- tests[[scen]]
+  
+  imap_dfr(model_list, function(fit, mod) {
+    m = mlppd(fit, dtest, family, mod)
+    list(
+      type = type,
+      scenario = scenario,
+      model = mod,
+      mlppd = m
+    )
+  }, .id = "model")
+}, .id = NULL)
+
+summary_df <- summary_df %>%
+  left_join(
+    mlppd_df,
+    by = c("scenario", "type", "model")
+  )
 ```
-
 
 
 # 4. Results
 
-Plot 1: Coefficients
+Plot 1: Coefficients from models_df
 
 - 2 plots, for regression and classification
 - for each 2 data scenarios (facet)
 - plot coefficients (flat, ridge, lasso, true) + CI in different colors (on x-axis, value on y-axis)
 - draw dotted line on 0 (if 0 in CI, we choose the coefficient as 0)
 
-Plot / Table
+```{r}
+true_df <- models_df %>%
+  distinct(scenario, parameter) %>%
+  mutate(
+    true = case_when(
+      scenario == "A" & parameter == 0 ~ 2,
+      scenario == "A" & parameter == 1 ~ 1.5,
+      scenario == "A" ~ 0,
+      scenario == "B" & parameter == 0 ~ 2,
+      scenario == "B" & parameter == 1 ~ 1.5,
+      TRUE ~ 0
+    )
+  )
+```
 
-- 1, 2: percentage in brackets
-- 4 rows, divider between regression and classification
-- columns are evaluation statistics
+
+```{r}
+type_labs <- c(
+  class = "Logistic Model (Classification)",
+  regr  = "Linear Model (Regression)"
+)
+
+make_scenario_plot <- function(df, true_df, scen) {
+  df2 <- df %>%
+    filter(scenario == scen) %>%
+    # pick the right parameter range
+    filter((scenario=="A" & parameter %in% 0:4) |
+           (scenario=="B" & parameter %in% 0:29)) %>%
+    mutate(param = as.integer(parameter),
+           type = factor(type, levels = c("regr", "class")),
+           ci_low = pmax(ci_low, -2),
+           ci_upp = pmin(ci_upp,  5))
+  tr2 <- true_df %>%
+    filter(scenario == scen) %>%
+    mutate(param = as.integer(parameter))
+    
+  ggplot(df2, aes(x = param, y = theta, color = model)) +
+    geom_pointrange(aes(ymin = ci_low, ymax = ci_upp),
+                    position = position_dodge(0.6),
+                    size = 0.3, fatten = 0.8) +
+    geom_point(data = tr2, aes(x = param, y = true),
+               inherit.aes = FALSE,
+               shape = 4, size = 2, stroke = 0.5) +
+    geom_hline(yintercept = 0, linetype = "dotted") +
+    scale_x_continuous(breaks = unique(df2$param), minor_breaks = NULL) +
+    coord_cartesian(ylim = c(-1, 4)) +
+    scale_color_brewer("prior", palette = "Set2") +
+    facet_wrap(~ type, ncol = 1,
+               labeller = as_labeller(type_labs)) +
+    labs(
+      title    = NULL,
+      subtitle = paste0("Scenario ", scen),
+      x        = "parameter index",
+      y        = "parameter estimate"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "bottom")
+}
+
+# make the two plots
+p_A <- make_scenario_plot(models_df, true_df, "A")
+p_B <- make_scenario_plot(models_df, true_df, "B")
+```
+
+
+```{r}
+p_all <- (p_A + p_B) +
+  plot_layout(ncol = 2, widths = c(1, 3), guides="collect", axis_titles = "collect") &
+  theme(legend.position="bottom")
+
+ggsave("../figures/reg_all.png", p_all, width = 11, height = 5)
+```
+
+
+
+```{r}
+# 1) Prepare Table for Scenario A
+summaryA <- summary_df %>%
+  filter(scenario == "A") %>%
+  mutate(
+    Model = factor(type, levels = c("regr", "class"), labels = c("linear", "logit")),
+    Prior = model,
+    `Hits (of 2)`  = hits,
+    `FP (of 3)`    = false_positives,
+    MLPPD = sprintf("%.3f", mlppd)
+  )
+
+summaryB <- summary_df %>%
+  filter(scenario == "B") %>%
+  mutate(
+    Model = factor(type, levels = c("regr", "class"), labels = c("linear", "logit")),
+    Prior = model,
+    `Hits (of 2)`  = hits,
+    `FP (of 28)`    = false_positives,
+    MLPPD = sprintf("%.3f", mlppd)
+  )
+  
+
+tabA <- summaryA[, 9:13]
+tabB <- summaryB[, 9:13]
+
+tabA
+tabB
+```
+
 
 

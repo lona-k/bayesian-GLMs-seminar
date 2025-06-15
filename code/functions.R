@@ -89,7 +89,8 @@ fit_models <- function(dat, family = "gaussian",
               chains = 1,
               iter = sample,
               warmup = burnin,
-              thin = thin)
+              thin = thin,
+              control = list(max_treedepth = 20))
 
   ridge <- bayesreg(form, data = dat, model = model_fam, prior = "ridge",
                     n.samples = sample, burnin = burnin, thin = thin)
@@ -112,8 +113,8 @@ mlppd <- function(fit, dtest, family, model) {
   if (model == "flat") {
     # pointwise log-lik matrix [p x n]
     ll <- log_lik(fit, newdata = dtest)
-    p_hat <- colMeans(exp(ll_mat))  # see Gelman 2014 for why this is necessary
-    mean(log(p_hat))
+    p_hat <- colMeans(exp(ll))  # see Gelman 2014 for why this is necessary
+    mlppd <- mean(log(p_hat), na.rm = TRUE)
 
 
   } else {
