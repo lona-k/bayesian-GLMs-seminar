@@ -112,7 +112,9 @@ mlppd <- function(fit, dtest, family, model) {
   if (model == "flat") {
     # pointwise log-lik matrix [p x n]
     ll <- log_lik(fit, newdata = dtest)
-    mlppd <- mean(ll, na.rm = TRUE)
+    p_hat <- colMeans(exp(ll_mat))  # see Gelman 2014 for why this is necessary
+    mean(log(p_hat))
+
 
   } else {
     # predictive density / probability values, posterior‐averaged
