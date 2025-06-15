@@ -285,7 +285,6 @@ la_sim <- function(dat,
 
   form <- as.formula(paste("y ~", paste(colnames(dat)[-ncol(dat)], collapse = " + ")))
   prior_prec <- 1 / (prior["var"])
-  fixed_tau <- 1 / sigma2  # tau = 1/sigma^2
 
   # FIX noise precision at 'fixed_tau', i.e. remove it from inference for Gaussian LM
   cfam <- if (family == "gaussian") {
