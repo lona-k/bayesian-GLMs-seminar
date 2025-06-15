@@ -112,7 +112,7 @@ For MCMC, we used the \texttt{MCMCglmm} package with settings specifically to us
 For each method, we recorded CPU runtime, posterior means, and posterior standard deviations of the estimated parameters.\\
 
 Results for the linear and logistic model can be seen in \autoref{fig:approx-regr} and \autoref{fig:approx-class} respectively.
-In our experiment, LA was generally slower than MCMC methods, but this could also be mitigated by the specific implementation used in the experiment.
+In our experiment, LA was generally slower than MCMC methods.
 In the case of the Bayesian linear model (\autoref{fig:approx-regr}), there was not much difference in the posterior parameter estimates, although LA leads to much higher standard deviation of parameters.
 In contrast, LA showed clear advantages in logistic regression (\autoref{fig:approx-class}): it yielded more accurate parameter estimates and lower posterior uncertainty than MCMC. These results highlight that the performance of approximate inference methods can differ significantly depending on the model and likelihood.
 

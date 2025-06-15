@@ -1,1 +1,11 @@
-A concise summary of contents and results
+We have reviewed the formulation, prior specification and approximate inference methods for Bayesian generalized linear models, with a particular focus on methods for regularization and approximation.
+We showed that the lack of conjugacy in the logistic likelihood necessitates numerical techniques such as Metropolis–Hastings MCMC and Laplace approximation.
+We detailed how the prior choice can stabilizes estimation in difficult setting and how we can implements familiar regularization schemes in a Bayesian setting.\\
+
+In an applied example, we examined regularized Bayesian models in difficult data settings. Especially in logistic models, regularization improved predictive performance and reduced falsely as informative declared covariates.
+In our comparison of MCMC and LA, we saw that although MCMC can be faster in simple linear models, Laplace approximation often provides more accurate and precise estimates in logistic regression despite higher computational cost, which could also be mitigated by the specific implementation used in the experiment.
+Since these examples were meant to be illustrative, the results should not be overinterpreted. In many cases, more efficient methods for regularization and approximate inference can be used and are readily avaivable.\\
+
+Some limitations of the described methods have already been mentioned above, such as the need for more complex prior distributions for real variable selection in \autoref{sec:lm-regularization}.
+Additionally, we have only examined how Bayesian GLMs work compared to frequentist GLMs for linear relationships.
+For more complex scenarios, the Bayesian framework can be extended to hierarchical GLMs to model random effects or to Generalized Additive Models through the inclusion of splines. 
