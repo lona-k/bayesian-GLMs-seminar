@@ -57,7 +57,7 @@ data_regr_B <- data_regularization(
     Sigma = SigmaB,
     theta_true = thetaB,
     family = "gaussian",
-    sigma2 = 1
+    sigma2 = sigma2A
   )
 
 data_class_B <- data_regularization(
