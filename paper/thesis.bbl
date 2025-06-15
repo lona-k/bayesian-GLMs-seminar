@@ -69,12 +69,19 @@ Gamerman, D.  \harvardyearleft 1998\harvardyearright .
 \newblock Markov chain {Monte} {Carlo} for dynamic generalised linear models,
   {\em Biometrika} {\bf 85}(1):~215--227.
 
-\harvarditem[Gelman et~al.]{Gelman, Carlin, Stern, Dunson, Vehtari \harvardand\
+\harvarditem{Gelman, Carlin, Stern, Dunson, Vehtari \harvardand\
   Rubin}{2013}{gelman_bayesian_2013}
 Gelman, A., Carlin, J.~B., Stern, H.~S., Dunson, D.~B., Vehtari, A.
   \harvardand\ Rubin, D.~B.  \harvardyearleft 2013\harvardyearright .
 \newblock {\em Bayesian {Data} {Analysis}}, 3 edn, Chapman and Hall/CRC, New
   York.
+
+\harvarditem{Gelman, Hwang \harvardand\
+  Vehtari}{2013}{gelman_understanding_2013}
+Gelman, A., Hwang, J. \harvardand\ Vehtari, A.  \harvardyearleft
+  2013\harvardyearright .
+\newblock Understanding predictive information criteria for {Bayesian} models.
+\newblock arXiv:1307.5928 [stat].
 
 \harvarditem[Gelman et~al.]{Gelman, Jakulin, Pittau \harvardand\
   Su}{2008}{gelman_weakly_2008}

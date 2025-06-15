@@ -98,9 +98,9 @@ We chose to simplify this and stick to the previously established definitions be
 although there are many options for regularization priors, we are going to focus on regularization priors that align directly with familiar frequentist penalties.\\
 
 \textbf{Ridge regularization} \citep{hoerl_ridge_1970,hoerl_ridge_1970-1} uses $\text{pen}(\btheta) = \|\btheta\|_2^2$ and the Bayesian analogue \Citep[e.g.][]{hsiang_bayesian_1975,mackay_bayesian_1992} specifies
-\begin{equation*}
+\begin{equation}\label{eq:ridge}
     \btheta \sim \Ncal(\bnull, \taus \bI),
-\end{equation*}
+\end{equation}
 
 with $\taus$ controlling the degree of regularization akin to the role of $\lambda$.
 In constrast to $\lambda$, $\taus$ does not need to be set in advance or optimized as a hyperparameter.
@@ -109,12 +109,12 @@ We can simply embed it in a hierarchical model by specifying a prior for $\taus$
 \textbf{Lasso regularization} \citep{tibshirani_regression_1996} uses $\text{pen}(\btheta) = \|\btheta\|_1$ to perform variable selection by setting elements $\theta_j$ of $\btheta$ to $0$ during estimation.
 This means that Lasso regularization promotes a \textit{sparse} solution.
 The Bayesian Lasso specifies a Laplace prior on $\btheta$ via the scale-mixture representation \citep{park_bayesian_2008}
-\begin{equation*}
+\begin{equation}\label{eq:lasso}
     \begin{aligned}
         \btheta \mid \btaus &\sim \Ncal(\bnull, \btaus \bI) \\
         \taus_j &\overset{\text{i.i.d.}}{\sim} \text{Exp}(0.5 \lambda^2), \quad j = 1, \dots, p,
     \end{aligned}
-\end{equation*}
+\end{equation}
 
 where the regularization parameter $\lambda^2$ is often given a (hyper-) prior, e.g. $\lambda^2 \sim \text{G}(\apri_\lambda, \bpri_\lambda)$.\\
 
