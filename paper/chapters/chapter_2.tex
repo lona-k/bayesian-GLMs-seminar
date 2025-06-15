@@ -14,7 +14,7 @@ where the weight parameter $\btheta$ and the variance $\ssd$ are estimated to ob
 A condition on $\bX$ is always implicit.\\
 
 To view Linear Regression from a Bayesian perspective, we simply reinterpret the parameters as random variables.
-Conditioning on $\btheta$ and $\ssd$, the likelihood takes the same form as in \eqref{eq:LM}:
+Conditioning on $\btheta$ and $\ssd$, the likelihood takes the same form as in \autoref{eq:LM}:
 \begin{equation} \label{eq:BLM}
     \by \mid \btheta, \ssd \sim \Ncal(\bX \btheta, \ssd \bI), 
 \end{equation}
@@ -53,7 +53,7 @@ Especially when little to no prior information is available, we can flatten the 
 \end{equation*}
 and choosing $\apri = - \frac{p}{2}$ and $\bpri = 0$, where $p$ is the number of features in the model.
 
-We can easily see that with this assumption, the prior for $\btheta$ becomes very flat while still retaining the useful qualities from the setup described in \eqref{eq:NIGprior}.
+We can easily see that with this assumption, the prior for $\btheta$ becomes very flat while still retaining the useful qualities from the setup described in \autoref{eq:NIGprior}.
 
 The prior distributional assumptions would then be:
 \begin{equation} \label{eq:flat-prior}
@@ -138,7 +138,7 @@ Under Gaussian errors, this satisfies
 To quantify the uncertainty in the estimation, we can compute confidence intervals for $\btheta$, but these reflect only the variability in the estimator, not uncertainty about the true parameter itself.\\
 
 In contrast, the Bayesian approach yields a full posterior distribution on $\btheta$ by updating the prior distribution with observed data using Bayes' rule.
-With the NIG prior introduced in \eqref{eq:NIGprior}, conjugacy implies for the joint posterior $p(\btheta, \ssd \mid \by)$ that
+With the NIG prior introduced in \autoref{eq:NIGprior}, conjugacy implies for the joint posterior $p(\btheta, \ssd \mid \by)$ that
 \begin{equation*}
     \btheta, \ssd \mid \by \sim \text{NIG}(\mupo, \Sdpo, \apo, \bpo)
 \end{equation*}
@@ -148,22 +148,22 @@ with posterior mean and variance \footnotemark
         \mupo = \Sdpo (\Sdipri \mupri + \bX^\top \by), \quad \Sdpo = (\bX^\top \bX + \Sdipri)^{-1}.
 \end{equation}
 
-\footnotetext{For the full calculation see Appendix \ref{sec:app}}
+\footnotetext{For the full calculation see \autoref{sec:app}}
 
 Integrating out $\ssd$ yields $\btheta \mid \by \sim \Tcal(2 \apo, \mupo, \bpo / \apo \Sdpo)$ and Bayesian credibility intervals can be derived directly from this distribution \citep[see e.g.][]{held_likelihood_2020}.\\
 
-Since we defined the non-information prior \eqref{eq:flat-prior} as a special case of the NIG-distributed prior, we can use \eqref{eq:NIGpost} to directly calculate the posterior mean and variance as
+Since we defined the non-information prior \autoref{eq:flat-prior} as a special case of the NIG-distributed prior, we can use \autoref{eq:NIGpost} to directly calculate the posterior mean and variance as
 \begin{equation*}
         \mupo = (\bX^\top \bX)^{-1} \bX^\top \by, \quad
         \Sdpo = \bX^\top \bX.
 \end{equation*}
 
-The posterior mean $\mupo$ coincides with $\hbbeta_{LS}$ \eqref{eq:LSE}, so a Bayesian linear model with a non-informative prior converges to the frequentist solution.
+The posterior mean $\mupo$ coincides with $\hbbeta_{LS}$ (\autoref{eq:LSE}), so a Bayesian linear model with a non-informative prior converges to the frequentist solution.
 More generally, as the prior variance $\Sdpri$ grows, $\mupo$ approaches $\hbbeta_{LS}$, since the likelihood (and thus the data) dominates the posterior.\\
 
-Bayesian Ridge regression is simply the NIG case in \eqref{eq:NIGprior} with finite $\Sdpo$, resulting in the same posterior update in \eqref{eq:NIGpost}.
+Bayesian Ridge regression is simply the NIG case in \autoref{eq:NIGprior} with finite $\Sdpo$, resulting in the same posterior update in \autoref{eq:NIGpost}.
 By contrast, the Bayesian Lasso's Laplace prior has no closed-form posterior, but we can easily sample from it using Gibbs sampling \citep{park_bayesian_2008}.
-We will go more into depth on approximate inference for Bayesian regression models in Section \ref{sec:logit-inf}.
+We will go more into depth on approximate inference for Bayesian regression models in \autoref{sec:logit-inf}.
 
 \subsubsection*{Posterior predictive distribution}
 In many applications, we care more about predictions $\ty$ for new, unseen inputs $\tX$ (or test data $(\ty, \tX)$), independent of the training data $\bD$, than about $\btheta$ itself.
@@ -181,7 +181,7 @@ which is an average of conditional probabilities over the posterior distribution
     We recognize the marginal distribution of $\by$ from Bayes' rule as the normalization constant, i.e. $p(\by) = \int p(\by, \btheta) d\btheta = \int p(\by \mid \btheta) p(\btheta) d\btheta$.
 }
 
-For the NIG prior in \eqref{eq:NIGprior}, one can show\footnote{see Appendix \ref{sec:app}} that
+For the NIG prior in \autoref{eq:NIGprior}, one can show\footnote{see \autoref{sec:app}} that
 \begin{equation*}
     \ty \mid \btheta, \ssd, \by \sim \Tcal(2 \apo, \tX \btheta, \frac{\bpo}{\apo} (\bI + \tX \Sdpo \tX^\top)).
 \end{equation*}
@@ -189,4 +189,4 @@ For the NIG prior in \eqref{eq:NIGprior}, one can show\footnote{see Appendix \re
 Interestingly, the posterior predictive mean $\mupo = \tX \btheta$ of the t-distribution coincides with the least squares prediction and its scale matrix reflects both observational noise and posterior uncertainty.
 Bayesian inference with the Gaussian conjugate is more thoroughly described by \citet{murphy_conjugate_nodate}.\\
 
-If no closed form exists, the PPD can also be simulated (see Section \ref{sec:logit-inf})
+If no closed form exists, the PPD can also be simulated (see \autoref{sec:logit-inf})
