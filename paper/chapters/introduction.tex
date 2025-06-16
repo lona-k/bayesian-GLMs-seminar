@@ -1,13 +1,19 @@
+Generalized Linear Models (GLMs) are a fundamental tool in statistics and machine learning and are widely applied across various domains.
+Their appeal lies in their simplicity, interpretability, and extensibility.
+However, GLMs also come with limitations:
+they assume linearity on the link-transformed scale, rely on maximum likelihood estimation (MLE), and often fail to capture the full range of uncertainty in predictions and parameter estimates.\\
 
-1. Motivation (warum reden wir über bayesianische (G)LMs, warum ist das wichtig?)
-2. Schwäche bisheriger Methoden, was fehlt bei nicht-bayesianischen GLMs (zitieren)
-3. Wie lösen wir das hier?
+Bayesian GLMs offer a different viewpoint on GLMs that addresses these shortcomings.
+They offer a natural way to quantify uncertainty with posterior distributions, which is especially useful in data-scarce scenarios.
+For instance, \citet{sondhi_bayesian_2021} demonstrate this in precision oncology, where Bayesian inference compensates for small sample sizes and stabilizes confidence estimation in effect sizes.
+Recent work has also shown that Bayesian regularization techniques can perform on par with or even outperform classic regularization, while also offering greater flexibility and interpretability \citep[see e.g.][]{van_erp_shrinkage_2019,celeux_regularization_2012}.
+Additionally, a Bayesian framework allows for incorporation of domain knowledge through informative priors.
+For example, \citet{chien_informative_2023} outline a framework for constructing priors directly from expert knowledge or prior experiments.\\
 
-- Limits of frequentist methods (as a motivation for Bayesian GLMs
-- Motivation of bayesian GLMs:
-    - uncertainty quantification,
-    - regularization, (especially where data information is limited (Fahrmeir 2021))
-    - incorporation of domain knowledge,
-    - small data sets
-- Current research and related work
-- Structure of the paper
+This paper explores Bayesian GLMs as an alternative to classical approaches.
+In \autoref{sec:bayesian_lm}, we introduce Bayesian linear regression as a familiar starting point within the Bayesian framework.
+Section \ref{sec:bayesian_logit} extends this foundation to generalized models, focusing on logistic regression as the most-used GLM.
+Section \ref{sec:simulation} illustrates the application of regularization and approximate inference methods in Bayesian GLMs using synthetic data experiments.\\
+
+
+

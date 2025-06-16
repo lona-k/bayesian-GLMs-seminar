@@ -29,6 +29,23 @@ Carvalho, C.~M., Polson, N.~G. \harvardand\ Scott, J.~G.  \harvardyearleft
 \newblock The horseshoe estimator for sparse signals, {\em BIOMETRIKA} {\bf
   97}(2):~465--480.
 
+\harvarditem[Celeux et~al.]{Celeux, Anbari, Marin \harvardand\
+  Robert}{2012}{celeux_regularization_2012}
+Celeux, G., Anbari, M.~E., Marin, J.-M. \harvardand\ Robert, C.~P.
+  \harvardyearleft 2012\harvardyearright .
+\newblock Regularization in {Regression}: {Comparing} {Bayesian} and
+  {Frequentist} {Methods} in a {Poorly} {Informative} {Situation}, {\em
+  Bayesian Analysis} {\bf 7}(2):~477--502.
+\newblock Publisher: International Society for Bayesian Analysis.
+
+\harvarditem[Chien et~al.]{Chien, Zhou, Hanson \harvardand\
+  Lystig}{2023}{chien_informative_2023}
+Chien, Y.-F., Zhou, H., Hanson, T. \harvardand\ Lystig, T.  \harvardyearleft
+  2023\harvardyearright .
+\newblock Informative g-{Priors} for {Mixed} {Models}, {\em Stats} {\bf
+  6}(1):~169--191.
+\newblock Number: 1 Publisher: Multidisciplinary Digital Publishing Institute.
+
 \harvarditem{Dellaportas \harvardand\ Smith}{1993}{dellaportas_bayesian_1993}
 Dellaportas, P. \harvardand\ Smith, A. F.~M.  \harvardyearleft
   1993\harvardyearright .
@@ -195,6 +212,13 @@ Scott, S.~L.  \harvardyearleft 2011\harvardyearright .
 \newblock Data augmentation, frequentist estimation, and the {Bayesian}
   analysis of multinomial logit models, {\em Statistical Papers} {\bf
   52}(1):~87--109.
+
+\harvarditem[Sondhi et~al.]{Sondhi, Segal, Snider, Humblet \harvardand\
+  McCusker}{2021}{sondhi_bayesian_2021}
+Sondhi, A., Segal, B., Snider, J., Humblet, O. \harvardand\ McCusker, M.
+  \harvardyearleft 2021\harvardyearright .
+\newblock Bayesian additional evidence for decision making under small sample
+  uncertainty, {\em BMC Medical Research Methodology} {\bf 21}(1):~221.
 
 \harvarditem{Tibshirani}{1996}{tibshirani_regression_1996}
 Tibshirani, R.  \harvardyearleft 1996\harvardyearright .
