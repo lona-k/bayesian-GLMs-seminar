@@ -1,9 +1,9 @@
 Generalized linear models (GLMs) are a fundamental tool in statistics and machine learning and are widely applied across various domains.
-Their appeal lies in their simplicity, interpretability, and extensibility.
+Their appeal lies in their simplicity, interpretability, and extensibility \citep{nelder_generalized_1972}.
 However, GLMs also come with limitations:
-They assume linearity on the link-transformed scale, rely on maximum likelihood estimation (MLE), and often fail to capture the full range of uncertainty in predictions and parameter estimates. (TODO: SOURCE)\\
+They rely on maximum likelihood estimation (MLE), offer no mechanism for incorporating prior information or stabilizing inference \citep{gelman_weakly_2008}, and most importantly, only produce point estimates and thus cannot capture the full range of uncertainty in predictions and parameter estimates \citep{tyralis_review_2024}.\\
 
-Bayesian GLMs offer a different viewpoint on GLMs that addresses these shortcomings.
+Bayesian GLMs take on a different viewpoint on GLMs to addresses these shortcomings.
 They offer a natural way to quantify uncertainty with posterior distributions, which is especially useful in data-scarce scenarios.
 For instance, \citet{sondhi_bayesian_2021} demonstrate this in precision oncology, where Bayesian inference compensates for small sample sizes and stabilizes confidence estimation in effect sizes.
 Recent work has also shown that Bayesian regularization techniques can perform on par with or even outperform classic regularization, while also offering greater flexibility and interpretability \citep[see e.g.][]{van_erp_shrinkage_2019,celeux_regularization_2012}.

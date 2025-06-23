@@ -6,6 +6,13 @@ Albert, J.~H. \harvardand\ Chib, S.  \harvardyearleft 1993\harvardyearright .
   {Data}, {\em Journal of the American Statistical Association} {\bf
   88}(422):~669--679.
 
+\harvarditem{Angelopoulos \harvardand\ Bates}{2022}{angelopoulos_gentle_2022}
+Angelopoulos, A.~N. \harvardand\ Bates, S.  \harvardyearleft
+  2022\harvardyearright .
+\newblock A {Gentle} {Introduction} to {Conformal} {Prediction} and
+  {Distribution}-{Free} {Uncertainty} {Quantification}.
+\newblock arXiv:2107.07511 [cs].
+
 \harvarditem{Barbieri}{2015}{barbieri_posterior_2015}
 Barbieri, M.~M.  \harvardyearleft 2015\harvardyearright .
 \newblock Posterior {Predictive} {Distribution}, {\em Wiley {StatsRef}:
@@ -43,6 +50,16 @@ Chien, Y.-F., Zhou, H., Hanson, T. \harvardand\ Lystig, T.  \harvardyearleft
   2023\harvardyearright .
 \newblock Informative g-{Priors} for {Mixed} {Models}, {\em Stats} {\bf
   6}(1):~169--191.
+
+\harvarditem[Dayanik et~al.]{Dayanik, Lewis, Madigan, Menkov \harvardand\
+  Genkin}{2006}{dayanik_constructing_2006}
+Dayanik, A., Lewis, D.~D., Madigan, D., Menkov, V. \harvardand\ Genkin, A.
+  \harvardyearleft 2006\harvardyearright .
+\newblock Constructing informative prior distributions from domain knowledge in
+  text classification, {\em Proceedings of the 29th annual international {ACM}
+  {SIGIR} conference on {Research} and development in information retrieval},
+  {SIGIR} '06, Association for Computing Machinery, New York, NY, USA,
+  pp.~493--500.
 
 \harvarditem{Dellaportas \harvardand\ Smith}{1993}{dellaportas_bayesian_1993}
 Dellaportas, P. \harvardand\ Smith, A. F.~M.  \harvardyearleft
@@ -140,6 +157,14 @@ Holmes, C. \harvardand\ Knorr-Held, L.  \harvardyearleft 2003\harvardyearright
   .
 \newblock Efficient simulation of bayesian logistic regression models.
 
+\harvarditem[Hosack et~al.]{Hosack, Hayes \harvardand\
+  Barry}{2017}{hosack_prior_2017}
+Hosack, G.~R., Hayes, K.~R. \harvardand\ Barry, S.~C.  \harvardyearleft
+  2017\harvardyearright .
+\newblock Prior elicitation for {Bayesian} generalised linear models with
+  application to risk control option assessment, {\em Reliability Engineering
+  \& System Safety} {\bf 167}:~351--361.
+
 \harvarditem{Hsiang}{1975}{hsiang_bayesian_1975}
 Hsiang, T.~C.  \harvardyearleft 1975\harvardyearright .
 \newblock A {Bayesian} {View} on {Ridge} {Regression}, {\em Journal of the
@@ -198,6 +223,19 @@ Park, T. \harvardand\ Casella, G.  \harvardyearleft 2008\harvardyearright .
 \newblock The {Bayesian} {Lasso}, {\em Journal of the American Statistical
   Association} {\bf 103}(482):~681--686.
 
+\harvarditem{Piironen \harvardand\ Vehtari}{2017}{piironen_comparison_2017}
+Piironen, J. \harvardand\ Vehtari, A.  \harvardyearleft 2017\harvardyearright .
+\newblock Comparison of {Bayesian} predictive methods for model selection, {\em
+  Statistics and Computing} {\bf 27}(3):~711--735.
+
+\harvarditem[Polson et~al.]{Polson, ~,  \harvardand\
+  Windle}{2013}{polson_bayesian_2013}
+Polson, N.~G., ~, James~G., S.,  \harvardand\ Windle, J.  \harvardyearleft
+  2013\harvardyearright .
+\newblock Bayesian {Inference} for {Logistic} {Models} {Using}
+  {Pólya}–{Gamma} {Latent} {Variables}, {\em Journal of the American
+  Statistical Association} {\bf 108}(504):~1339--1349.
+
 \harvarditem[Rue et~al.]{Rue, Martino \harvardand\
   Chopin}{2009}{rue_approximate_2009}
 Rue, H., Martino, S. \harvardand\ Chopin, N.  \harvardyearleft
@@ -233,6 +271,12 @@ Tierney, L.,  \harvardand\ Kadane, J.~B.  \harvardyearleft
 \newblock Accurate {Approximations} for {Posterior} {Moments} and {Marginal}
   {Densities}, {\em Journal of the American Statistical Association} {\bf
   81}(393):~82--86.
+
+\harvarditem{Tyralis \harvardand\ Papacharalampous}{2024}{tyralis_review_2024}
+Tyralis, H. \harvardand\ Papacharalampous, G.  \harvardyearleft
+  2024\harvardyearright .
+\newblock A review of predictive uncertainty estimation with machine learning,
+  {\em Artificial Intelligence Review} {\bf 57}(4):~94.
 
 \harvarditem[van Erp et~al.]{van Erp, Oberski \harvardand\
   Mulder}{2019}{van_erp_shrinkage_2019}
