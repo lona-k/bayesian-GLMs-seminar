@@ -1,5 +1,5 @@
 The (frequentist) Linear Regression Model is probably the most widely used model in statistics and machine learning.
-Both the frequentist and the Bayesian Linear Models are described in many introductory texts on statistical modelling, such as \citet{fahrmeir_regression_2021} or \citet{gelman_bayesian_2013}.
+The frequentist and the Bayesian Linear Models are described in many introductory texts on statistical modeling, such as \citet{fahrmeir_regression_2021} or \citet{gelman_bayesian_2013}.
 
 
 \subsection{Model definition}
@@ -63,16 +63,16 @@ The prior distributional assumptions would then be:
     \end{aligned}
 \end{equation}
 
-\footnotetext{Informally stated for demonstational purposes.}
+\footnotetext{Informally stated for demonstration purposes.}
 
 Note that we generally have to be careful with completely flat priors; it is necessary to check if the resulting posterior is proper (which is the case here).\\
 
-Another good solution for use-cases with little prior knowledge that still require a proper posterior is Zellner's g-prior \citep{zellner_assessing_1986}.
+Another good solution for use cases with little prior knowledge that still require a proper posterior is Zellner's g-prior \citep{zellner_assessing_1986}.
 
 \subsubsection*{Regularization Priors} \label{sec:lm-regularization}
 
 % Bayesian penalization techniques perform similarly or sometimes even better, and they offer additional advantages such as readily available uncertainty estimates, automatic estimation of the penalty parameter, and more flexibility in terms of penalties that can be considered.
-Regularization (or penalization) regulates the trade off between model complexity and out-of-sample performance, or equivalently bias vs. variance. 
+Regularization (or penalization) regulates the trade-off between model complexity and out-of-sample performance, or equivalently bias vs. variance. 
 In frequentist statistics, we minimize the Penalized Least Squares criterion (PLS) 
 \begin{equation*}
     \text{PLS}(\btheta) = (\by - \bX \btheta)^\top (\by - \bX \btheta) + \lambda \ \text{pen}(\btheta).
@@ -86,7 +86,7 @@ Concretely:
     \begin{aligned}
         \by \mid \btheta, \ssd &\sim \Ncal(\bX \btheta, \ssd \bI),\footnotemark \\
         \btheta &\sim \text{regularization prior}\\
-        \ssd &\sim \IG(\apri, \bpri),
+        \ssd &\sim \IG(\apri, \bpri).
     \end{aligned}
 \end{equation*}
 
@@ -95,7 +95,7 @@ To be completely accurate, we would need to separate the intercept from $\btheta
 We would then specify the model as $\by \mid \btheta, \ssd \sim \Ncal(\theta_0 \bI + \bX' \btheta', \ssd \bI)$.
 We chose to simplify this and stick to the previously established definitions because we aim for an understandable explanation of the basic concept of Bayesian regularization.}
 
-although there are many options for regularization priors, we are going to focus on regularization priors that align directly with familiar frequentist penalties.\\
+Although there are many options for regularization priors, we are going to focus on regularization priors that align directly with familiar frequentist penalties.\\
 
 \textbf{Ridge regularization} \citep{hoerl_ridge_1970,hoerl_ridge_1970-1} uses $\text{pen}(\btheta) = \|\btheta\|_2^2$ and the Bayesian analogue \Citep[e.g.][]{hsiang_bayesian_1975,mackay_bayesian_1992} specifies
 \begin{equation}\label{eq:ridge}
@@ -103,7 +103,7 @@ although there are many options for regularization priors, we are going to focus
 \end{equation}
 
 with $\taus$ controlling the degree of regularization akin to the role of $\lambda$.
-In constrast to $\lambda$, $\taus$ does not need to be set in advance or optimized as a hyperparameter.
+In contrast to $\lambda$, $\taus$ does not need to be set in advance or optimized as a hyperparameter.
 We can simply embed it in a hierarchical model by specifying a prior for $\taus$, e.g. $\taus \sim \IG(\apri_\tau, \bpri_\tau)$, and estimate it alongside $\btheta$ and $\ssd$.\\
 
 \textbf{Lasso regularization} \citep{tibshirani_regression_1996} uses $\text{pen}(\btheta) = \|\btheta\|_1$ to perform variable selection by setting elements $\theta_j$ of $\btheta$ to $0$ during estimation.
