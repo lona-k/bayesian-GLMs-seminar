@@ -148,7 +148,7 @@ with posterior mean and variance \footnotemark
         \mupo = \Sdpo (\Sdipri \mupri + \bX^\top \by), \quad \Sdpo = (\bX^\top \bX + \Sdipri)^{-1}.
 \end{equation}
 
-\footnotetext{For the full calculation see \autoref{sec:app}}
+\footnotetext{For the full calculation see \Cref{sec:app}}
 
 Integrating out $\ssd$ yields $\btheta \mid \by \sim \Tcal(2 \apo, \mupo, \bpo / \apo \Sdpo)$ and Bayesian credibility intervals can be derived directly from this distribution \citep[see e.g.][]{held_likelihood_2020}.\\
 
@@ -163,7 +163,7 @@ More generally, as the prior variance $\Sdpri$ grows, $\mupo$ approaches $\hbbet
 
 Bayesian Ridge regression is simply the NIG case in \autoref{eq:NIGprior} with finite $\Sdpo$, resulting in the same posterior update in \autoref{eq:NIGpost}.
 By contrast, the Bayesian Lasso's Laplace prior has no closed-form posterior, but we can easily sample from it using Gibbs sampling \citep{park_bayesian_2008}.
-We will go more into depth on approximate inference for Bayesian regression models in \autoref{sec:logit-inf}.
+We will go more into depth on approximate inference for Bayesian regression models in \Cref{sec:logit-inf}.
 
 \subsubsection*{Posterior predictive distribution}
 In many applications, we care more about predictions $\ty$ for new, unseen inputs $\tX$ (or test data $(\ty, \tX)$), independent of the training data $\bD$, than about $\btheta$ itself.
@@ -181,7 +181,7 @@ which is an average of conditional probabilities over the posterior distribution
     We recognize the marginal distribution of $\by$ from Bayes' rule as the normalization constant, i.e., $p(\by) = \int p(\by, \btheta) d\btheta = \int p(\by \mid \btheta) p(\btheta) d\btheta$.
 }
 
-For the NIG prior in \autoref{eq:NIGprior}, one can show\footnote{see \autoref{sec:app}} that
+For the NIG prior in \autoref{eq:NIGprior}, one can show\footnote{see \Cref{sec:app}} that
 \begin{equation*}
     \ty \mid \btheta, \ssd, \by \sim \Tcal(2 \apo, \tX \btheta, \frac{\bpo}{\apo} (\bI + \tX \Sdpo \tX^\top)).
 \end{equation*}
@@ -189,4 +189,4 @@ For the NIG prior in \autoref{eq:NIGprior}, one can show\footnote{see \autoref{s
 Interestingly, the posterior predictive mean $\mupo = \tX \btheta$ of the t-distribution coincides with the least squares prediction and its scale matrix reflects both observational noise and posterior uncertainty.
 Bayesian inference with the Gaussian conjugate is more thoroughly described by \citet{murphy_conjugate_nodate}.\\
 
-If no closed form exists, the PPD can also be simulated (see \autoref{sec:logit-inf})
+If no closed form exists, the PPD can also be simulated (see \Cref{sec:logit-inf})

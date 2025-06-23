@@ -28,12 +28,12 @@ where $\sigma(\bx_i \btheta) = \frac{\exp(\bx_i \btheta)}{1 + \exp(\bx_i \btheta
 \subsubsection*{Prior choice}
 
 Unlike the Gaussian linear model, the logistic likelihood breaks conjugacy.
-Nevertheless, we can use a Gaussian prior (\autoref{eq:NIGprior}) or an (improper) flat prior (\autoref{eq:flat-prior}) for $\btheta$, but both require approximate inference (see \autoref{sec:logit-inf}).\\
+Nevertheless, we can use a Gaussian prior (\autoref{eq:NIGprior}) or an (improper) flat prior (\autoref{eq:flat-prior}) for $\btheta$, but both require approximate inference (see \Cref{sec:logit-inf}).\\
 
 To address separation (i.e.\@ perfect prediction) and to induce shrinkage, heavier-tailed priors are commonly employed.
 \citet{gelman_weakly_2008} introduced the t-distribution as a prior for low-information settings and mentions the Cauchy distribution as another possibility, which is elaborated on by \Citet{ghosh_use_2017}.\\
 
-\textbf{Regularization} can also be achieved with the same prior distributions as introduced for Bayesian linear regression in \autoref{sec:lm-regularization} \Citep[see e.g.][]{van_erp_shrinkage_2019,fahrmeir_bayesian_2010,ohara_review_2009}.
+\textbf{Regularization} can also be achieved with the same prior distributions as introduced for Bayesian linear regression in \Cref{sec:lm-regularization} \Citep[see e.g.][]{van_erp_shrinkage_2019,fahrmeir_bayesian_2010,ohara_review_2009}.
 
 \subsection{Approximate Bayesian inference} \label{sec:logit-inf}
 
