@@ -4,7 +4,7 @@ The frequentist and the Bayesian linear models are described in many introductor
 
 \subsection{Model Definition}
 
-We observe an i.i.d. sample $\bD = ((y_1, \bx_1), \dots, (y_n, \bx_n))= (\by, \bX)$ and assume a linear relationship between $\bX$ and $\by$.
+We observe an independent and identically distributed (i.i.d.) sample $\bD = (\by, \bX)$ with $n$ observations and $p$ covariates and assume a linear relationship between $\bX$ and $\by$.\footnote{For a detailed explanation of the notation see \Cref{sec:app}.}
 The frequentist linear regression model then assumes
 \begin{equation} \label{eq:LM}
     \by \sim \Ncal(\bX \btheta, \ssd \bI),
@@ -58,15 +58,14 @@ We can easily see that with this assumption, the prior for $\btheta$ becomes ver
 The prior distributional assumptions would then be:
 \begin{equation} \label{eq:flat-prior}
     \begin{aligned}
-        \btheta \mid \ssd &\overset{a}{\sim}  \Ncal(\mupri, \ssd \infty)\footnotemark, \quad p(\btheta\mid \ssd) &\propto 1\\
-        \ssd &\sim \IG(-\frac{p}{2},  0), \quad p(\ssd) &\propto \frac{1}{\ssd}
+        \btheta \mid \ssd &\overset{a}{\sim}  \Ncal(\mupri, \ssd \infty)\footnotemark, \quad &p(\btheta\mid \ssd) \propto 1\\
+        \ssd &\sim \IG(-\frac{p}{2},  0), \quad &p(\ssd) \propto \frac{1}{\ssd}
     \end{aligned}
 \end{equation}
 
 \footnotetext{Informally stated for demonstration purposes.}
 
-Note that we generally have to be careful with completely flat priors; it is necessary to check if the resulting posterior is proper (which is the case here).\\
-
+Note that we generally have to be careful with completely flat priors because they often result in improper posteriors (SOURCE). It is generally necessary to check if the resulting posterior is proper (which is the case here).
 Another good solution for use cases with little prior knowledge that still require a proper posterior is Zellner's g-prior \citep{zellner_assessing_1986}.
 
 \subsubsection*{Regularization Priors} \label{sec:lm-regularization}
@@ -108,7 +107,7 @@ We can simply embed it in a hierarchical model by specifying a prior for $\taus$
 
 \textbf{LASSO} (least absolute shrinkage and selection operator) \textbf{regularization} \citep{tibshirani_regression_1996} uses $\text{pen}(\btheta) = \|\btheta\|_1$ to perform variable selection by setting elements $\theta_j$ of $\btheta$ to $0$ during estimation.
 This means that LASSO regularization promotes a \textit{sparse} solution.
-The Bayesian LASSO specifies a Laplace prior on $\btheta$ via the scale-mixture representation \citep{park_bayesian_2008}
+The Bayesian LASSO specifies a Laplace prior on $\btheta$ via the scale mixture representation \citep{park_bayesian_2008}
 \begin{equation}\label{eq:lasso}
     \begin{aligned}
         \btheta \mid \btaus &\sim \Ncal(\bnull, \btaus \bI) \\
@@ -152,16 +151,16 @@ with posterior mean and variance \footnotemark
 
 Integrating out $\ssd$ yields $\btheta \mid \by \sim \Tcal(2 \apo, \mupo, \bpo / \apo \Sdpo)$ and Bayesian credibility intervals can be derived directly from this distribution \citep[see e.g.][on how to do this]{held_likelihood_2020}.\\
 
-Since we defined the non-information prior \autoref{eq:flat-prior} as a special case of the NIG-distributed prior, we can use \autoref{eq:NIGpost} to directly calculate the posterior mean and variance as
+Since we defined the non-information prior (\autoref{eq:flat-prior}) as a special case of the NIG-distributed prior, we can use \autoref{eq:NIGpost} to directly calculate the posterior mean and variance as
 \begin{equation*}
         \mupo = (\bX^\top \bX)^{-1} \bX^\top \by, \quad
         \Sdpo = \bX^\top \bX.
 \end{equation*}
 
-The posterior mean $\mupo$ coincides with $\hbbeta_{LS}$ (\autoref{eq:LSE}), so a Bayesian linear model with a non-informative prior converges to the frequentist solution.
-More generally, as the prior variance $\Sdpri$ grows, $\mupo$ approaches $\hbbeta_{LS}$, since the likelihood (and thus the data) dominates the posterior.\\
+The posterior mean $\mupo$ coincides with $\hbtheta_{LS}$ (\autoref{eq:LSE}), which means that a Bayesian linear model with a non-informative prior converges to the frequentist solution.
+More generally, as the prior variance $\Sdpri$ grows, $\mupo$ approaches $\hbtheta_{LS}$, since the likelihood (and thus the data) dominates the posterior.\\
 
-Bayesian ridge regression is simply the NIG case in \autoref{eq:NIGprior} with finite $\Sdpo$, resulting in the same posterior update in \autoref{eq:NIGpost}.
+Because Bayesian ridge regression is simply the NIG case of \autoref{eq:NIGprior} with finite $\Sdpo$, inference results in the same posterior update as in \autoref{eq:NIGpost}.
 By contrast, the Bayesian LASSO's Laplace prior has no closed form posterior, but we can easily sample from it using Gibbs sampling \citep{park_bayesian_2008}.
 We will go more into depth on approximate inference for Bayesian regression models in \Cref{sec:logit-inf}.
 

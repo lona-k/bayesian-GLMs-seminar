@@ -9,7 +9,7 @@ We now apply three of the previously discussed priors to linear and logistic mod
             &n = 150,\; n_{train} = 100,\;n_{test} = 50 \\
             &\btheta = (2, 1.5, 0, 0, 0) \\
             &\bX \sim \Ncal(\bnull, \bI) \\
-            &\text{linear: } \by \mid \btheta \sim \Ncal(\bX \btheta,\bI)\quad \text{logistic: } \by \sim \text{Ber}(\sigma(\bX \btheta)).
+            &\text{linear: } \by \mid \btheta \sim \Ncal(\bX \btheta,\bI)\quad \text{logistic: } \by \mid \btheta \sim \text{Ber}(\sigma(\bX \btheta)).
         \end{aligned}
     \end{equation*}
     \item \textbf{Scenario B}: a low-information setting where $n \approx p$ with collinearity between informative and non-informative covariates:
@@ -31,13 +31,13 @@ We now apply three of the previously discussed priors to linear and logistic mod
                     0.8 & 1   & 0.8\\
                     0.8 & 0.8 & 1
                     \end{pmatrix}\\
-            &\text{linear: } \by \mid \btheta \sim \Ncal(\bX \btheta, \bI)\quad \text{logistic: } \by \sim \text{Ber}(\sigma(\bX \btheta)).
+            &\text{linear: } \by \mid \btheta \sim \Ncal(\bX \btheta, \bI)\quad \text{logistic: } \by \mid \btheta \sim \text{Ber}(\sigma(\bX \btheta)).
         \end{aligned}
     \end{equation*}
 \end{itemize}
 
-For each scenario, we fit three linear and three logistic regression models using the following priors: A flat prior as a benchmark, using the conjugate setting described in \autoref{eq:flat-prior} with the R-package \texttt{brms}\footnote{The Gaussian prior variance was set to $10^6$ and for the Gamma prior we set $a = 0.001, b=0.001$ which results in an uninformative prior.}.
-We fit a ridge prior (see \autoref{eq:ridge}) and a LASSO prior (see \autoref{eq:lasso}) via the \texttt{bayesreg} package with automatic optimization of the regularization parameters $\tau^2$ and $\lambda^2$.
+For each scenario, we fit three linear and three logistic regression models using the following priors: A flat prior as a benchmark, using the conjugate setting described in \autoref{eq:flat-prior} with the R-package \texttt{brms} \citep{brms_2017}.\footnote{To obtain a virtually flat prior, the Gaussian prior variance was set to $10^6$ and the Gamma prior parameters were set to $a = 0.001, b=0.001$, which results in an uninformative prior.} 
+We fit a ridge prior (see \autoref{eq:ridge}) and a LASSO prior (see \autoref{eq:lasso}) via the \texttt{bayesreg} package \citep{makalic_bayesreg_2016} with automatic optimization of the regularization parameters $\tau^2$ and $\lambda^2$.
 For all models, we ran MCMC with 20,000 iterations, a 1,000 burn-in, and a thinning interval of 10.
 
 Although ridge and LASSO shrink coefficients, they do not perform variable selection by themselves.
@@ -82,10 +82,10 @@ Our evaluation focuses on:
         & 1 &  0 &   -0.493     \\
         \bottomrule
     \end{tabular}
-    \caption{Evaluation metrics under scenarios A and B.
+    \caption{Evaluation metrics under Scenarios A and B.
     For linear regression, all priors correctly identified the influential variables and produced few or no false positives.
     The effect of regularization is more pronounced in logistic regression: in both scenarios, the regularized models (LASSO and ridge) declared fewer coefficients as influential and reduced false positives.
-    In the low-information scenario B, regularization priors improved both variable selection and the predictive accuracy (MLPPD).
+    In the low-information Scenario B, regularization priors improved both variable selection and the predictive accuracy (MLPPD).
     Except under the flat prior, Bayesian logistic regression achieved slightly better predictive performance than linear regression, though differences in MLPPD between priors were small.
     }
     \label{tab:reg_AB}
@@ -97,7 +97,7 @@ Our evaluation focuses on:
     \caption{Estimated model parameters with 95\% credibility intervals (CI).
     True parameter values are shown as black crosses.
     Linear models yielded more accurate estimates with narrower CIs than logistic models.
-    In scenario B, the uncertainty of the unregularized logistic model becomes especially pronounced, illustrating the need for regularization in high-dimensional, low-information settings.
+    In Scenario B, the uncertainty of the unregularized logistic model becomes especially pronounced, illustrating the need for regularization in high-dimensional, low-information settings.
     }
     \label{fig:reg-params}
 \end{figure}
@@ -115,9 +115,9 @@ We generate 1,000 synthetic data sets with $n=100$:
 \end{equation*}
 
 Each data set was used to fit one linear and one logistic model, using both inference approaches.
-We assumed $\btheta \sim \Ncal(0, 10 \bI)$ and fixed residual variance  at $\ssd = 10$.
-For LA, we used \texttt{r-INLA} with settings to default from INLA to simple LA.
-For MCMC, we used the \texttt{MCMCglmm} package with settings specifically to use Metropolis-Hastings, a relatively small sample size of 5,000, a burn-in period of 500, and a thinning interval of 10.
+We assumed $\btheta \sim \Ncal(0, 10 \cdot \bI)$ and fixed residual variance  at $\ssd = 10$.
+For LA, we used \texttt{r-INLA} \citep[][\url{ www.r-inla.org}]{rue_approximate_2009} with settings to default from INLA to simple LA.
+For MCMC, we used the \texttt{MCMCglmm} package \citep{MCMCglmm_2010} with settings specifically to use Metropolis-Hastings, a relatively small sample size of 5,000, a burn-in period of 500, and a thinning interval of 10.
 For each method, we recorded CPU runtime, posterior means, and posterior standard deviations of the estimated parameters.\\
 
 \begin{figure}[htbp]

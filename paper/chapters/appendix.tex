@@ -1,8 +1,14 @@
 \subsection*{Notation}
 
-We denote prior parameters with $\breve{}$ and posterior parameters with $\post{}$. Vectors are written in bold-face like so $\bx$ and matrices are bold capital letters $\bX$. In general, we assume $n$ observations and $p-1$ covariates (which means that the intercept $\theta_0$ is always included in $\btheta$ and that $\bX = \begin{pmatrix}
-    \bm{1} & \bx_1 & \cdots & \bx_{p-1}
-\end{pmatrix}$)
+We denote prior parameters with $\breve{}$ and posterior parameters with $\post{}$. Vectors are written in bold-face like so $\bx$ and matrices are bold capital letters $\bX$. In general, we assume $n$ observations and $p$ covariates. The intercept $\theta_0$ is always included in $\btheta$ and thus \begin{equation*}
+    \btheta = \begin{pmatrix} \theta_0 \\ \theta_1 \\ \vdots \\ \theta_{p} \end{pmatrix}, \quad
+    \bX = \begin{pmatrix}
+        1 & x_{11} & \cdots & x_{1p} \\
+        1 & x_{21} & \cdots & x_{2p} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        1 & x_{n1} & \cdots & x_{np} \\
+    \end{pmatrix}.
+\end{equation*}
 
 
 \subsection*{Proofs and Derivations}

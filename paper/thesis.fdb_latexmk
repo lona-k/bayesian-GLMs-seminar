@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex thesis"] 1750682573 "thesis.aux" "thesis.bbl" "thesis" 1750685267
+["bibtex thesis"] 1750691469 "thesis.aux" "thesis.bbl" "thesis" 1750691606
   "/usr/local/texlive/2022/texmf-dist/bibtex/bst/harvard/dcu.bst" 1233413381 25669 0768d98a028900c057124e4d82e12771 ""
-  "bibliography.bib" 1750073794 105399 379d6c45c801bb4f6ddeba6c21480d80 ""
-  "thesis.aux" 1750685267 13720 f104216ddfa665e0e43d47fd0395351b "pdflatex"
+  "bibliography.bib" 1750691115 106269 68e59dde040fb4d1deb128a9f4a3400f ""
+  "thesis.aux" 1750691606 14019 65fe82202bca6da23a66a17ae14db3a3 "pdflatex"
   (generated)
   "thesis.bbl"
   "thesis.blg"
-["pdflatex"] 1750685264 "/Users/lona/Documents/repos/probML_seminar/paper/thesis.tex" "thesis.pdf" "thesis" 1750685267
+["pdflatex"] 1750691602 "/Users/lona/Documents/repos/probML_seminar/paper/thesis.tex" "thesis.pdf" "thesis" 1750691606
   "../figures/approx_class.png" 1750685068 112363 80396f760c98ef662e0d8ea992f76075 ""
   "../figures/approx_regr.png" 1750685068 130099 321fafa46aeb984a960dba85cd03559e ""
   "../figures/reg_all.png" 1750674841 226524 b0caecb029741fc9c5597ec3994fce55 ""
@@ -81,7 +81,6 @@
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1248133631 30251 6afa5cb1d0204815a708a080681d4674 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1248133631 36741 fa121aac0049305630cf160b86157ee4 ""
-  "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb" 1248133631 37166 8ab3487cbe3ab49ebce74c29ea2418db ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1248133631 36281 c355509802a035cadc5f15869451dcee ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1248133631 35469 70d41d2b9ea31d5d813066df7c99281c ""
   "/usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb" 1248133631 36912 b448ef9ad9d7228ec3c6e71005136d55 ""
@@ -189,19 +188,19 @@
   "/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1647878959 4410336 7d30a02e9fa9a16d7d1f8d037ba69641 ""
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1679251587 2826450 2c7c0babe92020e1e7f4500134b99f5f ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
-  "chapters/appendix.tex" 1749578592 3220 58c996ddf43e5d6332a8a2487d095572 ""
-  "chapters/chapter_2.tex" 1750681188 11788 5eb94bc052651764ff25c401189cb0e6 ""
-  "chapters/chapter_3.tex" 1750681736 8335 edfc6f3b4ade65a70b4467446d9292cd ""
-  "chapters/chapter_4.tex" 1750685264 8405 0d0f0b9043a983aac26eae09240b73d3 ""
+  "chapters/appendix.tex" 1750690958 3462 16e38e1f6227150c3333e128a1254d31 ""
+  "chapters/chapter_2.tex" 1750691321 12009 6a83e64064a77cf3bfdaa2958a923909 ""
+  "chapters/chapter_3.tex" 1750691602 8422 2dd1848c4f4efa6749a3f36fe2a698c4 ""
+  "chapters/chapter_4.tex" 1750691465 8609 36440f8a49408572e82b6055c621af17 ""
   "chapters/conclusion.tex" 1750685111 2090 6cd2290b98674410e1dc860d5e922615 ""
   "chapters/introduction.tex" 1750680224 1878 3b44ea90aee78c06cfb9220f0d2c04dd ""
   "shortcuts.tex" 1749549341 4325 33a7ab15141d4d691c94e3cf23c4a80a ""
   "sigillum.png" 1747903044 320585 57131ef3bcfba901e575bf6769aac43e ""
-  "thesis.aux" 1750685267 13720 f104216ddfa665e0e43d47fd0395351b "pdflatex"
-  "thesis.bbl" 1750682573 12358 34f88c681a020a8edf52e44212aca1f1 "bibtex thesis"
-  "thesis.out" 1750685267 2682 e05959107b8892abba074228b5c9f2e8 "pdflatex"
+  "thesis.aux" 1750691606 14019 65fe82202bca6da23a66a17ae14db3a3 "pdflatex"
+  "thesis.bbl" 1750691469 13269 90fc4e3e30da16f7b52ec83b05aab7c1 "bibtex thesis"
+  "thesis.out" 1750691606 2682 e05959107b8892abba074228b5c9f2e8 "pdflatex"
   "thesis.tex" 1750680224 5897 fa53b7bdcb49b382883627d87d125a02 ""
-  "thesis.toc" 1750685267 1292 0f21af9b229ce55bb827e6466253aa13 "pdflatex"
+  "thesis.toc" 1750691606 1292 0f21af9b229ce55bb827e6466253aa13 "pdflatex"
   (generated)
   "thesis.aux"
   "thesis.log"

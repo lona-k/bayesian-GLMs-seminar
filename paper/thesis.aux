@@ -89,19 +89,23 @@
 \citation{rue_approximate_2009}
 \newlabel{eq:ppd-sample}{{10}{8}{Posterior Predictive Distribution}{equation.3.10}{}}
 \newlabel{eq:ppd-sample@cref}{{[equation][10][]10}{[1][8][]8}}
+\citation{brms_2017}
+\citation{makalic_bayesreg_2016}
 \citation{van_erp_shrinkage_2019}
 \citation{gelman_understanding_2013}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Illustrative Examples}{9}{section.4}\protected@file@percent }
 \newlabel{sec:simulation}{{4}{9}{Illustrative Examples}{section.4}{}}
 \newlabel{sec:simulation@cref}{{[section][4][]4}{[1][9][]9}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Regularization and Variable Selection}{9}{subsection.4.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Evaluation metrics under scenarios A and B. For linear regression, all priors correctly identified the influential variables and produced few or no false positives. The effect of regularization is more pronounced in logistic regression: in both scenarios, the regularized models (LASSO and ridge) declared fewer coefficients as influential and reduced false positives. In the low-information scenario B, regularization priors improved both variable selection and the predictive accuracy (MLPPD). Except under the flat prior, Bayesian logistic regression achieved slightly better predictive performance than linear regression, though differences in MLPPD between priors were small. \relax }}{10}{table.caption.12}\protected@file@percent }
+\citation{rue_approximate_2009}
+\citation{MCMCglmm_2010}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Evaluation metrics under Scenarios A and B. For linear regression, all priors correctly identified the influential variables and produced few or no false positives. The effect of regularization is more pronounced in logistic regression: in both scenarios, the regularized models (LASSO and ridge) declared fewer coefficients as influential and reduced false positives. In the low-information Scenario B, regularization priors improved both variable selection and the predictive accuracy (MLPPD). Except under the flat prior, Bayesian logistic regression achieved slightly better predictive performance than linear regression, though differences in MLPPD between priors were small. \relax }}{10}{table.caption.12}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:reg_AB}{{1}{10}{Evaluation metrics under scenarios A and B. For linear regression, all priors correctly identified the influential variables and produced few or no false positives. The effect of regularization is more pronounced in logistic regression: in both scenarios, the regularized models (LASSO and ridge) declared fewer coefficients as influential and reduced false positives. In the low-information scenario B, regularization priors improved both variable selection and the predictive accuracy (MLPPD). Except under the flat prior, Bayesian logistic regression achieved slightly better predictive performance than linear regression, though differences in MLPPD between priors were small. \relax }{table.caption.12}{}}
+\newlabel{tab:reg_AB}{{1}{10}{Evaluation metrics under Scenarios A and B. For linear regression, all priors correctly identified the influential variables and produced few or no false positives. The effect of regularization is more pronounced in logistic regression: in both scenarios, the regularized models (LASSO and ridge) declared fewer coefficients as influential and reduced false positives. In the low-information Scenario B, regularization priors improved both variable selection and the predictive accuracy (MLPPD). Except under the flat prior, Bayesian logistic regression achieved slightly better predictive performance than linear regression, though differences in MLPPD between priors were small. \relax }{table.caption.12}{}}
 \newlabel{tab:reg_AB@cref}{{[table][1][]1}{[1][9][]10}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Performance of Approximate Inference Algorithms}{10}{subsection.4.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Estimated model parameters with 95\% credibility intervals (CI). True parameter values are shown as black crosses. Linear models yielded more accurate estimates with narrower CIs than logistic models. In scenario B, the uncertainty of the unregularized logistic model becomes especially pronounced, illustrating the need for regularization in high-dimensional, low-information settings. \relax }}{11}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:reg-params}{{1}{11}{Estimated model parameters with 95\% credibility intervals (CI). True parameter values are shown as black crosses. Linear models yielded more accurate estimates with narrower CIs than logistic models. In scenario B, the uncertainty of the unregularized logistic model becomes especially pronounced, illustrating the need for regularization in high-dimensional, low-information settings. \relax }{figure.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Estimated model parameters with 95\% credibility intervals (CI). True parameter values are shown as black crosses. Linear models yielded more accurate estimates with narrower CIs than logistic models. In Scenario B, the uncertainty of the unregularized logistic model becomes especially pronounced, illustrating the need for regularization in high-dimensional, low-information settings. \relax }}{11}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:reg-params}{{1}{11}{Estimated model parameters with 95\% credibility intervals (CI). True parameter values are shown as black crosses. Linear models yielded more accurate estimates with narrower CIs than logistic models. In Scenario B, the uncertainty of the unregularized logistic model becomes especially pronounced, illustrating the need for regularization in high-dimensional, low-information settings. \relax }{figure.caption.13}{}}
 \newlabel{fig:reg-params@cref}{{[figure][1][]1}{[1][9][]11}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  Bayesian linear regression: Comparison of LA (red) and MCMC (blue) across 1,000 simulations. MCMC is faster in this case. Both methods estimate the parameters accurately, though LA yields higher posterior uncertainty. \relax }}{11}{figure.caption.14}\protected@file@percent }
 \newlabel{fig:approx-regr}{{2}{11}{Bayesian linear regression: Comparison of LA (red) and MCMC (blue) across 1,000 simulations. MCMC is faster in this case. Both methods estimate the parameters accurately, though LA yields higher posterior uncertainty. \relax }{figure.caption.14}{}}
@@ -126,38 +130,41 @@
 \bibcite{albert_bayesian_1993}{{1}{1993}{{Albert and\ Chib}}{{}}}
 \bibcite{barbieri_posterior_2015}{{2}{2015}{{Barbieri}}{{}}}
 \bibcite{box_sampling_1980}{{3}{1980}{{Box}}{{}}}
-\bibcite{carvalho_horseshoe_2010}{{4}{2010}{{Carvalho et~al.}}{{Carvalho, Polson and\ Scott}}}
-\bibcite{celeux_regularization_2012}{{5}{2012}{{Celeux et~al.}}{{Celeux, Anbari, Marin and\ Robert}}}
-\bibcite{chien_informative_2023}{{6}{2023}{{Chien et~al.}}{{Chien, Zhou, Hanson and\ Lystig}}}
-\bibcite{dellaportas_bayesian_1993}{{7}{1993}{{Dellaportas and\ Smith}}{{}}}
-\bibcite{fahrmeir_bayesian_2010}{{8}{2010}{{Fahrmeir et~al.}}{{Fahrmeir, Kneib and\ Konrath}}}
-\bibcite{fahrmeir_regression_2021}{{9}{2021}{{Fahrmeir et~al.}}{{Fahrmeir, Kneib, Lang and\ Marx}}}
-\bibcite{fruhwirth-schnatter_auxiliary_2007}{{10}{2007}{{Frühwirth-Schnatter and\ Frühwirth}}{{}}}
-\bibcite{gamerman_markov_1998}{{11}{1998}{{Gamerman}}{{}}}
-\bibcite{gelman_bayesian_2013}{{12}{2013}{{Gelman, Carlin, Stern, Dunson, Vehtari and\ Rubin}}{{}}}
-\bibcite{gelman_understanding_2013}{{13}{2013}{{Gelman, Hwang and\ Vehtari}}{{}}}
-\bibcite{gelman_weakly_2008}{{14}{2008}{{Gelman et~al.}}{{Gelman, Jakulin, Pittau and\ Su}}}
-\bibcite{ghosh_use_2017}{{15}{2017}{{Ghosh et~al.}}{{Ghosh, Li and\ Mitra}}}
-\bibcite{hastings_monte_1970}{{16}{1970}{{Hastings}}{{}}}
-\bibcite{held_likelihood_2020}{{17}{2020}{{Held and\ Sabanés~Bové}}{{}}}
-\bibcite{hoerl_ridge_1970}{{18}{1970a}{{Hoerl and\ Kennard}}{{}}}
-\bibcite{hoerl_ridge_1970-1}{{19}{1970b}{{Hoerl and\ Kennard}}{{}}}
-\bibcite{holmes_efficient_nodate}{{20}{n.d.}{{Holmes}}{{}}}
-\bibcite{hsiang_bayesian_1975}{{21}{1975}{{Hsiang}}{{}}}
-\bibcite{lenk_bayesian_2000}{{22}{2000}{{Lenk and\ DeSarbo}}{{}}}
-\bibcite{mackay_bayesian_1992}{{23}{1992}{{MacKay}}{{}}}
-\bibcite{mitchell_bayesian_1988}{{24}{1988}{{Mitchell and\ Beauchamp}}{{}}}
-\bibcite{murphy_conjugate_nodate}{{25}{n.d.}{{Murphy}}{{}}}
-\bibcite{neal_probabilistic_1993}{{26}{1993}{{Neal}}{{}}}
-\bibcite{nelder_generalized_1972}{{27}{1972}{{Nelder and\ Wedderburn}}{{}}}
-\bibcite{ohara_review_2009}{{28}{2009}{{O'Hara and\ Sillanpää}}{{}}}
-\bibcite{park_bayesian_2008}{{29}{2008}{{Park and\ Casella}}{{}}}
-\bibcite{rue_approximate_2009}{{30}{2009}{{Rue et~al.}}{{Rue, Martino and\ Chopin}}}
-\bibcite{scott_data_2011}{{31}{2011}{{Scott}}{{}}}
-\bibcite{sondhi_bayesian_2021}{{32}{2021}{{Sondhi et~al.}}{{Sondhi, Segal, Snider, Humblet and\ McCusker}}}
-\bibcite{tibshirani_regression_1996}{{33}{1996}{{Tibshirani}}{{}}}
-\bibcite{tierney_accurate_1986}{{34}{1986}{{Tierney et~al.}}{{Tierney, and\ Kadane}}}
-\bibcite{van_erp_shrinkage_2019}{{35}{2019}{{van Erp et~al.}}{{van Erp, Oberski and\ Mulder}}}
-\bibcite{west_dynamic_1985}{{36}{1985}{{West et~al.}}{{West, ~, and\ Migon}}}
-\bibcite{zellner_assessing_1986}{{37}{1986}{{Zellner}}{{}}}
+\bibcite{brms_2017}{{4}{2017}{{Bürkner}}{{}}}
+\bibcite{carvalho_horseshoe_2010}{{5}{2010}{{Carvalho et~al.}}{{Carvalho, Polson and\ Scott}}}
+\bibcite{celeux_regularization_2012}{{6}{2012}{{Celeux et~al.}}{{Celeux, Anbari, Marin and\ Robert}}}
+\bibcite{chien_informative_2023}{{7}{2023}{{Chien et~al.}}{{Chien, Zhou, Hanson and\ Lystig}}}
+\bibcite{dellaportas_bayesian_1993}{{8}{1993}{{Dellaportas and\ Smith}}{{}}}
+\bibcite{fahrmeir_bayesian_2010}{{9}{2010}{{Fahrmeir et~al.}}{{Fahrmeir, Kneib and\ Konrath}}}
+\bibcite{fahrmeir_regression_2021}{{10}{2021}{{Fahrmeir et~al.}}{{Fahrmeir, Kneib, Lang and\ Marx}}}
+\bibcite{fruhwirth-schnatter_auxiliary_2007}{{11}{2007}{{Frühwirth-Schnatter and\ Frühwirth}}{{}}}
+\bibcite{gamerman_markov_1998}{{12}{1998}{{Gamerman}}{{}}}
+\bibcite{gelman_bayesian_2013}{{13}{2013}{{Gelman, Carlin, Stern, Dunson, Vehtari and\ Rubin}}{{}}}
+\bibcite{gelman_understanding_2013}{{14}{2013}{{Gelman, Hwang and\ Vehtari}}{{}}}
+\bibcite{gelman_weakly_2008}{{15}{2008}{{Gelman et~al.}}{{Gelman, Jakulin, Pittau and\ Su}}}
+\bibcite{ghosh_use_2017}{{16}{2017}{{Ghosh et~al.}}{{Ghosh, Li and\ Mitra}}}
+\bibcite{MCMCglmm_2010}{{17}{2010}{{Hadfield}}{{}}}
+\bibcite{hastings_monte_1970}{{18}{1970}{{Hastings}}{{}}}
+\bibcite{held_likelihood_2020}{{19}{2020}{{Held and\ Sabanés~Bové}}{{}}}
+\bibcite{hoerl_ridge_1970}{{20}{1970a}{{Hoerl and\ Kennard}}{{}}}
+\bibcite{hoerl_ridge_1970-1}{{21}{1970b}{{Hoerl and\ Kennard}}{{}}}
+\bibcite{holmes_efficient_nodate}{{22}{2003}{{Holmes and\ Knorr-Held}}{{}}}
+\bibcite{hsiang_bayesian_1975}{{23}{1975}{{Hsiang}}{{}}}
+\bibcite{lenk_bayesian_2000}{{24}{2000}{{Lenk and\ DeSarbo}}{{}}}
+\bibcite{mackay_bayesian_1992}{{25}{1992}{{MacKay}}{{}}}
+\bibcite{makalic_bayesreg_2016}{{26}{2016}{{Makalic and\ Schmidt}}{{}}}
+\bibcite{mitchell_bayesian_1988}{{27}{1988}{{Mitchell and\ Beauchamp}}{{}}}
+\bibcite{murphy_conjugate_nodate}{{28}{2007}{{Murphy}}{{}}}
+\bibcite{neal_probabilistic_1993}{{29}{1993}{{Neal}}{{}}}
+\bibcite{nelder_generalized_1972}{{30}{1972}{{Nelder and\ Wedderburn}}{{}}}
+\bibcite{ohara_review_2009}{{31}{2009}{{O'Hara and\ Sillanpää}}{{}}}
+\bibcite{park_bayesian_2008}{{32}{2008}{{Park and\ Casella}}{{}}}
+\bibcite{rue_approximate_2009}{{33}{2009}{{Rue et~al.}}{{Rue, Martino and\ Chopin}}}
+\bibcite{scott_data_2011}{{34}{2011}{{Scott}}{{}}}
+\bibcite{sondhi_bayesian_2021}{{35}{2021}{{Sondhi et~al.}}{{Sondhi, Segal, Snider, Humblet and\ McCusker}}}
+\bibcite{tibshirani_regression_1996}{{36}{1996}{{Tibshirani}}{{}}}
+\bibcite{tierney_accurate_1986}{{37}{1986}{{Tierney et~al.}}{{Tierney, and\ Kadane}}}
+\bibcite{van_erp_shrinkage_2019}{{38}{2019}{{van Erp et~al.}}{{van Erp, Oberski and\ Mulder}}}
+\bibcite{west_dynamic_1985}{{39}{1985}{{West et~al.}}{{West, ~, and\ Migon}}}
+\bibcite{zellner_assessing_1986}{{40}{1986}{{Zellner}}{{}}}
 \gdef \@abspage@last{22}

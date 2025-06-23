@@ -22,6 +22,11 @@ Box, G. E.~P.  \harvardyearleft 1980\harvardyearright .
   (General)} {\bf 143}(4):~383--430.
 \newblock Publisher: [Royal Statistical Society, Oxford University Press].
 
+\harvarditem{Bürkner}{2017}{brms_2017}
+Bürkner, P.-C.  \harvardyearleft 2017\harvardyearright .
+\newblock {brms}: An {R} package for {Bayesian} multilevel models using {Stan},
+  {\em Journal of Statistical Software} {\bf 80}(1):~1--28.
+
 \harvarditem[Carvalho et~al.]{Carvalho, Polson \harvardand\
   Scott}{2010}{carvalho_horseshoe_2010}
 Carvalho, C.~M., Polson, N.~G. \harvardand\ Scott, J.~G.  \harvardyearleft
@@ -111,6 +116,13 @@ Ghosh, J., Li, Y. \harvardand\ Mitra, R.  \harvardyearleft
   {Logistic} {Regression}.
 \newblock arXiv:1507.07170 [stat].
 
+\harvarditem{Hadfield}{2010}{MCMCglmm_2010}
+Hadfield, J.~D.  \harvardyearleft 2010\harvardyearright .
+\newblock Mcmc methods for multi-response generalized linear mixed models: The
+  {MCMCglmm} {R} package, {\em Journal of Statistical Software} {\bf
+  33}(2):~1--22.
+\newline\harvardurl{https://www.jstatsoft.org/v33/i02/}
+
 \harvarditem{Hastings}{1970}{hastings_monte_1970}
 Hastings, W.~K.  \harvardyearleft 1970\harvardyearright .
 \newblock Monte {Carlo} {Sampling} {Methods} {Using} {Markov} {Chains} and
@@ -140,9 +152,10 @@ Hoerl, A.~E. \harvardand\ Kennard, R.~W.  \harvardyearleft
 \newblock Publisher: [Taylor \& Francis, Ltd., American Statistical
   Association, American Society for Quality].
 
-\harvarditem{Holmes}{n.d.}{holmes_efficient_nodate}
-Holmes, K.-H.  \harvardyearleft n.d.\harvardyearright .
-\newblock Efficient simulation of {Bayesian} logistic regression models.
+\harvarditem{Holmes \harvardand\ Knorr-Held}{2003}{holmes_efficient_nodate}
+Holmes, C. \harvardand\ Knorr-Held, L.  \harvardyearleft 2003\harvardyearright
+  .
+\newblock Efficient simulation of bayesian logistic regression models.
 
 \harvarditem{Hsiang}{1975}{hsiang_bayesian_1975}
 Hsiang, T.~C.  \harvardyearleft 1975\harvardyearright .
@@ -163,14 +176,21 @@ MacKay, D. J.~C.  \harvardyearleft 1992\harvardyearright .
 \newblock Bayesian {Interpolation}, {\em Neural Computation} {\bf
   4}(3):~415--447.
 
+\harvarditem{Makalic \harvardand\ Schmidt}{2016}{makalic_bayesreg_2016}
+Makalic, E. \harvardand\ Schmidt, D.~F.  \harvardyearleft 2016\harvardyearright
+  .
+\newblock High-dimensional bayesian regularised regression with the bayesreg
+  package.
+\newline\harvardurl{https://arxiv.org/abs/1611.06649}
+
 \harvarditem{Mitchell \harvardand\ Beauchamp}{1988}{mitchell_bayesian_1988}
 Mitchell, T. \harvardand\ Beauchamp, J.  \harvardyearleft 1988\harvardyearright
   .
 \newblock Bayesian {Variable} {Selection} in {Linear}-{Regression}, {\em
   JOURNAL OF THE AMERICAN STATISTICAL ASSOCIATION} {\bf 83}(404):~1023--1032.
 
-\harvarditem{Murphy}{n.d.}{murphy_conjugate_nodate}
-Murphy, K.~P.  \harvardyearleft n.d.\harvardyearright .
+\harvarditem{Murphy}{2007}{murphy_conjugate_nodate}
+Murphy, K.~P.  \harvardyearleft 2007\harvardyearright .
 \newblock Conjugate {Bayesian} analysis of the {Gaussian} distribution.
 
 \harvarditem{Neal}{1993}{neal_probabilistic_1993}
