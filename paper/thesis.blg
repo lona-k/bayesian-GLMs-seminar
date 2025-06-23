@@ -5,16 +5,16 @@ The style file: dcu.bst
 Database file #1: bibliography.bib
 You've used 40 entries,
             2921 wiz_defined-function locations,
-            889 strings with 12096 characters,
-and the built_in function-call counts, 156107 in all, are:
-= -- 25346
+            884 strings with 11762 characters,
+and the built_in function-call counts, 155951 in all, are:
+= -- 25312
 > -- 2132
 < -- 0
 + -- 11928
 - -- 646
-* -- 13405
-:= -- 31624
-add.period$ -- 97
+* -- 13403
+:= -- 31590
+add.period$ -- 80
 call.type$ -- 40
 change.case$ -- 558
 chr.to.int$ -- 39
@@ -22,17 +22,17 @@ cite$ -- 40
 duplicate$ -- 551
 empty$ -- 1261
 format.name$ -- 788
-if$ -- 27979
+if$ -- 27945
 int.to.chr$ -- 6
 int.to.str$ -- 0
 missing$ -- 40
-newline$ -- 182
+newline$ -- 164
 num.names$ -- 412
-pop$ -- 98
+pop$ -- 113
 preamble$ -- 1
 purify$ -- 600
 quote$ -- 0
-skip$ -- 519
+skip$ -- 522
 stack$ -- 0
 substring$ -- 35547
 swap$ -- 68
@@ -43,4 +43,4 @@ type$ -- 154
 warning$ -- 0
 while$ -- 902
 width$ -- 0
-write$ -- 584
+write$ -- 549

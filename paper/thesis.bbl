@@ -5,22 +5,17 @@ Albert, J.~H. \harvardand\ Chib, S.  \harvardyearleft 1993\harvardyearright .
 \newblock Bayesian {Analysis} of {Binary} and {Polychotomous} {Response}
   {Data}, {\em Journal of the American Statistical Association} {\bf
   88}(422):~669--679.
-\newblock Publisher: [American Statistical Association, Taylor \& Francis,
-  Ltd.].
 
 \harvarditem{Barbieri}{2015}{barbieri_posterior_2015}
 Barbieri, M.~M.  \harvardyearleft 2015\harvardyearright .
 \newblock Posterior {Predictive} {Distribution}, {\em Wiley {StatsRef}:
   {Statistics} {Reference} {Online}}, John Wiley \& Sons, Ltd, pp.~1--6.
-\newblock \_eprint:
-  https://onlinelibrary.wiley.com/doi/pdf/10.1002/9781118445112.stat07839.
 
 \harvarditem{Box}{1980}{box_sampling_1980}
 Box, G. E.~P.  \harvardyearleft 1980\harvardyearright .
 \newblock Sampling and {Bayes}' {Inference} in {Scientific} {Modelling} and
   {Robustness}, {\em Journal of the Royal Statistical Society. Series A
   (General)} {\bf 143}(4):~383--430.
-\newblock Publisher: [Royal Statistical Society, Oxford University Press].
 
 \harvarditem{Bürkner}{2017}{brms_2017}
 Bürkner, P.-C.  \harvardyearleft 2017\harvardyearright .
@@ -41,7 +36,6 @@ Celeux, G., Anbari, M.~E., Marin, J.-M. \harvardand\ Robert, C.~P.
 \newblock Regularization in {Regression}: {Comparing} {Bayesian} and
   {Frequentist} {Methods} in a {Poorly} {Informative} {Situation}, {\em
   Bayesian Analysis} {\bf 7}(2):~477--502.
-\newblock Publisher: International Society for Bayesian Analysis.
 
 \harvarditem[Chien et~al.]{Chien, Zhou, Hanson \harvardand\
   Lystig}{2023}{chien_informative_2023}
@@ -49,7 +43,6 @@ Chien, Y.-F., Zhou, H., Hanson, T. \harvardand\ Lystig, T.  \harvardyearleft
   2023\harvardyearright .
 \newblock Informative g-{Priors} for {Mixed} {Models}, {\em Stats} {\bf
   6}(1):~169--191.
-\newblock Number: 1 Publisher: Multidisciplinary Digital Publishing Institute.
 
 \harvarditem{Dellaportas \harvardand\ Smith}{1993}{dellaportas_bayesian_1993}
 Dellaportas, P. \harvardand\ Smith, A. F.~M.  \harvardyearleft
@@ -57,15 +50,14 @@ Dellaportas, P. \harvardand\ Smith, A. F.~M.  \harvardyearleft
 \newblock Bayesian {Inference} for {Generalized} {Linear} and {Proportional}
   {Hazards} {Models} via {Gibbs} {Sampling}, {\em Journal of the Royal
   Statistical Society. Series C (Applied Statistics)} {\bf 42}(3):~443--459.
-\newblock Publisher: [Royal Statistical Society, Oxford University Press].
 
 \harvarditem[Fahrmeir et~al.]{Fahrmeir, Kneib \harvardand\
   Konrath}{2010}{fahrmeir_bayesian_2010}
 Fahrmeir, L., Kneib, T. \harvardand\ Konrath, S.  \harvardyearleft
   2010\harvardyearright .
-\newblock Bayesian regularisation in structured additive regression:
-  a unifying perspective on shrinkage, smoothing and predictor selection, {\em
-  Statistics and Computing} {\bf 20}(2):~203--219.
+\newblock Bayesian regularisation in structured additive regression: a unifying
+  perspective on shrinkage, smoothing and predictor selection, {\em Statistics
+  and Computing} {\bf 20}(2):~203--219.
 
 \harvarditem[Fahrmeir et~al.]{Fahrmeir, Kneib, Lang \harvardand\
   Marx}{2021}{fahrmeir_regression_2021}
@@ -98,7 +90,6 @@ Gelman, A., Carlin, J.~B., Stern, H.~S., Dunson, D.~B., Vehtari, A.
 Gelman, A., Hwang, J. \harvardand\ Vehtari, A.  \harvardyearleft
   2013\harvardyearright .
 \newblock Understanding predictive information criteria for {Bayesian} models.
-\newblock arXiv:1307.5928 [stat].
 
 \harvarditem[Gelman et~al.]{Gelman, Jakulin, Pittau \harvardand\
   Su}{2008}{gelman_weakly_2008}
@@ -107,27 +98,23 @@ Gelman, A., Jakulin, A., Pittau, M.~G. \harvardand\ Su, Y.-S.  \harvardyearleft
 \newblock A weakly informative default prior distribution for logistic and
   other regression models, {\em The Annals of Applied Statistics} {\bf
   2}(4):~1360--1383.
-\newblock Publisher: Institute of Mathematical Statistics.
 
 \harvarditem[Ghosh et~al.]{Ghosh, Li \harvardand\ Mitra}{2017}{ghosh_use_2017}
 Ghosh, J., Li, Y. \harvardand\ Mitra, R.  \harvardyearleft
   2017\harvardyearright .
 \newblock On the {Use} of {Cauchy} {Prior} {Distributions} for {Bayesian}
   {Logistic} {Regression}.
-\newblock arXiv:1507.07170 [stat].
 
 \harvarditem{Hadfield}{2010}{MCMCglmm_2010}
 Hadfield, J.~D.  \harvardyearleft 2010\harvardyearright .
 \newblock Mcmc methods for multi-response generalized linear mixed models: The
   {MCMCglmm} {R} package, {\em Journal of Statistical Software} {\bf
   33}(2):~1--22.
-\newline\harvardurl{https://www.jstatsoft.org/v33/i02/}
 
 \harvarditem{Hastings}{1970}{hastings_monte_1970}
 Hastings, W.~K.  \harvardyearleft 1970\harvardyearright .
 \newblock Monte {Carlo} {Sampling} {Methods} {Using} {Markov} {Chains} and
   {Their} {Applications}, {\em Biometrika} {\bf 57}(1):~97--109.
-\newblock Publisher: [Oxford University Press, Biometrika Trust].
 
 \harvarditem{Held \harvardand\ Sabanés~Bové}{2020}{held_likelihood_2020}
 Held, L. \harvardand\ Sabanés~Bové, D.  \harvardyearleft
@@ -141,16 +128,12 @@ Hoerl, A.~E. \harvardand\ Kennard, R.~W.  \harvardyearleft
   1970a\harvardyearright .
 \newblock Ridge {Regression}: {Applications} to {Nonorthogonal} {Problems},
   {\em Technometrics} {\bf 12}(1):~69--82.
-\newblock Publisher: [Taylor \& Francis, Ltd., American Statistical
-  Association, American Society for Quality].
 
 \harvarditem{Hoerl \harvardand\ Kennard}{1970b}{hoerl_ridge_1970-1}
 Hoerl, A.~E. \harvardand\ Kennard, R.~W.  \harvardyearleft
   1970b\harvardyearright .
 \newblock Ridge {Regression}: {Biased} {Estimation} for {Nonorthogonal}
   {Problems}, {\em Technometrics} {\bf 12}(1):~55--67.
-\newblock Publisher: [Taylor \& Francis, Ltd., American Statistical
-  Association, American Society for Quality].
 
 \harvarditem{Holmes \harvardand\ Knorr-Held}{2003}{holmes_efficient_nodate}
 Holmes, C. \harvardand\ Knorr-Held, L.  \harvardyearleft 2003\harvardyearright
@@ -162,7 +145,6 @@ Hsiang, T.~C.  \harvardyearleft 1975\harvardyearright .
 \newblock A {Bayesian} {View} on {Ridge} {Regression}, {\em Journal of the
   Royal Statistical Society. Series D (The Statistician)} {\bf
   24}(4):~267--268.
-\newblock Publisher: [Royal Statistical Society, Wiley].
 
 \harvarditem{Lenk \harvardand\ DeSarbo}{2000}{lenk_bayesian_2000}
 Lenk, P.~J. \harvardand\ DeSarbo, W.~S.  \harvardyearleft 2000\harvardyearright
@@ -187,7 +169,7 @@ Makalic, E. \harvardand\ Schmidt, D.~F.  \harvardyearleft 2016\harvardyearright
 Mitchell, T. \harvardand\ Beauchamp, J.  \harvardyearleft 1988\harvardyearright
   .
 \newblock Bayesian {Variable} {Selection} in {Linear}-{Regression}, {\em
-  JOURNAL OF THE AMERICAN STATISTICAL ASSOCIATION} {\bf 83}(404):~1023--1032.
+  Journal of the American Statistical Association} {\bf 83}(404):~1023--1032.
 
 \harvarditem{Murphy}{2007}{murphy_conjugate_nodate}
 Murphy, K.~P.  \harvardyearleft 2007\harvardyearright .
@@ -204,19 +186,17 @@ Nelder, J.~A. \harvardand\ Wedderburn, R. W.~M.  \harvardyearleft
   1972\harvardyearright .
 \newblock Generalized {Linear} {Models}, {\em Journal of the Royal Statistical
   Society. Series A (General)} {\bf 135}(3):~370--384.
-\newblock Publisher: [Royal Statistical Society, Oxford University Press].
 
 \harvarditem{O'Hara \harvardand\ Sillanpää}{2009}{ohara_review_2009}
 O'Hara, R.~B. \harvardand\ Sillanpää, M.~J.  \harvardyearleft
   2009\harvardyearright .
 \newblock A review of {Bayesian} variable selection methods: what, how and
   which, {\em Bayesian Analysis} {\bf 4}(1):~85--117.
-\newblock Publisher: International Society for Bayesian Analysis.
 
 \harvarditem{Park \harvardand\ Casella}{2008}{park_bayesian_2008}
 Park, T. \harvardand\ Casella, G.  \harvardyearleft 2008\harvardyearright .
-\newblock The {Bayesian} {Lasso}, {\em JOURNAL OF THE AMERICAN STATISTICAL
-  ASSOCIATION} {\bf 103}(482):~681--686.
+\newblock The {Bayesian} {Lasso}, {\em Journal of the American Statistical
+  Association} {\bf 103}(482):~681--686.
 
 \harvarditem[Rue et~al.]{Rue, Martino \harvardand\
   Chopin}{2009}{rue_approximate_2009}
@@ -245,7 +225,6 @@ Tibshirani, R.  \harvardyearleft 1996\harvardyearright .
 \newblock Regression {Shrinkage} and {Selection} via the {Lasso}, {\em Journal
   of the Royal Statistical Society. Series B (Methodological)} {\bf
   58}(1):~267--288.
-\newblock Publisher: [Royal Statistical Society, Oxford University Press].
 
 \harvarditem[Tierney et~al.]{Tierney,  \harvardand\
   Kadane}{1986}{tierney_accurate_1986}
@@ -274,6 +253,5 @@ Zellner, A.  \harvardyearleft 1986\harvardyearright .
 \newblock On assessing prior distributions and {Bayesian} regression analysis
   with g-prior distributions, {\em Bayesian Inference and Decision techniques}
   .
-\newblock Publisher: Elsevier Science.
 
 \end{thebibliography}

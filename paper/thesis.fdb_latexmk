@@ -1,16 +1,16 @@
 # Fdb version 3
-["bibtex thesis"] 1750691469 "thesis.aux" "thesis.bbl" "thesis" 1750691606
+["bibtex thesis"] 1750695999 "thesis.aux" "thesis.bbl" "thesis" 1750696002
   "/usr/local/texlive/2022/texmf-dist/bibtex/bst/harvard/dcu.bst" 1233413381 25669 0768d98a028900c057124e4d82e12771 ""
-  "bibliography.bib" 1750691115 106269 68e59dde040fb4d1deb128a9f4a3400f ""
-  "thesis.aux" 1750691606 14019 65fe82202bca6da23a66a17ae14db3a3 "pdflatex"
+  "bibliography.bib" 1750695995 32438 8ff048989d44299337a8cecf33fddb43 ""
+  "thesis.aux" 1750696002 14019 65fe82202bca6da23a66a17ae14db3a3 "pdflatex"
   (generated)
   "thesis.bbl"
   "thesis.blg"
-["pdflatex"] 1750691602 "/Users/lona/Documents/repos/probML_seminar/paper/thesis.tex" "thesis.pdf" "thesis" 1750691606
+["pdflatex"] 1750695999 "/Users/lona/Documents/repos/probML_seminar/paper/thesis.tex" "thesis.pdf" "thesis" 1750696002
   "../figures/approx_class.png" 1750685068 112363 80396f760c98ef662e0d8ea992f76075 ""
   "../figures/approx_regr.png" 1750685068 130099 321fafa46aeb984a960dba85cd03559e ""
   "../figures/reg_all.png" 1750674841 226524 b0caecb029741fc9c5597ec3994fce55 ""
-  "/Users/lona/Documents/repos/probML_seminar/paper/thesis.tex" 1750680224 5897 fa53b7bdcb49b382883627d87d125a02 ""
+  "/Users/lona/Documents/repos/probML_seminar/paper/thesis.tex" 1750695995 5897 fa53b7bdcb49b382883627d87d125a02 ""
   "/Users/lona/Library/texlive/2022/texmf-var/fonts/tfm/lh/lh-t2a/larm0500.tfm" 1749291039 3252 bc0f8cc163ba94bbce20e59f671a255d ""
   "/Users/lona/Library/texlive/2022/texmf-var/fonts/tfm/lh/lh-t2a/larm0600.tfm" 1749291236 3248 7c0b9d76a2cd84ed06764a4c6eea5de4 ""
   "/Users/lona/Library/texlive/2022/texmf-var/fonts/tfm/lh/lh-t2a/larm0700.tfm" 1749291037 3256 b15a2ce2310c0038b96c5235b038f0eb ""
@@ -189,18 +189,18 @@
   "/usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt" 1679251587 2826450 2c7c0babe92020e1e7f4500134b99f5f ""
   "/usr/local/texlive/2022/texmf.cnf" 1647878952 577 209b46be99c9075fd74d4c0369380e8c ""
   "chapters/appendix.tex" 1750690958 3462 16e38e1f6227150c3333e128a1254d31 ""
-  "chapters/chapter_2.tex" 1750691321 12009 6a83e64064a77cf3bfdaa2958a923909 ""
+  "chapters/chapter_2.tex" 1750692466 12015 b9d17aed010151f93c83ee9fa3ec6a5d ""
   "chapters/chapter_3.tex" 1750691602 8422 2dd1848c4f4efa6749a3f36fe2a698c4 ""
   "chapters/chapter_4.tex" 1750691465 8609 36440f8a49408572e82b6055c621af17 ""
-  "chapters/conclusion.tex" 1750685111 2090 6cd2290b98674410e1dc860d5e922615 ""
-  "chapters/introduction.tex" 1750680224 1878 3b44ea90aee78c06cfb9220f0d2c04dd ""
+  "chapters/conclusion.tex" 1750691964 2105 3ece7fefcb077a670d89929f5b3f3b5b ""
+  "chapters/introduction.tex" 1750692009 1893 91389654b14e2e87e849086aba143ce9 ""
   "shortcuts.tex" 1749549341 4325 33a7ab15141d4d691c94e3cf23c4a80a ""
   "sigillum.png" 1747903044 320585 57131ef3bcfba901e575bf6769aac43e ""
-  "thesis.aux" 1750691606 14019 65fe82202bca6da23a66a17ae14db3a3 "pdflatex"
-  "thesis.bbl" 1750691469 13269 90fc4e3e30da16f7b52ec83b05aab7c1 "bibtex thesis"
-  "thesis.out" 1750691606 2682 e05959107b8892abba074228b5c9f2e8 "pdflatex"
-  "thesis.tex" 1750680224 5897 fa53b7bdcb49b382883627d87d125a02 ""
-  "thesis.toc" 1750691606 1292 0f21af9b229ce55bb827e6466253aa13 "pdflatex"
+  "thesis.aux" 1750696002 14019 65fe82202bca6da23a66a17ae14db3a3 "pdflatex"
+  "thesis.bbl" 1750695999 12004 fa1e8204d9bb213b71763cb215351356 "bibtex thesis"
+  "thesis.out" 1750696002 2682 e05959107b8892abba074228b5c9f2e8 "pdflatex"
+  "thesis.tex" 1750695995 5897 fa53b7bdcb49b382883627d87d125a02 ""
+  "thesis.toc" 1750696002 1292 0f21af9b229ce55bb827e6466253aa13 "pdflatex"
   (generated)
   "thesis.aux"
   "thesis.log"
