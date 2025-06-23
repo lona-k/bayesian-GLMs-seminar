@@ -199,15 +199,16 @@ sd_binom     <- sd_df  %>%   filter(family=="Binomial")
 
 ```
 
-Plot(s):
+Plots:
 
 ```{r}
 # regression plots
 pp_time_g <- ggplot(combined_gauss, aes(x = method, y = time, fill = method)) +
   geom_boxplot(outlier.size = 0.2) +
-  scale_fill_brewer(type="qual", palette="Set1") +
-  labs(subtitle="Elapsed time", y="time (s)", x=NULL, fill="Method") +
-  theme_minimal()
+  scale_fill_brewer(type ="qual", palette = "Set1") +
+  labs(subtitle = "Elapsed time", y = "time (s)", x = NULL, fill = "Method") +
+  theme_minimal() +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
 
 pp_theta_g <- ggplot(coef_gauss, aes(x = method, y = value, fill = method)) +
   geom_boxplot(outlier.size = 0.2) +
@@ -216,24 +217,29 @@ pp_theta_g <- ggplot(coef_gauss, aes(x = method, y = value, fill = method)) +
              colour = "black") +
   scale_linetype_manual(name=NULL, values="dashed") +
   scale_fill_brewer(type="qual", palette="Set1") +
-  labs(subtitle="Parameter estimates", y="mean estimate", x=NULL, fill="Method") +
-  facet_wrap(~ theta, scales="free_y") +
-  theme_minimal()
+  labs(subtitle="Parameter estimates", y="mean estimate", x = "parameter index", fill="Method") +
+  facet_wrap(~ theta, scales="free_y", strip.position = "bottom") +
+  theme_minimal() +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+        strip.placement = "outside")
 
 pp_sd_g <- ggplot(sd_gauss, aes(x = method, y = sd, fill = method)) +
   geom_boxplot(outlier.size = 0.2) +
   scale_fill_brewer(type="qual", palette="Set1") +
-  labs(subtitle="Posterior parameter standard deviation", y="mean standard deviation", x=NULL, fill="Method") +
-  facet_wrap(~ parameter) +
-  theme_minimal()
+  labs(subtitle="Posterior parameter standard deviation", y="mean standard deviation", x="parameter index", fill="Method") +
+  facet_wrap(~ parameter, strip.position = "bottom") +
+  theme_minimal() +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+        strip.placement = "outside")
 
 
 # classif plots
 pp_time_b <- ggplot(combined_binom, aes(x = method, y = time, fill = method)) +
   geom_boxplot(outlier.size = 0.2) +
   scale_fill_brewer(type="qual", palette="Set1") +
-  labs(subtitle="Elapsed time", y="time (s)", x=NULL, fill="Method") +
-  theme_minimal()
+  labs(subtitle="Elapsed time", y="time (s)", fill="Method", x = NULL) +
+  theme_minimal() +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
 
 pp_theta_b <- ggplot(coef_binom, aes(x = method, y = value, fill = method)) +
   geom_boxplot(outlier.size = 0.2) +
@@ -242,16 +248,20 @@ pp_theta_b <- ggplot(coef_binom, aes(x = method, y = value, fill = method)) +
              colour="black") +
   scale_linetype_manual(name=NULL, values="dashed") +
   scale_fill_brewer(type="qual", palette="Set1") +
-  labs(subtitle="Parameter estimates", y="mean estimate", x=NULL, fill="Method") +
-  facet_wrap(~ theta, scales = "free_y") +
-  theme_minimal()
+  labs(subtitle="Parameter estimates", y="mean estimate", x="parameter index", fill="Method") +
+  facet_wrap(~ theta, scales = "free_y", strip.position = "bottom") +
+  theme_minimal() +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+        strip.placement = "outside")
 
 pp_sd_b <- ggplot(sd_binom, aes(x = method, y = sd, fill = method)) +
   geom_boxplot(outlier.size = 0.2) +
   scale_fill_brewer(type="qual", palette="Set1") +
-  labs(subtitle="Posterior parameter standard deviation", y="mean standard deviation", x=NULL, fill="Method") +
-  facet_wrap(~ parameter) +
-  theme_minimal()
+  labs(subtitle="Posterior parameter standard deviation", y="mean standard deviation", x="parameter index", fill="Method") +
+  facet_wrap(~ parameter, strip.position = "bottom") +
+  theme_minimal() +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+        strip.placement = "outside")
 
 ```
 
@@ -259,11 +269,11 @@ Plot for paper
 
 ```{r}
 pp_gauss <- (pp_time_g + pp_theta_g + pp_sd_g) +
-  plot_layout(ncol=3, widths=c(1,2,2), guides="collect") &
+  plot_layout(ncol=3, widths=c(1,2,2), guides="collect", axis_titles = "collect") &
   theme(legend.position="bottom")
 
 pp_binom <- (pp_time_b + pp_theta_b + pp_sd_b) +
-  plot_layout(ncol=3, widths=c(1,2,2), guides="collect") &
+  plot_layout(ncol=3, widths=c(1,2,2), guides="collect", axis_titles = "collect") &
   theme(legend.position = "bottom")
 
 ggsave("../figures/approx_regr.png", pp_gauss, width = 10, height = 4)
@@ -275,18 +285,18 @@ Plot for presentation
 
 ```{r}
 p_gauss <- (pp_time_g + pp_theta_g + pp_sd_g) +
-  plot_layout(ncol=3, widths=c(1,2,2), guides="collect") +
+  plot_layout(ncol=3, widths=c(1,2,2), guides="collect", axis_titles = "collect") +
   plot_annotation(title = "Regression") &
   theme(legend.position="bottom")
 
 p_binom <- (pp_time_b + pp_theta_b + pp_sd_b) +
-  plot_layout(ncol=3, widths=c(1,2,2), guides="collect") +
+  plot_layout(ncol=3, widths=c(1,2,2), guides="collect", axis_titles = "collect") +
   plot_annotation(title = "Classification") &
   theme(legend.position = "bottom")
 
 # combined plot
 final_plot <- (p_gauss / p_binom) +
-  plot_layout(guides="collect") &
+  plot_layout(guides="collect", axis_titles = "collect") &
   theme(legend.position="bottom")
 
 ggsave("../figures/approx_all.png", final_plot, width = 15, height = 8)
