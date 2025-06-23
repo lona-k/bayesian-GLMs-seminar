@@ -49,7 +49,7 @@ We can then use Bayes' rule once again to derive the unconditional prior distrib
 The idea of an uninformative (or flat) prior is to maximize the influence of the data on the posterior in the absence of prior knowledge.
 Especially when little to no prior information is available, we can flatten the NIG prior by setting
 \begin{equation*}
-    \mupri = \bnull, \quad \Sdipri = \bnull \text{  i.e. } \Sdpri \to \infty 
+    \mupri = \bnull, \quad \Sdipri = \bnull \text{  i.e., } \Sdpri \to \infty 
 \end{equation*}
 and choosing $\apri = - \frac{p}{2}$ and $\bpri = 0$, where $p$ is the number of features in the model.
 
@@ -91,7 +91,7 @@ Concretely:
 \end{equation*}
 
 \footnotetext{Usually, it does not make sense to regularize the intercept.
-To be completely accurate, we would need to separate the intercept from $\btheta$, i.e. split $\btheta$ into $(\theta_0, \btheta'^\top)$ and consequently set $\bX'$ as the design matrix without a column for the intercept.
+To be completely accurate, we would need to separate the intercept from $\btheta$, i.e., split $\btheta$ into $(\theta_0, \btheta'^\top)$ and consequently set $\bX'$ as the design matrix without a column for the intercept.
 We would then specify the model as $\by \mid \btheta, \ssd \sim \Ncal(\theta_0 \bI + \bX' \btheta', \ssd \bI)$.
 We chose to simplify this and stick to the previously established definitions because we aim for an understandable explanation of the basic concept of Bayesian regularization.}
 
@@ -104,7 +104,7 @@ Although there are many options for regularization priors, we are going to focus
 
 with $\taus$ controlling the degree of regularization akin to the role of $\lambda$.
 In contrast to $\lambda$, $\taus$ does not need to be set in advance or optimized as a hyperparameter.
-We can simply embed it in a hierarchical model by specifying a prior for $\taus$, e.g. $\taus \sim \IG(\apri_\tau, \bpri_\tau)$, and estimate it alongside $\btheta$ and $\ssd$.\\
+We can simply embed it in a hierarchical model by specifying a prior for $\taus$, e.g.\@ $\taus \sim \IG(\apri_\tau, \bpri_\tau)$, and estimate it alongside $\btheta$ and $\ssd$.\\
 
 \textbf{Lasso regularization} \citep{tibshirani_regression_1996} uses $\text{pen}(\btheta) = \|\btheta\|_1$ to perform variable selection by setting elements $\theta_j$ of $\btheta$ to $0$ during estimation.
 This means that Lasso regularization promotes a \textit{sparse} solution.
@@ -116,7 +116,7 @@ The Bayesian Lasso specifies a Laplace prior on $\btheta$ via the scale-mixture 
     \end{aligned}
 \end{equation}
 
-where the regularization parameter $\lambda^2$ is often given a (hyper-) prior, e.g. $\lambda^2 \sim \text{G}(\apri_\lambda, \bpri_\lambda)$.\\
+where the regularization parameter $\lambda^2$ is often given a (hyper-) prior, e.g.\@ $\lambda^2 \sim \text{G}(\apri_\lambda, \bpri_\lambda)$.\\
 
 Because Bayesian Lasso does not promote a sparse solution, discrete-mixture Spike-and-Slab priors \citep{mitchell_bayesian_1988} (which are necessary for categorical coraviates) or the heavy-tailed horseshoe prior \citep{carvalho_horseshoe_2010} are preferred for variable selection.
 
@@ -167,7 +167,7 @@ We will go more into depth on approximate inference for Bayesian regression mode
 
 \subsubsection*{Posterior predictive distribution}
 In many applications, we care more about predictions $\ty$ for new, unseen inputs $\tX$ (or test data $(\ty, \tX)$), independent of the training data $\bD$, than about $\btheta$ itself.
-The Bayesian answer to this is the \textit{posterior predictive distribution} (PPD) \Citep[see e.g]{box_sampling_1980,barbieri_posterior_2015}
+The Bayesian answer to this is the \textit{posterior predictive distribution} (PPD) \Citep[see e.g][]{box_sampling_1980,barbieri_posterior_2015}
 \begin{equation*}
     p(\ty \mid \by) = \int p(\ty, \btheta \mid \by) d \btheta 
     = \int p(\ty \mid \btheta, \by) p(\btheta) d \btheta
@@ -178,7 +178,7 @@ which is an average of conditional probabilities over the posterior distribution
 
 \footnotetext{
     A note on intuition: In essence, the PPD is the marginal distribution of $\ty$, conditioned on the data $\by$.
-    We recognize the marginal distribution of $\by$ from Bayes' rule as the normalization constant, i.e. $p(\by) = \int p(\by, \btheta) d\btheta = \int p(\by \mid \btheta) p(\btheta) d\btheta$.
+    We recognize the marginal distribution of $\by$ from Bayes' rule as the normalization constant, i.e., $p(\by) = \int p(\by, \btheta) d\btheta = \int p(\by \mid \btheta) p(\btheta) d\btheta$.
 }
 
 For the NIG prior in \autoref{eq:NIGprior}, one can show\footnote{see \autoref{sec:app}} that

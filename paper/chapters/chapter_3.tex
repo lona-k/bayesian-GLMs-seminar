@@ -6,7 +6,7 @@ In their most general form, we assume
     \by \mid \btheta \sim F(g^{-1}(\bX \btheta)),
 \end{equation*}
 
-where $F$ is any exponential-family distribution (e.g. Binomial, Poisson, Gamma) and $g^{-1}$ is the inverse link function.
+where $F$ is any exponential-family distribution (e.g.\@ Binomial, Poisson, Gamma) and $g^{-1}$ is the inverse link function.
 Priors for the parameter $\btheta$ can be set in the same way as for the Bayesian linear model. However, in practice, the prior choice also depends on the link function \citep{west_dynamic_1985}.
 
 \subsection{Bayesian Logistic Regression Model} \label{sec:logit-logit}
@@ -30,7 +30,7 @@ where $\sigma(\bx_i \btheta) = \frac{\exp(\bx_i \btheta)}{1 + \exp(\bx_i \btheta
 Unlike the Gaussian linear model, the logistic likelihood breaks conjugacy.
 Nevertheless, we can use a Gaussian prior (\autoref{eq:NIGprior}) or an (improper) flat prior (\autoref{eq:flat-prior}) for $\btheta$, but both require approximate inference (see \autoref{sec:logit-inf}).\\
 
-To address separation (i.e. perfect prediction) and to induce shrinkage, heavier-tailed priors are commonly employed.
+To address separation (i.e.\@ perfect prediction) and to induce shrinkage, heavier-tailed priors are commonly employed.
 \citet{gelman_weakly_2008} introduced the t-distribution as a prior for low-information settings and mentions the Cauchy distribution as another possibility, which is elaborated on by \Citet{ghosh_use_2017}.\\
 
 \textbf{Regularization} can also be achieved with the same prior distributions as introduced for Bayesian linear regression in \autoref{sec:lm-regularization} \Citep[see e.g.][]{van_erp_shrinkage_2019,fahrmeir_bayesian_2010,ohara_review_2009}.
@@ -75,7 +75,7 @@ A common choice is a Gaussian centered at the current state with covariance give
     q(\btheta^{(*)} \mid \btheta^{(k)}) \sim \Ncal(\btheta^{(k)} \mid -H^{-1}(\btheta^{(k)})), \quad H(\btheta) = \nabla_{\btheta}^2  \log \Bigl(p(\btheta^{(k)} \mid \by)\; p(\btheta^{(k)})\Bigr)
 \end{equation*}
 
-\citep{scott_data_2011} argues that using heavier-tailed proposals (e.g. Student–$t$) can improve mixing by allowing larger moves.\\
+\citep{scott_data_2011} argues that using heavier-tailed proposals (e.g.\@ Student–$t$) can improve mixing by allowing larger moves.\\
 \footnotetext{
     The symmetry of the Gaussian distribution simplifies the algorithm to the Metropolis algorithm, where the acceptance probability can be calculated only using $p(\btheta \mid \by)\; p\btheta$.
 }

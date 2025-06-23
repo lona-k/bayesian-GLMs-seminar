@@ -266,8 +266,8 @@ pp_binom <- (pp_time_b + pp_theta_b + pp_sd_b) +
   plot_layout(ncol=3, widths=c(1,2,2), guides="collect") &
   theme(legend.position = "bottom")
 
-ggsave("../figures/approx_regr.png", pp_gauss, width = 15, height = 4)
-ggsave("../figures/approx_class.png", pp_binom, width = 15, height = 4)
+ggsave("../figures/approx_regr.png", pp_gauss, width = 10, height = 4)
+ggsave("../figures/approx_class.png", pp_binom, width = 10, height = 4)
 ```
 
 
