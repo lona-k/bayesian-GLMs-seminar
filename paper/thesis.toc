@@ -1,15 +1,15 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
 \contentsline {section}{\numberline {2}Bayesian Linear Model}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Model definition}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.1}Model Definition}{2}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Prior choice}{2}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Bayesian inference with closed form priors}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.3}Bayesian Inference with Closed Form Priors}{4}{subsection.2.3}%
 \contentsline {section}{\numberline {3}Bayesian Logistic Model}{6}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Bayesian Generalized Linear Regression Model}{6}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Bayesian Logistic Regression Model}{6}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Approximate Bayesian inference}{7}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.1}Bayesian Generalized Linear Model}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Bayesian Logistic Model}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Approximate Bayesian Inference}{7}{subsection.3.3}%
 \contentsline {section}{\numberline {4}Illustrative Examples}{9}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Regularization and variable selection}{9}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Performance of approximate inference algorithms in Bayesian regression}{10}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.1}Regularization and Variable Selection}{9}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Performance of Approximate Inference Algorithms}{10}{subsection.4.2}%
 \contentsline {section}{\numberline {5}Conclusion and Outlook}{12}{section.5}%
 \contentsline {section}{\numberline {A}Appendix}{V}{appendix.A}%
-\contentsline {section}{\numberline {B}Electronic appendix}{VII}{appendix.B}%
+\contentsline {section}{\numberline {B}Electronic Appendix}{VII}{appendix.B}%

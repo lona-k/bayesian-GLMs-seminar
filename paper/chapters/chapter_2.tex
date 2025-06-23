@@ -1,8 +1,8 @@
-The (frequentist) Linear Regression Model is probably the most widely used model in statistics and machine learning.
-The frequentist and the Bayesian Linear Models are described in many introductory texts on statistical modeling, such as \citet{fahrmeir_regression_2021} or \citet{gelman_bayesian_2013}.
+The (frequentist) linear regression model is probably the most widely used model in statistics and machine learning.
+The frequentist and the Bayesian linear models are described in many introductory texts on statistical modeling, such as \citet{fahrmeir_regression_2021} or \citet{gelman_bayesian_2013}.
 
 
-\subsection{Model definition}
+\subsection{Model Definition}
 
 We observe an i.i.d. sample $\bD = ((y_1, \bx_1), \dots, (y_n, \bx_n))= (\by, \bX)$ and assume a linear relationship between $\bX$ and $\by$.
 The frequentist linear regression model then assumes
@@ -13,13 +13,13 @@ The frequentist linear regression model then assumes
 where the weight parameter $\btheta$ and the variance $\ssd$ are estimated to obtain the fitted model.
 A condition on $\bX$ is always implicit.\\
 
-To view Linear Regression from a Bayesian perspective, we simply reinterpret the parameters as random variables.
+To view linear regression from a Bayesian perspective, we simply reinterpret the parameters as random variables.
 Conditioning on $\btheta$ and $\ssd$, the likelihood takes the same form as in \autoref{eq:LM}:
 \begin{equation} \label{eq:BLM}
     \by \mid \btheta, \ssd \sim \Ncal(\bX \btheta, \ssd \bI), 
 \end{equation}
 
-Note that to predict multiple outputs, an extension to Multivariate Linear Regression is possible.
+Note that to predict multiple outputs, an extension to multivariate linear regression is possible.
 
 \subsection{Prior choice}
 \subsubsection*{Normal (Inverse Gamma) Prior}
@@ -34,12 +34,12 @@ To complete the Bayesian linear model specification, we place conjugate priors o
 
 where $\mupri, \Sdpri, \apri$ and $\bpri$ are the prior parameters.
 We choose a Gaussian prior on $\btheta$ because it is conjugate to the Gaussian likelihood of $\by$.
-Since the Inverse-Gamma distribution of $\ssd$ is conjugate to the Gaussian conditional distribution of $\btheta$, the joint prior of $\btheta$ and $\ssd$
+Since the inverse gamma (IG) distribution of $\ssd$ is conjugate to the Gaussian conditional distribution of $\btheta$, the joint prior of $\btheta$ and $\ssd$
 \begin{equation*}
     p(\btheta, \ssd) \overset{\text{Bayes' rule}}{=} p(\btheta \mid \ssd) p(\ssd)
 \end{equation*}
 
-follows a Normal Inverse Gamma (NIG) distribution.
+follows a normal-inverse-gamma (NIG) distribution.
 We can then use Bayes' rule once again to derive the unconditional prior distribution of $\btheta$ as a multivariate Student t-distribution.
 \begin{equation*}
     \btheta \sim \Tcal(2 \apri, \mupri, \frac{\apri}{\bpri} \Sdpri)
@@ -73,7 +73,7 @@ Another good solution for use cases with little prior knowledge that still requi
 
 % Bayesian penalization techniques perform similarly or sometimes even better, and they offer additional advantages such as readily available uncertainty estimates, automatic estimation of the penalty parameter, and more flexibility in terms of penalties that can be considered.
 Regularization (or penalization) regulates the trade-off between model complexity and out-of-sample performance, or equivalently bias vs. variance. 
-In frequentist statistics, we minimize the Penalized Least Squares criterion (PLS) 
+In frequentist statistics, we minimize the penalized least squares criterion (PLS) 
 \begin{equation*}
     \text{PLS}(\btheta) = (\by - \bX \btheta)^\top (\by - \bX \btheta) + \lambda \ \text{pen}(\btheta).
 \end{equation*}
@@ -106,9 +106,9 @@ with $\taus$ controlling the degree of regularization akin to the role of $\lamb
 In contrast to $\lambda$, $\taus$ does not need to be set in advance or optimized as a hyperparameter.
 We can simply embed it in a hierarchical model by specifying a prior for $\taus$, e.g.\@ $\taus \sim \IG(\apri_\tau, \bpri_\tau)$, and estimate it alongside $\btheta$ and $\ssd$.\\
 
-\textbf{Lasso regularization} \citep{tibshirani_regression_1996} uses $\text{pen}(\btheta) = \|\btheta\|_1$ to perform variable selection by setting elements $\theta_j$ of $\btheta$ to $0$ during estimation.
-This means that Lasso regularization promotes a \textit{sparse} solution.
-The Bayesian Lasso specifies a Laplace prior on $\btheta$ via the scale-mixture representation \citep{park_bayesian_2008}
+\textbf{LASSO} (least absolute shrinkage and selection operator) \textbf{regularization} \citep{tibshirani_regression_1996} uses $\text{pen}(\btheta) = \|\btheta\|_1$ to perform variable selection by setting elements $\theta_j$ of $\btheta$ to $0$ during estimation.
+This means that LASSO regularization promotes a \textit{sparse} solution.
+The Bayesian LASSO specifies a Laplace prior on $\btheta$ via the scale-mixture representation \citep{park_bayesian_2008}
 \begin{equation}\label{eq:lasso}
     \begin{aligned}
         \btheta \mid \btaus &\sim \Ncal(\bnull, \btaus \bI) \\
@@ -118,11 +118,11 @@ The Bayesian Lasso specifies a Laplace prior on $\btheta$ via the scale-mixture 
 
 where the regularization parameter $\lambda^2$ is often given a (hyper-) prior, e.g.\@ $\lambda^2 \sim \text{G}(\apri_\lambda, \bpri_\lambda)$.\\
 
-Because Bayesian Lasso does not promote a sparse solution, discrete-mixture Spike-and-Slab priors \citep{mitchell_bayesian_1988} (which are necessary for categorical coraviates) or the heavy-tailed horseshoe prior \citep{carvalho_horseshoe_2010} are preferred for variable selection.
+Because Bayesian LASSO does not promote a sparse solution, discrete-mixture Spike-and-Slab priors \citep{mitchell_bayesian_1988} (which are necessary for categorical covariates) or the heavy-tailed horseshoe prior \citep{carvalho_horseshoe_2010} are preferred for variable selection.
 
-\subsection{Bayesian inference with closed form priors}
+\subsection{Bayesian Inference with Closed Form Priors}
 
-\subsubsection*{Parameter posterior distribution}
+\subsubsection*{Parameter Posterior Distribution}
 
 In a frequentist linear model, we use least-squares (LS) estimation to obtain the estimate
 \begin{equation}\label{eq:LSE}
@@ -150,7 +150,7 @@ with posterior mean and variance \footnotemark
 
 \footnotetext{For the full calculation see \Cref{sec:app}}
 
-Integrating out $\ssd$ yields $\btheta \mid \by \sim \Tcal(2 \apo, \mupo, \bpo / \apo \Sdpo)$ and Bayesian credibility intervals can be derived directly from this distribution \citep[see e.g.][]{held_likelihood_2020}.\\
+Integrating out $\ssd$ yields $\btheta \mid \by \sim \Tcal(2 \apo, \mupo, \bpo / \apo \Sdpo)$ and Bayesian credibility intervals can be derived directly from this distribution \citep[see e.g.][on how to do this]{held_likelihood_2020}.\\
 
 Since we defined the non-information prior \autoref{eq:flat-prior} as a special case of the NIG-distributed prior, we can use \autoref{eq:NIGpost} to directly calculate the posterior mean and variance as
 \begin{equation*}
@@ -161,11 +161,11 @@ Since we defined the non-information prior \autoref{eq:flat-prior} as a special 
 The posterior mean $\mupo$ coincides with $\hbbeta_{LS}$ (\autoref{eq:LSE}), so a Bayesian linear model with a non-informative prior converges to the frequentist solution.
 More generally, as the prior variance $\Sdpri$ grows, $\mupo$ approaches $\hbbeta_{LS}$, since the likelihood (and thus the data) dominates the posterior.\\
 
-Bayesian Ridge regression is simply the NIG case in \autoref{eq:NIGprior} with finite $\Sdpo$, resulting in the same posterior update in \autoref{eq:NIGpost}.
-By contrast, the Bayesian Lasso's Laplace prior has no closed-form posterior, but we can easily sample from it using Gibbs sampling \citep{park_bayesian_2008}.
+Bayesian ridge regression is simply the NIG case in \autoref{eq:NIGprior} with finite $\Sdpo$, resulting in the same posterior update in \autoref{eq:NIGpost}.
+By contrast, the Bayesian LASSO's Laplace prior has no closed form posterior, but we can easily sample from it using Gibbs sampling \citep{park_bayesian_2008}.
 We will go more into depth on approximate inference for Bayesian regression models in \Cref{sec:logit-inf}.
 
-\subsubsection*{Posterior predictive distribution}
+\subsubsection*{Posterior Predictive Distribution}
 In many applications, we care more about predictions $\ty$ for new, unseen inputs $\tX$ (or test data $(\ty, \tX)$), independent of the training data $\bD$, than about $\btheta$ itself.
 The Bayesian answer to this is the \textit{posterior predictive distribution} (PPD) \Citep[see e.g][]{box_sampling_1980,barbieri_posterior_2015}
 \begin{equation*}
@@ -189,4 +189,4 @@ For the NIG prior in \autoref{eq:NIGprior}, one can show\footnote{see \Cref{sec:
 Interestingly, the posterior predictive mean $\mupo = \tX \btheta$ of the t-distribution coincides with the least squares prediction and its scale matrix reflects both observational noise and posterior uncertainty.
 Bayesian inference with the Gaussian conjugate is more thoroughly described by \citet{murphy_conjugate_nodate}.\\
 
-If no closed form exists, the PPD can also be simulated (see \Cref{sec:logit-inf})
+If no closed form exists, the PPD can also be simulated (see \Cref{sec:logit-inf}).
