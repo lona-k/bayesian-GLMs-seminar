@@ -122,6 +122,12 @@ Ghosh, J., Li, Y. \harvardand\ Mitra, R.  \harvardyearleft
 \newblock On the {Use} of {Cauchy} {Prior} {Distributions} for {Bayesian}
   {Logistic} {Regression}.
 
+\harvarditem{{Grammarly Inc.}}{2025}{grammarly}
+{Grammarly Inc.}  \harvardyearleft 2025\harvardyearright .
+\newblock Grammarly (free version, 1.124), {URL}:
+  \url{https://www.grammarly.com}.
+\newblock Last accessed: 02.07.2025.
+
 \harvarditem{Hadfield}{2010}{MCMCglmm_2010}
 Hadfield, J.~D.  \harvardyearleft 2010\harvardyearright .
 \newblock Mcmc methods for multi-response generalized linear mixed models: The
@@ -188,7 +194,6 @@ Makalic, E. \harvardand\ Schmidt, D.~F.  \harvardyearleft 2016\harvardyearright
   .
 \newblock High-dimensional bayesian regularised regression with the bayesreg
   package.
-\newline\harvardurl{https://arxiv.org/abs/1611.06649}
 
 \harvarditem{Mitchell \harvardand\ Beauchamp}{1988}{mitchell_bayesian_1988}
 Mitchell, T. \harvardand\ Beauchamp, J.  \harvardyearleft 1988\harvardyearright
@@ -217,6 +222,11 @@ O'Hara, R.~B. \harvardand\ Sillanpää, M.~J.  \harvardyearleft
   2009\harvardyearright .
 \newblock A review of {Bayesian} variable selection methods: what, how and
   which, {\em Bayesian Analysis} {\bf 4}(1):~85--117.
+
+\harvarditem{OpenAI}{2025}{chatgpt}
+OpenAI  \harvardyearleft 2025\harvardyearright .
+\newblock Chat{GPT} o4-mini-high, \url{https://chat.openai.com/chat}.
+\newblock Last accessed: 19.06.2025.
 
 \harvarditem{Park \harvardand\ Casella}{2008}{park_bayesian_2008}
 Park, T. \harvardand\ Casella, G.  \harvardyearleft 2008\harvardyearright .
