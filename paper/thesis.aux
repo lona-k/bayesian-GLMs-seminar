@@ -104,26 +104,26 @@
 \newlabel{sec:simulation}{{4}{9}{Illustrative Examples}{section.4}{}}
 \newlabel{sec:simulation@cref}{{[section][4][]4}{[1][9][]9}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Regularization and Variable Selection}{9}{subsection.4.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Evaluation metrics of Bayesian linear and logistic regression, each with a flat, ridge, and LASSO prior, under Scenarios A and B. \relax }}{10}{table.caption.12}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:reg_AB}{{1}{10}{Evaluation metrics of Bayesian linear and logistic regression, each with a flat, ridge, and LASSO prior, under Scenarios A and B. \relax }{table.caption.12}{}}
+\newlabel{tab:reg_AB@cref}{{[table][1][]1}{[1][9][]10}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Estimated model parameters with 95\% credibility intervals (CI). True parameter values are black crosses. \relax }}{10}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:reg-params}{{1}{10}{Estimated model parameters with 95\% credibility intervals (CI). True parameter values are black crosses. \relax }{figure.caption.13}{}}
+\newlabel{fig:reg-params@cref}{{[figure][1][]1}{[1][10][]10}}
 \citation{rue_approximate_2009}
 \citation{MCMCglmm_2010}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Evaluation metrics under Scenarios A and B. For linear regression, all priors correctly identified the influential variables and produced few or no false positives. The effect of regularization is more pronounced in logistic regression: in both scenarios, the regularized models (LASSO and ridge) declared fewer coefficients as influential and reduced false positives. In the low-information Scenario B, regularization priors improved both variable selection and the predictive accuracy (MLPPD). Except under the flat prior, Bayesian logistic regression achieved slightly better predictive performance than linear regression, though differences in MLPPD between priors were small. \relax }}{10}{table.caption.12}\protected@file@percent }
-\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:reg_AB}{{1}{10}{Evaluation metrics under Scenarios A and B. For linear regression, all priors correctly identified the influential variables and produced few or no false positives. The effect of regularization is more pronounced in logistic regression: in both scenarios, the regularized models (LASSO and ridge) declared fewer coefficients as influential and reduced false positives. In the low-information Scenario B, regularization priors improved both variable selection and the predictive accuracy (MLPPD). Except under the flat prior, Bayesian logistic regression achieved slightly better predictive performance than linear regression, though differences in MLPPD between priors were small. \relax }{table.caption.12}{}}
-\newlabel{tab:reg_AB@cref}{{[table][1][]1}{[1][9][]10}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Performance of Approximate Inference Algorithms}{10}{subsection.4.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Estimated model parameters with 95\% credibility intervals (CI). True parameter values are shown as black crosses. Linear models yielded more accurate estimates with narrower CIs than logistic models. In Scenario B, the uncertainty of the unregularized logistic model becomes especially pronounced, illustrating the need for regularization in high-dimensional, low-information settings. \relax }}{11}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:reg-params}{{1}{11}{Estimated model parameters with 95\% credibility intervals (CI). True parameter values are shown as black crosses. Linear models yielded more accurate estimates with narrower CIs than logistic models. In Scenario B, the uncertainty of the unregularized logistic model becomes especially pronounced, illustrating the need for regularization in high-dimensional, low-information settings. \relax }{figure.caption.13}{}}
-\newlabel{fig:reg-params@cref}{{[figure][1][]1}{[1][9][]11}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  Bayesian linear regression: Comparison of LA (red) and MCMC (blue) across 1,000 simulations. MCMC is faster in this case. Both methods estimate the parameters accurately, though LA yields higher posterior uncertainty. \relax }}{11}{figure.caption.14}\protected@file@percent }
-\newlabel{fig:approx-regr}{{2}{11}{Bayesian linear regression: Comparison of LA (red) and MCMC (blue) across 1,000 simulations. MCMC is faster in this case. Both methods estimate the parameters accurately, though LA yields higher posterior uncertainty. \relax }{figure.caption.14}{}}
-\newlabel{fig:approx-regr@cref}{{[figure][2][]2}{[1][10][]11}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Performance of Approximate Inference Algorithms}{11}{subsection.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  Bayesian \textbf  {linear} regression: Comparison of LA (red) and MCMC (blue) across 1,000 simulations. MCMC is faster in this case. Both methods estimate the parameters accurately, though LA yields higher posterior uncertainty. \relax }}{11}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:approx-regr}{{2}{11}{Bayesian \textbf {linear} regression: Comparison of LA (red) and MCMC (blue) across 1,000 simulations. MCMC is faster in this case. Both methods estimate the parameters accurately, though LA yields higher posterior uncertainty. \relax }{figure.caption.14}{}}
+\newlabel{fig:approx-regr@cref}{{[figure][2][]2}{[1][11][]11}}
 \citation{gelman_weakly_2008}
 \citation{fahrmeir_bayesian_2010}
 \citation{piironen_comparison_2017}
 \citation{angelopoulos_gentle_2022}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  Bayesian logistic regression: Comparison of LA (red) and MCMC (blue) across 1,000 simulations. LA outperforms MCMC in both accuracy and precision of parameter estimates. While LA is slower to compute, it provides more stable estimates. \relax }}{12}{figure.caption.15}\protected@file@percent }
-\newlabel{fig:approx-class}{{3}{12}{Bayesian logistic regression: Comparison of LA (red) and MCMC (blue) across 1,000 simulations. LA outperforms MCMC in both accuracy and precision of parameter estimates. While LA is slower to compute, it provides more stable estimates. \relax }{figure.caption.15}{}}
-\newlabel{fig:approx-class@cref}{{[figure][3][]3}{[1][10][]12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  Bayesian \textbf  {logistic} regression: Comparison of LA (red) and MCMC (blue) across 1,000 simulations. LA outperforms MCMC in both accuracy and precision of parameter estimates. While LA is slower to compute, it provides more stable estimates. \relax }}{12}{figure.caption.15}\protected@file@percent }
+\newlabel{fig:approx-class}{{3}{12}{Bayesian \textbf {logistic} regression: Comparison of LA (red) and MCMC (blue) across 1,000 simulations. LA outperforms MCMC in both accuracy and precision of parameter estimates. While LA is slower to compute, it provides more stable estimates. \relax }{figure.caption.15}{}}
+\newlabel{fig:approx-class@cref}{{[figure][3][]3}{[1][11][]12}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion and Outlook}{12}{section.5}\protected@file@percent }
 \newlabel{sec:conclusion}{{5}{12}{Conclusion and Outlook}{section.5}{}}
 \newlabel{sec:conclusion@cref}{{[section][5][]5}{[1][12][]12}}
@@ -186,7 +186,7 @@
 \bibcite{van_erp_shrinkage_2019}{{46}{2019}{{van Erp et~al.}}{{van Erp, Oberski and\ Mulder}}}
 \bibcite{west_dynamic_1985}{{47}{1985}{{West et~al.}}{{West, ~, and\ Migon}}}
 \bibcite{zellner_assessing_1986}{{48}{1986}{{Zellner}}{{}}}
-\citation{chatgpt}
 \citation{grammarly}
+\citation{chatgpt}
 \citation{tibshirani_regression_1996}
 \gdef \@abspage@last{23}

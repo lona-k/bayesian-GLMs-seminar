@@ -1,16 +1,16 @@
 # Fdb version 3
-["bibtex thesis"] 1751471284 "thesis.aux" "thesis.bbl" "thesis" 1751471287
+["bibtex thesis"] 1751542334 "thesis.aux" "thesis.bbl" "thesis" 1751542338
   "/usr/local/texlive/2022/texmf-dist/bibtex/bst/harvard/dcu.bst" 1233413381 25669 0768d98a028900c057124e4d82e12771 ""
   "bibliography.bib" 1751471283 34162 4bb9a541bdbbf28f09cf11be8f92b699 ""
-  "thesis.aux" 1751471287 15120 9743f0da366506248edb5254bccec3a8 "pdflatex"
+  "thesis.aux" 1751542337 13499 866e6729f58644447c7838105a5992af "pdflatex"
   (generated)
   "thesis.bbl"
   "thesis.blg"
-["pdflatex"] 1751471284 "/Users/lona/Documents/repos/probML_seminar/paper/thesis.tex" "thesis.pdf" "thesis" 1751471287
+["pdflatex"] 1751542334 "/Users/lona/Documents/repos/probML_seminar/paper/thesis.tex" "thesis.pdf" "thesis" 1751542338
   "../figures/approx_class.png" 1750685068 112363 80396f760c98ef662e0d8ea992f76075 ""
   "../figures/approx_regr.png" 1750685068 130099 321fafa46aeb984a960dba85cd03559e ""
   "../figures/reg_all.png" 1750674841 226524 b0caecb029741fc9c5597ec3994fce55 ""
-  "/Users/lona/Documents/repos/probML_seminar/paper/thesis.tex" 1751470956 7049 cc0c37fe107f3189754108dedb58626a ""
+  "/Users/lona/Documents/repos/probML_seminar/paper/thesis.tex" 1751487636 7054 b86cde36a9af424b58668c6391a3c809 ""
   "/Users/lona/Library/texlive/2022/texmf-var/fonts/tfm/lh/lh-t2a/larm0500.tfm" 1749291039 3252 bc0f8cc163ba94bbce20e59f671a255d ""
   "/Users/lona/Library/texlive/2022/texmf-var/fonts/tfm/lh/lh-t2a/larm0600.tfm" 1749291236 3248 7c0b9d76a2cd84ed06764a4c6eea5de4 ""
   "/Users/lona/Library/texlive/2022/texmf-var/fonts/tfm/lh/lh-t2a/larm0700.tfm" 1749291037 3256 b15a2ce2310c0038b96c5235b038f0eb ""
@@ -191,16 +191,16 @@
   "chapters/appendix.tex" 1750690958 3462 16e38e1f6227150c3333e128a1254d31 ""
   "chapters/chapter_2.tex" 1750703430 12034 c8dfad45d845488286a679e816d5c5d4 ""
   "chapters/chapter_3.tex" 1750703708 8687 ef38a813ac7d71e039c4bf776a4513af ""
-  "chapters/chapter_4.tex" 1750691465 8609 36440f8a49408572e82b6055c621af17 ""
+  "chapters/chapter_4.tex" 1751542331 8711 c8868298804b61b69bb74bdb50d583b3 ""
   "chapters/conclusion.tex" 1750708904 2317 1f9d629e661eaf00bb51736215726a3f ""
   "chapters/introduction.tex" 1750706189 2047 18c5a39c8cb532f4d008a52eb899e7e5 ""
   "shortcuts.tex" 1749549341 4325 33a7ab15141d4d691c94e3cf23c4a80a ""
   "sigillum.png" 1747903044 320585 57131ef3bcfba901e575bf6769aac43e ""
-  "thesis.aux" 1751471287 15120 9743f0da366506248edb5254bccec3a8 "pdflatex"
-  "thesis.bbl" 1751471284 14613 8fbc37969dad59512426426b261bc24b "bibtex thesis"
-  "thesis.out" 1751471287 2682 e05959107b8892abba074228b5c9f2e8 "pdflatex"
-  "thesis.tex" 1751470956 7049 cc0c37fe107f3189754108dedb58626a ""
-  "thesis.toc" 1751471287 1292 0f21af9b229ce55bb827e6466253aa13 "pdflatex"
+  "thesis.aux" 1751542337 13499 866e6729f58644447c7838105a5992af "pdflatex"
+  "thesis.bbl" 1751542334 14613 8fbc37969dad59512426426b261bc24b "bibtex thesis"
+  "thesis.out" 1751542337 2682 e05959107b8892abba074228b5c9f2e8 "pdflatex"
+  "thesis.tex" 1751487636 7054 b86cde36a9af424b58668c6391a3c809 ""
+  "thesis.toc" 1751542337 1292 b2d94e229cd2585c329b42b7efca55ff "pdflatex"
   (generated)
   "thesis.aux"
   "thesis.log"

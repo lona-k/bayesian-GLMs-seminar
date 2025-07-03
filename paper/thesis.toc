@@ -9,7 +9,7 @@
 \contentsline {subsection}{\numberline {3.3}Approximate Bayesian Inference}{7}{subsection.3.3}%
 \contentsline {section}{\numberline {4}Illustrative Examples}{9}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Regularization and Variable Selection}{9}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Performance of Approximate Inference Algorithms}{10}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.2}Performance of Approximate Inference Algorithms}{11}{subsection.4.2}%
 \contentsline {section}{\numberline {5}Conclusion and Outlook}{12}{section.5}%
 \contentsline {section}{\numberline {A}Appendix}{V}{appendix.A}%
 \contentsline {section}{\numberline {B}Electronic Appendix}{VII}{appendix.B}%

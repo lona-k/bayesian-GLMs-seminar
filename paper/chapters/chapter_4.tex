@@ -3,7 +3,7 @@
 We now apply three of the previously discussed priors to linear and logistic models using synthetic data (consisting of training and test sets) under two settings:
 
 \begin{itemize}
-    \item \textbf{Scenario A}: a well-behaved setting without collinearity to examine shrinkage:
+    \item \textbf{Scenario A}: A well-behaved setting without collinearity to examine shrinkage:
     \begin{equation*}
         \begin{aligned}
             &n = 150,\; n_{train} = 100,\;n_{test} = 50 \\
@@ -12,7 +12,7 @@ We now apply three of the previously discussed priors to linear and logistic mod
             &\text{linear: } \by \mid \btheta \sim \Ncal(\bX \btheta,\bI)\quad \text{logistic: } \by \mid \btheta \sim \text{Ber}(\sigma(\bX \btheta)).
         \end{aligned}
     \end{equation*}
-    \item \textbf{Scenario B}: a low-information setting where $n \approx p$ with collinearity between informative and non-informative covariates:
+    \item \textbf{Scenario B}: A low-information setting where $n \approx p$ with collinearity between informative and non-informative covariates:
     \begin{equation*}
         \begin{aligned}
             &n = 150,\; n_{train} = 30,\;n_{test} = 120 \\
@@ -37,20 +37,16 @@ We now apply three of the previously discussed priors to linear and logistic mod
 \end{itemize}
 
 For each scenario, we fit three linear and three logistic regression models using the following priors: A flat prior as a benchmark, using the conjugate setting described in \autoref{eq:flat-prior} with the R-package \texttt{brms} \citep{brms_2017}.\footnote{To obtain a virtually flat prior, the Gaussian prior variance was set to $10^6$ and the Gamma prior parameters were set to $a = 0.001, b=0.001$, which results in an uninformative prior.} 
-We fit a ridge prior (see \autoref{eq:ridge}) and a LASSO prior (see \autoref{eq:lasso}) via the \texttt{bayesreg} package \citep{makalic_bayesreg_2016} with automatic optimization of the regularization parameters $\tau^2$ and $\lambda^2$.
-For all models, we ran MCMC with 20,000 iterations, a 1,000 burn-in, and a thinning interval of 10.
+We fit a ridge prior (see \autoref{eq:ridge}) and a LASSO prior (see \autoref{eq:lasso}) via the \texttt{bayesreg} package \citep{makalic_bayesreg_2016} with automated optimization of the regularization parameters $\tau^2$ and $\lambda^2$.
+For all models, we ran MCMC with 20,000 iterations, a 1,000 burn-in, and a thinning interval of 10.\\
 
+Our evaluation focuses on two aspects:
+Firstly, \textit{variable selection accuracy}, i.e.\@ the number of correctly identified influential covariates (Hits) and falsely as influential declared covariates (FP).
 Although ridge and LASSO shrink coefficients, they do not perform variable selection by themselves.
-Thus, we used Bayesian credibility intervals as a criterion to decide whether a parameter is credibly nonzero as described in \citet{van_erp_shrinkage_2019}.\\
-
-Our evaluation focuses on:
-\begin{enumerate}
-    \item Variable selection accuracy: Number of correctly identified influential covariates (Hits) and falsely as influential declared covariates (FP).
-    \item Predictive accuracy: Measured on test set by the mean log posterior predictive density (MLPPD) proposed by \citet{gelman_understanding_2013}.
-    Since the log-likelihood is a proper scoring rule, it is well-suited to evaluate Bayesian models.
-\end{enumerate}
-
-\autoref{tab:reg_AB} shows numerical results, while \autoref{fig:reg-params} visualizes parameter estimates and uncertainty.
+Thus, we used Bayesian credibility intervals as a criterion to decide whether a parameter is credibly nonzero as described in \citet{van_erp_shrinkage_2019}.
+Secondly, \textit{predictive accuracy}.
+This was measured on the test set by the mean log posterior predictive density (MLPPD) proposed by \citet{gelman_understanding_2013}.
+Since the log-likelihood is a proper scoring rule, it is well-suited to evaluate Bayesian models.\\
 
 \begin{table}[ht]
     \small
@@ -82,22 +78,22 @@ Our evaluation focuses on:
         & 1 &  0 &   -0.493     \\
         \bottomrule
     \end{tabular}
-    \caption{Evaluation metrics under Scenarios A and B.
-    For linear regression, all priors correctly identified the influential variables and produced few or no false positives.
-    The effect of regularization is more pronounced in logistic regression: in both scenarios, the regularized models (LASSO and ridge) declared fewer coefficients as influential and reduced false positives.
-    In the low-information Scenario B, regularization priors improved both variable selection and the predictive accuracy (MLPPD).
-    Except under the flat prior, Bayesian logistic regression achieved slightly better predictive performance than linear regression, though differences in MLPPD between priors were small.
+    \caption{Evaluation metrics of Bayesian linear and logistic regression, each with a flat, ridge, and LASSO prior, under Scenarios A and B.
     }
     \label{tab:reg_AB}
 \end{table}
+
+\autoref{tab:reg_AB} shows numerical results, while \autoref{fig:reg-params} visualizes parameter estimates and uncertainty.
+For linear regression, all priors correctly identified the influential variables and produced few or no false positives.
+The effect of regularization is more pronounced in logistic regression: in both scenarios, the regularized models (LASSO and ridge) declared fewer coefficients as influential and reduced false positives.
+In the low-information Scenario B, regularization priors improved both variable selection and predictive accuracy (MLPPD). Except under the flat prior, Bayesian logistic regression achieved slightly better predictive performance than linear regression, although differences in MLPPD between priors were minimal. Conversely, linear models provided more accurate estimates with narrower CIs than logistic models.
+In Scenario B, the uncertainty of the unregularized logistic model becomes especially evident, highlighting the importance of regularization in high-dimensional, low-information settings.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\linewidth]{../figures/reg_all.png}
     \caption{Estimated model parameters with 95\% credibility intervals (CI).
-    True parameter values are shown as black crosses.
-    Linear models yielded more accurate estimates with narrower CIs than logistic models.
-    In Scenario B, the uncertainty of the unregularized logistic model becomes especially pronounced, illustrating the need for regularization in high-dimensional, low-information settings.
+    True parameter values are black crosses.
     }
     \label{fig:reg-params}
 \end{figure}
@@ -124,7 +120,7 @@ For each method, we recorded CPU runtime, posterior means, and posterior standar
     \centering
     \includegraphics[width=\linewidth]{../figures/approx_regr.png}
     \caption{
-    Bayesian linear regression: Comparison of LA (red) and MCMC (blue) across 1,000 simulations.
+    Bayesian \textbf{linear} regression: Comparison of LA (red) and MCMC (blue) across 1,000 simulations.
     MCMC is faster in this case.
     Both methods estimate the parameters accurately, though LA yields higher posterior uncertainty.
     }
@@ -135,7 +131,7 @@ For each method, we recorded CPU runtime, posterior means, and posterior standar
     \centering
     \includegraphics[width=\linewidth]{../figures/approx_class.png}
     \caption{
-    Bayesian logistic regression: Comparison of LA (red) and MCMC (blue) across 1,000 simulations.
+    Bayesian \textbf{logistic} regression: Comparison of LA (red) and MCMC (blue) across 1,000 simulations.
     LA outperforms MCMC in both accuracy and precision of parameter estimates.
     While LA is slower to compute, it provides more stable estimates.
     }
