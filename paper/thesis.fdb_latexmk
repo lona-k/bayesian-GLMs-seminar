@@ -1,16 +1,16 @@
 # Fdb version 3
-["bibtex thesis"] 1751555286 "thesis.aux" "thesis.bbl" "thesis" 1751555464
+["bibtex thesis"] 1751555286 "thesis.aux" "thesis.bbl" "thesis" 1751555797
   "/usr/local/texlive/2022/texmf-dist/bibtex/bst/harvard/dcu.bst" 1233413381 25669 0768d98a028900c057124e4d82e12771 ""
   "bibliography.bib" 1751554686 34162 4bb9a541bdbbf28f09cf11be8f92b699 ""
-  "thesis.aux" 1751555464 13499 6b14cc58d3e040f98817d22641a3712c "pdflatex"
+  "thesis.aux" 1751555796 13499 6b14cc58d3e040f98817d22641a3712c "pdflatex"
   (generated)
   "thesis.bbl"
   "thesis.blg"
-["pdflatex"] 1751555461 "/Users/lona/Documents/repos/probML_seminar/paper/thesis.tex" "thesis.pdf" "thesis" 1751555464
+["pdflatex"] 1751555793 "/Users/lona/Documents/repos/probML_seminar/paper/thesis.tex" "thesis.pdf" "thesis" 1751555797
   "../figures/approx_class.png" 1750685068 112363 80396f760c98ef662e0d8ea992f76075 ""
   "../figures/approx_regr.png" 1750685068 130099 321fafa46aeb984a960dba85cd03559e ""
   "../figures/reg_all.png" 1750674841 226524 b0caecb029741fc9c5597ec3994fce55 ""
-  "/Users/lona/Documents/repos/probML_seminar/paper/thesis.tex" 1751553347 7056 3a3d47a71bd818144dfb79f09c65dc5f ""
+  "/Users/lona/Documents/repos/probML_seminar/paper/thesis.tex" 1751555793 7055 c5845ff3c681dabb9a8c57d72979b52c ""
   "/Users/lona/Library/texlive/2022/texmf-var/fonts/tfm/lh/lh-t2a/larm0500.tfm" 1749291039 3252 bc0f8cc163ba94bbce20e59f671a255d ""
   "/Users/lona/Library/texlive/2022/texmf-var/fonts/tfm/lh/lh-t2a/larm0600.tfm" 1749291236 3248 7c0b9d76a2cd84ed06764a4c6eea5de4 ""
   "/Users/lona/Library/texlive/2022/texmf-var/fonts/tfm/lh/lh-t2a/larm0700.tfm" 1749291037 3256 b15a2ce2310c0038b96c5235b038f0eb ""
@@ -196,11 +196,11 @@
   "chapters/introduction.tex" 1751553421 2039 252736c037cdcba5662ce0b29ffd3610 ""
   "shortcuts.tex" 1749549341 4325 33a7ab15141d4d691c94e3cf23c4a80a ""
   "sigillum.png" 1747903044 320585 57131ef3bcfba901e575bf6769aac43e ""
-  "thesis.aux" 1751555464 13499 6b14cc58d3e040f98817d22641a3712c "pdflatex"
+  "thesis.aux" 1751555796 13499 6b14cc58d3e040f98817d22641a3712c "pdflatex"
   "thesis.bbl" 1751555286 14613 8fbc37969dad59512426426b261bc24b "bibtex thesis"
-  "thesis.out" 1751555464 2682 da889ba6e03896dea99890a6317941cd "pdflatex"
-  "thesis.tex" 1751553347 7056 3a3d47a71bd818144dfb79f09c65dc5f ""
-  "thesis.toc" 1751555464 1292 d31799d684324913fd2ae39d6260e1ac "pdflatex"
+  "thesis.out" 1751555796 2682 da889ba6e03896dea99890a6317941cd "pdflatex"
+  "thesis.tex" 1751555793 7055 c5845ff3c681dabb9a8c57d72979b52c ""
+  "thesis.toc" 1751555796 1292 d31799d684324913fd2ae39d6260e1ac "pdflatex"
   (generated)
   "thesis.aux"
   "thesis.log"
