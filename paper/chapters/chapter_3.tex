@@ -37,14 +37,14 @@ To address separation (i.e.\@ perfect prediction) and to induce shrinkage, heavi
 
 \subsection{Approximate Bayesian Inference} \label{sec:logit-inf}
 
-Unlike for the linear model, Bayesian inference with closed form posteriors is not possible in most cases \citep[see e.g.][]{polson_bayesian_2013}.
+Unlike for the linear model, Bayesian inference with a closed form posterior is not possible in most cases \citep[see e.g.][]{polson_bayesian_2013}.
 To sample from the posterior and PPD, we need to use approximate Bayesian inference methods.
 
 \subsubsection*{Sampling from the Posterior with MCMC Methods}
 
 Markov chain Monte Carlo (MCMC) generates samples from the posterior $p(\btheta\mid \by)$ without making any (explicit) assumptions about the form of the posterior, although MCMC performs best if the parameter posterior is known up to a constant.
 The Metropolis–Hastings algorithm \citep{hastings_monte_1970} for $K$ samples\footnotemark \; proceeds as follows:
-\footnotetext{Note that by construction, the samples are (sometimes heavily) correlated and that the number of repetitions necessary until convergence depends on $\btheta^{(0)}$.}
+\footnotetext{Note that by construction, the samples are (sometimes heavily) correlated and that the number of repetitions necessary until convergence depends on $\btheta^{(1)}$.}
 \begin{enumerate}
     \item Initialize $\btheta^{(1)}$
     \item For $k = 1, \dots, K$
@@ -78,7 +78,7 @@ A common choice is a Gaussian distribution centered at the current state with th
 \citep{scott_data_2011} argues that using heavier-tailed proposals (e.g.\@ Student–$t$) can improve mixing, which means that the algorithm converges faster and a shorter burn-in period is necessary.\\
 
 \footnotetext{
-    The symmetry of the Gaussian distribution simplifies the algorithm to the Metropolis algorithm, where the acceptance probability can be calculated only using $p(\btheta \mid \by)\; p\btheta$.
+    The symmetry of the Gaussian distribution simplifies the algorithm to the Metropolis algorithm, where the acceptance probability can be calculated only using $p(\btheta \mid \by)\; p(\btheta)$.
 }
 
 Beyond Metropolis–Hastings, several advanced samplers are popular:
@@ -118,14 +118,14 @@ In logistic regression, which is a binary classification setting, we obtain the 
     Encoded here with $y_i \in \{0 \text{ (negative)}, 1 \text{ (positive)}\}$
 } $p(\ty = 1 \mid \btheta, \by)$ and inferring the negative class.\\
 
-As MCMC results in samples from the posterior, we can use the samples $\btheta_k$ to approximate the PPD with
+As MCMC results in samples from the posterior, we can use the samples $\btheta^{(k)}$ to approximate the PPD with
 \begin{equation}\label{eq:ppd-sample}
-    p(\ty = 1 \mid \btheta, \by) \approx \frac{1}{K} \sum_{k=1}^{K} \sigma(\tX \btheta_k).
+    p(\ty = 1 \mid \btheta, \by) \approx \frac{1}{K} \sum_{k=1}^{K} \sigma(\tX \btheta^{(k)}).
 \end{equation}
 
 Under Laplace approximation, we may either
 \begin{itemize}
-    \item draw samples $\btheta_s \sim \Ncal(\hbtheta_{MAP}, H^{-1}(\hbtheta_{MAP}))$ with $s = 1, \dots, S$ and compute \autoref{eq:ppd-sample} or
+    \item draw samples $\btheta^{(s)} \sim \Ncal(\hbtheta_{MAP}, H^{-1}(\hbtheta_{MAP}))$ with $s = 1, \dots, S$ and compute \autoref{eq:ppd-sample} or
     \item use the LA-approximated PPD and compute
     \begin{equation*}
         p(\ty = 1 \mid \btheta, \by) = \int \sigma(\tX \btheta) \; \Ncal_{\btheta}(\hbbeta_{MAP}, H^{-1} (\hbbeta_{MAP})) \; d \btheta.

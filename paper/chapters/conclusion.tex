@@ -1,11 +1,11 @@
 In this paper, we reviewed the model specification, prior choice, and approximate inference methods for Bayesian generalized linear models.
-We detailed how priors can be used to stabilize estimation and to implement familiar regularization in a Bayesian setting.
+We detailed how priors can be used to stabilize estimation and how to implement regularization in a Bayesian setting.
 Using the example of logistic regression, we demonstrated the necessity of numerical methods for inference.
 We explained LA and MCMC, which form the basis of modern approximate inference methods for Bayesian GLMs.\\
 
 We examined regularized Bayesian models in an applied example under challenging (synthetic) data conditions.
-We found that regularization improved predictive performance and reduced the number of covariates falsely declared as informative, particularly in logistic regression.
-Comparing MCMC and LA revealed that LA can yield more precise estimates than MCMC despite lower computational speed.
+We found that regularization can improve predictive performance and reduce the number of covariates falsely declared as informative, particularly in logistic regression.
+Comparing MCMC and LA revealed that LA can yield more precise estimates than MCMC despite its lower computational speed.
 However, this could be mitigated by the specific implementation used in the experiment.
 As these examples are meant to be illustrative, we caution against overgeneralizing and note that more efficient regularization and inference tools are readily available.\\
 

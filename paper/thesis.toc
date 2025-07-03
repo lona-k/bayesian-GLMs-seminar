@@ -1,7 +1,7 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
 \contentsline {section}{\numberline {2}Bayesian Linear Model}{2}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Model Definition}{2}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Prior choice}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.2}Prior Choice}{2}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Bayesian Inference with Closed Form Priors}{4}{subsection.2.3}%
 \contentsline {section}{\numberline {3}Bayesian Logistic Model}{6}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Bayesian Generalized Linear Model}{6}{subsection.3.1}%

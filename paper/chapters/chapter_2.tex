@@ -1,17 +1,17 @@
-The (frequentist) linear regression model is probably the most widely used model in statistics and machine learning.
+The (frequentist) linear model is probably the most widely used model in statistics and machine learning.
 The frequentist and the Bayesian linear models are described in many introductory texts on statistical modeling, such as \citet{fahrmeir_regression_2021} or \citet{gelman_bayesian_2013}.
 
 
 \subsection{Model Definition}
 
 We observe an independent and identically distributed (i.i.d.) sample $\bD = (\by, \bX)$ with $n$ observations and $p$ covariates and assume a linear relationship between $\bX$ and $\by$.\footnote{For a detailed explanation of the notation see \Cref{sec:app}.}
+A condition on $\bX$ is always implicit.
 The frequentist linear regression model then assumes
 \begin{equation} \label{eq:LM}
     \by \sim \Ncal(\bX \btheta, \ssd \bI),
 \end{equation}
 
-where the weight parameter $\btheta$ and the variance $\ssd$ are estimated to obtain the fitted model.
-A condition on $\bX$ is always implicit.\\
+where the weight parameter $\btheta$ and the variance $\ssd$ are estimated to obtain the fitted model.\\
 
 To view linear regression from a Bayesian perspective, we simply reinterpret the parameters as random variables.
 Conditioning on $\btheta$ and $\ssd$, the likelihood takes the same form as in \autoref{eq:LM}:
@@ -21,7 +21,7 @@ Conditioning on $\btheta$ and $\ssd$, the likelihood takes the same form as in \
 
 Note that to predict multiple outputs, an extension to multivariate linear regression is possible.
 
-\subsection{Prior choice}
+\subsection{Prior Choice}
 \subsubsection*{Normal (Inverse Gamma) Prior}
 
 To complete the Bayesian linear model specification, we place conjugate priors on both $\btheta$ and $\ssd$.
@@ -46,12 +46,13 @@ We can then use Bayes' rule once again to derive the unconditional prior distrib
 \end{equation*}
 
 \subsubsection*{Uninformative Prior}
-The idea of an uninformative (or flat) prior is to maximize the influence of the data on the posterior in the absence of prior knowledge.
-Especially when little to no prior information is available, we can flatten the NIG prior by setting
+The idea of an uninformative prior is to maximize the influence of the data on the posterior in the absence of prior knowledge.
+Especially when little to no prior information is available, we can reflect this in the model by flattening the NIG prior.
+We set
 \begin{equation*}
     \mupri = \bnull, \quad \Sdipri = \bnull \text{  i.e., } \Sdpri \to \infty 
 \end{equation*}
-and choosing $\apri = - \frac{p}{2}$ and $\bpri = 0$, where $p$ is the number of features in the model.
+and choose $\apri = - \frac{p}{2}$ and $\bpri = 0$, where $p$ is the number of features in the model.
 
 We can easily see that with this assumption, the prior for $\btheta$ becomes very flat while still retaining the useful qualities from the setup described in \autoref{eq:NIGprior}.
 
@@ -71,7 +72,7 @@ Another good solution for use cases with little prior knowledge that still requi
 \subsubsection*{Regularization Priors} \label{sec:lm-regularization}
 
 % Bayesian penalization techniques perform similarly or sometimes even better, and they offer additional advantages such as readily available uncertainty estimates, automatic estimation of the penalty parameter, and more flexibility in terms of penalties that can be considered.
-Regularization (or penalization) regulates the trade-off between model complexity and out-of-sample performance, or equivalently bias vs. variance. 
+Regularization (or penalization) regulates the trade-off between model complexity and out-of-sample performance, or equivalently bias and variance. 
 In frequentist statistics, we minimize the penalized least squares criterion (PLS) 
 \begin{equation*}
     \text{PLS}(\btheta) = (\by - \bX \btheta)^\top (\by - \bX \btheta) + \lambda \ \text{pen}(\btheta).
@@ -96,13 +97,14 @@ We chose to simplify this and stick to the previously established definitions be
 
 Although there are many options for regularization priors, we are going to focus on regularization priors that align directly with familiar frequentist penalties.\\
 
-\textbf{Ridge regularization} \citep{hoerl_ridge_1970,hoerl_ridge_1970-1} uses $\text{pen}(\btheta) = \|\btheta\|_2^2$ and the Bayesian analogue \Citep[e.g.][]{hsiang_bayesian_1975,mackay_bayesian_1992} specifies
+\textbf{Ridge regularization} \citep{hoerl_ridge_1970,hoerl_ridge_1970-1} uses $\text{pen}(\btheta) = \|\btheta\|_2^2$.
+The Bayesian analogue \Citep[e.g.][]{hsiang_bayesian_1975,mackay_bayesian_1992} specifies
 \begin{equation}\label{eq:ridge}
     \btheta \sim \Ncal(\bnull, \taus \bI),
 \end{equation}
 
 with $\taus$ controlling the degree of regularization akin to the role of $\lambda$.
-In contrast to $\lambda$, $\taus$ does not need to be set in advance or optimized as a hyperparameter.
+In contrast to $\lambda$, $\taus$ does not need to be set in advance or be optimized as a hyperparameter.
 We can simply embed it in a hierarchical model by specifying a prior for $\taus$, e.g.\@ $\taus \sim \IG(\apri_\tau, \bpri_\tau)$, and estimate it alongside $\btheta$ and $\ssd$.\\
 
 \textbf{LASSO} (least absolute shrinkage and selection operator) \textbf{regularization} \citep{tibshirani_regression_1996} uses $\text{pen}(\btheta) = \|\btheta\|_1$ to perform variable selection by setting elements $\theta_j$ of $\btheta$ to $0$ during estimation.
@@ -117,7 +119,7 @@ The Bayesian LASSO specifies a Laplace prior on $\btheta$ via the scale mixture 
 
 where the regularization parameter $\lambda^2$ is often given a (hyper-) prior, e.g.\@ $\lambda^2 \sim \text{G}(\apri_\lambda, \bpri_\lambda)$.\\
 
-Because Bayesian LASSO does not promote a sparse solution, discrete-mixture Spike-and-Slab priors \citep{mitchell_bayesian_1988} (which are necessary for categorical covariates) or the heavy-tailed horseshoe prior \citep{carvalho_horseshoe_2010} are preferred for variable selection.
+Because the Bayesian LASSO does not promote a sparse solution, discrete-mixture Spike-and-Slab priors \citep{mitchell_bayesian_1988} (which are necessary for categorical covariates) or the heavy-tailed horseshoe prior \citep{carvalho_horseshoe_2010} are preferred for variable selection.
 
 \subsection{Bayesian Inference with Closed Form Priors}
 
@@ -134,7 +136,7 @@ Under Gaussian errors, this satisfies
     \hbtheta_{LS} \sim \Ncal(\btheta, \ssd (\bX^\top \bX)^{-1}).
 \end{equation*}
 
-To quantify the uncertainty in the estimation, we can compute confidence intervals for $\btheta$, but these reflect only the variability in the estimator, not uncertainty about the true parameter itself.\\
+To quantify the uncertainty in the estimation, we can compute confidence intervals for $\btheta$, but these reflect only the variability in the estimator, not the uncertainty about the true parameter itself.\\
 
 In contrast, the Bayesian approach yields a full posterior distribution on $\btheta$ by updating the prior distribution with observed data using Bayes' rule.
 With the NIG prior introduced in \autoref{eq:NIGprior}, conjugacy implies for the joint posterior $p(\btheta, \ssd \mid \by)$ that
@@ -149,9 +151,9 @@ with posterior mean and variance \footnotemark
 
 \footnotetext{For the full calculation see \Cref{sec:app}}
 
-Integrating out $\ssd$ yields $\btheta \mid \by \sim \Tcal(2 \apo, \mupo, \bpo / \apo \Sdpo)$ and Bayesian credibility intervals can be derived directly from this distribution \citep[see e.g.][on how to do this]{held_likelihood_2020}.\\
+Integrating out $\ssd$ yields $\btheta \mid \by \sim \Tcal(2 \apo, \mupo, \bpo / \apo \Sdpo)$ and Bayesian credibility intervals can be derived directly from this distribution \citep[see e.g.][]{held_likelihood_2020}.\\
 
-Since we defined the non-information prior (\autoref{eq:flat-prior}) as a special case of the NIG-distributed prior, we can use \autoref{eq:NIGpost} to directly calculate the posterior mean and variance as
+Since we defined the non-information prior (\autoref{eq:flat-prior}) as a special case of the NIG-distributed prior, we can use \autoref{eq:NIGpost} to directly calculate the posterior mean and variance for a non-informative setting as
 \begin{equation*}
         \mupo = (\bX^\top \bX)^{-1} \bX^\top \by, \quad
         \Sdpo = \bX^\top \bX.
@@ -160,30 +162,29 @@ Since we defined the non-information prior (\autoref{eq:flat-prior}) as a specia
 The posterior mean $\mupo$ coincides with $\hbtheta_{LS}$ (\autoref{eq:LSE}), which means that a Bayesian linear model with a non-informative prior converges to the frequentist solution.
 More generally, as the prior variance $\Sdpri$ grows, $\mupo$ approaches $\hbtheta_{LS}$, since the likelihood (and thus the data) dominates the posterior.\\
 
-Because Bayesian ridge regression is simply the NIG case of \autoref{eq:NIGprior} with finite $\Sdpo$, inference results in the same posterior update as in \autoref{eq:NIGpost}.
+Because Bayesian ridge regression is simply the NIG case of \autoref{eq:NIGprior} with finite $\Sdpri$, inference results in the same posterior update as in \autoref{eq:NIGpost}.
 By contrast, the Bayesian LASSO's Laplace prior has no closed form posterior, but we can easily sample from it using Gibbs sampling \citep{park_bayesian_2008}.
-We will go more into depth on approximate inference for Bayesian regression models in \Cref{sec:logit-inf}.
+We will go more into approximate inference for Bayesian regression models in more depth in \Cref{sec:logit-inf}.
 
 \subsubsection*{Posterior Predictive Distribution}
-In many applications, we care more about predictions $\ty$ for new, unseen inputs $\tX$ (or test data $(\ty, \tX)$), independent of the training data $\bD$, than about $\btheta$ itself.
+In many applications, we do not care so much about $\btheta$ itself.
+Instead, we are interested in predictions $\ty$ for new, unseen inputs $\tX$ (or test data $(\ty, \tX)$), independent of the training data $\bD$.
 The Bayesian answer to this is the \textit{posterior predictive distribution} (PPD) \Citep[see e.g][]{box_sampling_1980,barbieri_posterior_2015}
 \begin{equation*}
     p(\ty \mid \by) = \int p(\ty, \btheta \mid \by) d \btheta 
     = \int p(\ty \mid \btheta, \by) p(\btheta) d \btheta
     \overset{\ty \perp \by \mid \btheta}{=}  \int p(\ty \mid \btheta) p(\btheta) d \btheta,
 \end{equation*}
-
 which is an average of conditional probabilities over the posterior distribution of $\btheta$.\footnotemark
-
 \footnotetext{
     A note on intuition: In essence, the PPD is the marginal distribution of $\ty$, conditioned on the data $\by$.
     We recognize the marginal distribution of $\by$ from Bayes' rule as the normalization constant, i.e., $p(\by) = \int p(\by, \btheta) d\btheta = \int p(\by \mid \btheta) p(\btheta) d\btheta$.
 }
-
-For the NIG prior in \autoref{eq:NIGprior}, one can show\footnote{see \Cref{sec:app}} that
+For the NIG prior in \autoref{eq:NIGprior}, one can show that
 \begin{equation*}
-    \ty \mid \btheta, \ssd, \by \sim \Tcal(2 \apo, \tX \btheta, \frac{\bpo}{\apo} (\bI + \tX \Sdpo \tX^\top)).
+    \ty \mid \btheta, \ssd, \by \sim \Tcal(2 \apo, \tX \btheta, \frac{\bpo}{\apo} (\bI + \tX \Sdpo \tX^\top)).\footnotemark
 \end{equation*}
+\footnotetext{see \Cref{sec:app} for more detail.}
 
 Interestingly, the posterior predictive mean $\mupo = \tX \btheta$ of the t-distribution coincides with the least squares prediction and its scale matrix reflects both observational noise and posterior uncertainty.
 Bayesian inference with the Gaussian conjugate is more thoroughly described by \citet{murphy_conjugate_nodate}.\\

@@ -6,17 +6,17 @@ We now apply three of the previously discussed priors to linear and logistic mod
     \item \textbf{Scenario A}: A well-behaved setting without collinearity to examine shrinkage:
     \begin{equation*}
         \begin{aligned}
-            &n = 150,\; n_{train} = 100,\;n_{test} = 50 \\
-            &\btheta = (2, 1.5, 0, 0, 0) \\
-            &\bX \sim \Ncal(\bnull, \bI) \\
-            &\text{linear: } \by \mid \btheta \sim \Ncal(\bX \btheta,\bI)\quad \text{logistic: } \by \mid \btheta \sim \text{Ber}(\sigma(\bX \btheta)).
+            &n = 150,\; n_{train} = 100,\;n_{test} = 50, \\
+            &\btheta = (2, 1.5, 0, 0, 0), \\
+            &\bX \sim \Ncal(\bnull, \bI), \\
+            &\text{linear: } \by \mid \btheta \sim \Ncal(\bX \btheta,\bI), \quad \text{logistic: } \by \mid \btheta \sim \text{Ber}(\sigma(\bX \btheta)).
         \end{aligned}
     \end{equation*}
     \item \textbf{Scenario B}: A low-information setting where $n \approx p$ with collinearity between informative and non-informative covariates:
     \begin{equation*}
         \begin{aligned}
-            &n = 150,\; n_{train} = 30,\;n_{test} = 120 \\
-            &\btheta = (2, 1.5, 0, \overset{26\; \text{times}}{\dots}, 0) \\
+            &n = 150,\; n_{train} = 30,\;n_{test} = 120, \\
+            &\btheta = (2, 1.5, 0, \overset{26\; \text{times}}{\dots}, 0), \\
             &\bX \sim \Ncal(\bnull, \Sd), \quad \Sd =
                     \begin{pmatrix}
                     1 &        &         &        &        \\
@@ -30,8 +30,8 @@ We now apply three of the previously discussed priors to linear and logistic mod
                     1   & 0.8 & 0.8\\
                     0.8 & 1   & 0.8\\
                     0.8 & 0.8 & 1
-                    \end{pmatrix}\\
-            &\text{linear: } \by \mid \btheta \sim \Ncal(\bX \btheta, \bI)\quad \text{logistic: } \by \mid \btheta \sim \text{Ber}(\sigma(\bX \btheta)).
+                    \end{pmatrix},\\
+            &\text{linear: } \by \mid \btheta \sim \Ncal(\bX \btheta, \bI), \quad \text{logistic: } \by \mid \btheta \sim \text{Ber}(\sigma(\bX \btheta)).
         \end{aligned}
     \end{equation*}
 \end{itemize}
@@ -40,7 +40,7 @@ For each scenario, we fit three linear and three logistic regression models usin
 We fit a ridge prior (see \autoref{eq:ridge}) and a LASSO prior (see \autoref{eq:lasso}) via the \texttt{bayesreg} package \citep{makalic_bayesreg_2016} with automated optimization of the regularization parameters $\tau^2$ and $\lambda^2$.
 For all models, we ran MCMC with 20,000 iterations, a 1,000 burn-in, and a thinning interval of 10.\\
 
-Our evaluation focuses on two aspects:
+Our evaluation focused on two aspects:
 Firstly, \textit{variable selection accuracy}, i.e.\@ the number of correctly identified influential covariates (Hits) and falsely as influential declared covariates (FP).
 Although ridge and LASSO shrink coefficients, they do not perform variable selection by themselves.
 Thus, we used Bayesian credibility intervals as a criterion to decide whether a parameter is credibly nonzero as described in \citet{van_erp_shrinkage_2019}.

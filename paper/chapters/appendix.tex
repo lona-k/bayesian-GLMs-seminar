@@ -18,14 +18,14 @@ For the model described in \eqref{eq:NIGprior}, the posterior distribution is ca
 \begin{equation*}
     \begin{aligned}
         p(\btheta, \ssd \mid \by) \overset{\text{Bayes' rule}}{\propto}& \Lcal(\btheta, \ssd \mid \by) p(\btheta, \ssd) \\
-        &= \Lcal(\btheta, \ssd \mid \by) p(\btheta \mid \ssd) p(\ssd) \\
-        &= \frac{1}{(\ssd)^{n/2}} \exp\bigl( - \frac{1}{2\ssd} (\by - \bX \btheta)^\top(\by - \bX \btheta) \bigr)\\
-        &= \frac{1}{(\ssd)^{p/2}} \exp\bigl( - \frac{1}{2\ssd} (\btheta - \mupri)^\top \Sdipri (\btheta - \mupri) \bigr)\\
-        &= \frac{1}{(\ssd)^{\apri + 1}} \exp\bigl( - \frac{\bpri}{\ssd} \bigr),
+        =& \Lcal(\btheta, \ssd \mid \by) p(\btheta \mid \ssd) p(\ssd) \\
+        =& \frac{1}{(\ssd)^{n/2}} \exp\bigl( - \frac{1}{2\ssd} (\by - \bX \btheta)^\top(\by - \bX \btheta) \bigr)\\
+        &\frac{1}{(\ssd)^{p/2}} \exp\bigl( - \frac{1}{2\ssd} (\btheta - \mupri)^\top \Sdipri (\btheta - \mupri) \bigr)\\
+        & \frac{1}{(\ssd)^{\apo + 1}} \exp\bigl( - \frac{\bpri}{\ssd} \bigr),
     \end{aligned}
 \end{equation*}
 
-which is NIG-distributed
+which can be shown to be NIG-distributed
 
 \begin{equation*}
     \btheta, \ssd \mid \by \sim \text{NIG}(\mupo, \Sdpo, \apo, \bpo)
