@@ -1,0 +1,82 @@
+---
+title: "Bayesianische (generalisierte) lineare Modelle"
+author: "Lona Koers"
+institute: "LMU"
+date: "25. Juli 2025"
+bibliography: bibliography.bib
+link-citations: true
+
+header-includes:
+  - |-
+    \definecolor{lmugreen}{RGB}{0,136,58}
+    \setbeamercolor{structure}{fg=lmugreen}
+    \usecolortheme[named=lmugreen]{structure}
+  - |-
+    \beamertemplatenavigationsymbolsempty
+    \usefonttheme{professionalfonts}
+  - |-
+    \usepackage{listings}
+    \lstset{
+      language=R,
+      basicstyle=\scriptsize\ttfamily,
+      commentstyle=\ttfamily\color{gray},
+      backgroundcolor=\color{white},
+      showspaces=false,
+      showstringspaces=false,
+      showtabs=false,
+      tabsize=2,
+      captionpos=b,
+      breaklines=false,
+      breakatwhitespace=false,
+      title=\lstname,
+      escapeinside={},
+      keywordstyle={},
+      morekeywords={},
+      belowskip=-1.2\baselineskip
+    }
+  - |-
+    \usepackage{caption}
+    \DeclareCaptionFont{tiny}{\tiny}
+    \captionsetup{font=scriptsize,labelfont=scriptsize,justification=centering}
+  - |-
+    \usepackage{textpos}
+    \addtobeamertemplate{frametitle}{}{%
+      \begin{textblock*}{100mm}(0.88\textwidth,-0.5cm)
+        \includegraphics[height=1cm,width=2cm]{lmu_logo}
+      \end{textblock*}}
+  - |-
+    \AtBeginSection[]{%
+      \begin{frame}[noframenumbering,plain]%
+        \frametitle{Outline}%
+        \setcounter{tocdepth}{1}%
+        \tableofcontents[currentsection]%
+      \end{frame}}
+
+output:
+  beamer_presentation:
+    theme: "Boadilla"
+    fonttheme: "professionalfonts"
+    slide_level: 2
+    citation_package: biblatex
+    keep_tex: true
+    pandoc_args:
+      - "-V"
+      - "aspectratio=169"
+
+---
+
+# Motivation
+
+# Bayesianische lineare Regression
+
+# Bayesianische logistische Regression
+
+## Titel
+
+- bullet point.
+- Example citation [@murphy_probabilistic_2023].
+
+# References
+
+::: {#refs}
+:::

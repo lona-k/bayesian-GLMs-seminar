@@ -1,9 +1,0 @@
-\begin{thebibliography}{1}
-
-\bibitem{bischl2015}
-Bernd Bischl, Michel Lang, Olaf Mersmann, Jörg Rahnenführer, and Claus Weihs.
-\newblock {{BatchJobs} and {BatchExperiments}: Abstraction Mechanisms for Using
-  {R} in Batch Environments}.
-\newblock {\em Journal of Statistical Software}, 64(11):1--25, March 2015.
-
-\end{thebibliography}
