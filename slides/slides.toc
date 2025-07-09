@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Motivation und Intuition}{2}{0}{1}
+\beamer@sectionintoc {2}{Bayesianische lineare Modelle}{4}{0}{2}
+\beamer@sectionintoc {3}{Bayesianische \textbf {generalisierte} lineare Modelle}{11}{0}{3}
+\beamer@sectionintoc {4}{Posterior Inference}{13}{0}{4}

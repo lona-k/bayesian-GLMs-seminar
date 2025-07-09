@@ -1,5 +1,6 @@
 ---
-title: "Bayesianische (generalisierte) lineare Modelle"
+title: "Bayesianische Regression"
+subtitle: "lineare und logistische Modelle"
 author: "Lona Koers"
 institute: "LMU"
 date: "25. Juli 2025"
@@ -51,32 +52,199 @@ header-includes:
         \setcounter{tocdepth}{1}%
         \tableofcontents[currentsection]%
       \end{frame}}
+  - |-
+    \AtBeginEnvironment{thebibliography}{\scriptsize}
 
 output:
   beamer_presentation:
     theme: "Boadilla"
     fonttheme: "professionalfonts"
+    includes:
+      in_header: ../paper/shortcuts.tex
     slide_level: 2
     citation_package: biblatex
+    # citation_package: natbib
     keep_tex: true
     pandoc_args:
+      # - "--natbib"
+      # - "-V"
+      # - "biblio-style=plain"
       - "-V"
       - "aspectratio=169"
+    md_extensions: +fenced_divs+raw_tex
 
 ---
 
-# Motivation
+# Motivation und Intuition
 
-# Bayesianische lineare Regression
+TODO: gutes Beispiel
 
-# Bayesianische logistische Regression
+- Generalisierte Lineare Modelle (GLMs) 
 
-## Titel
+- Punktvorhersage vs. Verteilung vorhersagen
+- warum reicht uns ein CI / PI
 
-- bullet point.
-- Example citation [@murphy_probabilistic_2023].
+# Bayesianische lineare Modelle
 
-# References
+## Frequentistisches $\to$ bayesianisches lineares Modell
+
+Annahmen:
+
+1. i.i.d. Daten $\bD = (\by, \bX)$
+2. Kondition auf $\bX$ (implizit)
+
+**Frequentistisches** lineares Modell:  $\by \sim \Ncal(\bX \btheta, \ssd \bI)$
+
+3. Gewichtsparameter $\btheta$ als Zufallsvariable interpretieren
+
+::: {.block}
+### **Bayesianisches** lineares Modell:
+$$\by \mid \btheta, \ssd \sim \Ncal(\bX \btheta, \ssd \bI)$$
+:::
+
+## Modelldefinition (Prior-Verteilungen)
+
+**Prior**-Annahme für $\btheta$ (und evtl. $\ssd$) notwendig $\to$ sehr vielseitige Modell-Anpassung möglich
+
+:::{.block}
+### 1. Normal-Invers-Gamma Prior:
+
+$$
+\begin{aligned}
+  \btheta \mid \ssd &\sim  \Ncal(\mupri, \ssd \Sdpri) \\
+  \ssd &\sim \IG(\apri, \bpri) \\
+  \btheta, \ssd &\sim \text{NIG}(\mupri, \ssd \Sdpri, \apri, \bpri)
+\end{aligned}
+$$
+
+mit Prior Parametern: $\mupri, \Sdpri, \apri$ und $\bpri$
+:::
+
+**Vorteil**: NIG-Prior ist mit Normalverteilungs-Likelihood konjugiert $\to$ exakte Inferenz möglich (mehr dazu später)
+
+TODO: Bild
+
+## Uninformative Prior als Spezialfall der NIG-Prior
+
+:::{.block}
+### 2. Uninformative Prior
+
+z.B. mit NIG-Prior mit Prior Parametern
+
+$$
+\begin{aligned}
+\mupri = \bnull&, \quad \Sdipri = \bnull \text{  i.e., } \Sdpri \to \infty \\
+\apri = - \frac{p}{2}&, \quad \bpri = 0
+\end{aligned}
+$$
+
+$\implies$ flache (und damit uninformative) Prior und maximaler Einfluss der Daten auf die Posterior:
+
+$$
+\btheta \mid \ssd \overset{a}{\sim}  \Ncal(\mupri, \ssd \infty) \; \implies \; p(\btheta\mid \ssd) \propto 1
+$$
+:::
+
+TODO: Bild
+
+## Regularisierung: frequentistisch vs. bayesianisch
+
+**Erinnerung**: *frequentistische* Regularisierung durch Minimierung von 
+$$\text{PLS}(\btheta) = (\by - \bX \btheta)^\top (\by - \bX \btheta) + \lambda \ \text{pen}(\btheta)$$
+mit Regularisierungs-Parameter $\lambda > 0$.\\
+
+<!-- Idee: immer wenn wir regularisieren, treffen wir in unserem Modell implizit die Annahme, dass wir es für unwahrscheinlich halten, dass viele Kovariablen einen Einfluss haben. Das macht beim frequentistischen Modell Chaor (das Modell ist nicht mehr so richtig probabilistisch) aber passt super in die Prior von bayesianischen Modellen -->
+
+
+**Bayesianische Regularisierung** durch Wahl der Prior-Verteilung für $\btheta$
+
+## Regularisierung durch Prior Wahl
+
+:::{.block}
+### 3. Ridge Regularisierung
+
+Frequentistisch: $\text{pen}(\btheta) = \|\btheta\|_2^2$ TODO quote
+
+Bayesianisch: $\btheta \sim \Ncal(\bnull, \taus \bI)$ mit $\taus \propto \frac{1}{\lambda}$ 
+
+TODO quote
+:::
+
+:::{.block}
+### 4. Lasso Regularisierung 
+
+Frequentistisch: $\text{pen}(\btheta) = \|\btheta\|_1$
+
+Bayesianisch: 
+$$
+\begin{aligned}
+\btheta \mid \btaus &\sim \Ncal(\bnull, \btaus \bI) \\
+        \taus_j &\overset{\text{i.i.d.}}{\sim} \text{Exp}(0.5 \lambda^2), \quad j = 1, \dots, p
+\end{aligned}
+$$
+:::
+
+Problem: keine Variablenselektion (im Gegensatz zu frequentistischem Lasso)
+
+$\to$ Alternative Priors für Variablenselektion: Spike and Slab, Horseshoe, u.v.m.
+
+## Regularisierung in Anwendung
+
+Vorteile von bayesianischer Regularisierung sind u.a.:
+
+- Probabilistisches Modell trotz Regularisierung
+- Regularisierungparameter muss nicht als Hyperparameter optimiert werden (z.B. durch Prior auf $\taus$)
+- Mehr Anpassungsmöglichkeiten durch Prior-Spezifikation
+
+
+TODO: Bild regularization Priors + update
+
+
+# Bayesianische **generalisierte** lineare Modelle
+
+
+## Bayesianisches LM $\to$ GLM (alt: Generalisierung des bayesianischen linearen Modells)
+
+
+
+
+# Posterior Inference
+
+Erinnerung: Bayes-Regel 
+$$p(\btheta \mid \by) = \frac{p(\by \mid \btheta) \; p(\btheta)}{\int p(\by \mid \btheta) \; p(\btheta) d \btheta},$$
+wobei $p(\by \mid \btheta)$ die Modell-Likelihood ist.
+
+
+## bayesianisches LM: exakte Inferenz mit konjugierten Prioris
+
+
+## bayesianisches GLM: approximative Inferenz
+
+### Metropolis Hastings (MCMC)
+
+Idee: Approximation der Posterior mit Markov chain Monte Carlo
+- was muss man für Regression anpassen?
+
+### Laplace Approximation (LA)
+
+Idee: Approximation der Posterior mit einer Normalverteilung
+
+
+- Mittelwert und Varianz werden mit IWLS berechnet
+
+
+### PPD
+
+
+## Literatur Empfehlungen
+
+Falls euch das Thema interessiert und ihr mehr wissen wollt, kann ich folgende Literatur empfehlen:
+
+- Bayesianische Regression (v.a. für praktische Anwendung): @gelman_bayesian_2013
+- Prior Verteilungen (v.a. Shrinkage): @van_erp_shrinkage_2019 und @celeux_regularization_2012
+- Software: z.B. `brms` in `R`, `PyMC` in `python`
+
+# Referenzen
 
 ::: {#refs}
 :::
