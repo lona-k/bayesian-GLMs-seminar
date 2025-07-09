@@ -2344,15 +2344,38 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">bibliography.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">gelman_bayesian_2013</bcf:citekey>
-    <bcf:citekey order="2">gelman_bayesian_2013</bcf:citekey>
-    <bcf:citekey order="3">van_erp_shrinkage_2019</bcf:citekey>
-    <bcf:citekey order="4">van_erp_shrinkage_2019</bcf:citekey>
-    <bcf:citekey order="5">celeux_regularization_2012</bcf:citekey>
-    <bcf:citekey order="6">celeux_regularization_2012</bcf:citekey>
-    <bcf:citekey order="7">gelman_bayesian_2013</bcf:citekey>
+    <bcf:citekey order="1">hoerl_ridge_1970</bcf:citekey>
+    <bcf:citekey order="1">hoerl_ridge_1970-1</bcf:citekey>
+    <bcf:citekey order="2">mackay_bayesian_1992</bcf:citekey>
+    <bcf:citekey order="3">tibshirani_regression_1996</bcf:citekey>
+    <bcf:citekey order="4">park_bayesian_2008</bcf:citekey>
+    <bcf:citekey order="5">mitchell_bayesian_1988</bcf:citekey>
+    <bcf:citekey order="6">carvalho_horseshoe_2010</bcf:citekey>
+    <bcf:citekey order="7">gelman_weakly_2008</bcf:citekey>
+    <bcf:citekey order="7">ghosh_use_2017</bcf:citekey>
+    <bcf:citekey order="8">ohara_review_2009</bcf:citekey>
+    <bcf:citekey order="8">fahrmeir_bayesian_2010</bcf:citekey>
     <bcf:citekey order="8">van_erp_shrinkage_2019</bcf:citekey>
-    <bcf:citekey order="9">celeux_regularization_2012</bcf:citekey>
+    <bcf:citekey order="9">gelman_bayesian_2013</bcf:citekey>
+    <bcf:citekey order="10">gelman_bayesian_2013</bcf:citekey>
+    <bcf:citekey order="11">van_erp_shrinkage_2019</bcf:citekey>
+    <bcf:citekey order="12">van_erp_shrinkage_2019</bcf:citekey>
+    <bcf:citekey order="13">celeux_regularization_2012</bcf:citekey>
+    <bcf:citekey order="14">celeux_regularization_2012</bcf:citekey>
+    <bcf:citekey order="15">hoerl_ridge_1970</bcf:citekey>
+    <bcf:citekey order="16">hoerl_ridge_1970-1</bcf:citekey>
+    <bcf:citekey order="17">mackay_bayesian_1992</bcf:citekey>
+    <bcf:citekey order="18">tibshirani_regression_1996</bcf:citekey>
+    <bcf:citekey order="19">park_bayesian_2008</bcf:citekey>
+    <bcf:citekey order="20">mitchell_bayesian_1988</bcf:citekey>
+    <bcf:citekey order="21">carvalho_horseshoe_2010</bcf:citekey>
+    <bcf:citekey order="22">gelman_weakly_2008</bcf:citekey>
+    <bcf:citekey order="23">ghosh_use_2017</bcf:citekey>
+    <bcf:citekey order="24">ohara_review_2009</bcf:citekey>
+    <bcf:citekey order="25">fahrmeir_bayesian_2010</bcf:citekey>
+    <bcf:citekey order="26">van_erp_shrinkage_2019</bcf:citekey>
+    <bcf:citekey order="27">gelman_bayesian_2013</bcf:citekey>
+    <bcf:citekey order="28">celeux_regularization_2012</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

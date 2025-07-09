@@ -75,7 +75,7 @@ output:
 
 ---
 
-# Motivation und Intuition
+## Motivation und Intuition
 
 TODO: gutes Beispiel
 
@@ -84,7 +84,7 @@ TODO: gutes Beispiel
 - Punktvorhersage vs. Verteilung vorhersagen
 - warum reicht uns ein CI / PI
 
-# Bayesianische lineare Modelle
+# Bayesianische **lineare** Modelle
 
 ## Frequentistisches $\to$ bayesianisches lineares Modell
 
@@ -151,7 +151,9 @@ TODO: Bild
 
 **Erinnerung**: *frequentistische* Regularisierung durch Minimierung von 
 $$\text{PLS}(\btheta) = (\by - \bX \btheta)^\top (\by - \bX \btheta) + \lambda \ \text{pen}(\btheta)$$
-mit Regularisierungs-Parameter $\lambda > 0$.\\
+mit Regularisierungs-Parameter $\lambda > 0$.
+<br/>
+<br/>
 
 <!-- Idee: immer wenn wir regularisieren, treffen wir in unserem Modell implizit die Annahme, dass wir es für unwahrscheinlich halten, dass viele Kovariablen einen Einfluss haben. Das macht beim frequentistischen Modell Chaor (das Modell ist nicht mehr so richtig probabilistisch) aber passt super in die Prior von bayesianischen Modellen -->
 
@@ -163,19 +165,17 @@ mit Regularisierungs-Parameter $\lambda > 0$.\\
 :::{.block}
 ### 3. Ridge Regularisierung
 
-Frequentistisch: $\text{pen}(\btheta) = \|\btheta\|_2^2$ TODO quote
+Frequentistisch [@hoerl_ridge_1970;@hoerl_ridge_1970-1]: $\text{pen}(\btheta) = \|\btheta\|_2^2$
 
-Bayesianisch: $\btheta \sim \Ncal(\bnull, \taus \bI)$ mit $\taus \propto \frac{1}{\lambda}$ 
-
-TODO quote
+Bayesianisch [@mackay_bayesian_1992]: $\btheta \sim \Ncal(\bnull, \taus \bI)$ mit $\taus \propto \frac{1}{\lambda}$ 
 :::
 
 :::{.block}
 ### 4. Lasso Regularisierung 
 
-Frequentistisch: $\text{pen}(\btheta) = \|\btheta\|_1$
+Frequentistisch [@tibshirani_regression_1996]: $\text{pen}(\btheta) = \|\btheta\|_1$
 
-Bayesianisch: 
+Bayesianisch [@park_bayesian_2008]:
 $$
 \begin{aligned}
 \btheta \mid \btaus &\sim \Ncal(\bnull, \btaus \bI) \\
@@ -186,26 +186,53 @@ $$
 
 Problem: keine Variablenselektion (im Gegensatz zu frequentistischem Lasso)
 
-$\to$ Alternative Priors für Variablenselektion: Spike and Slab, Horseshoe, u.v.m.
+$\to$ Alternative Priors für Variablenselektion: Spike and Slab [@mitchell_bayesian_1988], Horseshoe [@carvalho_horseshoe_2010], u.v.m.
 
 ## Regularisierung in Anwendung
 
 Vorteile von bayesianischer Regularisierung sind u.a.:
 
 - Probabilistisches Modell trotz Regularisierung
-- Regularisierungparameter muss nicht als Hyperparameter optimiert werden (z.B. durch Prior auf $\taus$)
+- Regularisierung-Parameter muss nicht als Hyperparameter optimiert werden (z.B. durch Prior auf $\taus$)
 - Mehr Anpassungsmöglichkeiten durch Prior-Spezifikation
 
 
 TODO: Bild regularization Priors + update
 
 
-# Bayesianische **generalisierte** lineare Modelle
+# Bayesianische **generalisierte** lineare Modelle (GLMs)
 
 
-## Bayesianisches LM $\to$ GLM (alt: Generalisierung des bayesianischen linearen Modells)
+## Bayesianisches LM $\to$ **GLM**
+<!-- (alt: Generalisierung des bayesianischen linearen Modells) -->
+
+$$\text{LM:} \; \by \mid \btheta, \ssd \sim \Ncal(\bX \btheta, \ssd \bI) \quad
+\to \quad \text{GLM:} \; \by \mid \btheta \sim F(g^{-1}(\bX \btheta))$$
+
+- Verteilungsannahme von $\by$ wird (äquivalent zum frequentistischen GLM) auf alle Verteilungen $F$ der Exponentatialfamilie ausgeweitet
+- Skala des linearen Prädiktors $\bX \btheta$ wird mit der Link-Funktion $g^{-1}$ angepasst
 
 
+## GLM $\to$ **logistisches** Modell
+
+:::{.block}
+### Bayesianisches logistisches Modell
+
+$$
+\begin{aligned}
+  \by_i \mid \btheta &\sim \text{Bin}(1, g^{-1}(\bx_i \btheta)), \quad i = 1, \dots, n \\
+  g^{-1}(\bx_i \btheta) &= \sigma(\bx_i \btheta)
+\end{aligned}
+$$
+
+Für Beobachtungen $\bx_i = (1, x_{i1}, \dots, x_{ip})^\top$ und Sigmoid-Link $\sigma(y) = \frac{\exp(y)}{1 + \exp(y)}$
+:::
+
+**Prior Wahl**
+
+- Im Allgemeinen äquivalent zum LM möglich, z.B. Normalverteilung-Prior
+- Verteilungen mit schweren Rändern (z.B. t-Verteilung, Cauchy Verteilung) verringern Separation und fördern Shrinkage [@gelman_weakly_2008;@ghosh_use_2017]
+- Für Regularisierung können dieselben Priors verwendet werden [@ohara_review_2009;@fahrmeir_bayesian_2010;@van_erp_shrinkage_2019]
 
 
 # Posterior Inference
@@ -237,8 +264,6 @@ Idee: Approximation der Posterior mit einer Normalverteilung
 
 
 ## Literatur Empfehlungen
-
-Falls euch das Thema interessiert und ihr mehr wissen wollt, kann ich folgende Literatur empfehlen:
 
 - Bayesianische Regression (v.a. für praktische Anwendung): @gelman_bayesian_2013
 - Prior Verteilungen (v.a. Shrinkage): @van_erp_shrinkage_2019 und @celeux_regularization_2012

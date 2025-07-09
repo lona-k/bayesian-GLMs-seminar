@@ -307,9 +307,8 @@
 \begin{document}
 \frame{\titlepage}
 
-\section{Motivation und Intuition}\label{motivation-und-intuition}
-
 \begin{frame}{Motivation und Intuition}
+\protect\phantomsection\label{motivation-und-intuition}
 TODO: gutes Beispiel
 
 \begin{itemize}
@@ -322,8 +321,8 @@ TODO: gutes Beispiel
 \end{itemize}
 \end{frame}
 
-\section{Bayesianische lineare
-Modelle}\label{bayesianische-lineare-modelle}
+\section{\texorpdfstring{Bayesianische \textbf{lineare}
+Modelle}{Bayesianische lineare Modelle}}\label{bayesianische-lineare-modelle}
 
 \begin{frame}{Frequentistisches \(\to\) bayesianisches lineares Modell}
 \protect\phantomsection\label{frequentistisches-to-bayesianisches-lineares-modell}
@@ -406,7 +405,7 @@ TODO: Bild
 \textbf{Erinnerung}: \emph{frequentistische} Regularisierung durch
 Minimierung von
 \[\text{PLS}(\btheta) = (\by - \bX \btheta)^\top (\by - \bX \btheta) + \lambda \ \text{pen}(\btheta)\]
-mit Regularisierungs-Parameter \(\lambda > 0\).\textbackslash{}
+mit Regularisierungs-Parameter \(\lambda > 0\).
 
 \textbf{Bayesianische Regularisierung} durch Wahl der Prior-Verteilung
 für \(\btheta\)
@@ -416,19 +415,20 @@ für \(\btheta\)
 \protect\phantomsection\label{regularisierung-durch-prior-wahl}
 \begin{block}{3. Ridge Regularisierung}
 \protect\phantomsection\label{ridge-regularisierung}
-Frequentistisch: \(\text{pen}(\btheta) = \|\btheta\|_2^2\) TODO quote
+Frequentistisch \autocite{hoerl_ridge_1970,hoerl_ridge_1970-1}:
+\(\text{pen}(\btheta) = \|\btheta\|_2^2\)
 
-Bayesianisch: \(\btheta \sim \Ncal(\bnull, \taus \bI)\) mit
+Bayesianisch \autocite{mackay_bayesian_1992}:
+\(\btheta \sim \Ncal(\bnull, \taus \bI)\) mit
 \(\taus \propto \frac{1}{\lambda}\)
-
-TODO quote
 \end{block}
 
 \begin{block}{4. Lasso Regularisierung}
 \protect\phantomsection\label{lasso-regularisierung}
-Frequentistisch: \(\text{pen}(\btheta) = \|\btheta\|_1\)
+Frequentistisch \autocite{tibshirani_regression_1996}:
+\(\text{pen}(\btheta) = \|\btheta\|_1\)
 
-Bayesianisch: \[
+Bayesianisch \autocite{park_bayesian_2008}: \[
 \begin{aligned}
 \btheta \mid \btaus &\sim \Ncal(\bnull, \btaus \bI) \\
         \taus_j &\overset{\text{i.i.d.}}{\sim} \text{Exp}(0.5 \lambda^2), \quad j = 1, \dots, p
@@ -439,8 +439,9 @@ Bayesianisch: \[
 Problem: keine Variablenselektion (im Gegensatz zu frequentistischem
 Lasso)
 
-\(\to\) Alternative Priors für Variablenselektion: Spike and Slab,
-Horseshoe, u.v.m.
+\(\to\) Alternative Priors für Variablenselektion: Spike and Slab
+\autocite{mitchell_bayesian_1988}, Horseshoe
+\autocite{carvalho_horseshoe_2010}, u.v.m.
 \end{frame}
 
 \begin{frame}{Regularisierung in Anwendung}
@@ -452,7 +453,7 @@ Vorteile von bayesianischer Regularisierung sind u.a.:
 \item
   Probabilistisches Modell trotz Regularisierung
 \item
-  Regularisierungparameter muss nicht als Hyperparameter optimiert
+  Regularisierung-Parameter muss nicht als Hyperparameter optimiert
   werden (z.B. durch Prior auf \(\taus\))
 \item
   Mehr Anpassungsmöglichkeiten durch Prior-Spezifikation
@@ -462,11 +463,54 @@ TODO: Bild regularization Priors + update
 \end{frame}
 
 \section{\texorpdfstring{Bayesianische \textbf{generalisierte} lineare
-Modelle}{Bayesianische generalisierte lineare Modelle}}\label{bayesianische-generalisierte-lineare-modelle}
+Modelle
+(GLMs)}{Bayesianische generalisierte lineare Modelle (GLMs)}}\label{bayesianische-generalisierte-lineare-modelle-glms}
 
-\begin{frame}{Bayesianisches LM \(\to\) GLM (alt: Generalisierung des
-bayesianischen linearen Modells)}
-\protect\phantomsection\label{bayesianisches-lm-to-glm-alt-generalisierung-des-bayesianischen-linearen-modells}
+\begin{frame}{Bayesianisches LM \(\to\) \textbf{GLM}}
+\protect\phantomsection\label{bayesianisches-lm-to-glm}
+\[\text{LM:} \; \by \mid \btheta, \ssd \sim \Ncal(\bX \btheta, \ssd \bI) \quad
+\to \quad \text{GLM:} \; \by \mid \btheta \sim F(g^{-1}(\bX \btheta))\]
+
+\begin{itemize}
+\tightlist
+\item
+  Verteilungsannahme von \(\by\) wird (äquivalent zum frequentistischen
+  GLM) auf alle Verteilungen \(F\) der Exponentatialfamilie ausgeweitet
+\item
+  Skala des linearen Prädiktors \(\bX \btheta\) wird mit der
+  Link-Funktion \(g^{-1}\) angepasst
+\end{itemize}
+\end{frame}
+
+\begin{frame}{GLM \(\to\) \textbf{logistisches} Modell}
+\protect\phantomsection\label{glm-to-logistisches-modell}
+\begin{block}{Bayesianisches logistisches Modell}
+\protect\phantomsection\label{bayesianisches-logistisches-modell}
+\[
+\begin{aligned}
+  \by_i \mid \btheta &\sim \text{Bin}(1, g^{-1}(\bx_i \btheta)), \quad i = 1, \dots, n \\
+  g^{-1}(\bx_i \btheta) &= \sigma(\bx_i \btheta)
+\end{aligned}
+\]
+
+Für Beobachtungen \(\bx_i = (1, x_{i1}, \dots, x_{ip})^\top\) und
+Sigmoid-Link \(\sigma(y) = \frac{\exp(y)}{1 + \exp(y)}\)
+\end{block}
+
+\textbf{Prior Wahl}
+
+\begin{itemize}
+\tightlist
+\item
+  Im Allgemeinen äquivalent zum LM möglich, z.B. Normalverteilung-Prior
+\item
+  Verteilungen mit schweren Rändern (z.B. t-Verteilung, Cauchy
+  Verteilung) verringern Separation und fördern Shrinkage
+  \autocite{gelman_weakly_2008,ghosh_use_2017}
+\item
+  Für Regularisierung können dieselben Priors verwendet werden
+  \autocite{ohara_review_2009,fahrmeir_bayesian_2010,van_erp_shrinkage_2019}
+\end{itemize}
 \end{frame}
 
 \section{Posterior Inference}\label{posterior-inference}
@@ -508,9 +552,6 @@ Idee: Approximation der Posterior mit einer Normalverteilung
 
 \begin{frame}[fragile]{Literatur Empfehlungen}
 \protect\phantomsection\label{literatur-empfehlungen}
-Falls euch das Thema interessiert und ihr mehr wissen wollt, kann ich
-folgende Literatur empfehlen:
-
 \begin{itemize}
 \tightlist
 \item

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.19)  9 JUL 2025 18:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.19)  9 JUL 2025 20:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1432,32 +1432,24 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 (./slides.nav) [1
 
-{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./slid
-es.toc)
-<lmu_logo.png, id=33, 2007.5pt x 1050.92625pt>
+{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<lmu_logo.png, id=27, 2007.5pt x 1050.92625pt>
 File: lmu_logo.png Graphic file (type png)
 <use lmu_logo.png>
-Package pdftex.def Info: lmu_logo.png  used on input line 310.
+Package pdftex.def Info: lmu_logo.png  used on input line 322.
 (pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
 [2
 
- <./lmu_logo.png>]
+ <./lmu_logo.png>] (./slides.toc)
 File: lmu_logo.png Graphic file (type png)
 <use lmu_logo.png>
-Package pdftex.def Info: lmu_logo.png  used on input line 323.
+Package pdftex.def Info: lmu_logo.png  used on input line 325.
 (pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
 [3
 
-] (./slides.toc)
-File: lmu_logo.png Graphic file (type png)
-<use lmu_logo.png>
-Package pdftex.def Info: lmu_logo.png  used on input line 326.
-(pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
-[4
-
 ]
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 3
-54.
+53.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/microtype/mt-cmr.cfg
@@ -1465,34 +1457,34 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 (RS)
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 3
-54.
+53.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-354.
+353.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-354.
+353.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 354.
+(Font)              <10.95> on input line 353.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 354.
+(Font)              <8> on input line 353.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 354.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 354
+(Font)              <6> on input line 353.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 353
 .
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 354
+LaTeX Font Info:    Trying to load font information for U+msb on input line 353
 .
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1500,104 +1492,111 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Trying to load font information for T2A+lmss on input line 
-354.
-LaTeX Font Info:    No file T2Almss.fd. on input line 354.
+353.
+LaTeX Font Info:    No file T2Almss.fd. on input line 353.
 
 LaTeX Font Warning: Font shape `T2A/lmss/m/n' undefined
-(Font)              using `T2A/cmr/m/n' instead on input line 354.
+(Font)              using `T2A/cmr/m/n' instead on input line 353.
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 354.
+(Font)              <14.4> on input line 353.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 354.
+(Font)              <10> on input line 353.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 354.
+(Font)              <7> on input line 353.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: T2A).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 File: lmu_logo.png Graphic file (type png)
 <use lmu_logo.png>
-Package pdftex.def Info: lmu_logo.png  used on input line 354.
+Package pdftex.def Info: lmu_logo.png  used on input line 353.
+(pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
+[4
+
+]
+File: lmu_logo.png Graphic file (type png)
+<use lmu_logo.png>
+Package pdftex.def Info: lmu_logo.png  used on input line 377.
 (pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
 [5
 
 ]
 File: lmu_logo.png Graphic file (type png)
 <use lmu_logo.png>
-Package pdftex.def Info: lmu_logo.png  used on input line 378.
+Package pdftex.def Info: lmu_logo.png  used on input line 401.
 (pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
 [6
 
 ]
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 412.
 File: lmu_logo.png Graphic file (type png)
 <use lmu_logo.png>
-Package pdftex.def Info: lmu_logo.png  used on input line 402.
+Package pdftex.def Info: lmu_logo.png  used on input line 412.
 (pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
 [7
 
 ]
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 413.
 File: lmu_logo.png Graphic file (type png)
 <use lmu_logo.png>
-Package pdftex.def Info: lmu_logo.png  used on input line 413.
+Package pdftex.def Info: lmu_logo.png  used on input line 445.
 (pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
 [8
 
 ]
 File: lmu_logo.png Graphic file (type png)
 <use lmu_logo.png>
-Package pdftex.def Info: lmu_logo.png  used on input line 444.
+Package pdftex.def Info: lmu_logo.png  used on input line 463.
 (pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
 [9
 
-]
+] (./slides.toc)
 File: lmu_logo.png Graphic file (type png)
 <use lmu_logo.png>
-Package pdftex.def Info: lmu_logo.png  used on input line 462.
+Package pdftex.def Info: lmu_logo.png  used on input line 467.
 (pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
 [10
-
-] (./slides.toc)
-File: lmu_logo.png Graphic file (type png)
-<use lmu_logo.png>
-Package pdftex.def Info: lmu_logo.png  used on input line 465.
-(pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
-[11
-
-]
-File: lmu_logo.png Graphic file (type png)
-<use lmu_logo.png>
-Package pdftex.def Info: lmu_logo.png  used on input line 470.
-(pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
-[12
-
-] (./slides.toc)
-File: lmu_logo.png Graphic file (type png)
-<use lmu_logo.png>
-Package pdftex.def Info: lmu_logo.png  used on input line 472.
-(pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
-[13
-
-]
-File: lmu_logo.png Graphic file (type png)
-<use lmu_logo.png>
-Package pdftex.def Info: lmu_logo.png  used on input line 478.
-(pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
-[14
 
 ]
 File: lmu_logo.png Graphic file (type png)
 <use lmu_logo.png>
 Package pdftex.def Info: lmu_logo.png  used on input line 483.
 (pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
+[11
+
+]
+File: lmu_logo.png Graphic file (type png)
+<use lmu_logo.png>
+Package pdftex.def Info: lmu_logo.png  used on input line 514.
+(pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
+[12
+
+] (./slides.toc)
+File: lmu_logo.png Graphic file (type png)
+<use lmu_logo.png>
+Package pdftex.def Info: lmu_logo.png  used on input line 516.
+(pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
+[13
+
+]
+File: lmu_logo.png Graphic file (type png)
+<use lmu_logo.png>
+Package pdftex.def Info: lmu_logo.png  used on input line 522.
+(pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
+[14
+
+]
+File: lmu_logo.png Graphic file (type png)
+<use lmu_logo.png>
+Package pdftex.def Info: lmu_logo.png  used on input line 527.
+(pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
 [15
 
 ]
 File: lmu_logo.png Graphic file (type png)
 <use lmu_logo.png>
-Package pdftex.def Info: lmu_logo.png  used on input line 507.
+Package pdftex.def Info: lmu_logo.png  used on input line 551.
 (pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
 [16
 
@@ -1606,34 +1605,50 @@ Package pdftex.def Info: lmu_logo.png  used on input line 507.
 
 (./slides.vrb
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 1
-5.
+2.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ))
 File: lmu_logo.png Graphic file (type png)
 <use lmu_logo.png>
-Package pdftex.def Info: lmu_logo.png  used on input line 526.
+Package pdftex.def Info: lmu_logo.png  used on input line 567.
 (pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
 [17
 
 ]
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 53
-1.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 57
+2.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 
 LaTeX Font Warning: Font shape `T1/lmss/m/sc' in size <10.95> not available
-(Font)              Font shape `T1/lmr/m/sc' tried instead on input line 531.
+(Font)              Font shape `T1/lmr/m/sc' tried instead on input line 572.
 
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
 File: lmu_logo.png Graphic file (type png)
 <use lmu_logo.png>
-Package pdftex.def Info: lmu_logo.png  used on input line 531.
+Package pdftex.def Info: lmu_logo.png  used on input line 572.
 (pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
 [18
+
+]
+File: lmu_logo.png Graphic file (type png)
+<use lmu_logo.png>
+Package pdftex.def Info: lmu_logo.png  used on input line 572.
+(pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
+[19
+
+
+]
+File: lmu_logo.png Graphic file (type png)
+<use lmu_logo.png>
+Package pdftex.def Info: lmu_logo.png  used on input line 572.
+(pdftex.def)             Requested size: 56.88351pt x 28.44754pt.
+[20
+
 
 ]
 \tf@nav=\write6
@@ -1654,13 +1669,13 @@ Package logreq Info: Writing requests to 'slides.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35913 strings out of 478268
- 701647 string characters out of 5846347
- 1365427 words of memory out of 5000000
- 53251 multiletter control sequences out of 15000+600000
- 554770 words of font info for 155 fonts, out of 8000000 for 9000
+ 36019 strings out of 478268
+ 705150 string characters out of 5846347
+ 1373887 words of memory out of 5000000
+ 53334 multiletter control sequences out of 15000+600000
+ 557977 words of font info for 160 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,16n,122p,1003b,1623s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,16n,122p,1003b,2000s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/
 texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/20
 22/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2022/texmf-d
@@ -1680,10 +1695,10 @@ mss10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmss12.pfb>
 mf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2022/texmf-dist/fo
 nts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/p
 ublic/lm/lmtt10.pfb>
-Output written on slides.pdf (18 pages, 347879 bytes).
+Output written on slides.pdf (20 pages, 363512 bytes).
 PDF statistics:
- 386 PDF objects out of 1000 (max. 8388607)
- 269 compressed objects within 3 object streams
- 62 named destinations out of 1000 (max. 500000)
- 57718 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 445 PDF objects out of 1000 (max. 8388607)
+ 319 compressed objects within 4 object streams
+ 79 named destinations out of 1000 (max. 500000)
+ 59802 words of extra memory for PDF output out of 61914 (max. 10000000)
 
