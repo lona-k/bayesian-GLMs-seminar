@@ -179,7 +179,7 @@ Bayesianisch [@park_bayesian_2008]:
 $$
 \begin{aligned}
 \btheta \mid \btaus &\sim \Ncal(\bnull, \btaus \bI) \\
-        \taus_j &\overset{\text{i.i.d.}}{\sim} \text{Exp}(0.5 \lambda^2), \quad j = 1, \dots, p
+\taus_j &\overset{\text{i.i.d.}}{\sim} \text{Exp}(0.5 \lambda^2), \quad j = 1, \dots, p
 \end{aligned}
 $$
 :::
@@ -206,8 +206,10 @@ TODO: Bild regularization Priors + update
 ## Bayesianisches LM $\to$ **GLM**
 <!-- (alt: Generalisierung des bayesianischen linearen Modells) -->
 
-$$\text{LM:} \; \by \mid \btheta, \ssd \sim \Ncal(\bX \btheta, \ssd \bI) \quad
-\to \quad \text{GLM:} \; \by \mid \btheta \sim F(g^{-1}(\bX \btheta))$$
+$$
+\text{LM:} \; \by \mid \btheta, \ssd \sim \Ncal(\bX \btheta, \ssd \bI) \quad
+\to \quad \text{GLM:} \; \by \mid \btheta \sim F(g^{-1}(\bX \btheta))
+$$
 
 - Verteilungsannahme von $\by$ wird (äquivalent zum frequentistischen GLM) auf alle Verteilungen $F$ der Exponentatialfamilie ausgeweitet
 - Skala des linearen Prädiktors $\bX \btheta$ wird mit der Link-Funktion $g^{-1}$ angepasst
@@ -226,6 +228,7 @@ $$
 $$
 
 Für Beobachtungen $\bx_i = (1, x_{i1}, \dots, x_{ip})^\top$ und Sigmoid-Link $\sigma(y) = \frac{\exp(y)}{1 + \exp(y)}$
+
 :::
 
 **Prior Wahl**
@@ -235,32 +238,169 @@ Für Beobachtungen $\bx_i = (1, x_{i1}, \dots, x_{ip})^\top$ und Sigmoid-Link $\
 - Für Regularisierung können dieselben Priors verwendet werden [@ohara_review_2009;@fahrmeir_bayesian_2010;@van_erp_shrinkage_2019]
 
 
+## Beispiel 1: Regularisierung in data-sparse Szenarien
+
 # Posterior Inference
 
-Erinnerung: Bayes-Regel 
-$$p(\btheta \mid \by) = \frac{p(\by \mid \btheta) \; p(\btheta)}{\int p(\by \mid \btheta) \; p(\btheta) d \btheta},$$
+**Erinnerung**: Bayes-Regel zur Ermittlung der Parameter Posterior
+$$
+p(\btheta \mid \by) = \frac{p(\by \mid \btheta) \; p(\btheta)}{\int p(\by \mid \btheta) \; p(\btheta) d \btheta},
+$$
 wobei $p(\by \mid \btheta)$ die Modell-Likelihood ist.
-
 
 ## bayesianisches LM: exakte Inferenz mit konjugierten Prioris
 
+Frequentisitsches LM: z.B. kleinste Quadrate Schätzung mit
+$$
+\hbtheta_{KQ} = (\bX^\top \bX)^{-1} \bX^\top \by \quad \text{mit} \quad \hbtheta_{KQ} \sim \Ncal(\btheta, \ssd (\bX^\top \bX)^{-1})
+$$
+
+:::{.block}
+### Inferenz mit konjugierten Priors
+
+Bayesianisches LM: Nutzung der Konjugiertheit von $\by \mid \btheta, \ssd \sim \Ncal$ und $\btheta, \ssd \sim \text{NIG}$
+
+$$
+\btheta, \ssd \mid \by \sim \text{NIG}(\mupo, \Sdpo, \apo, \bpo)
+$$
+mit
+$$
+\mupo = \Sdpo (\Sdipri \mupri + \bX^\top \by), \quad \Sdpo = (\bX^\top \bX + \Sdipri)^{-1}
+$$
+:::
+
+
+$\to$ im Fall der uninformativen NIG-Prior sind der Posterior Mean und der KQ-Schätzer äquivalent:
+
+$$
+\begin{aligned}
+\mupri = \bnull&, \Sdipri = \bnull \\
+\implies \mupo = (\bX^\top \bX)^{-1} \bX^\top \by&, \Sdpo = (\bX^\top \bX)^{-1}
+\begin{aligned}
+$$
+
+$\to$ Marginale Posterior Verteilungen von $\btheta$ und $\ssd$ durch Integration für z.B. Kredibilitätsintervalle
+
+- Ridge: Spezialfall der NIG-Prior $\to$ konjugierte Berechnung der Parameter Posterior
+- Lasso: Prior hat keine geschlossene Form, aber man die Posterior einfach mit Gibbs-Sampling simulieren [@park_bayesian_2008]
 
 ## bayesianisches GLM: approximative Inferenz
 
-### Metropolis Hastings (MCMC)
+Inferenz mit konjugierten Priors ist nur sehr selten möglich [@polson_bayesian_2013] $\to$ Nutzung von Methoden der **approximative bayesianische Inferenz**, um aus der Posterior zu samplen:
 
-Idee: Approximation der Posterior mit Markov chain Monte Carlo
-- was muss man für Regression anpassen?
+- Markov chain Monte Carlo Methoden
+  - **Metropolis-Hastings Algorithmus** [@hastings_monte_1970]
+  - Gibbs Sampling (bedingte Konjugiertheit) [@dellaportas_bayesian_1993]
+  - Hamiltonian Monte Carlo (v.a. hochdimensionale Posterior) [@neal_probabilistic_1993]
+- Data Augmentation mit latenten Variablen, um künstlich Konjugiertheit zu induzieren [@albert_bayesian_1993;@holmes_efficient_nodate;@fruhwirth-schnatter_auxiliary_2007;@scott_data_2011]
+- **Laplace Approximation** [@tierney_accurate_1986]
 
-### Laplace Approximation (LA)
+### Metropolis Hastings Algorithmus [@hastings_monte_1970]
 
-Idee: Approximation der Posterior mit einer Normalverteilung
+- **Idee**: Aus der Posterior $p(\btheta\mid \by) ziehen, ohne Annahmen über ihre exakte Form machen zu müssen
+- **Problem**: Ergebnisse sind am Besten, wenn die Posterior bis auf eine Konstante (meist die Normalisierungskonstante $\int p(\by \mid \btheta) \; p(\btheta) d \btheta$) bekannt sind
+
+- **Inputs**:
+  - Anzahl der Ziehungen $K \to$ frei wählbar
+  - Likelihood $p(\btheta \mid \by)$ und Prior $p(\btheta) \to$ bekannt
+  - Proposal Verteilung $q \to$ muss gut gewählt werden für 
 
 
-- Mittelwert und Varianz werden mit IWLS berechnet
+### Metropolis Hastings: Wahl der Proposal Verteilung
+
+Effizienz des Algorithmus ist stark abhängig von der Proposal Verteilung
+
+**Optionen**:
+
+- **Normalverteilung**
+  $$
+  q(\btheta^{(*)} \mid \btheta^{(k)}) \sim \Ncal(\btheta^{(k)} \mid -H^{-1}(\btheta^{(k)}))
+  $$
+    mit Mittelwert beim letzten Sample. Hessian $H$ wird meist mit IWLS geschätzt [@gamerman_markov_1998;@lenk_bayesian_2000;@scott_data_2011] 
+
+- @scott_data_2011 schlägt **Verteilungen mit schweren Rändern** vor $\to$ mehr Mixing, kürzerer Burn-in und schnellere Konvergenz
 
 
-### PPD
+### Laplace Approximation (LA) [@tierney_accurate_1986]
+
+- **Idee**: Approximation der Posterior mit einer Normalverteilung
+  $$
+  p(\btheta \mid \by) \approx \Ncal(\hbtheta_{MAP}, H^{-1}(\hbtheta_{MAP})),
+  $$
+  wobei $\hbtheta_{MAP}$ das maximum posterior estimate und $H$ die Hesse-Matrix von $p(\btheta \mid \by)$ ist
+- Modifikation für hierarchische Modelle: Integrated Nested Laplace Appriximation (INLA) [@rue_approximate_2009]
+
+
+## *Beispiel 2:* Vergleich von Approximate Inference Methods
+
+**Setup**: 1.000 synthetische Datensätze mit $n=100$ und 
+$$
+\begin{aligned}
+    &\bX \sim \Ncal(\bnull, \bI), \quad \btheta = (-0.5, 2, 1)\\
+    &\text{linear: } \by \mid \btheta \sim \Ncal(\bX \btheta, \bI)\\
+    &\text{logistic: } \by \mid \btheta \sim \text{Ber}(\sigma(\bX \btheta))
+\end{aligned}
+$$
+
+**Experiment**: für jeden Datensatz wurde
+
+- ein lineares und ein logsistisches Regressionsmodell mit $\btheta \sim \Ncal(0, 10 \cdot \bI)$ und $\ssd = 10$
+- mit Laplace Approximation und Metropolis-Hastings ($K$ = 5.000, Burn-in = 500, Thinning Intervall = 10) 
+
+angepasst
+
+## *Beispiel 2:* Vergleich von Approximate Inference Methods
+
+\image{../figures/approx_all.png}
+
+
+<!-- - LA war langsamer (kann aber auch an Implementierung liegen!) -->
+<!-- - Lineare Regression: ganz gute Schätzungen, Varianz bei LA viel höher -->
+<!-- - Logistische Regression: LA liefert bessere Schätzung und kleinere Varianz, dauert aber länger -->
+<!-- - generell eher zur Veranschaulichung, ich würde empfehlen modernere Methoden zu benutzen, die sind eigentlich überall implementiert -->
+
+## Vorhersagen mit bayesianischen Modellen
+
+<!-- - In Machine Learning interessieren wir uns oft eher für Vorhersagen -->
+
+Aus der Bayes Regel:
+$$p(\by) = \int p(\by, \btheta) d\btheta = \int p(\by \mid \btheta) p(\btheta) d\btheta$$
+:::{.block} 
+### Posterior Predictive Distribution
+
+$\to$ Vorhersagen für $\tX$ im Bayesianischen GLM [@box_sampling_1980;@barbieri_posterior_2015]
+
+$$
+p(\ty \mid \by) = \int p(\ty, \btheta \mid \by) d \btheta 
+    = \int p(\ty \mid \btheta, \by) p(\btheta) d \btheta
+    \overset{\ty \perp \by \mid \btheta}{=}  \int p(\ty \mid \btheta) p(\btheta) d \btheta
+$$
+
+<!-- -> = marginale Verteilung von neuen y bedingt auf die alten Daten (reminder: implizite Bedingung auf Daten X) -->
+<!-- -> ist quasi der Mittelwert der bedingten Verteilung von neuen y (also der Likelihood) über die Parameter Posterior -->
+:::
+
+Für das bayesianische logistische Modell berechnet man $p(\ty = 1 \mid \btheta, \by)$ mit $y_i \in \{0 \text{ (negative)}, 1 \text{ (positive)}\}$
+
+TODO: Bild
+
+
+## Berechnung der Posterior Predictive Distribution
+
+**Analytische Berechnung**: z.B. für die NIG-Prior ergibt sich
+  $$\ty \mid \btheta, \ssd, \by \sim \Tcal(2 \apo, \tX \btheta, \frac{\bpo}{\apo} (\bI + \tX \Sdpo \tX^\top))$$
+
+Alternativ (und viel wichtiger): **Approximation**
+
+- für Metropolis-Hastings: p(\ty = 1 \mid \btheta, \by) \approx \frac{1}{K} \sum_{k=1}^{K} \sigma(\tX \btheta^{(k)})
+- für Laplace Approximation:
+    - LA-approximierte PPD analytisch berechnen: 
+$$
+p(\ty = 1 \mid \btheta, \by) = \int \sigma(\tX \btheta) \; \Ncal_{\btheta}(\hbtheta_{MAP}, H^{-1} (\hbtheta_{MAP})) \; d \btheta
+$$
+    - Samples $\btheta^{(s)} \sim \Ncal(\hbtheta_{MAP}, H^{-1}(\hbtheta_{MAP}))$ mit $s = 1, \dots, S$ aus der LA-approximierten Parameter Posterior ziehen und wie bei Metropolis-Hastings vorgehen
+
+<!-- wir haben schon gesamplet und können die samples aus der Parameter Posterior jetzt einfach wiederverwenden, um die posterior predictive distribution zu approximieren -->
 
 
 ## Literatur Empfehlungen
@@ -273,3 +413,67 @@ Idee: Approximation der Posterior mit einer Normalverteilung
 
 ::: {#refs}
 :::
+
+# Anhang
+
+## Herleitung der kojugierten Priori
+
+
+## Ergebnisse des Regularisierungsexperiments
+
+
+## Posterior Inference: exakter Metropolis (-Hastings) Algorithmus
+
+
+1. Initialize $\btheta^{(1)}$
+2. For $k = 1, \dots, K$
+    1. Draw $\btheta^{(*)}$ from the \textit{proposal distribution} $q(\btheta^{(*)} \mid \btheta^{(k)})$
+    2. calculate the \textit{acceptance probably} 
+        $$
+            \alpha = \min \Bigl(
+                1, \frac{
+                    p(\btheta^{(*)} \mid \by)\; p(\btheta^{(*)}) \; q(\btheta^{(k)} \mid \btheta^{(*)})}{
+                        p(\btheta^{(k)} \mid \by)\; p(\btheta^{(k)}) \; q(\btheta^{(*)} \mid \btheta^{(k)})
+                    }
+                \Bigr)
+        $$
+    3. Accept or discard the proposal $\btheta^{(*)}$ (for $u \sim \text{Uni}[0, 1]$)
+        $$
+        \begin{cases}
+                u \le \alpha & \btheta^{(k+1)} = \btheta^{(*)}\\
+                u > \alpha & \btheta^{(k+1)} = \btheta^{(k)}\\
+        \end{cases}
+        $$
+
+Und z.B. 
+$$
+q(\btheta^{(*)} \mid \btheta^{(k)}) \sim \Ncal(\btheta^{(k)} \mid -H^{-1}(\btheta^{(k)}))
+$$
+mit $H(\btheta) = \nabla_{\btheta}^2  \log \Bigl(p(\btheta^{(k)} \mid \by)\; p(\btheta^{(k)})\Bigr)$
+
+
+## Posterior Inference: Mittelwert und Varianz für Laplace Approximation
+
+Exemplarische Berechnung für ein bayesianisches logistisches Modell mit der Prior $\btheta \sim \Ncal(\bnull, \ssd \bI)$: 
+
+Es gilt dass mit Laplace Approximation $p(\btheta \mid \by) \approx \Ncal(\hbtheta_{MAP}, H^{-1}(\hbtheta_{MAP}))$ mit
+
+$$
+\begin{aligned}
+    \hbtheta_{MAP} &= \arg \max_{\btheta} p(\btheta \mid \by)
+        \overset{\text{Bayes' rule}}{=} \arg \max_{\btheta} p(\by \mid \btheta) p(\btheta) \; d\btheta  \\
+        &= \arg \max_{\btheta} \sumin \log \Bigl( \sigma(y_i \; \bx_i\btheta)\Bigr) - \frac{1}{2 \ssd} \btheta^\top \btheta \\
+    H(\btheta) &= - \nabla^2_{\btheta}  \log p (\btheta \mid \by) = \frac{1}{\ssd} \bI + \sumin
+    \sigma(y_i \; \bx_i\btheta) \Bigl(1 - \sigma(y_i \; \bx_i\btheta)\Bigr)
+        \bx_i \bx_i^\top.
+\end{aligned}
+$$
+
+## Experiment-Setup: Regularisierung
+
+
+## Experiment-Setup: approximate Inference
+
+
+
+
