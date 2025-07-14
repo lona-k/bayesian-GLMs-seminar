@@ -284,20 +284,34 @@ ggsave("../figures/approx_class.png", pp_binom, width = 10, height = 4)
 Plot for presentation
 
 ```{r}
-p_gauss <- (pp_time_g + pp_theta_g + pp_sd_g) +
+p_gauss <- (pp_time_g + (pp_theta_g + labs(x = NULL)) + (pp_sd_g + labs(x = NULL))) +
   plot_layout(ncol=3, widths=c(1,2,2), guides="collect", axis_titles = "collect") +
-  plot_annotation(title = "Regression") &
-  theme(legend.position="bottom")
+  plot_annotation(title = "Lineares Modell") &
+  theme(
+    plot.title.position = "plot",
+    plot.title = element_text(face = "bold"),
+    legend.position = "none"
+  )
 
-p_binom <- (pp_time_b + pp_theta_b + pp_sd_b) +
+p_binom <- ((pp_time_b + labs(subtitle = NULL)) + (pp_theta_b + labs(subtitle = NULL)) + (pp_sd_b + labs(subtitle = NULL))) +
   plot_layout(ncol=3, widths=c(1,2,2), guides="collect", axis_titles = "collect") +
-  plot_annotation(title = "Classification") &
-  theme(legend.position = "bottom")
+  plot_annotation(title = "Logistisches Modell") &
+  theme(
+    plot.title.position = "plot",
+    plot.title = element_text(face = "bold"),
+    legend.position = "bottom"
+  )
 
 # combined plot
 final_plot <- (p_gauss / p_binom) +
-  plot_layout(guides="collect", axis_titles = "collect") &
-  theme(legend.position="bottom")
+  plot_layout(
+    guides = "collect",
+    axis_titles = "collect"
+  )
+
+
+ggsave("../figures/approx_plot_regr.png", p_gauss, width = 10, height = 3)
+ggsave("../figures/approx_plot_class.png", p_binom, width = 10, height = 3.5)
 
 ggsave("../figures/approx_all.png", final_plot, width = 15, height = 8)
 ```
