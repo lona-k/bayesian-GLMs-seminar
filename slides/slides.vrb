@@ -1,0 +1,14 @@
+\frametitle{Literatur Empfehlungen}
+\protect\phantomsection\label{literatur-empfehlungen}
+\begin{itemize}
+\tightlist
+\item
+  Bayesianische Regression (v.a. für praktische Anwendung):
+  \textcite{gelman_bayesian_2013}
+\item
+  Prior Verteilungen (v.a. Shrinkage): \textcite{van_erp_shrinkage_2019}
+  und \textcite{celeux_regularization_2012}
+\item
+  Software: z.B. \texttt{brms} in \texttt{R}, \texttt{PyMC} in
+  \texttt{python}
+\end{itemize}

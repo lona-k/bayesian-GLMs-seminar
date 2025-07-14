@@ -1,0 +1,22 @@
+[0] Config.pm:307> INFO - This is Biber 2.17
+[0] Config.pm:310> INFO - Logfile is 'slides.blg'
+[66] biber-darwin:340> INFO - === Mon Jul 14, 2025, 15:05:02
+[78] Biber.pm:418> INFO - Reading 'slides.bcf'
+[168] Biber.pm:972> INFO - Found 28 citekeys in bib section 0
+[181] Biber.pm:4383> INFO - Processing section 0
+[191] Biber.pm:4574> INFO - Looking for bibtex file 'bibliography.bib' for section 0
+[193] bibtex.pm:1713> INFO - LaTeX decoding ...
+[288] bibtex.pm:1518> INFO - Found BibTeX data source 'bibliography.bib'
+[444] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[445] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[445] Biber.pm:4203> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[445] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-US'
+[467] bbl.pm:654> INFO - Writing 'slides.bbl' with encoding 'UTF-8'
+[477] bbl.pm:757> INFO - Output to slides.bbl
+[477] Biber.pm:130> WARN - Name in key 'polson_bayesian_2013' is empty (probably consecutive 'and'): skipping entry 'polson_bayesian_2013'
+[477] Biber.pm:130> WARN - Entry with key 'polson_bayesian_2013' in section '0' is cited and found but not created (likely due to sourcemap)
+[477] Biber.pm:130> WARN - Name in key 'tierney_accurate_1986' is empty (probably consecutive 'and'): skipping entry 'tierney_accurate_1986'
+[477] Biber.pm:130> WARN - Entry with key 'tierney_accurate_1986' in section '0' is cited and found but not created (likely due to sourcemap)
+[477] Biber.pm:130> WARN - BibTeX subsystem: substring 3, warning: empty substring
+[477] Biber.pm:130> WARN - BibTeX subsystem: substring 2, warning: empty substring
+[477] Biber.pm:132> INFO - WARNINGS: 6

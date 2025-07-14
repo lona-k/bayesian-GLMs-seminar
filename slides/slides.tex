@@ -77,6 +77,21 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -309,7 +324,7 @@
 
 \begin{frame}{Motivation und Intuition}
 \protect\phantomsection\label{motivation-und-intuition}
-TODO: gutes Beispiel
+TODO: gutes Intro-Beispiel
 
 \begin{itemize}
 \item
@@ -321,8 +336,8 @@ TODO: gutes Beispiel
 \end{itemize}
 \end{frame}
 
-\section{\texorpdfstring{Bayesianische \textbf{lineare}
-Modelle}{Bayesianische lineare Modelle}}\label{bayesianische-lineare-modelle}
+\section{\texorpdfstring{Bayesianisches \textbf{lineares} Modell
+(LM)}{Bayesianisches lineares Modell (LM)}}\label{bayesianisches-lineares-modell-lm}
 
 \begin{frame}{Frequentistisches \(\to\) bayesianisches lineares Modell}
 \protect\phantomsection\label{frequentistisches-to-bayesianisches-lineares-modell}
@@ -352,12 +367,12 @@ Annahmen:
 \end{block}
 \end{frame}
 
-\begin{frame}{Modelldefinition (Prior-Verteilungen)}
-\protect\phantomsection\label{modelldefinition-prior-verteilungen}
+\begin{frame}{Prior-Verteilungen für das bayesianische LM}
+\protect\phantomsection\label{prior-verteilungen-fuxfcr-das-bayesianische-lm}
 \textbf{Prior}-Annahme für \(\btheta\) (und evtl. \(\ssd\)) notwendig
 \(\to\) sehr vielseitige Modell-Anpassung möglich
 
-\begin{block}{1. Normal-Invers-Gamma Prior:}
+\begin{block}{Normal-Invers-Gamma Prior:}
 \protect\phantomsection\label{normal-invers-gamma-prior}
 \[
 \begin{aligned}
@@ -378,15 +393,14 @@ TODO: Bild
 
 \begin{frame}{Uninformative Prior als Spezialfall der NIG-Prior}
 \protect\phantomsection\label{uninformative-prior-als-spezialfall-der-nig-prior}
-\begin{block}{2. Uninformative Prior}
+(TODO: relevant?)
+
+\begin{block}{Uninformative Prior}
 \protect\phantomsection\label{uninformative-prior}
 z.B. mit NIG-Prior mit Prior Parametern
 
 \[
-\begin{aligned}
-\mupri = \bnull&, \quad \Sdipri = \bnull \text{  i.e., } \Sdpri \to \infty \\
-\apri = - \frac{p}{2}&, \quad \bpri = 0
-\end{aligned}
+\mupri = \bnull, \quad \Sdipri = \bnull \; \text{i.e.}\; \Sdpri \to \infty, \quad \apri = - \frac{p}{2}, \quad \bpri = 0
 \]
 
 \(\implies\) flache (und damit uninformative) Prior und maximaler
@@ -400,10 +414,10 @@ Einfluss der Daten auf die Posterior:
 TODO: Bild
 \end{frame}
 
-\begin{frame}{Regularisierung: frequentistisch vs.~bayesianisch}
-\protect\phantomsection\label{regularisierung-frequentistisch-vs.-bayesianisch}
-\textbf{Erinnerung}: \emph{frequentistische} Regularisierung durch
-Minimierung von
+\begin{frame}{Regularisierung: frequentistisch \(\to\) bayesianisch}
+\protect\phantomsection\label{regularisierung-frequentistisch-to-bayesianisch}
+\textbf{Erinnerung}: Regularisierung im \emph{frequentistischen} LM
+durch Minimierung von
 \[\text{PLS}(\btheta) = (\by - \bX \btheta)^\top (\by - \bX \btheta) + \lambda \ \text{pen}(\btheta)\]
 mit Regularisierungs-Parameter \(\lambda > 0\).
 
@@ -411,41 +425,51 @@ mit Regularisierungs-Parameter \(\lambda > 0\).
 für \(\btheta\)
 \end{frame}
 
-\begin{frame}{Regularisierung durch Prior Wahl}
-\protect\phantomsection\label{regularisierung-durch-prior-wahl}
-\begin{block}{3. Ridge Regularisierung}
+\begin{frame}{Regularisierung durch Wahl der Prior-Verteilung}
+\protect\phantomsection\label{regularisierung-durch-wahl-der-prior-verteilung}
+\begin{block}{Ridge Regularisierung}
 \protect\phantomsection\label{ridge-regularisierung}
-Frequentistisch \autocite{hoerl_ridge_1970,hoerl_ridge_1970-1}:
-\(\text{pen}(\btheta) = \|\btheta\|_2^2\)
-
-Bayesianisch \autocite{mackay_bayesian_1992}:
-\(\btheta \sim \Ncal(\bnull, \taus \bI)\) mit
-\(\taus \propto \frac{1}{\lambda}\)
+\begin{itemize}
+\item
+  Frequentistisch \autocite{hoerl_ridge_1970,hoerl_ridge_1970-1}:
+  \(\text{pen}(\btheta) = \|\btheta\|_2^2\)
+\item
+  Bayesianisch \autocite{mackay_bayesian_1992}:
+  \(\btheta \sim \Ncal(\bnull, \taus \bI)\) mit
+  \(\taus \propto \frac{1}{\lambda}\)
+\end{itemize}
 \end{block}
 
-\begin{block}{4. Lasso Regularisierung}
+\begin{block}{Lasso Regularisierung}
 \protect\phantomsection\label{lasso-regularisierung}
-Frequentistisch \autocite{tibshirani_regression_1996}:
-\(\text{pen}(\btheta) = \|\btheta\|_1\)
-
-Bayesianisch \autocite{park_bayesian_2008}: \[
-\begin{aligned}
-\btheta \mid \btaus &\sim \Ncal(\bnull, \btaus \bI) \\
-        \taus_j &\overset{\text{i.i.d.}}{\sim} \text{Exp}(0.5 \lambda^2), \quad j = 1, \dots, p
-\end{aligned}
-\]
+\begin{itemize}
+\item
+  Frequentistisch \autocite{tibshirani_regression_1996}:
+  \(\text{pen}(\btheta) = \|\btheta\|_1\)
+\item
+  Bayesianisch \autocite{park_bayesian_2008}: \[
+  \begin{aligned}
+  \btheta \mid \btaus &\sim \Ncal(\bnull, \btaus \bI) \\
+  \taus_j &\overset{\text{i.i.d.}}{\sim} \text{Exp}(0.5 \lambda^2), \quad j = 1, \dots, p
+  \end{aligned}
+  \]
+\end{itemize}
 \end{block}
 
-Problem: keine Variablenselektion (im Gegensatz zu frequentistischem
-Lasso)
+\textbf{Problem}: keine Variablenselektion (im Gegensatz zu
+frequentistischem Lasso)
 
 \(\to\) Alternative Priors für Variablenselektion: Spike and Slab
 \autocite{mitchell_bayesian_1988}, Horseshoe
 \autocite{carvalho_horseshoe_2010}, u.v.m.
+
+TODO: Bild regularization Priors + update
 \end{frame}
 
 \begin{frame}{Regularisierung in Anwendung}
 \protect\phantomsection\label{regularisierung-in-anwendung}
+(TODO: relevant? -\textgreater{} Anhang bzw. Diskussion)
+
 Vorteile von bayesianischer Regularisierung sind u.a.:
 
 \begin{itemize}
@@ -458,8 +482,6 @@ Vorteile von bayesianischer Regularisierung sind u.a.:
 \item
   Mehr Anpassungsmöglichkeiten durch Prior-Spezifikation
 \end{itemize}
-
-TODO: Bild regularization Priors + update
 \end{frame}
 
 \section{\texorpdfstring{Bayesianische \textbf{generalisierte} lineare
@@ -468,8 +490,10 @@ Modelle
 
 \begin{frame}{Bayesianisches LM \(\to\) \textbf{GLM}}
 \protect\phantomsection\label{bayesianisches-lm-to-glm}
-\[\text{LM:} \; \by \mid \btheta, \ssd \sim \Ncal(\bX \btheta, \ssd \bI) \quad
-\to \quad \text{GLM:} \; \by \mid \btheta \sim F(g^{-1}(\bX \btheta))\]
+\[
+\text{LM:} \; \by \mid \btheta, \ssd \sim \Ncal(\bX \btheta, \ssd \bI) \quad
+\to \quad \text{GLM:} \; \by \mid \btheta \sim F(g^{-1}(\bX \btheta))
+\]
 
 \begin{itemize}
 \tightlist
@@ -482,8 +506,8 @@ Modelle
 \end{itemize}
 \end{frame}
 
-\begin{frame}{GLM \(\to\) \textbf{logistisches} Modell}
-\protect\phantomsection\label{glm-to-logistisches-modell}
+\begin{frame}{Bayesianisches GLM \(\to\) \textbf{logistisches} Modell}
+\protect\phantomsection\label{bayesianisches-glm-to-logistisches-modell}
 \begin{block}{Bayesianisches logistisches Modell}
 \protect\phantomsection\label{bayesianisches-logistisches-modell}
 \[
@@ -502,52 +526,264 @@ Sigmoid-Link \(\sigma(y) = \frac{\exp(y)}{1 + \exp(y)}\)
 \begin{itemize}
 \tightlist
 \item
-  Im Allgemeinen äquivalent zum LM möglich, z.B. Normalverteilung-Prior
+  I.A. äquivalent zum LM möglich, z.B. Normalverteilungs-Prior
 \item
   Verteilungen mit schweren Rändern (z.B. t-Verteilung, Cauchy
-  Verteilung) verringern Separation und fördern Shrinkage
+  Verteilung) addressieren Separation und fördern Shrinkage
   \autocite{gelman_weakly_2008,ghosh_use_2017}
 \item
-  Für Regularisierung können dieselben Priors verwendet werden
+  Für Regularisierung können dieselben Priors wie im LM verwendet werden
   \autocite{ohara_review_2009,fahrmeir_bayesian_2010,van_erp_shrinkage_2019}
 \end{itemize}
+
+TODO: Bild mti decision boundard? Lieber nicht \ldots{}
 \end{frame}
 
-\section{Posterior Inference}\label{posterior-inference}
+\section{Inferenz der Parameter
+Posterior}\label{inferenz-der-parameter-posterior}
 
-\begin{frame}{Posterior Inference}
-Erinnerung: Bayes-Regel
-\[p(\btheta \mid \by) = \frac{p(\by \mid \btheta) \; p(\btheta)}{\int p(\by \mid \btheta) \; p(\btheta) d \btheta},\]
-wobei \(p(\by \mid \btheta)\) die Modell-Likelihood ist.
+\begin{frame}{Inferenz der Parameter Posterior}
+\textbf{Erinnerung}
+
+\begin{itemize}
+\tightlist
+\item
+  Bayes-Regel zur Ermittlung der Parameter Posterior
+\end{itemize}
+
+\[
+p(\btheta \mid \by) = \frac{p(\by \mid \btheta) \; p(\btheta)}{\int p(\by \mid \btheta) \; p(\btheta) d \btheta}
+= \frac{\Lcal(\btheta) \; p(\btheta)}{\int \Lcal(\btheta) \; p(\btheta) d \btheta}
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  Inferenz im frequentistischen LM: z.B. kleinste Quadrate Schätzung mit
+\end{itemize}
+
+\[
+\hbtheta_{KQ} = (\bX^\top \bX)^{-1} \bX^\top \by \quad \text{mit} \quad \hbtheta_{KQ} \sim \Ncal(\btheta, \ssd (\bX^\top \bX)^{-1})
+\]
 \end{frame}
 
 \begin{frame}{bayesianisches LM: exakte Inferenz mit konjugierten
 Prioris}
 \protect\phantomsection\label{bayesianisches-lm-exakte-inferenz-mit-konjugierten-prioris}
-\end{frame}
+\begin{block}{Inferenz mit konjugierten Priors}
+\protect\phantomsection\label{inferenz-mit-konjugierten-priors}
+Bayesianisches LM: Nutzung der Konjugiertheit von
+\(\by \mid \btheta, \ssd \sim \Ncal\) und
+\(\btheta, \ssd \sim \text{NIG}\)
 
-\begin{frame}{bayesianisches GLM: approximative Inferenz}
-\protect\phantomsection\label{bayesianisches-glm-approximative-inferenz}
-\begin{block}{Metropolis Hastings (MCMC)}
-\protect\phantomsection\label{metropolis-hastings-mcmc}
-Idee: Approximation der Posterior mit Markov chain Monte Carlo - was
-muss man für Regression anpassen?
+\[
+\btheta, \ssd \mid \by \sim \text{NIG}(\mupo, \Sdpo, \apo, \bpo)
+\] mit \[
+\mupo = \Sdpo (\Sdipri \mupri + \bX^\top \by), \quad \Sdpo = (\bX^\top \bX + \Sdipri)^{-1}
+\]
 \end{block}
-
-\begin{block}{Laplace Approximation (LA)}
-\protect\phantomsection\label{laplace-approximation-la}
-Idee: Approximation der Posterior mit einer Normalverteilung
 
 \begin{itemize}
 \tightlist
 \item
-  Mittelwert und Varianz werden mit IWLS berechnet
+  \textbf{uninformative NIG-Prior}: Posterior Mean und KQ-Schätzer sind
+  äquivalent: \[
+  \mupri = \bnull, \quad \Sdipri = \bnull \; \implies \; \mupo = (\bX^\top \bX)^{-1} \bX^\top \by,\quad \Sdpo = (\bX^\top \bX)^{-1}
+  \]
 \end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Ridge}: Spezialfall der NIG-Prior \(\to\) konjugierte
+  Berechnung der Parameter Posterior
+\item
+  \textbf{Lasso}: Prior hat keine geschlossene Form, aus der Posterior
+  kann aber einfach mit Gibbs-Sampling simuliert werden
+  \autocite{park_bayesian_2008}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{bayesianisches GLM: approximative Inferenz}
+\protect\phantomsection\label{bayesianisches-glm-approximative-inferenz}
+\textbf{Problem}: Inferenz mit konjugierten Priors ist nur sehr selten
+möglich \autocite{polson_bayesian_2013}
+
+\(\to\) \textbf{Approximative bayesianische Inferenz}, um aus der
+Posterior zu samplen, mit z.B.:
+
+\begin{itemize}
+\tightlist
+\item
+  Markov chain Monte Carlo Methoden
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Metropolis-Hastings Algorithmus}
+    \autocite{hastings_monte_1970}
+  \item
+    Gibbs Sampling (bedingte Konjugiertheit)
+    \autocite{dellaportas_bayesian_1993}
+  \item
+    Hamiltonian Monte Carlo (v.a. hochdimensionale Posterior)
+    \autocite{neal_probabilistic_1993}
+  \end{itemize}
+\item
+  Data Augmentation mit latenten Variablen, um künstlich Konjugiertheit
+  zu induzieren
+  \autocite{albert_bayesian_1993,holmes_efficient_nodate,fruhwirth-schnatter_auxiliary_2007,scott_data_2011}
+\item
+  \textbf{Laplace Approximation} \autocite{tierney_accurate_1986}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Metropolis Hastings Algorithmus
+\autocite{hastings_monte_1970}}
+\protect\phantomsection\label{metropolis-hastings-algorithmus-hastings_monte_1970}
+\begin{itemize}
+\item
+  \textbf{Idee}: Aus der Posterior \(p(\btheta\mid \by)\) ziehen, ohne
+  Annahmen über ihre exakte Form machen zu müssen
+\item
+  \textbf{Problem}: Ergebnisse sind am Besten, wenn die Posterior bis
+  auf eine Konstante (meist die Normalisierungskonstante
+  \(\int p(\by \mid \btheta) \; p(\btheta) d \btheta\)) bekannt sind
+\item
+  \textbf{Inputs}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Anzahl der Ziehungen \(K \to\) frei wählbar
+  \item
+    Likelihood \(p(\btheta \mid \by)\) und Prior \(p(\btheta) \to\)
+    bekannt
+  \item
+    Proposal Verteilung \(q \to\) muss sorgfältig gewählt werden
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Metropolis Hastings: Wahl der Proposal Verteilung \(q\)}
+\protect\phantomsection\label{metropolis-hastings-wahl-der-proposal-verteilung-q}
+Effizienz des Algorithmus ist stark abhängig von der Proposal
+Verteilung.
+
+\(\to\) \textbf{Optionen}:
+
+\begin{itemize}
+\item
+  \textbf{Normalverteilung} \[
+  q(\btheta^{(*)} \mid \btheta^{(k)}) \sim \Ncal(\btheta^{(k)} \mid -H^{-1}(\btheta^{(k)}))
+  \] mit Mittelwert beim letzten Sample. Die Hesse-Matrix \(H\) von
+  \(p(\btheta \mid \by)\) wird meist mit IWLS geschätzt
+  \autocite{gamerman_markov_1998,lenk_bayesian_2000,scott_data_2011}
+\item
+  \textcite{scott_data_2011} schlägt \textbf{Verteilungen mit schweren
+  Rändern} vor \(\to\) mehr Mixing, kürzerer Burn-in und schnellere
+  Konvergenz
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Laplace Approximation (LA)
+\autocite{tierney_accurate_1986}}
+\protect\phantomsection\label{laplace-approximation-la-tierney_accurate_1986}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Idee}: Approximation der Posterior mit einer Normalverteilung
+  \[
+  p(\btheta \mid \by) \approx \Ncal(\hbtheta_{MAP}, H^{-1}(\hbtheta_{MAP}))
+  \] mit Maximum-a-Posteriori Schätzer \(\hbtheta_{MAP}\) und
+  Hesse-Matrix \(H\) von \(p(\btheta \mid \by)\)
+\item
+  Erweiterung für hierarchische Modelle: Integrated Nested Laplace
+  Appriximation (INLA) \autocite{rue_approximate_2009}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{\emph{Beispiel 2:} Vergleich von approximativen Inferenz
+Methoden}
+\protect\phantomsection\label{beispiel-2-vergleich-von-approximativen-inferenz-methoden}
+\textbf{Setup}: 1.000 synthetische Datensätze mit \(n=100\) und \[
+\begin{aligned}
+    &\bX \sim \Ncal(\bnull, \bI), \quad \btheta = (-0.5, 2, 1)\\
+    &\text{linear: } \by \mid \btheta \sim \Ncal(\bX \btheta, \bI)\\
+    &\text{logistic: } \by \mid \btheta \sim \text{Ber}(\sigma(\bX \btheta))
+\end{aligned}
+\]
+
+\textbf{Experiment}: für jeden Datensatz wurde angepasst:
+
+\begin{itemize}
+\tightlist
+\item
+  Ein lineares und ein logsistisches Regressionsmodell mit
+  \(\btheta \sim \Ncal(0, 10 \cdot \bI)\) und \(\ssd = 10\)
+\item
+  Mit Laplace Approximation und Metropolis-Hastings (\(K\) = 5.000,
+  Burn-in = 500, Thinning Intervall = 10)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{\emph{Beispiel 2:} LA vs.~Metropolis-Hastings}
+\protect\phantomsection\label{beispiel-2-la-vs.-metropolis-hastings}
+\includegraphics[width=0.85\linewidth,height=\textheight,keepaspectratio]{../figures/approx_plot_regr.png}
+\includegraphics[width=0.97\linewidth,height=\textheight,keepaspectratio]{../figures/approx_plot_class.png}
+\end{frame}
+
+\begin{frame}{Vorhersagen mit bayesianischen Modellen}
+\protect\phantomsection\label{vorhersagen-mit-bayesianischen-modellen}
+Aus der Bayes Regel:
+\[p(\by) = \int p(\by, \btheta) d\btheta = \int p(\by \mid \btheta) p(\btheta) d\btheta\]
+
+\begin{block}{Posterior Predictive Distribution}
+\protect\phantomsection\label{posterior-predictive-distribution}
+\(\to\) Vorhersagen für \(\tX\) im Bayesianischen GLM
+\autocite{box_sampling_1980,barbieri_posterior_2015}
+
+\[
+p(\ty \mid \by) = \int p(\ty, \btheta \mid \by) d \btheta 
+    = \int p(\ty \mid \btheta, \by) p(\btheta) d \btheta
+    \overset{\ty \perp \by \mid \btheta}{=}  \int p(\ty \mid \btheta) p(\btheta) d \btheta
+\]
 \end{block}
 
-\begin{block}{PPD}
-\protect\phantomsection\label{ppd}
-\end{block}
+Für das bayesianische \textbf{logistische Modell} berechnet man
+\[p(\ty = 1 \mid \by)\] mit
+\(y_i \in \{0 \text{ (negative)}, 1 \text{ (positive)}\}\)
+
+TODO: Bild
+\end{frame}
+
+\begin{frame}{Berechnung der Posterior Predictive Distribution}
+\protect\phantomsection\label{berechnung-der-posterior-predictive-distribution}
+\textbf{Analytische Berechnung}: z.B. für die NIG-Prior ergibt sich
+\[\ty \mid \btheta, \ssd, \by \sim \Tcal(2 \apo, \tX \btheta, \frac{\bpo}{\apo} (\bI + \tX \Sdpo \tX^\top))\]
+
+Alternativ (und viel wichtiger): \textbf{Approximation}
+
+\begin{itemize}
+\tightlist
+\item
+  für Metropolis-Hastings:
+  \(p(\ty = 1 \mid \btheta, \by) \approx \frac{1}{K} \sum_{k=1}^{K} \sigma(\tX \btheta^{(k)})\)
+\item
+  für Laplace Approximation:
+
+  \begin{itemize}
+  \item
+    LA-approximierte PPD analytisch berechnen:
+
+    \[p(\ty = 1 \mid \btheta, \by) = \int \sigma(\tX \btheta) \Ncal_{\btheta}(\hbtheta_{MAP}, H^{-1} (\hbtheta_{MAP})) \; d \btheta\]
+  \item
+    Samples
+    \(\btheta^{(s)} \sim \Ncal(\hbtheta_{MAP}, H^{-1}(\hbtheta_{MAP}))\)
+    mit \(s = 1, \dots, S\) aus der LA-approximierten Parameter
+    Posterior ziehen und wie bei Metropolis-Hastings vorgehen
+  \end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Literatur Empfehlungen}
@@ -566,7 +802,100 @@ Idee: Approximation der Posterior mit einer Normalverteilung
 \end{itemize}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{Referenzen}
+\section{Referenzen}\label{referenzen}
+
+\section{Anhang}\label{anhang}
+
+\begin{frame}{Herleitung der kojugierten Priori}
+\protect\phantomsection\label{herleitung-der-kojugierten-priori}
+.
+\end{frame}
+
+\begin{frame}{Ergebnisse des Regularisierungsexperiments}
+\protect\phantomsection\label{ergebnisse-des-regularisierungsexperiments}
+.
+\end{frame}
+
+\begin{frame}{Posterior Inference: exakter Metropolis (-Hastings)
+Algorithmus}
+\protect\phantomsection\label{posterior-inference-exakter-metropolis--hastings-algorithmus}
+\begin{enumerate}
+\tightlist
+\item
+  Initialize \(\btheta^{(1)}\)
+\item
+  For \(k = 1, \dots, K\)
+
+  \begin{enumerate}
+  \item
+    Draw \(\btheta^{(*)}\) from the \textit{proposal distribution}
+    \(q(\btheta^{(*)} \mid \btheta^{(k)})\)
+  \item
+    calculate the \textit{acceptance probably}
+
+    \[
+         \alpha = \min \Bigl(
+             1, \frac{
+                 p(\btheta^{(*)} \mid \by)\; p(\btheta^{(*)}) \; q(\btheta^{(k)} \mid \btheta^{(*)})}{
+                     p(\btheta^{(k)} \mid \by)\; p(\btheta^{(k)}) \; q(\btheta^{(*)} \mid \btheta^{(k)})
+                 }
+             \Bigr)
+     \]
+  \item
+    Accept or discard the proposal \(\btheta^{(*)}\) (for
+    \(u \sim \text{Uni}[0, 1]\))
+
+    \[
+     \begin{cases}
+             u \le \alpha & \btheta^{(k+1)} = \btheta^{(*)}\\
+             u > \alpha & \btheta^{(k+1)} = \btheta^{(k)}\\
+     \end{cases}
+     \]
+  \end{enumerate}
+\end{enumerate}
+
+Und z.B. \[
+q(\btheta^{(*)} \mid \btheta^{(k)}) \sim \Ncal(\btheta^{(k)} \mid -H^{-1}(\btheta^{(k)}))
+\] mit
+\(H(\btheta) = \nabla_{\btheta}^2  \log \Bigl(p(\btheta^{(k)} \mid \by)\; p(\btheta^{(k)})\Bigr)\)
+\end{frame}
+
+\begin{frame}{Posterior Inference: Mittelwert und Varianz für Laplace
+Approximation}
+\protect\phantomsection\label{posterior-inference-mittelwert-und-varianz-fuxfcr-laplace-approximation}
+Exemplarische Berechnung für ein bayesianisches logistisches Modell mit
+der Prior \(\btheta \sim \Ncal(\bnull, \ssd \bI)\):
+
+Es gilt dass mit Laplace Approximation
+\(p(\btheta \mid \by) \approx \Ncal(\hbtheta_{MAP}, H^{-1}(\hbtheta_{MAP}))\)
+mit
+
+\[
+\begin{aligned}
+    \hbtheta_{MAP} &= \arg \max_{\btheta} p(\btheta \mid \by)
+        \overset{\text{Bayes' rule}}{=} \arg \max_{\btheta} p(\by \mid \btheta) p(\btheta) \; d\btheta  \\
+        &= \arg \max_{\btheta} \sumin \log \Bigl( \sigma(y_i \; \bx_i\btheta)\Bigr) - \frac{1}{2 \ssd} \btheta^\top \btheta \\
+    H(\btheta) &= - \nabla^2_{\btheta}  \log p (\btheta \mid \by) = \frac{1}{\ssd} \bI + \sumin
+    \sigma(y_i \; \bx_i\btheta) \Bigl(1 - \sigma(y_i \; \bx_i\btheta)\Bigr)
+        \bx_i \bx_i^\top.
+\end{aligned}
+\]
+\end{frame}
+
+\begin{frame}{Experiment-Setup: Regularisierung}
+\protect\phantomsection\label{experiment-setup-regularisierung}
+\end{frame}
+
+\begin{frame}{Beispiel 1: Regularisierung in data-sparse Szenarien}
+\protect\phantomsection\label{beispiel-1-regularisierung-in-data-sparse-szenarien}
+\end{frame}
+
+\begin{frame}{Experiment-Setup: approximate Inference}
+\protect\phantomsection\label{experiment-setup-approximate-inference}
+.
+\end{frame}
+
+\begin{frame}[allowframebreaks]{}
   \bibliographytrue
   \printbibliography[heading=none]
 \end{frame}

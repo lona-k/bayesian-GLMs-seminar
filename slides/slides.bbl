@@ -1,0 +1,1031 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{albert_bayesian_1993}{article}{}
+      \name{author}{2}{}{%
+        {{hash=f1d0fba996afd88feda9fdcaaca14df2}{%
+           family={Albert},
+           familyi={A\bibinitperiod},
+           given={James\bibnamedelima H.},
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=25628966014266922faf57d7f25b3abd}{%
+           family={Chib},
+           familyi={C\bibinitperiod},
+           given={Siddhartha},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Statistical Association, Taylor \& Francis, Ltd.}%
+      }
+      \strng{namehash}{b53948724c35d0bdd57e97395d9762af}
+      \strng{fullhash}{b53948724c35d0bdd57e97395d9762af}
+      \strng{bibnamehash}{b53948724c35d0bdd57e97395d9762af}
+      \strng{authorbibnamehash}{b53948724c35d0bdd57e97395d9762af}
+      \strng{authornamehash}{b53948724c35d0bdd57e97395d9762af}
+      \strng{authorfullhash}{b53948724c35d0bdd57e97395d9762af}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0162-1459}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{number}{422}
+      \field{title}{Bayesian {Analysis} of {Binary} and {Polychotomous} {Response} {Data}}
+      \field{volume}{88}
+      \field{year}{1993}
+      \field{pages}{669\bibrangedash 679}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.2307/2290350
+      \endverb
+      \keyw{bayes. Logit,MCMC}
+    \endentry
+    \entry{barbieri_posterior_2015}{incollection}{}
+      \name{author}{1}{}{%
+        {{hash=17e7cb96da33282875e76f98e70796e4}{%
+           family={Barbieri},
+           familyi={B\bibinitperiod},
+           given={Maria\bibnamedelima Maddalena},
+           giveni={M\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {John Wiley \& Sons, Ltd}%
+      }
+      \strng{namehash}{17e7cb96da33282875e76f98e70796e4}
+      \strng{fullhash}{17e7cb96da33282875e76f98e70796e4}
+      \strng{bibnamehash}{17e7cb96da33282875e76f98e70796e4}
+      \strng{authorbibnamehash}{17e7cb96da33282875e76f98e70796e4}
+      \strng{authornamehash}{17e7cb96da33282875e76f98e70796e4}
+      \strng{authorfullhash}{17e7cb96da33282875e76f98e70796e4}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Wiley {StatsRef}: {Statistics} {Reference} {Online}}
+      \field{isbn}{978-1-118-44511-2}
+      \field{title}{Posterior {Predictive} {Distribution}}
+      \field{year}{2015}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1002/9781118445112.stat07839
+      \endverb
+    \endentry
+    \entry{box_sampling_1980}{article}{}
+      \name{author}{1}{}{%
+        {{hash=d30289ba50f0f7219fb405bc35b8b71c}{%
+           family={Box},
+           familyi={B\bibinitperiod},
+           given={George\bibnamedelimb E.\bibnamedelimi P.},
+           giveni={G\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Royal Statistical Society, Oxford University Press}%
+      }
+      \strng{namehash}{d30289ba50f0f7219fb405bc35b8b71c}
+      \strng{fullhash}{d30289ba50f0f7219fb405bc35b8b71c}
+      \strng{bibnamehash}{d30289ba50f0f7219fb405bc35b8b71c}
+      \strng{authorbibnamehash}{d30289ba50f0f7219fb405bc35b8b71c}
+      \strng{authornamehash}{d30289ba50f0f7219fb405bc35b8b71c}
+      \strng{authorfullhash}{d30289ba50f0f7219fb405bc35b8b71c}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0035-9238}
+      \field{journaltitle}{Journal of the Royal Statistical Society. Series A (General)}
+      \field{number}{4}
+      \field{title}{Sampling and {Bayes}' {Inference} in {Scientific} {Modelling} and {Robustness}}
+      \field{volume}{143}
+      \field{year}{1980}
+      \field{pages}{383\bibrangedash 430}
+      \range{pages}{48}
+      \verb{doi}
+      \verb 10.2307/2982063
+      \endverb
+      \keyw{inference}
+    \endentry
+    \entry{carvalho_horseshoe_2010}{article}{}
+      \name{author}{3}{}{%
+        {{hash=55232ef1384c95cd1e224d51498c6631}{%
+           family={Carvalho},
+           familyi={C\bibinitperiod},
+           given={Carlos\bibnamedelima M.},
+           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=c782f2b0a57bb490ef246bfbfd177e82}{%
+           family={Polson},
+           familyi={P\bibinitperiod},
+           given={Nicholas\bibnamedelima G.},
+           giveni={N\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=f8b1f282c41c718be6d21a92381964be}{%
+           family={Scott},
+           familyi={S\bibinitperiod},
+           given={James\bibnamedelima G.},
+           giveni={J\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \strng{namehash}{d8554a53aaf464bf8dd73adace3fcd20}
+      \strng{fullhash}{d8554a53aaf464bf8dd73adace3fcd20}
+      \strng{bibnamehash}{d8554a53aaf464bf8dd73adace3fcd20}
+      \strng{authorbibnamehash}{d8554a53aaf464bf8dd73adace3fcd20}
+      \strng{authornamehash}{d8554a53aaf464bf8dd73adace3fcd20}
+      \strng{authorfullhash}{d8554a53aaf464bf8dd73adace3fcd20}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0006-3444}
+      \field{journaltitle}{BIOMETRIKA}
+      \field{month}{6}
+      \field{number}{2}
+      \field{title}{The horseshoe estimator for sparse signals}
+      \field{volume}{97}
+      \field{year}{2010}
+      \field{pages}{465\bibrangedash 480}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1093/biomet/asq017
+      \endverb
+      \keyw{bayes. LM,BAYESIAN MODEL,GAUSSIAN GRAPHICAL MODELS,lasso,LASSO,Normal scale mixture,POSTERIOR MOMENTS,Ridge regression,Robustness,SELECTION,Shrinkage,Sparsity,Thresholding}
+    \endentry
+    \entry{celeux_regularization_2012}{article}{}
+      \name{author}{4}{}{%
+        {{hash=9133f7f17c8668427ccdc050da81724e}{%
+           family={Celeux},
+           familyi={C\bibinitperiod},
+           given={Gilles},
+           giveni={G\bibinitperiod}}}%
+        {{hash=17e195039daca5768d742d07824effac}{%
+           family={Anbari},
+           familyi={A\bibinitperiod},
+           given={Mohammed\bibnamedelima El},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=41d244db4705ec8da2fc38ab27c6c1a4}{%
+           family={Marin},
+           familyi={M\bibinitperiod},
+           given={Jean-Michel},
+           giveni={J\bibinithyphendelim M\bibinitperiod}}}%
+        {{hash=0a257fbe5a59f3a17cc4e1089b887257}{%
+           family={Robert},
+           familyi={R\bibinitperiod},
+           given={Christian\bibnamedelima P.},
+           giveni={C\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {International Society for Bayesian Analysis}%
+      }
+      \strng{namehash}{5797e1758f036f906d0ca7847964603d}
+      \strng{fullhash}{fc3fabe74691e91c4517620207aebbde}
+      \strng{bibnamehash}{5797e1758f036f906d0ca7847964603d}
+      \strng{authorbibnamehash}{5797e1758f036f906d0ca7847964603d}
+      \strng{authornamehash}{5797e1758f036f906d0ca7847964603d}
+      \strng{authorfullhash}{fc3fabe74691e91c4517620207aebbde}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{1936-0975, 1931-6690}
+      \field{journaltitle}{Bayesian Analysis}
+      \field{month}{6}
+      \field{number}{2}
+      \field{shorttitle}{Regularization in {Regression}}
+      \field{title}{Regularization in {Regression}: {Comparing} {Bayesian} and {Frequentist} {Methods} in a {Poorly} {Informative} {Situation}}
+      \field{volume}{7}
+      \field{year}{2012}
+      \field{pages}{477\bibrangedash 502}
+      \range{pages}{26}
+      \verb{doi}
+      \verb 10.1214/12-BA716
+      \endverb
+      \keyw{Calibration,Dantzig selector,Elastic net,lasso,Lasso,model choice,noninformative priors,regularization methods,ridge,simulation,Zellner’s g–prior}
+    \endentry
+    \entry{dellaportas_bayesian_1993}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0c9976fcbc505ef2f4a43b539d45332f}{%
+           family={Dellaportas},
+           familyi={D\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=c74088640e2c929c4cadac5f999cd117}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={A.\bibnamedelimi F.\bibnamedelimi M.},
+           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Royal Statistical Society, Oxford University Press}%
+      }
+      \strng{namehash}{0586fe122ef4fbb620688f0acc06a1a5}
+      \strng{fullhash}{0586fe122ef4fbb620688f0acc06a1a5}
+      \strng{bibnamehash}{0586fe122ef4fbb620688f0acc06a1a5}
+      \strng{authorbibnamehash}{0586fe122ef4fbb620688f0acc06a1a5}
+      \strng{authornamehash}{0586fe122ef4fbb620688f0acc06a1a5}
+      \strng{authorfullhash}{0586fe122ef4fbb620688f0acc06a1a5}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0035-9254}
+      \field{journaltitle}{Journal of the Royal Statistical Society. Series C (Applied Statistics)}
+      \field{number}{3}
+      \field{title}{Bayesian {Inference} for {Generalized} {Linear} and {Proportional} {Hazards} {Models} via {Gibbs} {Sampling}}
+      \field{volume}{42}
+      \field{year}{1993}
+      \field{pages}{443\bibrangedash 459}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.2307/2986324
+      \endverb
+      \keyw{bayes. GLM,MCMC}
+    \endentry
+    \entry{van_erp_shrinkage_2019}{article}{}
+      \name{author}{3}{}{%
+        {{hash=0fcf7cfe6a00060db3e02fd24ae3c56e}{%
+           family={Erp},
+           familyi={E\bibinitperiod},
+           given={Sara},
+           giveni={S\bibinitperiod},
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+        {{hash=79968b94d920f7f2bfae333568742681}{%
+           family={Oberski},
+           familyi={O\bibinitperiod},
+           given={Daniel\bibnamedelima L.},
+           giveni={D\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=d3ddb3f7b7c20167c561d770ac0d6a67}{%
+           family={Mulder},
+           familyi={M\bibinitperiod},
+           given={Joris},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{8e4aec032dbd484b574165055e234b29}
+      \strng{fullhash}{8e4aec032dbd484b574165055e234b29}
+      \strng{bibnamehash}{8e4aec032dbd484b574165055e234b29}
+      \strng{authorbibnamehash}{8e4aec032dbd484b574165055e234b29}
+      \strng{authornamehash}{8e4aec032dbd484b574165055e234b29}
+      \strng{authorfullhash}{8e4aec032dbd484b574165055e234b29}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0022-2496}
+      \field{journaltitle}{Journal of Mathematical Psychology}
+      \field{month}{4}
+      \field{title}{Shrinkage priors for {Bayesian} penalized regression}
+      \field{volume}{89}
+      \field{year}{2019}
+      \field{pages}{31\bibrangedash 50}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1016/j.jmp.2018.12.004
+      \endverb
+      \keyw{bayes. LM,Bayesian,Empirical Bayes,lasso,Penalization,Regression,Shrinkage priors}
+    \endentry
+    \entry{fahrmeir_bayesian_2010}{article}{}
+      \name{author}{3}{}{%
+        {{hash=476d0247462120c31452a2a58cbd6cdc}{%
+           family={Fahrmeir},
+           familyi={F\bibinitperiod},
+           given={Ludwig},
+           giveni={L\bibinitperiod}}}%
+        {{hash=eda2d58a1b493691fe187a3fe6b03c41}{%
+           family={Kneib},
+           familyi={K\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=d6a21b0369d82dfa14403cce973e1770}{%
+           family={Konrath},
+           familyi={K\bibinitperiod},
+           given={Susanne},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{bb653fafcd945bde9c15a554bc56a974}
+      \strng{fullhash}{bb653fafcd945bde9c15a554bc56a974}
+      \strng{bibnamehash}{bb653fafcd945bde9c15a554bc56a974}
+      \strng{authorbibnamehash}{bb653fafcd945bde9c15a554bc56a974}
+      \strng{authornamehash}{bb653fafcd945bde9c15a554bc56a974}
+      \strng{authorfullhash}{bb653fafcd945bde9c15a554bc56a974}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{1573-1375}
+      \field{journaltitle}{Statistics and Computing}
+      \field{number}{2}
+      \field{shorttitle}{Bayesian regularisation in structured additive regression}
+      \field{title}{Bayesian regularisation in structured additive regression: a unifying perspective on shrinkage, smoothing and predictor selection}
+      \field{volume}{20}
+      \field{year}{2010}
+      \field{pages}{203\bibrangedash 219}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1007/s11222-009-9158-3
+      \endverb
+    \endentry
+    \entry{fruhwirth-schnatter_auxiliary_2007}{article}{}
+      \name{author}{2}{}{%
+        {{hash=83485dfde2678ca0bd6138144fcfe9ff}{%
+           family={Frühwirth-Schnatter},
+           familyi={F\bibinithyphendelim S\bibinitperiod},
+           given={Sylvia},
+           giveni={S\bibinitperiod}}}%
+        {{hash=e5593fbea0d78855c19d74af7d618958}{%
+           family={Frühwirth},
+           familyi={F\bibinitperiod},
+           given={Rudolf},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{bc58f722b6b63b5706953486dc8d57ba}
+      \strng{fullhash}{bc58f722b6b63b5706953486dc8d57ba}
+      \strng{bibnamehash}{bc58f722b6b63b5706953486dc8d57ba}
+      \strng{authorbibnamehash}{bc58f722b6b63b5706953486dc8d57ba}
+      \strng{authornamehash}{bc58f722b6b63b5706953486dc8d57ba}
+      \strng{authorfullhash}{bc58f722b6b63b5706953486dc8d57ba}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0167-9473}
+      \field{journaltitle}{Computational Statistics \& Data Analysis}
+      \field{month}{4}
+      \field{number}{7}
+      \field{title}{Auxiliary mixture sampling with applications to logistic models}
+      \field{volume}{51}
+      \field{year}{2007}
+      \field{pages}{3509\bibrangedash 3528}
+      \range{pages}{20}
+      \verb{doi}
+      \verb 10.1016/j.csda.2006.10.006
+      \endverb
+      \keyw{bayes. Logit,Binary data,Categorical data,Markov chain Monte Carlo,MCMC,Random-effects models,State space models,Utilities}
+    \endentry
+    \entry{gamerman_markov_1998}{article}{}
+      \name{author}{1}{}{%
+        {{hash=cc78baa0b2a0bcae9f87e7d20d89993c}{%
+           family={Gamerman},
+           familyi={G\bibinitperiod},
+           given={Dani},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{cc78baa0b2a0bcae9f87e7d20d89993c}
+      \strng{fullhash}{cc78baa0b2a0bcae9f87e7d20d89993c}
+      \strng{bibnamehash}{cc78baa0b2a0bcae9f87e7d20d89993c}
+      \strng{authorbibnamehash}{cc78baa0b2a0bcae9f87e7d20d89993c}
+      \strng{authornamehash}{cc78baa0b2a0bcae9f87e7d20d89993c}
+      \strng{authorfullhash}{cc78baa0b2a0bcae9f87e7d20d89993c}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0006-3444}
+      \field{journaltitle}{Biometrika}
+      \field{month}{3}
+      \field{number}{1}
+      \field{title}{Markov chain {Monte} {Carlo} for dynamic generalised linear models}
+      \field{volume}{85}
+      \field{year}{1998}
+      \field{pages}{215\bibrangedash 227}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1093/biomet/85.1.215
+      \endverb
+      \keyw{MCMC}
+    \endentry
+    \entry{gelman_weakly_2008}{article}{}
+      \name{author}{4}{}{%
+        {{hash=1e1eb60e3b6e222217bf8e9b24070b28}{%
+           family={Gelman},
+           familyi={G\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+        {{hash=c617e65fc168096e379748f734d3db84}{%
+           family={Jakulin},
+           familyi={J\bibinitperiod},
+           given={Aleks},
+           giveni={A\bibinitperiod}}}%
+        {{hash=43f1809ab714b4218d201e3fd76f8000}{%
+           family={Pittau},
+           familyi={P\bibinitperiod},
+           given={Maria\bibnamedelima Grazia},
+           giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=33544ecfe6b2235e8ada2a3ff2deeb71}{%
+           family={Su},
+           familyi={S\bibinitperiod},
+           given={Yu-Sung},
+           giveni={Y\bibinithyphendelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Institute of Mathematical Statistics}%
+      }
+      \strng{namehash}{7b511f44eded88e08c98470ecd75568d}
+      \strng{fullhash}{95799dbd13f526e1b91274d7e2c65340}
+      \strng{bibnamehash}{7b511f44eded88e08c98470ecd75568d}
+      \strng{authorbibnamehash}{7b511f44eded88e08c98470ecd75568d}
+      \strng{authornamehash}{7b511f44eded88e08c98470ecd75568d}
+      \strng{authorfullhash}{95799dbd13f526e1b91274d7e2c65340}
+      \field{extraname}{1}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1932-6157, 1941-7330}
+      \field{journaltitle}{The Annals of Applied Statistics}
+      \field{month}{12}
+      \field{number}{4}
+      \field{title}{A weakly informative default prior distribution for logistic and other regression models}
+      \field{volume}{2}
+      \field{year}{2008}
+      \field{pages}{1360\bibrangedash 1383}
+      \range{pages}{24}
+      \verb{doi}
+      \verb 10.1214/08-AOAS191
+      \endverb
+      \keyw{bayes. Logit,Bayesian inference,generalized linear model,hierarchical model,least squares,Linear regression,logistic regression,multilevel model,noninformative prior distribution,weakly informative prior distribution}
+    \endentry
+    \entry{gelman_bayesian_2013}{book}{}
+      \name{author}{6}{}{%
+        {{hash=1e1eb60e3b6e222217bf8e9b24070b28}{%
+           family={Gelman},
+           familyi={G\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+        {{hash=5f088783ee75f9f0908eeb4fa9571a31}{%
+           family={Carlin},
+           familyi={C\bibinitperiod},
+           given={John\bibnamedelima B.},
+           giveni={J\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=fd9cbf9e3046ffa6a7cecf24e1a46b03}{%
+           family={Stern},
+           familyi={S\bibinitperiod},
+           given={Hal\bibnamedelima S.},
+           giveni={H\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=84545b54e408a7eba6bf9280fd2eaae7}{%
+           family={Dunson},
+           familyi={D\bibinitperiod},
+           given={David\bibnamedelima B.},
+           giveni={D\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=5d36e97683cbc9d6ef06fc2ec40becb0}{%
+           family={Vehtari},
+           familyi={V\bibinitperiod},
+           given={Aki},
+           giveni={A\bibinitperiod}}}%
+        {{hash=49a367b6280de8a239f8bbdd573f996f}{%
+           family={Rubin},
+           familyi={R\bibinitperiod},
+           given={Donald\bibnamedelima B.},
+           giveni={D\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{2}{%
+        {Chapman}%
+        {Hall/CRC}%
+      }
+      \strng{namehash}{7b511f44eded88e08c98470ecd75568d}
+      \strng{fullhash}{5c09c13430845c0df008aa82cfeb78ef}
+      \strng{bibnamehash}{7b511f44eded88e08c98470ecd75568d}
+      \strng{authorbibnamehash}{7b511f44eded88e08c98470ecd75568d}
+      \strng{authornamehash}{7b511f44eded88e08c98470ecd75568d}
+      \strng{authorfullhash}{5c09c13430845c0df008aa82cfeb78ef}
+      \field{extraname}{2}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{3}
+      \field{isbn}{978-0-429-11307-9}
+      \field{title}{Bayesian {Data} {Analysis}}
+      \field{year}{2013}
+      \verb{doi}
+      \verb 10.1201/b16018
+      \endverb
+    \endentry
+    \entry{ghosh_use_2017}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=cdc78a8fdd713b6fb5d9912aefd6fdf2}{%
+           family={Ghosh},
+           familyi={G\bibinitperiod},
+           given={Joyee},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c0ad45bc7e327508a8422f7a385e97e5}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Yingbo},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=4ef5e1aa35aae40f08d21f383904c965}{%
+           family={Mitra},
+           familyi={M\bibinitperiod},
+           given={Robin},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{45e1f667c991e875451b3e340dc1476b}
+      \strng{fullhash}{45e1f667c991e875451b3e340dc1476b}
+      \strng{bibnamehash}{45e1f667c991e875451b3e340dc1476b}
+      \strng{authorbibnamehash}{45e1f667c991e875451b3e340dc1476b}
+      \strng{authornamehash}{45e1f667c991e875451b3e340dc1476b}
+      \strng{authorfullhash}{45e1f667c991e875451b3e340dc1476b}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{2}
+      \field{title}{On the {Use} of {Cauchy} {Prior} {Distributions} for {Bayesian} {Logistic} {Regression}}
+      \field{year}{2017}
+      \verb{doi}
+      \verb 10.48550/arXiv.1507.07170
+      \endverb
+      \keyw{bayes. Logit,Statistics - Methodology}
+    \endentry
+    \entry{hastings_monte_1970}{article}{}
+      \name{author}{1}{}{%
+        {{hash=e2bb38a445fd9f0c2309f57ade222b9b}{%
+           family={Hastings},
+           familyi={H\bibinitperiod},
+           given={W.\bibnamedelimi K.},
+           giveni={W\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press, Biometrika Trust}%
+      }
+      \strng{namehash}{e2bb38a445fd9f0c2309f57ade222b9b}
+      \strng{fullhash}{e2bb38a445fd9f0c2309f57ade222b9b}
+      \strng{bibnamehash}{e2bb38a445fd9f0c2309f57ade222b9b}
+      \strng{authorbibnamehash}{e2bb38a445fd9f0c2309f57ade222b9b}
+      \strng{authornamehash}{e2bb38a445fd9f0c2309f57ade222b9b}
+      \strng{authorfullhash}{e2bb38a445fd9f0c2309f57ade222b9b}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0006-3444}
+      \field{journaltitle}{Biometrika}
+      \field{number}{1}
+      \field{title}{Monte {Carlo} {Sampling} {Methods} {Using} {Markov} {Chains} and {Their} {Applications}}
+      \field{volume}{57}
+      \field{year}{1970}
+      \field{pages}{97\bibrangedash 109}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.2307/2334940
+      \endverb
+      \keyw{MCMC}
+    \endentry
+    \entry{hoerl_ridge_1970}{article}{}
+      \name{author}{2}{}{%
+        {{hash=073bf156684ab93b481fb9a5dd6a82c7}{%
+           family={Hoerl},
+           familyi={H\bibinitperiod},
+           given={Arthur\bibnamedelima E.},
+           giveni={A\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=39f4e06a9e51f345e243e2b24175e7e4}{%
+           family={Kennard},
+           familyi={K\bibinitperiod},
+           given={Robert\bibnamedelima W.},
+           giveni={R\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis, Ltd., American Statistical Association, American Society for Quality}%
+      }
+      \strng{namehash}{5ca383125b65b015cb46067f1150f462}
+      \strng{fullhash}{5ca383125b65b015cb46067f1150f462}
+      \strng{bibnamehash}{5ca383125b65b015cb46067f1150f462}
+      \strng{authorbibnamehash}{5ca383125b65b015cb46067f1150f462}
+      \strng{authornamehash}{5ca383125b65b015cb46067f1150f462}
+      \strng{authorfullhash}{5ca383125b65b015cb46067f1150f462}
+      \field{extraname}{1}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{0040-1706}
+      \field{journaltitle}{Technometrics}
+      \field{number}{1}
+      \field{shorttitle}{Ridge {Regression}}
+      \field{title}{Ridge {Regression}: {Applications} to {Nonorthogonal} {Problems}}
+      \field{volume}{12}
+      \field{year}{1970}
+      \field{pages}{69\bibrangedash 82}
+      \range{pages}{14}
+      \verb{doi}
+      \verb 10.2307/1267352
+      \endverb
+      \keyw{bayes. LM,ridge}
+    \endentry
+    \entry{hoerl_ridge_1970-1}{article}{}
+      \name{author}{2}{}{%
+        {{hash=073bf156684ab93b481fb9a5dd6a82c7}{%
+           family={Hoerl},
+           familyi={H\bibinitperiod},
+           given={Arthur\bibnamedelima E.},
+           giveni={A\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=39f4e06a9e51f345e243e2b24175e7e4}{%
+           family={Kennard},
+           familyi={K\bibinitperiod},
+           given={Robert\bibnamedelima W.},
+           giveni={R\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis, Ltd., American Statistical Association, American Society for Quality}%
+      }
+      \strng{namehash}{5ca383125b65b015cb46067f1150f462}
+      \strng{fullhash}{5ca383125b65b015cb46067f1150f462}
+      \strng{bibnamehash}{5ca383125b65b015cb46067f1150f462}
+      \strng{authorbibnamehash}{5ca383125b65b015cb46067f1150f462}
+      \strng{authornamehash}{5ca383125b65b015cb46067f1150f462}
+      \strng{authorfullhash}{5ca383125b65b015cb46067f1150f462}
+      \field{extraname}{2}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{0040-1706}
+      \field{journaltitle}{Technometrics}
+      \field{number}{1}
+      \field{shorttitle}{Ridge {Regression}}
+      \field{title}{Ridge {Regression}: {Biased} {Estimation} for {Nonorthogonal} {Problems}}
+      \field{volume}{12}
+      \field{year}{1970}
+      \field{pages}{55\bibrangedash 67}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.2307/1267351
+      \endverb
+      \keyw{bayes. LM,ridge}
+    \endentry
+    \entry{holmes_efficient_nodate}{article}{}
+      \name{author}{2}{}{%
+        {{hash=79487106e794074eaf4c60af022e548a}{%
+           family={Holmes},
+           familyi={H\bibinitperiod},
+           given={CC},
+           giveni={C\bibinitperiod}}}%
+        {{hash=8303818a78c0ae6ff119962a3d8d30de}{%
+           family={Knorr-Held},
+           familyi={K\bibinithyphendelim H\bibinitperiod},
+           given={Leonhard},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{3098bd12119c9768b1dc75ee64e1a4b0}
+      \strng{fullhash}{3098bd12119c9768b1dc75ee64e1a4b0}
+      \strng{bibnamehash}{3098bd12119c9768b1dc75ee64e1a4b0}
+      \strng{authorbibnamehash}{3098bd12119c9768b1dc75ee64e1a4b0}
+      \strng{authornamehash}{3098bd12119c9768b1dc75ee64e1a4b0}
+      \strng{authorfullhash}{3098bd12119c9768b1dc75ee64e1a4b0}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{01}
+      \field{title}{Efficient simulation of Bayesian Logistic Regression Models}
+      \field{year}{2003}
+    \endentry
+    \entry{lenk_bayesian_2000}{article}{}
+      \name{author}{2}{}{%
+        {{hash=e043e4b5220e70d23544425297333850}{%
+           family={Lenk},
+           familyi={L\bibinitperiod},
+           given={Peter\bibnamedelima J.},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=37c8c77e468e5ee14d4f7f1cce3ad808}{%
+           family={DeSarbo},
+           familyi={D\bibinitperiod},
+           given={Wayne\bibnamedelima S.},
+           giveni={W\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{32459aa08cf5f3651f5a9953a4cdc730}
+      \strng{fullhash}{32459aa08cf5f3651f5a9953a4cdc730}
+      \strng{bibnamehash}{32459aa08cf5f3651f5a9953a4cdc730}
+      \strng{authorbibnamehash}{32459aa08cf5f3651f5a9953a4cdc730}
+      \strng{authornamehash}{32459aa08cf5f3651f5a9953a4cdc730}
+      \strng{authorfullhash}{32459aa08cf5f3651f5a9953a4cdc730}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0033-3123, 1860-0980}
+      \field{journaltitle}{Psychometrika}
+      \field{month}{3}
+      \field{number}{1}
+      \field{title}{Bayesian {Inference} for {Finite} {Mixtures} of {Generalized} {Linear} {Models} with {Random} {Effects}}
+      \field{volume}{65}
+      \field{year}{2000}
+      \field{pages}{93\bibrangedash 119}
+      \range{pages}{27}
+      \verb{doi}
+      \verb 10.1007/BF02294188
+      \endverb
+    \endentry
+    \entry{mackay_bayesian_1992}{article}{}
+      \name{author}{1}{}{%
+        {{hash=99e8c42965ec01aec3921af3e8ecd658}{%
+           family={MacKay},
+           familyi={M\bibinitperiod},
+           given={David\bibnamedelimb J.\bibnamedelimi C.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{99e8c42965ec01aec3921af3e8ecd658}
+      \strng{fullhash}{99e8c42965ec01aec3921af3e8ecd658}
+      \strng{bibnamehash}{99e8c42965ec01aec3921af3e8ecd658}
+      \strng{authorbibnamehash}{99e8c42965ec01aec3921af3e8ecd658}
+      \strng{authornamehash}{99e8c42965ec01aec3921af3e8ecd658}
+      \strng{authorfullhash}{99e8c42965ec01aec3921af3e8ecd658}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0899-7667}
+      \field{journaltitle}{Neural Computation}
+      \field{month}{5}
+      \field{number}{3}
+      \field{title}{Bayesian {Interpolation}}
+      \field{volume}{4}
+      \field{year}{1992}
+      \field{pages}{415\bibrangedash 447}
+      \range{pages}{33}
+      \verb{doi}
+      \verb 10.1162/neco.1992.4.3.415
+      \endverb
+      \keyw{bayes. LM,ridge}
+    \endentry
+    \entry{mitchell_bayesian_1988}{article}{}
+      \name{author}{2}{}{%
+        {{hash=f8fa9bf456d13041492adbd1fc7659ba}{%
+           family={Mitchell},
+           familyi={M\bibinitperiod},
+           given={Tj},
+           giveni={T\bibinitperiod}}}%
+        {{hash=ee4f1ff88f8e2a3e3ebb4c36eac32123}{%
+           family={Beauchamp},
+           familyi={B\bibinitperiod},
+           given={Jj},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \strng{namehash}{7c1517641fab7720a847ae9b9bc22f5d}
+      \strng{fullhash}{7c1517641fab7720a847ae9b9bc22f5d}
+      \strng{bibnamehash}{7c1517641fab7720a847ae9b9bc22f5d}
+      \strng{authorbibnamehash}{7c1517641fab7720a847ae9b9bc22f5d}
+      \strng{authornamehash}{7c1517641fab7720a847ae9b9bc22f5d}
+      \strng{authorfullhash}{7c1517641fab7720a847ae9b9bc22f5d}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0162-1459}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{month}{12}
+      \field{number}{404}
+      \field{title}{Bayesian {Variable} {Selection} in {Linear}-{Regression}}
+      \field{volume}{83}
+      \field{year}{1988}
+      \field{pages}{1023\bibrangedash 1032}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.2307/2290129
+      \endverb
+      \keyw{bayes. LM,lasso}
+    \endentry
+    \entry{neal_probabilistic_1993}{article}{}
+      \name{author}{1}{}{%
+        {{hash=f366a77ba01bf711161e56bcc244e7f2}{%
+           family={Neal},
+           familyi={N\bibinitperiod},
+           given={Radford\bibnamedelima M},
+           giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{f366a77ba01bf711161e56bcc244e7f2}
+      \strng{fullhash}{f366a77ba01bf711161e56bcc244e7f2}
+      \strng{bibnamehash}{f366a77ba01bf711161e56bcc244e7f2}
+      \strng{authorbibnamehash}{f366a77ba01bf711161e56bcc244e7f2}
+      \strng{authornamehash}{f366a77ba01bf711161e56bcc244e7f2}
+      \strng{authorfullhash}{f366a77ba01bf711161e56bcc244e7f2}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Department of Computer Science, University of Toronto Toronto, Ontario, Canada}
+      \field{title}{Probabilistic inference using {Markov} chain {Monte} {Carlo} methods}
+      \field{year}{1993}
+    \endentry
+    \entry{ohara_review_2009}{article}{}
+      \name{author}{2}{}{%
+        {{hash=3e2bbc908bc520bda33d6c06659914e6}{%
+           family={O'Hara},
+           familyi={O\bibinitperiod},
+           given={R.\bibnamedelimi B.},
+           giveni={R\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=c2b773b9ad852417540b79742bc0cc81}{%
+           family={Sillanpää},
+           familyi={S\bibinitperiod},
+           given={M.\bibnamedelimi J.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {International Society for Bayesian Analysis}%
+      }
+      \strng{namehash}{e972617c700f4a88dddd4cf53f31221a}
+      \strng{fullhash}{e972617c700f4a88dddd4cf53f31221a}
+      \strng{bibnamehash}{e972617c700f4a88dddd4cf53f31221a}
+      \strng{authorbibnamehash}{e972617c700f4a88dddd4cf53f31221a}
+      \strng{authornamehash}{e972617c700f4a88dddd4cf53f31221a}
+      \strng{authorfullhash}{e972617c700f4a88dddd4cf53f31221a}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{shorttitle}
+      \field{issn}{1936-0975, 1931-6690}
+      \field{journaltitle}{Bayesian Analysis}
+      \field{month}{3}
+      \field{number}{1}
+      \field{shorttitle}{A review of {Bayesian} variable selection methods}
+      \field{title}{A review of {Bayesian} variable selection methods: what, how and which}
+      \field{volume}{4}
+      \field{year}{2009}
+      \field{pages}{85\bibrangedash 117}
+      \range{pages}{33}
+      \verb{doi}
+      \verb 10.1214/09-BA403
+      \endverb
+      \keyw{bayes. LM,BUGS,lasso,MCMC,simulation,software,Variable selection}
+    \endentry
+    \entry{park_bayesian_2008}{article}{}
+      \name{author}{2}{}{%
+        {{hash=7021e260da7b0909f774600604ad5f50}{%
+           family={Park},
+           familyi={P\bibinitperiod},
+           given={Trevor},
+           giveni={T\bibinitperiod}}}%
+        {{hash=c7abc90e14f2761d9325ee092fda0de7}{%
+           family={Casella},
+           familyi={C\bibinitperiod},
+           given={George},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \strng{namehash}{be85c22a432f82b682948eeb13fe0e23}
+      \strng{fullhash}{be85c22a432f82b682948eeb13fe0e23}
+      \strng{bibnamehash}{be85c22a432f82b682948eeb13fe0e23}
+      \strng{authorbibnamehash}{be85c22a432f82b682948eeb13fe0e23}
+      \strng{authornamehash}{be85c22a432f82b682948eeb13fe0e23}
+      \strng{authorfullhash}{be85c22a432f82b682948eeb13fe0e23}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0162-1459}
+      \field{journaltitle}{Journal of the American Statistical Association}
+      \field{month}{6}
+      \field{number}{482}
+      \field{title}{The {Bayesian} {Lasso}}
+      \field{volume}{103}
+      \field{year}{2008}
+      \field{pages}{681\bibrangedash 686}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1198/016214508000000337
+      \endverb
+      \keyw{bayes. LM,empirical Bayes,Gibbs sampler,hierarchical model,inverse Gaussian,lasso,LEAST ANGLE REGRESSION,linear regression,MODELS,NORMAL-DISTRIBUTIONS,penalized regression,scale mixture of normals,SCALE MIXTURES,VARIABLE SELECTION}
+    \endentry
+    \entry{rue_approximate_2009}{article}{}
+      \name{author}{3}{}{%
+        {{hash=e326a9db67a823211c2fdf9f542d0f34}{%
+           family={Rue},
+           familyi={R\bibinitperiod},
+           given={Håvard},
+           giveni={H\bibinitperiod}}}%
+        {{hash=01741b7b26772172361e27e76a257154}{%
+           family={Martino},
+           familyi={M\bibinitperiod},
+           given={Sara},
+           giveni={S\bibinitperiod}}}%
+        {{hash=23c0c7d947415c68f4949167db1ca938}{%
+           family={Chopin},
+           familyi={C\bibinitperiod},
+           given={Nicolas},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{12c8d2cfb350e53b3dbede43e957152e}
+      \strng{fullhash}{12c8d2cfb350e53b3dbede43e957152e}
+      \strng{bibnamehash}{12c8d2cfb350e53b3dbede43e957152e}
+      \strng{authorbibnamehash}{12c8d2cfb350e53b3dbede43e957152e}
+      \strng{authornamehash}{12c8d2cfb350e53b3dbede43e957152e}
+      \strng{authorfullhash}{12c8d2cfb350e53b3dbede43e957152e}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1369-7412}
+      \field{journaltitle}{Journal of the Royal Statistical Society Series B: Statistical Methodology}
+      \field{month}{4}
+      \field{number}{2}
+      \field{title}{Approximate {Bayesian} {Inference} for {Latent} {Gaussian} models by using {Integrated} {Nested} {Laplace} {Approximations}}
+      \field{volume}{71}
+      \field{year}{2009}
+      \field{pages}{319\bibrangedash 392}
+      \range{pages}{74}
+      \verb{doi}
+      \verb 10.1111/j.1467-9868.2008.00700.x
+      \endverb
+      \keyw{LA}
+    \endentry
+    \entry{scott_data_2011}{article}{}
+      \name{author}{1}{}{%
+        {{hash=3e5393409c711df76d9c84958cc45b52}{%
+           family={Scott},
+           familyi={S\bibinitperiod},
+           given={Steven\bibnamedelima L.},
+           giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{3e5393409c711df76d9c84958cc45b52}
+      \strng{fullhash}{3e5393409c711df76d9c84958cc45b52}
+      \strng{bibnamehash}{3e5393409c711df76d9c84958cc45b52}
+      \strng{authorbibnamehash}{3e5393409c711df76d9c84958cc45b52}
+      \strng{authornamehash}{3e5393409c711df76d9c84958cc45b52}
+      \strng{authorfullhash}{3e5393409c711df76d9c84958cc45b52}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1613-9798}
+      \field{journaltitle}{Statistical Papers}
+      \field{month}{2}
+      \field{number}{1}
+      \field{title}{Data augmentation, frequentist estimation, and the {Bayesian} analysis of multinomial logit models}
+      \field{volume}{52}
+      \field{year}{2011}
+      \field{pages}{87\bibrangedash 109}
+      \range{pages}{23}
+      \verb{doi}
+      \verb 10.1007/s00362-009-0205-0
+      \endverb
+      \keyw{Applied Statistics,bayes. Logit,Bayesian Inference,Discrete choice model,Econometrics,Gibbs sampler,inference,Logistic regression,Markov chain Monte Carlo,MCMC,Metropolis–Hastings,Multinomial Poisson transformation,Parametric Inference,Partial credit model,Polychotomous,Polytomous,Stochastic Modelling,Stochastic Modelling in Statistics}
+    \endentry
+    \entry{tibshirani_regression_1996}{article}{}
+      \name{author}{1}{}{%
+        {{hash=88eea600247d798f8b2ce0b2dc614492}{%
+           family={Tibshirani},
+           familyi={T\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Royal Statistical Society, Oxford University Press}%
+      }
+      \strng{namehash}{88eea600247d798f8b2ce0b2dc614492}
+      \strng{fullhash}{88eea600247d798f8b2ce0b2dc614492}
+      \strng{bibnamehash}{88eea600247d798f8b2ce0b2dc614492}
+      \strng{authorbibnamehash}{88eea600247d798f8b2ce0b2dc614492}
+      \strng{authornamehash}{88eea600247d798f8b2ce0b2dc614492}
+      \strng{authorfullhash}{88eea600247d798f8b2ce0b2dc614492}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0035-9246}
+      \field{journaltitle}{Journal of the Royal Statistical Society. Series B (Methodological)}
+      \field{number}{1}
+      \field{title}{Regression {Shrinkage} and {Selection} via the {Lasso}}
+      \field{volume}{58}
+      \field{year}{1996}
+      \field{pages}{267\bibrangedash 288}
+      \range{pages}{22}
+      \keyw{bayes. LM,lasso}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

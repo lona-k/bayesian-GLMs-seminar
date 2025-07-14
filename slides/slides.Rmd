@@ -77,14 +77,14 @@ output:
 
 ## Motivation und Intuition
 
-TODO: gutes Beispiel
+TODO: gutes Intro-Beispiel
 
 - Generalisierte Lineare Modelle (GLMs) 
 
 - Punktvorhersage vs. Verteilung vorhersagen
 - warum reicht uns ein CI / PI
 
-# Bayesianische **lineare** Modelle
+# Bayesianisches **lineares** Modell (LM)
 
 ## Frequentistisches $\to$ bayesianisches lineares Modell
 
@@ -102,12 +102,12 @@ Annahmen:
 $$\by \mid \btheta, \ssd \sim \Ncal(\bX \btheta, \ssd \bI)$$
 :::
 
-## Modelldefinition (Prior-Verteilungen)
+## Prior-Verteilungen für das bayesianische LM
 
 **Prior**-Annahme für $\btheta$ (und evtl. $\ssd$) notwendig $\to$ sehr vielseitige Modell-Anpassung möglich
 
 :::{.block}
-### 1. Normal-Invers-Gamma Prior:
+### Normal-Invers-Gamma Prior:
 
 $$
 \begin{aligned}
@@ -126,16 +126,15 @@ TODO: Bild
 
 ## Uninformative Prior als Spezialfall der NIG-Prior
 
+(TODO: relevant?)
+
 :::{.block}
-### 2. Uninformative Prior
+### Uninformative Prior
 
 z.B. mit NIG-Prior mit Prior Parametern
 
 $$
-\begin{aligned}
-\mupri = \bnull&, \quad \Sdipri = \bnull \text{  i.e., } \Sdpri \to \infty \\
-\apri = - \frac{p}{2}&, \quad \bpri = 0
-\end{aligned}
+\mupri = \bnull, \quad \Sdipri = \bnull \; \text{i.e.}\; \Sdpri \to \infty, \quad \apri = - \frac{p}{2}, \quad \bpri = 0
 $$
 
 $\implies$ flache (und damit uninformative) Prior und maximaler Einfluss der Daten auf die Posterior:
@@ -147,35 +146,34 @@ $$
 
 TODO: Bild
 
-## Regularisierung: frequentistisch vs. bayesianisch
+## Regularisierung: frequentistisch $\to$ bayesianisch
 
-**Erinnerung**: *frequentistische* Regularisierung durch Minimierung von 
+**Erinnerung**: Regularisierung im *frequentistischen* LM durch Minimierung von 
 $$\text{PLS}(\btheta) = (\by - \bX \btheta)^\top (\by - \bX \btheta) + \lambda \ \text{pen}(\btheta)$$
 mit Regularisierungs-Parameter $\lambda > 0$.
-<br/>
-<br/>
+<br/><br/>
+
+**Bayesianische Regularisierung** durch Wahl der Prior-Verteilung für $\btheta$
 
 <!-- Idee: immer wenn wir regularisieren, treffen wir in unserem Modell implizit die Annahme, dass wir es für unwahrscheinlich halten, dass viele Kovariablen einen Einfluss haben. Das macht beim frequentistischen Modell Chaor (das Modell ist nicht mehr so richtig probabilistisch) aber passt super in die Prior von bayesianischen Modellen -->
 
 
-**Bayesianische Regularisierung** durch Wahl der Prior-Verteilung für $\btheta$
-
-## Regularisierung durch Prior Wahl
+## Regularisierung durch Wahl der Prior-Verteilung
 
 :::{.block}
-### 3. Ridge Regularisierung
+### Ridge Regularisierung
 
-Frequentistisch [@hoerl_ridge_1970;@hoerl_ridge_1970-1]: $\text{pen}(\btheta) = \|\btheta\|_2^2$
+- Frequentistisch [@hoerl_ridge_1970;@hoerl_ridge_1970-1]: $\text{pen}(\btheta) = \|\btheta\|_2^2$
 
-Bayesianisch [@mackay_bayesian_1992]: $\btheta \sim \Ncal(\bnull, \taus \bI)$ mit $\taus \propto \frac{1}{\lambda}$ 
+- Bayesianisch [@mackay_bayesian_1992]: $\btheta \sim \Ncal(\bnull, \taus \bI)$ mit $\taus \propto \frac{1}{\lambda}$ 
 :::
 
 :::{.block}
-### 4. Lasso Regularisierung 
+### Lasso Regularisierung 
 
-Frequentistisch [@tibshirani_regression_1996]: $\text{pen}(\btheta) = \|\btheta\|_1$
+- Frequentistisch [@tibshirani_regression_1996]: $\text{pen}(\btheta) = \|\btheta\|_1$
 
-Bayesianisch [@park_bayesian_2008]:
+- Bayesianisch [@park_bayesian_2008]:
 $$
 \begin{aligned}
 \btheta \mid \btaus &\sim \Ncal(\bnull, \btaus \bI) \\
@@ -184,20 +182,21 @@ $$
 $$
 :::
 
-Problem: keine Variablenselektion (im Gegensatz zu frequentistischem Lasso)
+**Problem**: keine Variablenselektion (im Gegensatz zu frequentistischem Lasso)
 
 $\to$ Alternative Priors für Variablenselektion: Spike and Slab [@mitchell_bayesian_1988], Horseshoe [@carvalho_horseshoe_2010], u.v.m.
 
+TODO: Bild regularization Priors + update
+
 ## Regularisierung in Anwendung
+
+(TODO: relevant? -> Anhang bzw. Diskussion)
 
 Vorteile von bayesianischer Regularisierung sind u.a.:
 
 - Probabilistisches Modell trotz Regularisierung
 - Regularisierung-Parameter muss nicht als Hyperparameter optimiert werden (z.B. durch Prior auf $\taus$)
 - Mehr Anpassungsmöglichkeiten durch Prior-Spezifikation
-
-
-TODO: Bild regularization Priors + update
 
 
 # Bayesianische **generalisierte** lineare Modelle (GLMs)
@@ -215,7 +214,7 @@ $$
 - Skala des linearen Prädiktors $\bX \btheta$ wird mit der Link-Funktion $g^{-1}$ angepasst
 
 
-## GLM $\to$ **logistisches** Modell
+## Bayesianisches GLM $\to$ **logistisches** Modell
 
 :::{.block}
 ### Bayesianisches logistisches Modell
@@ -233,27 +232,30 @@ Für Beobachtungen $\bx_i = (1, x_{i1}, \dots, x_{ip})^\top$ und Sigmoid-Link $\
 
 **Prior Wahl**
 
-- Im Allgemeinen äquivalent zum LM möglich, z.B. Normalverteilung-Prior
-- Verteilungen mit schweren Rändern (z.B. t-Verteilung, Cauchy Verteilung) verringern Separation und fördern Shrinkage [@gelman_weakly_2008;@ghosh_use_2017]
-- Für Regularisierung können dieselben Priors verwendet werden [@ohara_review_2009;@fahrmeir_bayesian_2010;@van_erp_shrinkage_2019]
+- I.A. äquivalent zum LM möglich, z.B. Normalverteilungs-Prior
+- Verteilungen mit schweren Rändern (z.B. t-Verteilung, Cauchy Verteilung) addressieren Separation und fördern Shrinkage [@gelman_weakly_2008;@ghosh_use_2017]
+- Für Regularisierung können dieselben Priors wie im LM verwendet werden [@ohara_review_2009;@fahrmeir_bayesian_2010;@van_erp_shrinkage_2019]
 
+TODO: Bild mti decision boundard? Lieber nicht ...
 
-## Beispiel 1: Regularisierung in data-sparse Szenarien
+# Inferenz der Parameter Posterior
 
-# Posterior Inference
+**Erinnerung**
 
-**Erinnerung**: Bayes-Regel zur Ermittlung der Parameter Posterior
+- Bayes-Regel zur Ermittlung der Parameter Posterior
+
 $$
-p(\btheta \mid \by) = \frac{p(\by \mid \btheta) \; p(\btheta)}{\int p(\by \mid \btheta) \; p(\btheta) d \btheta},
+p(\btheta \mid \by) = \frac{p(\by \mid \btheta) \; p(\btheta)}{\int p(\by \mid \btheta) \; p(\btheta) d \btheta}
+= \frac{\Lcal(\btheta) \; p(\btheta)}{\int \Lcal(\btheta) \; p(\btheta) d \btheta}
 $$
-wobei $p(\by \mid \btheta)$ die Modell-Likelihood ist.
 
-## bayesianisches LM: exakte Inferenz mit konjugierten Prioris
+- Inferenz im frequentistischen LM: z.B. kleinste Quadrate Schätzung mit
 
-Frequentisitsches LM: z.B. kleinste Quadrate Schätzung mit
 $$
 \hbtheta_{KQ} = (\bX^\top \bX)^{-1} \bX^\top \by \quad \text{mit} \quad \hbtheta_{KQ} \sim \Ncal(\btheta, \ssd (\bX^\top \bX)^{-1})
 $$
+
+## bayesianisches LM: exakte Inferenz mit konjugierten Prioris
 
 :::{.block}
 ### Inferenz mit konjugierten Priors
@@ -269,24 +271,21 @@ $$
 $$
 :::
 
-
-$\to$ im Fall der uninformativen NIG-Prior sind der Posterior Mean und der KQ-Schätzer äquivalent:
-
+- **uninformative NIG-Prior**: Posterior Mean und KQ-Schätzer sind äquivalent:
 $$
-\begin{aligned}
-\mupri = \bnull&, \Sdipri = \bnull \\
-\implies \mupo = (\bX^\top \bX)^{-1} \bX^\top \by&, \Sdpo = (\bX^\top \bX)^{-1}
-\begin{aligned}
+\mupri = \bnull, \quad \Sdipri = \bnull \; \implies \; \mupo = (\bX^\top \bX)^{-1} \bX^\top \by,\quad \Sdpo = (\bX^\top \bX)^{-1}
 $$
 
-$\to$ Marginale Posterior Verteilungen von $\btheta$ und $\ssd$ durch Integration für z.B. Kredibilitätsintervalle
+<!-- $\to$ Marginale Posterior Verteilungen von $\btheta$ und $\ssd$ durch Integration für z.B. Kredibilitätsintervalle -->
 
-- Ridge: Spezialfall der NIG-Prior $\to$ konjugierte Berechnung der Parameter Posterior
-- Lasso: Prior hat keine geschlossene Form, aber man die Posterior einfach mit Gibbs-Sampling simulieren [@park_bayesian_2008]
+- **Ridge**: Spezialfall der NIG-Prior $\to$ konjugierte Berechnung der Parameter Posterior
+- **Lasso**: Prior hat keine geschlossene Form, aus der Posterior kann aber einfach mit Gibbs-Sampling simuliert werden [@park_bayesian_2008]
 
 ## bayesianisches GLM: approximative Inferenz
 
-Inferenz mit konjugierten Priors ist nur sehr selten möglich [@polson_bayesian_2013] $\to$ Nutzung von Methoden der **approximative bayesianische Inferenz**, um aus der Posterior zu samplen:
+**Problem**: Inferenz mit konjugierten Priors ist nur sehr selten möglich [@polson_bayesian_2013]
+
+$\to$ **Approximative bayesianische Inferenz**, um aus der Posterior zu samplen, mit z.B.:
 
 - Markov chain Monte Carlo Methoden
   - **Metropolis-Hastings Algorithmus** [@hastings_monte_1970]
@@ -295,43 +294,42 @@ Inferenz mit konjugierten Priors ist nur sehr selten möglich [@polson_bayesian_
 - Data Augmentation mit latenten Variablen, um künstlich Konjugiertheit zu induzieren [@albert_bayesian_1993;@holmes_efficient_nodate;@fruhwirth-schnatter_auxiliary_2007;@scott_data_2011]
 - **Laplace Approximation** [@tierney_accurate_1986]
 
-### Metropolis Hastings Algorithmus [@hastings_monte_1970]
+## Metropolis Hastings Algorithmus [@hastings_monte_1970]
 
-- **Idee**: Aus der Posterior $p(\btheta\mid \by) ziehen, ohne Annahmen über ihre exakte Form machen zu müssen
+- **Idee**: Aus der Posterior $p(\btheta\mid \by)$ ziehen, ohne Annahmen über ihre exakte Form machen zu müssen
 - **Problem**: Ergebnisse sind am Besten, wenn die Posterior bis auf eine Konstante (meist die Normalisierungskonstante $\int p(\by \mid \btheta) \; p(\btheta) d \btheta$) bekannt sind
 
 - **Inputs**:
   - Anzahl der Ziehungen $K \to$ frei wählbar
   - Likelihood $p(\btheta \mid \by)$ und Prior $p(\btheta) \to$ bekannt
-  - Proposal Verteilung $q \to$ muss gut gewählt werden für 
+  - Proposal Verteilung $q \to$ muss sorgfältig gewählt werden
 
 
-### Metropolis Hastings: Wahl der Proposal Verteilung
+## Metropolis Hastings: Wahl der Proposal Verteilung $q$
 
-Effizienz des Algorithmus ist stark abhängig von der Proposal Verteilung
+Effizienz des Algorithmus ist stark abhängig von der Proposal Verteilung.
 
-**Optionen**:
+$\to$ **Optionen**:
 
 - **Normalverteilung**
   $$
   q(\btheta^{(*)} \mid \btheta^{(k)}) \sim \Ncal(\btheta^{(k)} \mid -H^{-1}(\btheta^{(k)}))
   $$
-    mit Mittelwert beim letzten Sample. Hessian $H$ wird meist mit IWLS geschätzt [@gamerman_markov_1998;@lenk_bayesian_2000;@scott_data_2011] 
+    mit Mittelwert beim letzten Sample. Die Hesse-Matrix $H$ von $p(\btheta \mid \by)$ wird meist mit IWLS geschätzt [@gamerman_markov_1998;@lenk_bayesian_2000;@scott_data_2011] 
 
 - @scott_data_2011 schlägt **Verteilungen mit schweren Rändern** vor $\to$ mehr Mixing, kürzerer Burn-in und schnellere Konvergenz
 
-
-### Laplace Approximation (LA) [@tierney_accurate_1986]
+## Laplace Approximation (LA) [@tierney_accurate_1986]
 
 - **Idee**: Approximation der Posterior mit einer Normalverteilung
   $$
-  p(\btheta \mid \by) \approx \Ncal(\hbtheta_{MAP}, H^{-1}(\hbtheta_{MAP})),
+  p(\btheta \mid \by) \approx \Ncal(\hbtheta_{MAP}, H^{-1}(\hbtheta_{MAP}))
   $$
-  wobei $\hbtheta_{MAP}$ das maximum posterior estimate und $H$ die Hesse-Matrix von $p(\btheta \mid \by)$ ist
-- Modifikation für hierarchische Modelle: Integrated Nested Laplace Appriximation (INLA) [@rue_approximate_2009]
+  mit Maximum-a-Posteriori Schätzer $\hbtheta_{MAP}$ und Hesse-Matrix $H$ von $p(\btheta \mid \by)$
+- Erweiterung für hierarchische Modelle: Integrated Nested Laplace Appriximation (INLA) [@rue_approximate_2009]
 
 
-## *Beispiel 2:* Vergleich von Approximate Inference Methods
+## *Beispiel 2:* Vergleich von approximativen Inferenz Methoden
 
 **Setup**: 1.000 synthetische Datensätze mit $n=100$ und 
 $$
@@ -342,17 +340,15 @@ $$
 \end{aligned}
 $$
 
-**Experiment**: für jeden Datensatz wurde
+**Experiment**: für jeden Datensatz wurde angepasst:
 
-- ein lineares und ein logsistisches Regressionsmodell mit $\btheta \sim \Ncal(0, 10 \cdot \bI)$ und $\ssd = 10$
-- mit Laplace Approximation und Metropolis-Hastings ($K$ = 5.000, Burn-in = 500, Thinning Intervall = 10) 
+- Ein lineares und ein logsistisches Regressionsmodell mit $\btheta \sim \Ncal(0, 10 \cdot \bI)$ und $\ssd = 10$
+- Mit Laplace Approximation und Metropolis-Hastings ($K$ = 5.000, Burn-in = 500, Thinning Intervall = 10) 
 
-angepasst
+## *Beispiel 2:* LA vs. Metropolis-Hastings
 
-## *Beispiel 2:* Vergleich von Approximate Inference Methods
-
-\image{../figures/approx_all.png}
-
+![](../figures/approx_plot_regr.png){width='85%'}
+![](../figures/approx_plot_class.png){width='97%'}
 
 <!-- - LA war langsamer (kann aber auch an Implementierung liegen!) -->
 <!-- - Lineare Regression: ganz gute Schätzungen, Varianz bei LA viel höher -->
@@ -365,6 +361,7 @@ angepasst
 
 Aus der Bayes Regel:
 $$p(\by) = \int p(\by, \btheta) d\btheta = \int p(\by \mid \btheta) p(\btheta) d\btheta$$
+
 :::{.block} 
 ### Posterior Predictive Distribution
 
@@ -380,7 +377,7 @@ $$
 <!-- -> ist quasi der Mittelwert der bedingten Verteilung von neuen y (also der Likelihood) über die Parameter Posterior -->
 :::
 
-Für das bayesianische logistische Modell berechnet man $p(\ty = 1 \mid \btheta, \by)$ mit $y_i \in \{0 \text{ (negative)}, 1 \text{ (positive)}\}$
+Für das bayesianische **logistische Modell** berechnet man $$p(\ty = 1 \mid \by)$$ mit $y_i \in \{0 \text{ (negative)}, 1 \text{ (positive)}\}$
 
 TODO: Bild
 
@@ -392,12 +389,11 @@ TODO: Bild
 
 Alternativ (und viel wichtiger): **Approximation**
 
-- für Metropolis-Hastings: p(\ty = 1 \mid \btheta, \by) \approx \frac{1}{K} \sum_{k=1}^{K} \sigma(\tX \btheta^{(k)})
+- für Metropolis-Hastings: $p(\ty = 1 \mid \btheta, \by) \approx \frac{1}{K} \sum_{k=1}^{K} \sigma(\tX \btheta^{(k)})$
 - für Laplace Approximation:
-    - LA-approximierte PPD analytisch berechnen: 
-$$
-p(\ty = 1 \mid \btheta, \by) = \int \sigma(\tX \btheta) \; \Ncal_{\btheta}(\hbtheta_{MAP}, H^{-1} (\hbtheta_{MAP})) \; d \btheta
-$$
+    - LA-approximierte PPD analytisch berechnen:
+    
+      $$p(\ty = 1 \mid \btheta, \by) = \int \sigma(\tX \btheta) \Ncal_{\btheta}(\hbtheta_{MAP}, H^{-1} (\hbtheta_{MAP})) \; d \btheta$$
     - Samples $\btheta^{(s)} \sim \Ncal(\hbtheta_{MAP}, H^{-1}(\hbtheta_{MAP}))$ mit $s = 1, \dots, S$ aus der LA-approximierten Parameter Posterior ziehen und wie bei Metropolis-Hastings vorgehen
 
 <!-- wir haben schon gesamplet und können die samples aus der Parameter Posterior jetzt einfach wiederverwenden, um die posterior predictive distribution zu approximieren -->
@@ -418,9 +414,11 @@ $$
 
 ## Herleitung der kojugierten Priori
 
+.
 
 ## Ergebnisse des Regularisierungsexperiments
 
+.
 
 ## Posterior Inference: exakter Metropolis (-Hastings) Algorithmus
 
@@ -428,7 +426,8 @@ $$
 1. Initialize $\btheta^{(1)}$
 2. For $k = 1, \dots, K$
     1. Draw $\btheta^{(*)}$ from the \textit{proposal distribution} $q(\btheta^{(*)} \mid \btheta^{(k)})$
-    2. calculate the \textit{acceptance probably} 
+    2. calculate the \textit{acceptance probably}
+    
         $$
             \alpha = \min \Bigl(
                 1, \frac{
@@ -438,6 +437,7 @@ $$
                 \Bigr)
         $$
     3. Accept or discard the proposal $\btheta^{(*)}$ (for $u \sim \text{Uni}[0, 1]$)
+    
         $$
         \begin{cases}
                 u \le \alpha & \btheta^{(k+1)} = \btheta^{(*)}\\
@@ -471,9 +471,10 @@ $$
 
 ## Experiment-Setup: Regularisierung
 
+## Beispiel 1: Regularisierung in data-sparse Szenarien
 
 ## Experiment-Setup: approximate Inference
 
-
+.
 
 
