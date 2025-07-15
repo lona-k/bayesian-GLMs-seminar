@@ -299,7 +299,7 @@ p_binom <- ((pp_time_b + labs(subtitle = NULL)) + (pp_theta_b + labs(subtitle = 
   theme(
     plot.title.position = "plot",
     plot.title = element_text(face = "bold"),
-    legend.position = "bottom"
+    legend.position = "right"
   )
 
 # combined plot
@@ -311,7 +311,7 @@ final_plot <- (p_gauss / p_binom) +
 
 
 ggsave("../figures/approx_plot_regr.png", p_gauss, width = 10, height = 3)
-ggsave("../figures/approx_plot_class.png", p_binom, width = 10, height = 3.5)
+ggsave("../figures/approx_plot_class.png", p_binom, width = 11.8, height = 3.5)
 
 ggsave("../figures/approx_all.png", final_plot, width = 15, height = 8)
 ```
