@@ -1,6 +1,6 @@
 ---
 title: "Bayesianische Regression"
-subtitle: "lineare und logistische Modelle"
+subtitle: "Lineare und logistische Modelle"
 author: "Lona Koers"
 institute: "LMU"
 date: "25. Juli 2025"
@@ -126,7 +126,7 @@ mit Prior Parametern: $\mupri, \Sdpri, \apri$ und $\bpri$
 
 **Vorteil**: NIG-Prior ist mit Normalverteilungs-Likelihood konjugiert $\to$ exakte Inferenz möglich (mehr dazu später)
 
-TODO: Bild
+<!-- TODO: Bild -->
 
 ## Uninformative Prior als Spezialfall der NIG-Prior
 
@@ -171,7 +171,7 @@ Idee: immer wenn wir regularisieren, treffen wir in unserem Modell implizit die 
 
 - Frequentistisch [@hoerl_ridge_1970;@hoerl_ridge_1970-1]: $\text{pen}(\btheta) = \|\btheta\|_2^2$
 
-- Bayesianisch [@mackay_bayesian_1992]: $$\btheta \sim \Ncal(\bnull, \taus \bI) \; \text{mit} \; \taus \propto \frac{1}{\lambda}$$
+- Bayesianisch [@mackay_bayesian_1992]: $\btheta \sim \Ncal(\bnull, \taus \bI) \; \text{mit} \; \taus \propto \frac{1}{\lambda}$
 :::
 
 :::{.block}
@@ -179,13 +179,14 @@ Idee: immer wenn wir regularisieren, treffen wir in unserem Modell implizit die 
 
 - Frequentistisch [@tibshirani_regression_1996]: $\text{pen}(\btheta) = \|\btheta\|_1$
 
-- Bayesianisch: Laplace-Prior oder nach @park_bayesian_2008
+- Bayesianisch [@park_bayesian_2008]:
 $$
 \begin{aligned}
 \btheta \mid \btaus &\sim \Ncal(\bnull, \btaus \bI) \\
 \taus_j &\overset{\text{i.i.d.}}{\sim} \text{Exp}(0.5 \lambda^2), \quad j = 1, \dots, p
 \end{aligned}
 $$
+<!-- Entwickelt aus Laplace-Prior  -->
 :::
 
 **Problem**: keine Variablenselektion (im Gegensatz zu frequentistischem Lasso)
@@ -196,7 +197,9 @@ $\to$ Alternative Priors für Variablenselektion: Spike and Slab [@mitchell_baye
 bayes Lasso setzt Koeffizienten nicht automatisch auf 0 -> dafür brauch wir speziellere Priors, die hier aber etwas außerhalb unseres Umfangs liegen.
 -->
 
-TODO: Bild regularization Priors + update
+## Visualisierung der Prior-Verteilungen
+
+![](../figures/plot_priors.png){height='70%'}
 
 # Bayesianisches **generalisiertes** lineares Modell (GLMs)
 
@@ -235,7 +238,9 @@ Für Beobachtungen $\bx_i = (1, x_{i1}, \dots, x_{ip})^\top$ und Sigmoid-Link $\
 - Verteilungen mit schweren Rändern (z.B. t-Verteilung, Cauchy Verteilung) addressieren Separation und fördern Shrinkage [@gelman_weakly_2008;@ghosh_use_2017]
 - Für Regularisierung können dieselben Priors wie im LM verwendet werden [@ohara_review_2009;@fahrmeir_bayesian_2010;@van_erp_shrinkage_2019]
 
-# Inferenz der Parameter Posterior
+# Inferenz im bayesianischen (G)LM
+
+## Inferenz der Parameter Posterior
 
 **Erinnerung**
 
@@ -284,6 +289,20 @@ $$
 
 - **Ridge**: Spezialfall der NIG-Prior $\to$ konjugierte Berechnung der Parameter Posterior
 - **Lasso**: Prior hat keine geschlossene Form, aus der Posterior kann aber mit Gibbs-Sampling simuliert werden [@park_bayesian_2008]
+
+## Posterior Update für Prior-Verteilungen
+
+![](../figures/plot_update.png){width='90%'}
+
+<!-- ![](../figures/plot_priors2.png){width='85%'} -->
+
+<!-- $$ -->
+<!-- y_i = \theta x_i + \epsilon_i, \quad i = 1, \dots, 10\\ -->
+<!-- \quad \theta = 2, \quad\epsilon_i \sim \Ncal(0, 5) -->
+<!-- $$ -->
+
+<!-- ![](../figures/plot_posteriors.png){width='85%'} -->
+
 
 ## Approximative Inferenz
 
@@ -370,7 +389,10 @@ $$
 <!-- - LA war langsamer (kann aber auch an Implementierung liegen!) -->
 <!-- - Lineare Regression: ganz gute Schätzungen, Varianz bei LA viel höher -->
 <!-- - Logistische Regression: LA liefert bessere Schätzung und kleinere Varianz, dauert aber länger -->
-<!-- - generell eher zur Veranschaulichung, ich würde empfehlen modernere Methoden zu benutzen, die sind eigentlich überall implementiert -->
+<!-- - generell eher zur Veranschaulichung, ich würde empfehlen modernere Methoden zu benutzen, die sind eigentlich überall implementiert
+
+“Why do you think Laplace gave tighter estimates than MCMC in logistic?” (Perhaps because the posterior was well-behaved and the quadratic approximation was very good, while MCMC had simulation error – mention needing more iterations or that your MCMC might not have fully converged
+-->
 
 ## Vorhersagen mit bayesianischen Modellen
 
@@ -396,7 +418,7 @@ $$
 
 Für das bayesianische **logistische Modell** berechnet man $$p(\ty = 1 \mid \by)$$ mit $y_i \in \{0 \text{ (negativ)}, 1 \text{ (positiv)}\}$
 
-TODO: Bild
+<!-- TODO: Bild -->
 
 
 ## Berechnung der Posterior Predictive Distribution
@@ -416,15 +438,20 @@ TODO: Bild
 
 <!-- wir haben schon gesamplet und können die samples aus der Parameter Posterior jetzt einfach wiederverwenden, um die posterior predictive distribution zu approximieren -->
 
-## 
-
-<!-- In summary, Bayesian regression not only gives us uncertainty estimates, but also naturally incorporates regularization (no need for separate tuning of λ) and allows more flexible modeling through priors. -->
+---
 
 :::{.block}
 ### Fazit
-- Sind bayesianische GLMs "besser" als frequentistische?
 
-- Anwendungsmöglichkeiten: kleine Stichproben, Explizite Nutzung von Vorwissen
+
+- Anwendungsmöglichkeiten: kleine Stichproben, explizite Nutzung von Vorwissen, einfache Regularisierung + Erhalt der Interpretierbarkeit
+
+<!-- If we only have a little data, a classic model might wildly overfit or be very uncertain. A Bayesian model says: let’s lean on prior knowledge to stabilize things. Intuitively, it’s like having an expert whispering a suggestion (the prior) when the data is unsure.
+We saw Bayesian and frequentist approaches can give similar point estimates (with flat prior) but very different uncertainty quantification – which do you trust more?
+“What if the prior is wrong – does it hurt performance?” (You can reply that a very wrong prior can bias results, but ideally one uses either weakly informative priors or does sensitivity analysis; in your experiments you likely used generic priors to see their effect)
+In your experience with GLMs, do you think having a prior would be useful? Can you think of scenarios where you’d want to use a Bayesian GLM?”
+One critique could be: do we really gain that much over just doing a frequentist analysis? What do you all think?
+-->
 
 :::
 
@@ -442,7 +469,7 @@ TODO: Bild
 
 # (APPENDIX) Appendix {-}
 
-## Regularisierung in Anwendung
+## Praktische Anwendbarkeit von (bayesianischer) Regularisierung
 
 Vorteile von bayesianischer Regularisierung sind u.a.:
 
@@ -452,14 +479,8 @@ Vorteile von bayesianischer Regularisierung sind u.a.:
 
 ## Frequentistische vs. bayesianische Lasso Regularisierung
 
-![Contour plot representing the sum of squared residuals, classical lasso constraint region (left), bivariate lasso prior and posterior distribution (right), and the classical and Bayesian penalized point estimates. Aus @van_erp_shrinkage_2019](../figures/van_erp_fig2_lasso.jpg){height='85%'}
+![Contour plot representing the sum of squared residuals, classical lasso constraint region (left), bivariate lasso prior and posterior distribution (right), and the classical and Bayesian penalized point estimates. Aus @van_erp_shrinkage_2019](../figures/van_erp_fig2_lasso.jpg){height='75%'}
 
-# Regularisierung: Spike and Slab und Horseshoe Prios
-
-- Spike and Slab: Idee + quote
-- Horseshoe: Idee + quote
-
-TODO: add them to the plot, show the plot here :)
 
 ## *Beispiel:* Vergleich von Regularisierungs-Priors in linearer und logistischer Regression
 

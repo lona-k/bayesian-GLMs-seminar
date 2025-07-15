@@ -1,5 +1,4 @@
 \beamer@sectionintoc {1}{Bayesianisches \textbf {lineares} Modell (LM)}{3}{0}{1}
-\beamer@sectionintoc {2}{Bayesianische \textbf {generalisierte} lineare Modelle (GLMs)}{10}{0}{2}
-\beamer@sectionintoc {3}{Inferenz der Parameter Posterior}{13}{0}{3}
-\beamer@sectionintoc {4}{Referenzen}{25}{0}{4}
-\beamer@sectionintoc {5}{Anhang}{26}{0}{5}
+\beamer@sectionintoc {2}{Bayesianisches \textbf {generalisiertes} lineares Modell (GLMs)}{10}{0}{2}
+\beamer@sectionintoc {3}{Inferenz im bayesianischen (G)LM}{13}{0}{3}
+\beamer@sectionintoc {4}{Referenzen}{26}{0}{4}

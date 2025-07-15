@@ -1,4 +1,14 @@
-\frametitle{Literatur Empfehlungen}
+\begin{block}{Fazit}
+\protect\phantomsection\label{fazit}
+\begin{itemize}
+\tightlist
+\item
+  Anwendungsmöglichkeiten: kleine Stichproben, explizite Nutzung von
+  Vorwissen, einfache Regularisierung + Erhalt der Interpretierbarkeit
+\end{itemize}
+\end{block}
+
+\begin{block}{Literatur Empfehlungen}
 \protect\phantomsection\label{literatur-empfehlungen}
 \begin{itemize}
 \tightlist
@@ -12,3 +22,4 @@
   Software: z.B. \texttt{brms} in \texttt{R}, \texttt{PyMC} in
   \texttt{python}
 \end{itemize}
+\end{block}
