@@ -129,57 +129,6 @@
       \endverb
       \keyw{bayes. LM,BAYESIAN MODEL,GAUSSIAN GRAPHICAL MODELS,lasso,LASSO,Normal scale mixture,POSTERIOR MOMENTS,Ridge regression,Robustness,SELECTION,Shrinkage,Sparsity,Thresholding}
     \endentry
-    \entry{celeux_regularization_2012}{article}{}
-      \name{author}{4}{}{%
-        {{hash=9133f7f17c8668427ccdc050da81724e}{%
-           family={Celeux},
-           familyi={C\bibinitperiod},
-           given={Gilles},
-           giveni={G\bibinitperiod}}}%
-        {{hash=17e195039daca5768d742d07824effac}{%
-           family={Anbari},
-           familyi={A\bibinitperiod},
-           given={Mohammed\bibnamedelima El},
-           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
-        {{hash=41d244db4705ec8da2fc38ab27c6c1a4}{%
-           family={Marin},
-           familyi={M\bibinitperiod},
-           given={Jean-Michel},
-           giveni={J\bibinithyphendelim M\bibinitperiod}}}%
-        {{hash=0a257fbe5a59f3a17cc4e1089b887257}{%
-           family={Robert},
-           familyi={R\bibinitperiod},
-           given={Christian\bibnamedelima P.},
-           giveni={C\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {International Society for Bayesian Analysis}%
-      }
-      \strng{namehash}{5797e1758f036f906d0ca7847964603d}
-      \strng{fullhash}{fc3fabe74691e91c4517620207aebbde}
-      \strng{bibnamehash}{5797e1758f036f906d0ca7847964603d}
-      \strng{authorbibnamehash}{5797e1758f036f906d0ca7847964603d}
-      \strng{authornamehash}{5797e1758f036f906d0ca7847964603d}
-      \strng{authorfullhash}{fc3fabe74691e91c4517620207aebbde}
-      \field{sortinit}{C}
-      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{shorttitle}
-      \field{issn}{1936-0975, 1931-6690}
-      \field{journaltitle}{Bayesian Analysis}
-      \field{month}{6}
-      \field{number}{2}
-      \field{shorttitle}{Regularization in {Regression}}
-      \field{title}{Regularization in {Regression}: {Comparing} {Bayesian} and {Frequentist} {Methods} in a {Poorly} {Informative} {Situation}}
-      \field{volume}{7}
-      \field{year}{2012}
-      \field{pages}{477\bibrangedash 502}
-      \range{pages}{26}
-      \verb{doi}
-      \verb 10.1214/12-BA716
-      \endverb
-      \keyw{Calibration,Dantzig selector,Elastic net,lasso,Lasso,model choice,noninformative priors,regularization methods,ridge,simulation,Zellner’s g–prior}
-    \endentry
     \entry{dellaportas_bayesian_1993}{article}{}
       \name{author}{2}{}{%
         {{hash=0c9976fcbc505ef2f4a43b539d45332f}{%

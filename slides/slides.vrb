@@ -3,8 +3,25 @@
 \begin{itemize}
 \tightlist
 \item
-  Anwendungsmöglichkeiten: kleine Stichproben, explizite Nutzung von
-  Vorwissen, einfache Regularisierung + Erhalt der Interpretierbarkeit
+  Bayesianische Regression ist nicht immer sinnvoller als
+  frequentistische Regression
+\item
+  Anwendungsmöglichkeiten u.a.:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    kleine Stichproben
+  \item
+    explizite Nutzung von Vorwissen
+  \item
+    einfache Regularisierung + Erhalt der Interpretierbarkeit
+  \item
+    Verteilungen (statt Konfidenzintervallen) zur Quantifizierung von
+    Unsicherheit
+  \end{itemize}
+\item
+  Inferenz: modernere Methoden notwendig
 \end{itemize}
 \end{block}
 
@@ -16,10 +33,17 @@
   Bayesianische Regression (v.a. für praktische Anwendung):
   \textcite{gelman_bayesian_2013}
 \item
-  Prior Verteilungen (v.a. Shrinkage): \textcite{van_erp_shrinkage_2019}
-  und \textcite{celeux_regularization_2012}
+  Priori Verteilungen (v.a. Shrinkage):
+  \textcite{van_erp_shrinkage_2019}
 \item
-  Software: z.B. \texttt{brms} in \texttt{R}, \texttt{PyMC} in
-  \texttt{python}
+  Software:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{brms} und \texttt{tidybayes} in \texttt{R}
+  \item
+    \texttt{PyMC} in \texttt{python}
+  \end{itemize}
 \end{itemize}
 \end{block}

@@ -74,19 +74,20 @@ output:
       - "-V"
       - "aspectratio=169"
     md_extensions: +fenced_divs+raw_tex
-
+  bookdown::pdf_document2:
+    biblio_section: "Referenzen"
 ---
 
 ## Motivation für bayesianische Regression
 
-Frequentistisch: ein Modell + Konfidenzintervalle
+Regressionsmodelle sind in der Wissenschaft und bei Anwedern sehr beliebt, aber ...
 
-Bayesianisch: ganze Verteilung von möglichen Modellen
+\vspace{0.5cm}
 
+$\to$ ... wie können wir Vorwissen (korrekt) modellieren?
 
-$\to$ Wie können wir Vorwissen (korrekt) modellieren?
+$\to$ ... wie können wir Unsicherheit im Modell und in der Vorhersage darstellen?
 
-$\to$ Wie können wir Unsicherheit im Modell darstellen?
 
 # Bayesianisches **lineares** Modell (LM)
 
@@ -101,17 +102,18 @@ Annahmen:
 
 3. Gewichtsparameter $\btheta$ als Zufallsvariable interpretieren
 
+\vspace{0.5cm}
 ::: {.block}
 ### **Bayesianisches** lineares Modell:
 $$\by \mid \btheta, \ssd \sim \Ncal(\bX \btheta, \ssd \bI)$$
 :::
 
-## Prior-Verteilungen für das bayesianische LM
+## Priori-Verteilungen für das bayesianische LM
 
-**Prior**-Annahme für $\btheta$ (und evtl. $\ssd$) notwendig $\to$ sehr vielseitige Modell-Anpassung möglich
+**A-Priori**-Annahme für $\btheta$ (und evtl. $\ssd$) notwendig $\to$ sehr vielseitige Modell-Anpassung möglich
 
 :::{.block}
-### Normal-Invers-Gamma Prior:
+### Normal-Invers-Gamma Priori:
 
 $$
 \begin{aligned}
@@ -121,50 +123,52 @@ $$
 \end{aligned}
 $$
 
-mit Prior Parametern: $\mupri, \Sdpri, \apri$ und $\bpri$
+mit Priori Parametern: $\mupri, \Sdpri, \apri$ und $\bpri$
 :::
 
-**Vorteil**: NIG-Prior ist mit Normalverteilungs-Likelihood konjugiert $\to$ exakte Inferenz möglich (mehr dazu später)
+**Vorteil**: NIG-Priori ist mit Normalverteilungs-Likelihood konjugiert $\to$ exakte Inferenz möglich (mehr dazu später)
 
-<!-- TODO: Bild -->
 
-## Uninformative Prior als Spezialfall der NIG-Prior
+## Uninformative Priori als Spezialfall der NIG-Priori
 
 <!-- (TODO: relevant?) -->
 
 :::{.block}
-### Uninformative Prior
+### Uninformative Priori
 
-z.B. mit NIG-Prior mit Prior Parametern
+z.B. mit NIG-Priori mit Priori Parametern
 
 $$
 \mupri = \bnull, \quad \Sdipri = \bnull \; \text{i.e.}\; \Sdpri \to \infty, \quad \apri = - \frac{p}{2}, \quad \bpri = 0
 $$
 
-$\implies$ flache (und damit uninformative) Prior und maximaler Einfluss der Daten auf die Posterior:
+$\implies$ flache (und damit uninformative) Priori und maximaler Einfluss der Daten auf die Posteriori:
 
 $$
 \btheta \mid \ssd \overset{a}{\sim}  \Ncal(\mupri, \ssd \infty) \; \implies \; p(\btheta\mid \ssd) \propto 1
 $$
 :::
 
-TODO: Bild
 
 ## Regularisierung: frequentistisch $\to$ bayesianisch
 
 **Erinnerung**: Regularisierung im *frequentistischen* LM durch Minimierung von 
 $$\text{PLS}(\btheta) = (\by - \bX \btheta)^\top (\by - \bX \btheta) + \lambda \ \text{pen}(\btheta)$$
 mit Regularisierungs-Parameter $\lambda > 0$.
-<br/><br/>
+\vspace{0.5cm}
 
-**Bayesianische Regularisierung** durch Wahl der Prior-Verteilung für $\btheta$
+**Bayesianische Regularisierung** durch Wahl der Priori-Verteilung für $\btheta$
 
 <!-- lambda steuert Trade-off zwischen Regularisierung und Modellanpassung
 
-Idee: immer wenn wir regularisieren, treffen wir in unserem Modell implizit die Annahme, dass wir es für unwahrscheinlich halten, dass viele Kovariablen einen Einfluss haben. Das macht beim frequentistischen Modell Chaor (das Modell ist nicht mehr so richtig probabilistisch) aber passt super in die Prior von bayesianischen Modellen -->
+Idee: immer wenn wir regularisieren, treffen wir in unserem Modell implizit die Annahme, dass wir es für unwahrscheinlich halten, dass viele Kovariablen einen Einfluss haben. Das macht beim frequentistischen Modell Chaor (das Modell ist nicht mehr so richtig probabilistisch) aber passt super in die Priori von bayesianischen Modellen -->
 
 
-## Regularisierung durch Wahl der Prior-Verteilung
+## Regularisierung durch Wahl der Priori-Verteilung
+
+::: { .columns }
+
+::: { .column width="55%" }
 
 :::{.block}
 ### Ridge Regularisierung
@@ -186,22 +190,27 @@ $$
 \taus_j &\overset{\text{i.i.d.}}{\sim} \text{Exp}(0.5 \lambda^2), \quad j = 1, \dots, p
 \end{aligned}
 $$
-<!-- Entwickelt aus Laplace-Prior  -->
+<!-- Entwickelt aus Laplace-Priori  -->
+:::
+
+:::
+
+::: { .column width="45%" }
+![](../figures/plot_priors.png){height='75%'}
+:::
+
+
 :::
 
 **Problem**: keine Variablenselektion (im Gegensatz zu frequentistischem Lasso)
 
-$\to$ Alternative Priors für Variablenselektion: Spike and Slab [@mitchell_bayesian_1988], Horseshoe [@carvalho_horseshoe_2010], u.v.m.
+$\to$ Alternative Priori für Variablenselektion: Spike and Slab [@mitchell_bayesian_1988], Horseshoe [@carvalho_horseshoe_2010], u.v.m.
 
 <!-- 
 bayes Lasso setzt Koeffizienten nicht automatisch auf 0 -> dafür brauch wir speziellere Priors, die hier aber etwas außerhalb unseres Umfangs liegen.
 -->
 
-## Visualisierung der Prior-Verteilungen
-
-![](../figures/plot_priors.png){height='70%'}
-
-# Bayesianisches **generalisiertes** lineares Modell (GLMs)
+# Bayesianisches **generalisiertes** lineares Modell (GLM)
 
 
 ## Bayesianisches LM $\to$ **GLM**
@@ -232,15 +241,15 @@ Für Beobachtungen $\bx_i = (1, x_{i1}, \dots, x_{ip})^\top$ und Sigmoid-Link $\
 
 :::
 
-**Prior Wahl**
+**Priori Wahl**
 
-- I.A. äquivalent zum LM möglich, z.B. Normalverteilungs-Prior
+- I. Allg. äquivalent zum LM möglich, z.B. Normalverteilungs-Priori
+- Für Regularisierung können dieselben Priori wie im LM verwendet werden [@ohara_review_2009;@fahrmeir_bayesian_2010;@van_erp_shrinkage_2019]
 - Verteilungen mit schweren Rändern (z.B. t-Verteilung, Cauchy Verteilung) addressieren Separation und fördern Shrinkage [@gelman_weakly_2008;@ghosh_use_2017]
-- Für Regularisierung können dieselben Priors wie im LM verwendet werden [@ohara_review_2009;@fahrmeir_bayesian_2010;@van_erp_shrinkage_2019]
 
 # Inferenz im bayesianischen (G)LM
 
-## Inferenz der Parameter Posterior
+## Inferenz der Parameter Posteriori
 
 **Erinnerung**
 
@@ -250,7 +259,7 @@ $$
 \hbtheta_{KQ} = (\bX^\top \bX)^{-1} \bX^\top \by \quad \text{mit} \quad \hbtheta_{KQ} \overset{a}{\sim} \Ncal(\btheta, \ssd (\bX^\top \bX)^{-1})
 $$
 
-- Inferenz im bayesianischen LM: *Bayes-Regel* zur Ermittlung der Parameter Posterior
+- Inferenz im bayesianischen LM: *Bayes-Regel* zur Ermittlung der Parameter Posteriori
 
 $$
 p(\btheta \mid \by) = \frac{p(\by \mid \btheta) \; p(\btheta)}{\int p(\by \mid \btheta) \; p(\btheta) d \btheta}
@@ -263,10 +272,10 @@ $$
 
 In Bayesian inference, unlike just computing a point estimate, we need the entire posterior. Except in simple conjugate cases, the denominator (normalizing constant) is intractable, so we resort to other techniques. -->
 
-## exakte Inferenz mit konjugierten Priors
+## exakte Inferenz mit konjugierten Priori
 
 :::{.block}
-### Inferenz mit konjugierten Priors
+### Inferenz mit konjugierten Priori
 
 Bayesianisches LM: aus der Konjugiertheit von $\by \mid \btheta, \ssd \sim \Ncal$ und $\btheta, \ssd \sim \text{NIG}$ ergibt sich
 
@@ -279,18 +288,20 @@ $$
 $$
 :::
 
-- **uninformative NIG-Prior**: Posterior Mean und KQ-Schätzer sind äquivalent:
+- **uninformative NIG-Priori**: a-Posteriori Mean und KQ-Schätzer sind äquivalent:
 $$
 \mupri = \bnull, \quad \Sdipri = \bnull \; \implies \; \mupo = (\bX^\top \bX)^{-1} \bX^\top \by,\quad \Sdpo = (\bX^\top \bX)^{-1}
 $$
 
-<!-- Bei einer uninformativen prior reduziert sich der posterior mean auf den KQ Schätzer -> sanity check that our Bayesian approach generalizes the classical result. -->
+<!-- Bei einer uninformativen Priori reduziert sich der posterior mean auf den KQ Schätzer -> sanity check that our Bayesian approach generalizes the classical result. -->
 <!-- $\to$ Marginale Posterior Verteilungen von $\btheta$ und $\ssd$ durch Integration für z.B. Kredibilitätsintervalle -->
 
-- **Ridge**: Spezialfall der NIG-Prior $\to$ konjugierte Berechnung der Parameter Posterior
-- **Lasso**: Prior hat keine geschlossene Form, aus der Posterior kann aber mit Gibbs-Sampling simuliert werden [@park_bayesian_2008]
+- **Ridge**: Spezialfall der NIG-Priori $\to$ konjugierte Berechnung der Parameter Posteriori
+- **Lasso**: Posteriori hat keine geschlossene Form, man kann aber mit z.B. Gibbs-Sampling daraus simulieren [@park_bayesian_2008]
 
-## Posterior Update für Prior-Verteilungen
+## Posteriori Update für Priori-Verteilungen
+
+<!-- TODO: Schrift zu klein, Skalierung komisch, fix! -->
 
 ![](../figures/plot_update.png){width='90%'}
 
@@ -306,28 +317,28 @@ $$
 
 ## Approximative Inferenz
 
-**Problem**: Inferenz mit konjugierten Priors ist nur sehr selten möglich [@polson_bayesian_2013]
+**Problem**: Inferenz mit konjugierten Priori ist nur sehr selten möglich [@polson_bayesian_2013]
 
-$\to$ **Approximative bayesianische Inferenz**, um aus der Posterior zu ziehen, mit z.B.:
+$\to$ **Approximative bayesianische Inferenz**, z.B. mit
 
 <!-- In the logistic model (and most Bayesian GLMs), we can’t integrate the posterior analytically. We have two broad strategies: (1)  – draw lots of samples from the posterior; (2) Deterministic approximations – approximate the posterior with a simpler distribution. -->
 
 - Sampling Methoden (Markov chain Monte Carlo Methoden)
     - **Metropolis-Hastings Algorithmus** [@hastings_monte_1970]
-    - Gibbs Sampling (bedingte Konjugiertheit) [@dellaportas_bayesian_1993]
-    - Hamiltonian Monte Carlo (v.a. hochdimensionale Posterior) [@neal_probabilistic_1993]
+    - Gibbs Sampling (bei bedingte Konjugiertheit) [@dellaportas_bayesian_1993]
+    - Hamiltonian Monte Carlo (v.a. hochdimensionale Posteriori) [@neal_probabilistic_1993]
 
-- Deterministische Approximation, z.B.  **Laplace Approximation** [@tierney_accurate_1986]
+- Deterministischer Approximation, z.B. **Laplace Approximation** [@tierney_accurate_1986]
 - U.v.m.
 
 ## Metropolis Hastings Algorithmus [@hastings_monte_1970]
 
-- **Idee**: Aus der Posterior $p(\btheta\mid \by)$ ziehen, ohne Annahmen über ihre exakte Form machen zu müssen
-- **Problem**: Ergebnisse sind am Besten, wenn die Posterior bis auf eine Konstante (meist die Normalisierungskonstante $\int p(\by \mid \btheta) \; p(\btheta) d \btheta$) bekannt sind
+- **Idee**: Aus der Posteriori $p(\btheta\mid \by)$ ziehen, ohne Annahmen über ihre exakte Form machen zu müssen
+- **Problem**: Ergebnisse sind am Besten, wenn die Posteriori bis auf eine Konstante (meist die Normalisierungskonstante $\int p(\by \mid \btheta) \; p(\btheta) d \btheta$) bekannt sind
 
 - **Inputs**:
   - Anzahl der Ziehungen $K \to$ frei wählbar
-  - Likelihood $p(\btheta \mid \by)$ und Prior $p(\btheta) \to$ bekannt
+  - Likelihood $p(\btheta \mid \by)$ und Priori $p(\btheta) \to$ bekannt
   - Proposal Verteilung $q \to$ muss sorgfältig gewählt werden
 
 <!-- Evtl. kürzen: Metropolis-Hastings is an algorithm to draw samples from the posterior when we can’t solve it analytically. We only need to compute the posterior density (up to a constant). It works by proposing random jumps in parameter space and accepting or rejecting them in a way that eventually the samples come from the target posterior. -->
@@ -352,7 +363,7 @@ $\to$ **Optionen**:
 
 ## Laplace Approximation (LA) [@tierney_accurate_1986]
 
-- **Idee**: Approximation der Posterior mit einer Normalverteilung
+- **Idee**: Approximation der Posteriori mit einer Normalverteilung
   $$
   p(\btheta \mid \by) \approx \Ncal(\hbtheta_{MAP}, H^{-1}(\hbtheta_{MAP}))
   $$
@@ -360,7 +371,7 @@ $\to$ **Optionen**:
 - Erweiterung für hierarchische Modelle: Integrated Nested Laplace Appriximation (INLA) [@rue_approximate_2009]
 
 
-<!-- Intuition: wir fitten eine Normalverteilung um das Maximum der Posterior. Wir finden erst den MAP und benutzen dann die zweite Ableitung (i.e. die Krümmung), um die Normalverteilung anzupassen. Ein bisschen wie bayesianische Taylor-Reihen Erweiterung-->
+<!-- Intuition: wir fitten eine Normalverteilung um das Maximum der Posteriori. Wir finden erst den MAP und benutzen dann die zweite Ableitung (i.e. die Krümmung), um die Normalverteilung anzupassen. Ein bisschen wie bayesianische Taylor-Reihen Erweiterung-->
 
 ## *Beispiel:* Vergleich von approximativen Inferenz Methoden
 
@@ -418,33 +429,53 @@ $$
 
 Für das bayesianische **logistische Modell** berechnet man $$p(\ty = 1 \mid \by)$$ mit $y_i \in \{0 \text{ (negativ)}, 1 \text{ (positiv)}\}$
 
-<!-- TODO: Bild -->
-
 
 ## Berechnung der Posterior Predictive Distribution
 
-**Analytische Berechnung**: z.B. für die NIG-Prior ergibt sich
-  $$\ty \mid \btheta, \ssd, \by \sim \Tcal(2 \apo, \tX \btheta, \frac{\bpo}{\apo} (\bI + \tX \Sdpo \tX^\top))$$
+**Analytische Berechnung**: z.B. für die NIG-Priori möglich
 
-**Approximation**
+Sonst: **Approximation**
 
 - für Metropolis-Hastings: $p(\ty = 1 \mid \by) \approx \frac{1}{K} \sum_{k=1}^{K} \sigma(\tX \btheta^{(k)})$
 - für Laplace Approximation:
-    - Samples $\btheta^{(s)} \sim \Ncal(\hbtheta_{MAP}, H^{-1}(\hbtheta_{MAP}))$ mit $s = 1, \dots, S$ aus der LA-approximierten Parameter Posterior ziehen und wie bei Metropolis-Hastings vorgehen oder
-    - LA-approximierte PPD analytisch berechnen:
+    - Samples $\btheta^{(s)} \sim \Ncal(\hbtheta_{MAP}, H^{-1}(\hbtheta_{MAP}))$ mit $s = 1, \dots, S$ aus der LA-approximierten Parameter Posteriori ziehen und wie bei Metropolis-Hastings vorgehen oder
+    - LA-approximierte PPD durch Integration analytisch berechnen
     
-      $$p(\ty = 1 \mid \by) = \int \sigma(\tX \btheta) \; \Ncal_{\btheta}(\hbtheta_{MAP}, H^{-1} (\hbtheta_{MAP})) \; d \btheta$$
-    
-
 <!-- wir haben schon gesamplet und können die samples aus der Parameter Posterior jetzt einfach wiederverwenden, um die posterior predictive distribution zu approximieren -->
+
+# Zusammenfassung
+
+---
+
+**Zusammenfassung anhand eines simplen Beispiels**:
+$$
+\begin{aligned}
+y_i = \theta_{true} x_i + \epsilon_i\quad &\text{mit} \quad\epsilon_i \sim \Ncal(0, 5) \quad \text{für} \quad i = 1, \dots, 20 \\
+&\quad \theta_{true} = 2, \quad \theta \sim \Ncal(0, 5)
+\end{aligned}
+$$
+
+---
+
+![](../figures/plot_example.png){height='80%'}
+
+---
+
+![](../figures/plot_ppd.png){height='80%'}
+
 
 ---
 
 :::{.block}
 ### Fazit
 
-
-- Anwendungsmöglichkeiten: kleine Stichproben, explizite Nutzung von Vorwissen, einfache Regularisierung + Erhalt der Interpretierbarkeit
+- Bayesianische Regression ist nicht immer sinnvoller als frequentistische Regression
+- Anwendungsmöglichkeiten u.a.:
+  - kleine Stichproben
+  - explizite Nutzung von Vorwissen
+  - einfache Regularisierung + Erhalt der Interpretierbarkeit
+  - Verteilungen (statt Konfidenzintervallen) zur Quantifizierung von Unsicherheit
+- Inferenz: modernere Methoden notwendig
 
 <!-- If we only have a little data, a classic model might wildly overfit or be very uncertain. A Bayesian model says: let’s lean on prior knowledge to stabilize things. Intuitively, it’s like having an expert whispering a suggestion (the prior) when the data is unsure.
 We saw Bayesian and frequentist approaches can give similar point estimates (with flat prior) but very different uncertainty quantification – which do you trust more?
@@ -459,30 +490,30 @@ One critique could be: do we really gain that much over just doing a frequentist
 ### Literatur Empfehlungen
 
 - Bayesianische Regression (v.a. für praktische Anwendung): @gelman_bayesian_2013
-- Prior Verteilungen (v.a. Shrinkage): @van_erp_shrinkage_2019 und @celeux_regularization_2012
-- Software: z.B. `brms` in `R`, `PyMC` in `python`
+- Priori Verteilungen (v.a. Shrinkage): @van_erp_shrinkage_2019
+- Software:
+    - `brms` und `tidybayes` in `R`
+    - `PyMC` in `python`
 :::
 
 # Referenzen
-
 <div id="refs"></div>
-
-# (APPENDIX) Appendix {-}
+# Appendix
 
 ## Praktische Anwendbarkeit von (bayesianischer) Regularisierung
 
 Vorteile von bayesianischer Regularisierung sind u.a.:
 
 - Probabilistisches Modell trotz Regularisierung
-- Regularisierung-Parameter muss nicht als Hyperparameter optimiert werden (z.B. durch Prior auf $\taus$)
-- Mehr Anpassungsmöglichkeiten durch Prior-Spezifikation
+- Regularisierung-Parameter muss nicht als Hyperparameter optimiert werden (z.B. durch Priori auf $\taus$)
+- Mehr Anpassungsmöglichkeiten durch Priori-Spezifikation
 
 ## Frequentistische vs. bayesianische Lasso Regularisierung
 
 ![Contour plot representing the sum of squared residuals, classical lasso constraint region (left), bivariate lasso prior and posterior distribution (right), and the classical and Bayesian penalized point estimates. Aus @van_erp_shrinkage_2019](../figures/van_erp_fig2_lasso.jpg){height='75%'}
 
 
-## *Beispiel:* Vergleich von Regularisierungs-Priors in linearer und logistischer Regression
+## *Beispiel:* Vergleich von Regularisierungs-Priori in linearer und logistischer Regression
 
 **Setup**: zwei synthetische Datensätze mit $n=150$
 
@@ -556,7 +587,7 @@ für großes $p$
 
 ## Posterior Inference: Der Metropolis (-Hastings) Algorithmus
 
-1. $\btheta^{(1)}$ inizialisieren
+1. $\btheta^{(1)}$ initialisieren
 2. Für $k = 1, \dots, K$
     1. $\btheta^{(*)}$ aus der \textit{Proposal Verteilung} $q(\btheta^{(*)} \mid \btheta^{(k)})$ ziehen
     2. \textit{Akzeptanzwahrscheinlichkeit} berechnen
