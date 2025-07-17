@@ -80,7 +80,7 @@ output:
 
 ## Motivation für bayesianische Regression
 
-Regressionsmodelle sind in der Wissenschaft und bei Anwedern sehr beliebt, aber ...
+Regressionsmodelle sind in der Wissenschaft und bei Anwendern sehr beliebt, aber ...
 
 \vspace{0.5cm}
 
@@ -245,7 +245,7 @@ Für Beobachtungen $\bx_i = (1, x_{i1}, \dots, x_{ip})^\top$ und Sigmoid-Link $\
 
 - I. Allg. äquivalent zum LM möglich, z.B. Normalverteilungs-Priori
 - Für Regularisierung können dieselben Priori wie im LM verwendet werden [@ohara_review_2009;@fahrmeir_bayesian_2010;@van_erp_shrinkage_2019]
-- Verteilungen mit schweren Rändern (z.B. t-Verteilung, Cauchy Verteilung) addressieren Separation und fördern Shrinkage [@gelman_weakly_2008;@ghosh_use_2017]
+- Verteilungen mit schweren Rändern (z.B. t-Verteilung, Cauchy Verteilung) adressieren Separation und fördern Shrinkage [@gelman_weakly_2008;@ghosh_use_2017]
 
 # Inferenz im bayesianischen (G)LM
 
@@ -334,7 +334,7 @@ $\to$ **Approximative bayesianische Inferenz**, z.B. mit
 ## Metropolis Hastings Algorithmus [@hastings_monte_1970]
 
 - **Idee**: Aus der Posteriori $p(\btheta\mid \by)$ ziehen, ohne Annahmen über ihre exakte Form machen zu müssen
-- **Problem**: Ergebnisse sind am Besten, wenn die Posteriori bis auf eine Konstante (meist die Normalisierungskonstante $\int p(\by \mid \btheta) \; p(\btheta) d \btheta$) bekannt sind
+- **Problem**: Ergebnisse sind am besten, wenn die Posteriori bis auf eine Konstante (meist die Normalisierungskonstante $\int p(\by \mid \btheta) \; p(\btheta) d \btheta$) bekannt sind
 
 - **Inputs**:
   - Anzahl der Ziehungen $K \to$ frei wählbar
@@ -368,7 +368,7 @@ $\to$ **Optionen**:
   p(\btheta \mid \by) \approx \Ncal(\hbtheta_{MAP}, H^{-1}(\hbtheta_{MAP}))
   $$
   mit Maximum-a-Posteriori Schätzer $\hbtheta_{MAP}$ und Hesse-Matrix $H$ von $p(\btheta \mid \by)$
-- Erweiterung für hierarchische Modelle: Integrated Nested Laplace Appriximation (INLA) [@rue_approximate_2009]
+- Erweiterung für hierarchische Modelle: Integrated Nested Laplace Approximation (INLA) [@rue_approximate_2009]
 
 
 <!-- Intuition: wir fitten eine Normalverteilung um das Maximum der Posteriori. Wir finden erst den MAP und benutzen dann die zweite Ableitung (i.e. die Krümmung), um die Normalverteilung anzupassen. Ein bisschen wie bayesianische Taylor-Reihen Erweiterung-->
@@ -387,7 +387,7 @@ $$
 
 **Experiment**: für jeden Datensatz wurde angepasst:
 
-- Ein lineares und ein logsistisches Regressionsmodell mit $\btheta \sim \Ncal(0, 10 \cdot \bI)$ und $\ssd = 10$
+- Ein lineares und ein logistisches Regressionsmodell mit $\btheta \sim \Ncal(0, 10 \cdot \bI)$ und $\ssd = 10$
 - Mit Laplace Approximation und Metropolis-Hastings ($K$ = 5.000, Burn-in = 500, Thinning Intervall = 10) 
 
 <!-- We generated many synthetic datasets for both a linear regression scenario and a logistic regression scenario, so we know the true parameters. We then fit each using both Laplace approximation and Metropolis-Hastings to compare their accuracy and runtime. -->
